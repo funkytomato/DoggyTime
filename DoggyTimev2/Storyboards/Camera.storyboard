@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HiG-Jj-Nkf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="IvK-Kb-35H">
+            <objects>
+                <viewController id="HiG-Jj-Nkf" customClass="CameraViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jqO-zg-Chx"/>
+                        <viewControllerLayoutGuide type="bottom" id="bF1-uS-c5H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rj2-FM-qfo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yw4-Id-D33">
+                                <rect key="frame" x="16" y="135" width="343" height="292"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecr-w9-zQ1">
+                                <rect key="frame" x="229" y="80" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Photo Library"/>
+                                <connections>
+                                    <action selector="PhotoLibraryAction:" destination="HiG-Jj-Nkf" eventType="touchUpInside" id="fUH-M8-qNO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxe-B2-9W4">
+                                <rect key="frame" x="103" y="478" width="168" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="CameraAction:" destination="HiG-Jj-Nkf" eventType="touchUpInside" id="Arv-4r-vl5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="5Kt-QN-WEd"/>
+                    </view>
+                    <connections>
+                        <outlet property="Camera" destination="yxe-B2-9W4" id="fyd-h0-3Up"/>
+                        <outlet property="ImageDisplay" destination="Yw4-Id-D33" id="4l5-qE-v5Q"/>
+                        <outlet property="PhotoLibrary" destination="ecr-w9-zQ1" id="hg5-Fr-Ke4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yb1-Hx-9y9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1854" y="-50"/>
+        </scene>
+    </scenes>
+</document>
