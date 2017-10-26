@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientsDetailViewController: UITableViewController
+class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
     //MARK:- IBOutlets
@@ -23,7 +23,16 @@ class ClientsDetailViewController: UITableViewController
     @IBOutlet weak var eMailField: UITextField!
     
     @IBOutlet weak var DognameField: UITextField!
-
+    @IBAction func photoLibraryBtn(_ sender: Any)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    
     @IBOutlet weak var DogPicture: UIImageView!
     
     
@@ -58,6 +67,8 @@ class ClientsDetailViewController: UITableViewController
         DogPicture?.image = (clientData?.dogpicture)!
 
     }
+    
+
     
     
     // MARK: - Navigation
@@ -94,7 +105,8 @@ class ClientsDetailViewController: UITableViewController
         }
     }
 }
- 
+
+
 // MARK- UITableViewDataSource
 extension ClientsDetailViewController
 {
