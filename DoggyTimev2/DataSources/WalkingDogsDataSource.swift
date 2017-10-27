@@ -23,11 +23,13 @@ extension WalkingDogsDataSource: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        print("WalkingDogsDataSource numberOfRowsInSection")
         return self.dogsOnWalk.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        print("WalkingDogsDataSource cellForRowAt")
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DogNameCell.self)) as! DogNameCell
         let dog = dogsOnWalk[indexPath.row]
         cell.dogname = dog.dogName
