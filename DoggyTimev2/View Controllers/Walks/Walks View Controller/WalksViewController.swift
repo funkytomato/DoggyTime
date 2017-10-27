@@ -26,6 +26,7 @@ class WalksViewController: UITableViewController
     
     override func viewDidLoad()
     {
+        print("WalksViewController viewDidLoad")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.estimatedRowHeight = 60
@@ -48,8 +49,8 @@ extension WalksViewController
     
     @IBAction func saveWalkDetail(_ segue: UIStoryboardSegue)
     {
-        guard let walkDetailsViewController = segue.source as? WalkProfileViewController,
-            let walk = walkDetailsViewController.walkData else
+        guard let profileViewController = segue.source as? WalkProfileTableViewController,
+            let walk = profileViewController.walkData else
         {
             return
         }
@@ -69,6 +70,7 @@ extension WalksViewController
 {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        print("WalksViewController cellForRowAt")
         let cell = tableView.dequeueReusableCell(withIdentifier: "WalkCell", for: indexPath) as! WalkCell
         let walk = dataSource?.walks[indexPath.row]
         cell.walk = walk
@@ -77,7 +79,8 @@ extension WalksViewController
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let walkProfileController = segue.destination as? WalkProfileViewController,
+        print("WalksViewController prepare")
+        if let walkProfileController = segue.destination as? WalkProfileTableViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
             let selectedWalk = dataSource?.walks[indexPath.row]
