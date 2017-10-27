@@ -68,6 +68,8 @@ extension WalksViewController
 // MARK:- UITableViewDataSource
 extension WalksViewController
 {
+    /*
+     ORIGINAL
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         print("WalksViewController cellForRowAt")
@@ -76,6 +78,17 @@ extension WalksViewController
         cell.walk = walk
         return cell
     }
+    */
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        print("WalksViewController cellForRowAt")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WalkIdentificationCell", for: indexPath) as! WalkIdentificationCell
+        let walk = dataSource?.walks[indexPath.row]
+        cell.walk = walk
+        return cell
+    }
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
