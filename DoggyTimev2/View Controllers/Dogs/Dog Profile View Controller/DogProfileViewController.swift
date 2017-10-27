@@ -19,12 +19,15 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var breedFd: UITextField!
     @IBOutlet weak var breedPicker: UIPickerView!
     @IBOutlet weak var breedpictureView: UIImageView!
-    @IBOutlet weak var sizeFd: UITextField!
+    @IBOutlet weak var sizePicker: UIPickerView!
+    //@IBOutlet weak var sizeFd: UITextField!
     @IBOutlet weak var pictureView: UIImageView!
     
     var breedDataSource = ["German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
     
-    var genderDataSource = ["Male", "Female"] 
+    var genderDataSource = ["Male", "Female"]
+    
+    var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
     //MARK:- Properties
     let dataSource: DogsDataSource?
@@ -48,10 +51,13 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         genderPicker.delegate = self
         genderPicker.dataSource = self
         
+        sizePicker.delegate = self
+        sizePicker.dataSource = self
+        
         //Do additional setup
         self.dognameFd.text = dogData?.dogName
         
-        self.sexFd.text = dogData?.sex
+        //self.sexFd.text = dogData?.sex
         if let row = genderDataSource.index(of: (dogData?.sex.description)!)
         {
             genderPicker.selectRow(row, inComponent: 0, animated: false)
@@ -65,7 +71,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             breedpictureView.image = UIImage(named: breedDataSource[row])
         }
         
-        self.sizeFd.text = dogData?.size
+        //self.sizeFd.text = dogData?.size
         self.pictureView.image = dogData?.picture
         
         tableView.reloadData()
@@ -97,6 +103,10 @@ extension DogProfileViewController
         {
             return breedDataSource.count
         }
+        else if pickerView == sizePicker
+        {
+            return sizeDataSource.count
+        }
         
         return 1
     }
@@ -110,6 +120,10 @@ extension DogProfileViewController
         else if pickerView == breedPicker
         {
             return breedDataSource[row] as String
+        }
+        else if pickerView == sizePicker
+        {
+            return sizeDataSource[row] as String
         }
         
         return ""
