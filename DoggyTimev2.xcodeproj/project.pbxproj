@@ -15,6 +15,7 @@
 		1805B76D1F9E26D700DCFB83 /* Clients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B76C1F9E26D700DCFB83 /* Clients.storyboard */; };
 		1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B76E1F9E296900DCFB83 /* Walks.storyboard */; };
 		1805B7711F9E2B2F00DCFB83 /* Dogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */; };
+		181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181BB82C1FA3836F0036EB07 /* WalkIdentificationCell.swift */; };
 		182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182465501FA34FFE00647762 /* WalkProfileTableViewController.swift */; };
 		182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */; };
 		18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */; };
@@ -99,6 +100,7 @@
 		1805B76C1F9E26D700DCFB83 /* Clients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Clients.storyboard; sourceTree = "<group>"; };
 		1805B76E1F9E296900DCFB83 /* Walks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walks.storyboard; sourceTree = "<group>"; };
 		1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dogs.storyboard; sourceTree = "<group>"; };
+		181BB82C1FA3836F0036EB07 /* WalkIdentificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkIdentificationCell.swift; sourceTree = "<group>"; };
 		182465501FA34FFE00647762 /* WalkProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkProfileTableViewController.swift; sourceTree = "<group>"; };
 		182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsOnWalkTableViewController.swift; sourceTree = "<group>"; };
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				18EB60691F9A20B50084FE8D /* LocationCell.swift */,
 				18EB60661F9A20B40084FE8D /* WalkCell.swift */,
 				18EB60471F9A20A40084FE8D /* DogNameCell.swift */,
+				181BB82C1FA3836F0036EB07 /* WalkIdentificationCell.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */,
 				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
+				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18EB60731F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
 				18EB604C1F9A20A40084FE8D /* Client.swift in Sources */,
