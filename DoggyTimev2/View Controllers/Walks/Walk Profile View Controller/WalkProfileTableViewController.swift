@@ -14,6 +14,9 @@ class WalkProfileTableViewController: UITableViewController
 {
     
     @IBOutlet weak var walkIdField: UITextField!
+    @IBOutlet weak var dateTimePicker: UIDatePicker!
+    @IBOutlet weak var timeField: UITextField!
+    @IBOutlet weak var dayOfWeekField: UITextField!
     @IBOutlet weak var locationNameField: UITextField!
     @IBOutlet weak var latitudeField: UITextField!
     @IBOutlet weak var longitudeField: UITextField!
@@ -34,22 +37,28 @@ class WalkProfileTableViewController: UITableViewController
         print("WalkProfileTableViewController viewDidLoad")
         super.viewDidLoad()
    
+        dateTimePicker.addTarget(self, action: #selector(dateTimePickerValueChanged), for: .valueChanged)
+        
         walkIdField.text = walkData?.walkNo.description
+        //dateTimePicker.setDate(walkData?.date, animated: true)
+       // timeField.text = walkData?.time.description
+        //dayOfWeekField.text = walkData?.dayOfWeek.description
         locationNameField.text = walkData?.locationName.description
         latitudeField.text = walkData?.latitude.description
         longitudeField.text = walkData?.longitude.description
         
-    /*
-        dogListView.estimatedRowHeight = 60
-        dogListView.rowHeight = UITableViewAutomaticDimension
-        dogListView.dataSource = dataSource
-        dogListView.reloadData()
-     */
     }
     
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    @objc func dateTimePickerValueChanged(sender: UIDatePicker)
+    {
+        //Function will be called everytime picker changes it's value
+        walkData?.date = sender.date
+        print("WalkProfileTableViewController dateTimePickerValueChanged \(sender.date.description)")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
