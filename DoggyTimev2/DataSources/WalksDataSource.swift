@@ -25,11 +25,20 @@ extension WalksDataSource: UITableViewDataSource
         print("WalksDataSource numberOfRowsInSection")
         return self.walks.count
     }
-    
+    /* //ORIGINAL
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         print("WalksDataSource cellForRowAt")
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WalkCell.self)) as! WalkCell
+        let walk = walks[indexPath.row]
+        cell.walk = walk
+        return cell
+    }
+    */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        print("WalksDataSource cellForRowAt")
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WalkIdentificationCell.self)) as! WalkIdentificationCell
         let walk = walks[indexPath.row]
         cell.walk = walk
         return cell
