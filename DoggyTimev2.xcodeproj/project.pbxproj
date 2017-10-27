@@ -15,6 +15,8 @@
 		1805B76D1F9E26D700DCFB83 /* Clients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B76C1F9E26D700DCFB83 /* Clients.storyboard */; };
 		1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B76E1F9E296900DCFB83 /* Walks.storyboard */; };
 		1805B7711F9E2B2F00DCFB83 /* Dogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */; };
+		182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182465501FA34FFE00647762 /* WalkProfileTableViewController.swift */; };
+		182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */; };
 		18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */; };
 		18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B6681FA23704003DAF51 /* Assets.xcassets */; };
 		18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844D1FA24A7200CC7586 /* CameraViewController.swift */; };
@@ -63,9 +65,6 @@
 		18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60691F9A20B50084FE8D /* LocationCell.swift */; };
 		18EB607D1F9A20B50084FE8D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60691F9A20B50084FE8D /* LocationCell.swift */; };
 		18EB607E1F9A20B50084FE8D /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60691F9A20B50084FE8D /* LocationCell.swift */; };
-		18EB607F1F9A20B50084FE8D /* WalkProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606A1F9A20B50084FE8D /* WalkProfileViewController.swift */; };
-		18EB60801F9A20B50084FE8D /* WalkProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606A1F9A20B50084FE8D /* WalkProfileViewController.swift */; };
-		18EB60811F9A20B50084FE8D /* WalkProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606A1F9A20B50084FE8D /* WalkProfileViewController.swift */; };
 		18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
@@ -100,6 +99,8 @@
 		1805B76C1F9E26D700DCFB83 /* Clients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Clients.storyboard; sourceTree = "<group>"; };
 		1805B76E1F9E296900DCFB83 /* Walks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walks.storyboard; sourceTree = "<group>"; };
 		1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dogs.storyboard; sourceTree = "<group>"; };
+		182465501FA34FFE00647762 /* WalkProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkProfileTableViewController.swift; sourceTree = "<group>"; };
+		182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsOnWalkTableViewController.swift; sourceTree = "<group>"; };
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BE844D1FA24A7200CC7586 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		18EB60661F9A20B40084FE8D /* WalkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkCell.swift; sourceTree = "<group>"; };
 		18EB60681F9A20B40084FE8D /* WalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalksViewController.swift; sourceTree = "<group>"; };
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
-		18EB606A1F9A20B50084FE8D /* WalkProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkProfileViewController.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		18EB606C1F9A20B50084FE8D /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -310,7 +310,8 @@
 		1808F70E1F9E16C80027B447 /* Walk Profile View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				18EB606A1F9A20B50084FE8D /* WalkProfileViewController.swift */,
+				182465521FA361A000647762 /* Embedded Controllers */,
+				182465501FA34FFE00647762 /* WalkProfileTableViewController.swift */,
 			);
 			path = "Walk Profile View Controller";
 			sourceTree = "<group>";
@@ -337,6 +338,14 @@
 				18EB60421F9A20A30084FE8D /* ClientCell.swift */,
 			);
 			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		182465521FA361A000647762 /* Embedded Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */,
+			);
+			path = "Embedded Controllers";
 			sourceTree = "<group>";
 		};
 		18A9B66A1FA24535003DAF51 /* Resources */ = {
@@ -561,7 +570,6 @@
 			files = (
 				18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */,
-				18EB607F1F9A20B50084FE8D /* WalkProfileViewController.swift in Sources */,
 				18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */,
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
@@ -574,6 +582,7 @@
 				18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */,
+				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18EB60731F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
@@ -582,6 +591,7 @@
 				18EB60491F9A20A40084FE8D /* DogsDataSource.swift in Sources */,
 				18EB60851F9A20B50084FE8D /* Walk.swift in Sources */,
 				18EB60551F9A20A40084FE8D /* ClientsDataSource.swift in Sources */,
+				182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */,
 				1800A5181F9E736900829A86 /* WalkingDogsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,7 +608,6 @@
 				18EB60531F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18EB607D1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */,
-				18EB60801F9A20B50084FE8D /* WalkProfileViewController.swift in Sources */,
 				18EB605F1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				18EB60741F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB604D1F9A20A40084FE8D /* Client.swift in Sources */,
@@ -621,7 +630,6 @@
 				18EB60541F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18EB607E1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */,
-				18EB60811F9A20B50084FE8D /* WalkProfileViewController.swift in Sources */,
 				18EB60601F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				18EB60751F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB604E1F9A20A40084FE8D /* Client.swift in Sources */,
