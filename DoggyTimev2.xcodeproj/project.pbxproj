@@ -12,6 +12,21 @@
 		1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A5131F9E42FD00829A86 /* DogsViewController.swift */; };
 		1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A5151F9E460800829A86 /* DogProfileViewController.swift */; };
 		1800A5181F9E736900829A86 /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A5171F9E736900829A86 /* WalkingDogsDataSource.swift */; };
+		18026B9F1FA5ED6B0011EB3F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026B9E1FA5ED6B0011EB3F /* Route.swift */; };
+		18026BA01FA5ED6B0011EB3F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026B9E1FA5ED6B0011EB3F /* Route.swift */; };
+		18026BA11FA5ED6B0011EB3F /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026B9E1FA5ED6B0011EB3F /* Route.swift */; };
+		18026BA31FA5EEE40011EB3F /* RoutesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BA21FA5EEE40011EB3F /* RoutesDataSource.swift */; };
+		18026BA41FA5EEE40011EB3F /* RoutesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BA21FA5EEE40011EB3F /* RoutesDataSource.swift */; };
+		18026BA51FA5EEE40011EB3F /* RoutesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BA21FA5EEE40011EB3F /* RoutesDataSource.swift */; };
+		18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BAA1FA5F9DD0011EB3F /* RouteCell.swift */; };
+		18026BAC1FA5F9DD0011EB3F /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BAA1FA5F9DD0011EB3F /* RouteCell.swift */; };
+		18026BAD1FA5F9DD0011EB3F /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BAA1FA5F9DD0011EB3F /* RouteCell.swift */; };
+		18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BAE1FA5FB6C0011EB3F /* RoutesViewController.swift */; };
+		18026BB01FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BAE1FA5FB6C0011EB3F /* RoutesViewController.swift */; };
+		18026BB11FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BAE1FA5FB6C0011EB3F /* RoutesViewController.swift */; };
+		18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BB21FA602F80011EB3F /* RouteProfileViewController.swift */; };
+		18026BB41FA602F80011EB3F /* RouteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BB21FA602F80011EB3F /* RouteProfileViewController.swift */; };
+		18026BB51FA602F80011EB3F /* RouteProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18026BB21FA602F80011EB3F /* RouteProfileViewController.swift */; };
 		1805B76D1F9E26D700DCFB83 /* Clients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B76C1F9E26D700DCFB83 /* Clients.storyboard */; };
 		1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B76E1F9E296900DCFB83 /* Walks.storyboard */; };
 		1805B7711F9E2B2F00DCFB83 /* Dogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */; };
@@ -97,6 +112,11 @@
 		1800A5131F9E42FD00829A86 /* DogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsViewController.swift; sourceTree = "<group>"; };
 		1800A5151F9E460800829A86 /* DogProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogProfileViewController.swift; sourceTree = "<group>"; };
 		1800A5171F9E736900829A86 /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
+		18026B9E1FA5ED6B0011EB3F /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		18026BA21FA5EEE40011EB3F /* RoutesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesDataSource.swift; sourceTree = "<group>"; };
+		18026BAA1FA5F9DD0011EB3F /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
+		18026BAE1FA5FB6C0011EB3F /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
+		18026BB21FA602F80011EB3F /* RouteProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProfileViewController.swift; sourceTree = "<group>"; };
 		1805B76C1F9E26D700DCFB83 /* Clients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Clients.storyboard; sourceTree = "<group>"; };
 		1805B76E1F9E296900DCFB83 /* Walks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walks.storyboard; sourceTree = "<group>"; };
 		1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dogs.storyboard; sourceTree = "<group>"; };
@@ -160,6 +180,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18026BA61FA5F9960011EB3F /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				18026BA91FA5F9BD0011EB3F /* Table View Cells */,
+				18026BA81FA5F9AE0011EB3F /* Route Profile View Controller */,
+				18026BA71FA5F9A00011EB3F /* Routes View Controller */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		18026BA71FA5F9A00011EB3F /* Routes View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18026BAE1FA5FB6C0011EB3F /* RoutesViewController.swift */,
+			);
+			path = "Routes View Controller";
+			sourceTree = "<group>";
+		};
+		18026BA81FA5F9AE0011EB3F /* Route Profile View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18026BB21FA602F80011EB3F /* RouteProfileViewController.swift */,
+			);
+			path = "Route Profile View Controller";
+			sourceTree = "<group>";
+		};
+		18026BA91FA5F9BD0011EB3F /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18026BAA1FA5F9DD0011EB3F /* RouteCell.swift */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		1805B7721F9E2D5C00DCFB83 /* Dogs */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				18EB606C1F9A20B50084FE8D /* Walk.swift */,
+				18026B9E1FA5ED6B0011EB3F /* Route.swift */,
 				18EB60411F9A20A30084FE8D /* Client.swift */,
 				18EB60481F9A20A40084FE8D /* Dog.swift */,
 			);
@@ -219,6 +274,7 @@
 				18EB60441F9A20A40084FE8D /* ClientsDataSource.swift */,
 				18EB60401F9A20A30084FE8D /* DogsDataSource.swift */,
 				1800A5171F9E736900829A86 /* WalkingDogsDataSource.swift */,
+				18026BA21FA5EEE40011EB3F /* RoutesDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -226,6 +282,7 @@
 		1808F7041F9E15550027B447 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18026BA61FA5F9960011EB3F /* Routes */,
 				1805B7721F9E2D5C00DCFB83 /* Dogs */,
 				1808F70A1F9E161C0027B447 /* Walks */,
 				1808F70B1F9E16230027B447 /* Clients */,
@@ -575,18 +632,22 @@
 				18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */,
 				18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */,
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
+				18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
 				1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */,
 				18D471C01F9FBB88007D245D /* CoreDataManager.swift in Sources */,
 				18EB60611F9A20A40084FE8D /* Dog.swift in Sources */,
+				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				18EB60701F9A20B50084FE8D /* WalksDataSource.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
 				18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */,
+				18026BA31FA5EEE40011EB3F /* RoutesDataSource.swift in Sources */,
 				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
+				18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18EB60731F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
@@ -596,6 +657,7 @@
 				18EB60851F9A20B50084FE8D /* Walk.swift in Sources */,
 				18EB60551F9A20A40084FE8D /* ClientsDataSource.swift in Sources */,
 				182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */,
+				18026B9F1FA5ED6B0011EB3F /* Route.swift in Sources */,
 				1800A5181F9E736900829A86 /* WalkingDogsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,14 +671,19 @@
 				18EB604A1F9A20A40084FE8D /* DogsDataSource.swift in Sources */,
 				18EB60501F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18EB60861F9A20B50084FE8D /* Walk.swift in Sources */,
+				18026BAC1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
+				18026BB01FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				18EB60531F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18EB607D1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */,
 				18EB605F1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				18EB60741F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB604D1F9A20A40084FE8D /* Client.swift in Sources */,
+				18026BA41FA5EEE40011EB3F /* RoutesDataSource.swift in Sources */,
 				18EB60711F9A20B50084FE8D /* WalksDataSource.swift in Sources */,
 				18EB60621F9A20A40084FE8D /* Dog.swift in Sources */,
+				18026BB41FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
+				18026BA01FA5ED6B0011EB3F /* Route.swift in Sources */,
 				18EB607A1F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18EB60561F9A20A40084FE8D /* ClientsDataSource.swift in Sources */,
 			);
@@ -631,14 +698,19 @@
 				18EB604B1F9A20A40084FE8D /* DogsDataSource.swift in Sources */,
 				18EB60511F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18EB60871F9A20B50084FE8D /* Walk.swift in Sources */,
+				18026BAD1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
+				18026BB11FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				18EB60541F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18EB607E1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */,
 				18EB60601F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				18EB60751F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18EB604E1F9A20A40084FE8D /* Client.swift in Sources */,
+				18026BA51FA5EEE40011EB3F /* RoutesDataSource.swift in Sources */,
 				18EB60721F9A20B50084FE8D /* WalksDataSource.swift in Sources */,
 				18EB60631F9A20A40084FE8D /* Dog.swift in Sources */,
+				18026BB51FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
+				18026BA11FA5ED6B0011EB3F /* Route.swift in Sources */,
 				18EB607B1F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18EB60571F9A20A40084FE8D /* ClientsDataSource.swift in Sources */,
 			);
