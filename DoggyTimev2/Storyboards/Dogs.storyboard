@@ -101,7 +101,7 @@
                             <outlet property="delegate" destination="8Ky-Yp-Yzn" id="U3b-ER-UWN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vMc-hO-BlV"/>
+                    <navigationItem key="navigationItem" title="Dogs" id="vMc-hO-BlV"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Qp-64-3U5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -164,13 +164,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6e-4S-AgX" userLabel="Breed Field">
-                                                    <rect key="frame" x="8" y="6" width="304" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khw-KS-wie" userLabel="Breed Picker View">
+                                                    <rect key="frame" x="8" y="0.0" width="304" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                </pickerView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -181,15 +178,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khw-KS-wie" userLabel="Breed Picker View">
-                                                    <rect key="frame" x="8" y="0.0" width="149" height="121"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                </pickerView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" translatesAutoresizingMaskIntoConstraints="NO" id="u61-zG-4Xm" userLabel="Breed Picture View">
-                                                    <rect key="frame" x="165" y="25" width="147" height="96"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Affenpinscher" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u61-zG-4Xm" userLabel="Breed Picture View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u61-zG-4Xm" firstAttribute="top" secondItem="Np1-s9-DBS" secondAttribute="top" id="0rc-3s-VL4"/>
+                                                <constraint firstAttribute="bottom" secondItem="u61-zG-4Xm" secondAttribute="bottom" id="8OV-BG-jMr"/>
+                                                <constraint firstItem="u61-zG-4Xm" firstAttribute="leading" secondItem="Np1-s9-DBS" secondAttribute="leading" id="go1-zb-Y81"/>
+                                                <constraint firstAttribute="trailing" secondItem="u61-zG-4Xm" secondAttribute="trailing" id="j0T-t0-qPR"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -221,11 +219,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-U6-E8w">
-                                                    <rect key="frame" x="8" y="0.0" width="304" height="292"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-U6-E8w">
+                                                    <rect key="frame" x="8" y="8" width="304" height="284"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="LdF-U6-E8w" secondAttribute="bottom" id="5xS-WA-WtE"/>
+                                                <constraint firstItem="LdF-U6-E8w" firstAttribute="trailing" secondItem="l5W-eo-3fg" secondAttribute="trailingMargin" id="DIy-KF-4K7"/>
+                                                <constraint firstItem="LdF-U6-E8w" firstAttribute="top" secondItem="l5W-eo-3fg" secondAttribute="topMargin" id="GPT-0u-3ZH"/>
+                                                <constraint firstItem="LdF-U6-E8w" firstAttribute="leading" secondItem="l5W-eo-3fg" secondAttribute="leadingMargin" id="vwN-eE-HOc"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="xSB-fF-oXO" kind="presentation" id="yDf-Jr-g1O"/>
@@ -240,7 +243,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="breedFd" destination="K6e-4S-AgX" id="SoI-Cg-VrL"/>
                         <outlet property="breedPicker" destination="khw-KS-wie" id="zyP-Cf-196"/>
                         <outlet property="breedpictureView" destination="u61-zG-4Xm" id="ung-Y9-aKD"/>
                         <outlet property="dognameFd" destination="7Po-aR-MAt" id="HZK-JH-GXZ"/>
