@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Clients-->
         <scene sceneID="UxJ-ab-DEJ">
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kbm-zr-9JE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="acW-dT-cKf" userLabel="Clients"/>
+                    <tabBarItem key="tabBarItem" title="Clients" image="dogwalker" id="acW-dT-cKf" userLabel="Clients"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aMS-SJ-tPr">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -295,7 +295,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="8" y="68" width="305" height="287"/>
+                                                    <rect key="frame" x="8" y="80" width="305" height="287"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -350,4 +350,7 @@
             <point key="canvasLocation" x="3752" y="-870"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dogwalker" width="27" height="30"/>
+    </resources>
 </document>
