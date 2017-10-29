@@ -72,5 +72,4 @@ extension DogsViewController
             dogProfileController.dogData = selectedDog
         }
     }
-    
 }
