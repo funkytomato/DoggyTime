@@ -64,7 +64,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         }
         
         
-        self.breedFd.text = dogData?.breed
+        //self.breedFd.text = dogData?.breed
         if let row = breedDataSource.index(of: (dogData?.breed.description)!)
         {
             breedPicker.selectRow(row, inComponent: 0, animated: false)
