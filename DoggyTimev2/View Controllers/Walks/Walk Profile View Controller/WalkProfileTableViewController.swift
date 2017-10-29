@@ -10,9 +10,10 @@ import UIKit
 import MapKit
 
 
-class WalkProfileTableViewController: UITableViewController
+class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
     
+    //MARK:- IBOutlets
     @IBOutlet weak var walkIdField: UITextField!
     @IBOutlet weak var dateTimePicker: UIDatePicker!
     @IBOutlet weak var timeField: UITextField!
@@ -22,6 +23,9 @@ class WalkProfileTableViewController: UITableViewController
     @IBOutlet weak var longitudeField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var locationPicker: UIPickerView!
+    
+    var locationDataSource = ["Pagham", "Chichester", "Selsey", "Elmer", "Summer Lane"]
     
     let dataSource: WalksDataSource
     var walkData: Walk?
@@ -37,7 +41,16 @@ class WalkProfileTableViewController: UITableViewController
         print("WalkProfileTableViewController viewDidLoad")
         super.viewDidLoad()
    
+        locationPicker.delegate = self
+        locationPicker.dataSource = self
+        
         dateTimePicker.addTarget(self, action: #selector(dateTimePickerValueChanged), for: .valueChanged)
+        //locationPicker.addTarget(self, action: #selector(locationNamePickerValueChanged), for .valueChanged)
+        if let row = locationDataSource.index(of: (walkData?.locationName.description)!)
+        {
+            locationPicker.selectRow(row, inComponent: 0, animated: false)
+        }
+        
         
         walkIdField.text = walkData?.walkNo.description
         //dateTimePicker.setDate(walkData?.date, animated: true)
@@ -54,12 +67,7 @@ class WalkProfileTableViewController: UITableViewController
         super.didReceiveMemoryWarning()
     }
     
-    @objc func dateTimePickerValueChanged(sender: UIDatePicker)
-    {
-        //Function will be called everytime picker changes it's value
-        walkData?.date = sender.date
-        print("WalkProfileTableViewController dateTimePickerValueChanged \(sender.date.description)")
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -75,14 +83,57 @@ class WalkProfileTableViewController: UITableViewController
             //let selectedWalk = dataSource.walks[indexPath.row]
             childViewController.walkData = walkData
         }
-        
-        /*
-        if let dogsOnWalkController = segue.destination as? DogsOnWalkTableViewController,
-            let indexPath = self.tableView.indexPathForSelectedRow
+    }
+}
+
+//MARK:- PickerView
+extension WalkProfileTableViewController
+{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        if pickerView == locationPicker
         {
-            let selectedWalk = dataSource.walks[indexPath.row]
-            dogsOnWalkController.walkData = selectedWalk
+            return locationDataSource.count
         }
- */
+    
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        if pickerView == locationPicker
+        {
+            return locationDataSource[row] as String
+        }
+        
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if pickerView == locationPicker
+        {
+            print(locationDataSource[row])
+            //breedpictureView.image = UIImage(named: breedDataSource[row])
+        }
+    }
+    
+    @objc func dateTimePickerValueChanged(sender: UIDatePicker)
+    {
+        //Function will be called everytime picker changes it's value
+        walkData?.date = sender.date
+        print("WalkProfileTableViewController dateTimePickerValueChanged \(sender.date.description)")
+    }
+    
+    @objc func locationNamePickerValueChanged(sender: UIPickerView)
+    {
+        //Function will be called everytime picker changes it's value
+        //walkData?.locationName = sender.
+        //print("WalkProfileTableViewController nameLocationPickerValueChanged \(sender.date.description)")
     }
 }
