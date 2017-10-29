@@ -50,4 +50,16 @@ final class SampleData
             Dog(dogname: "Hitler", breed: "Golden Retriever", sex: "Male", size: "Large", picture: #imageLiteral(resourceName: "winston"))!
         ]
     }
+    
+    static func generateRoutesData() -> [Route]
+    {
+        return [
+            Route(routeId: 1, name: "Pagham", terrain: "Beach", distance: 4.5, duration: 2.5)!,
+            Route(routeId: 2, name: "Selsey", terrain: "Beach", distance: 3, duration: 1)!,
+            Route(routeId: 3, name: "Summer Lane", terrain: "Fields", distance: 5, duration: 2.5)!,
+            Route(routeId: 4, name: "Slindon", terrain: "Woods", distance: 8, duration: 3)!,
+            Route(routeId: 5, name: "Pagham Sand Dunes", terrain: "Sand Dunes", distance: 1, duration: 0.5)!,
+            Route(routeId: 6, name: "Arundel", terrain: "River", distance: 2, duration: 1.5)!
+        ]
+    }
 }
