@@ -83,6 +83,47 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         
         //Dispose of any resources that can be recreated
     }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "SaveClientDetail",
+            let dognameFd = ForenameField.text,
+            let sexFd = SurnameField.text,
+            let genderPicker = StreetField.text,
+            let breed =
+            let breedpictureView = TownField.text,
+            let sizePicker = PostCodeField.text,
+            let pictureView = MobileField.text
+        {
+            
+            dogData = Client(dogname: dognameFd,
+                                breed: sexFd,
+                                sex: genderPicker,
+                                size: breed,
+                                picture: pictureView.image)
+            
+            
+        }
+        
+        
+        
+        @IBOutlet weak var dognameFd: UITextField!
+        @IBOutlet weak var sexFd: UITextField!
+        @IBOutlet weak var genderPicker: UIPickerView!
+        
+        @IBOutlet weak var breedFd: UITextField!
+        @IBOutlet weak var breedPicker: UIPickerView!
+        @IBOutlet weak var breedpictureView: UIImageView!
+        @IBOutlet weak var sizePicker: UIPickerView!
+        //@IBOutlet weak var sizeFd: UITextField!
+        @IBOutlet weak var pictureView: UIImageView!
+        
+        
+    }
 }
 
 //MARK:- PickerView
@@ -144,21 +185,5 @@ extension DogProfileViewController
 {
     
     
-}
-
-
-//MARK:- UITableViewDataSource
-extension DogProfileViewController
-{
-    //DO NOT DO BECAUSE WRITE TO INDIVIDUAL ROWS
-/*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
-        let dog = dataSource?.dogs[indexPath.row]
-        cell.textLabel?.text = dog?.dogName
-        return cell
-    }
- */
 }
 

@@ -65,7 +65,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         eMailField.text = clientData?.eMail
         DognameField.text = clientData?.dogname
         DogPicture?.image = (clientData?.dogpicture)!
-
     }
     
 
@@ -104,34 +103,4 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             
         }
     }
-}
-
-
-// MARK- UITableViewDataSource
-extension ClientsDetailViewController
-{
-    /*
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int)->Int
-    {
-        return clientData.count
-    }
-    */
-    /*
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        if indexPath.section == 0
-        {
-            ForenameField.becomeFirstResponder()
-        }
-    }
-    */
- /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath)
-     //   let client = clientData[indexPath.row]
-     //   cell.textLabel?.text = client.
-        return cell
-    }
- */
 }
