@@ -28,6 +28,7 @@ class ClientsViewController: UITableViewController
     
     override func viewDidLoad()
     {
+        print("ClientsViewController viewDidLoad")
         super.viewDidLoad()
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -44,6 +45,7 @@ extension ClientsViewController
     @IBAction func cancelToClientsViewController(_ segue: UIStoryboardSegue) { print("Back in the ClientViewController") }
     @IBAction func saveClientDetail(_ segue: UIStoryboardSegue)
     {
+        print("ClientsViewController saveCXlientDetail")
         guard let clientDetailsViewController = segue.source as? ClientsDetailViewController,
             let client = clientDetailsViewController.clientData else
         {
@@ -83,6 +85,7 @@ extension ClientsViewController
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        print("ClientsViewController prepare segue")
         if let clientDetailsViewController = segue.destination as? ClientsDetailViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
