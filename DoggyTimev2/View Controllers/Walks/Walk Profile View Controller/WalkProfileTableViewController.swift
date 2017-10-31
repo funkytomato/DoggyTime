@@ -32,8 +32,14 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     
     required init?(coder aDecoder: NSCoder)
     {
+        print("init WalkProfileTableViewController")
         self.dataSource = WalksDataSource(walks: SampleData.generateWalksData())
         super.init(coder: aDecoder)
+    }
+    
+    deinit
+    {
+        print("deinit WalkProfileTableViewController")
     }
     
     override func viewDidLoad()
@@ -64,6 +70,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     
     override func didReceiveMemoryWarning()
     {
+        print("WalkProfileTableViewController didReceiveMemoryWarning")
         super.didReceiveMemoryWarning()
     }
     
