@@ -48,7 +48,23 @@ class DogsViewController: UITableViewController
 //MARK:- IBActions
 extension DogsViewController
 {
+    @IBAction func cancelToWalksViewController(_ segue: UIStoryboardSegue) { print("Back in the DogsViewController")}
     
+    @IBAction func saveWalkDetail(_ segue: UIStoryboardSegue)
+    {
+        guard let profileViewController = segue.source as? DogProfileTableViewController,
+            let dog = profileViewController.dogData else
+        {
+            return
+        }
+        
+        // Add the new walk to the walks array
+        dataSource?.dogs.append(dog)
+        
+        //Update the tableView
+        let indexPath = IndexPath(row: (dataSource?.dogs.count)!-1, section:0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
     
 }
 
@@ -57,6 +73,7 @@ extension DogsViewController
 {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        print("DogsViewController cellForRowAt")
         let cell = tableView.dequeueReusableCell(withIdentifier: "DogsCell", for: indexPath) as! DogsCell
         let dog = dataSource?.dogs[indexPath.row]
         cell.dog = dog
