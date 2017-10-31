@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -55,45 +55,68 @@
             <objects>
                 <tableViewController title="Routes" id="ds6-SW-hy6" userLabel="Routes" customClass="RoutesViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="T6H-kM-5zz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RouteCell" rowHeight="80" id="yy5-zz-Ihq" customClass="RouteCell" customModule="DoggyTimev2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yy5-zz-Ihq" id="VqY-Ep-zil">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GUJ-Xr-unN">
-                                            <rect key="frame" x="8" y="7.9999999999999964" width="398" height="63.666666666666657"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="GUJ-Xr-unN">
+                                            <rect key="frame" x="8" y="8" width="304" height="63.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E7-rY-7cr" userLabel="Name Lbl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="63.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="63.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="105" id="HqJ-7O-xsv"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMd-Qh-xSU">
-                                                    <rect key="frame" x="99.666666666666686" y="0.0" width="99.333333333333314" height="63.666666666666664"/>
+                                                    <rect key="frame" x="144" y="0.0" width="100" height="63.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="Umz-wh-3sX"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-MH-Ja1">
-                                                    <rect key="frame" x="199" y="0.0" width="99.666666666666686" height="63.666666666666664"/>
+                                                    <rect key="frame" x="244" y="0.0" width="30" height="63.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="js0-2k-H9G"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifc-kt-PGK">
-                                                    <rect key="frame" x="298.66666666666669" y="0.0" width="99.333333333333314" height="63.666666666666664"/>
+                                                    <rect key="frame" x="274" y="0.0" width="30" height="63.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="9Vy-CK-gVH"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jMd-Qh-xSU" firstAttribute="leading" secondItem="5E7-rY-7cr" secondAttribute="trailing" id="MS3-Fu-RJ6"/>
+                                                <constraint firstItem="5E7-rY-7cr" firstAttribute="leading" secondItem="GUJ-Xr-unN" secondAttribute="leading" id="UfM-Ez-a9Y"/>
+                                                <constraint firstItem="jMd-Qh-xSU" firstAttribute="top" secondItem="GUJ-Xr-unN" secondAttribute="top" id="eMk-NN-hzA"/>
+                                                <constraint firstItem="jMd-Qh-xSU" firstAttribute="top" secondItem="GUJ-Xr-unN" secondAttribute="top" id="kmY-6p-eSp"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ifc-kt-PGK" secondAttribute="trailing" id="kqR-f5-V6q"/>
+                                                <constraint firstItem="Ifc-kt-PGK" firstAttribute="top" secondItem="GUJ-Xr-unN" secondAttribute="top" id="mmv-8f-Wv8"/>
+                                                <constraint firstItem="jMd-Qh-xSU" firstAttribute="leading" secondItem="5E7-rY-7cr" secondAttribute="trailing" id="mrL-PN-xvJ"/>
+                                                <constraint firstItem="5E7-rY-7cr" firstAttribute="top" secondItem="GUJ-Xr-unN" secondAttribute="top" id="ot4-Jm-gn6"/>
+                                                <constraint firstItem="jMd-Qh-xSU" firstAttribute="leading" secondItem="5E7-rY-7cr" secondAttribute="trailing" id="yVC-Uu-MKn"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -128,17 +151,17 @@
             <objects>
                 <tableViewController id="cEx-Jn-d1L" userLabel="Route Profile View Controller" customClass="RouteProfileViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="KXh-7f-u05">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Route Identification" id="0wJ-zx-s73" userLabel="Route Identiification">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LjW-6r-fUY">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LjW-6r-fUY" id="non-NC-Zny">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kSn-I8-5I3" userLabel="RouteId Field">
@@ -159,10 +182,10 @@
                             <tableViewSection headerTitle="Place Name" id="h2n-pn-g0w" userLabel="Place Name">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bTW-wq-v02">
-                                        <rect key="frame" x="0.0" y="154.66666666666669" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="155" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bTW-wq-v02" id="oZT-S7-2n1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRt-M1-rUH" userLabel="Name Field">
@@ -180,10 +203,10 @@
                             <tableViewSection headerTitle="Terrain Type" id="mes-WV-0th">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Zr5-Ee-0uQ">
-                                        <rect key="frame" x="0.0" y="254" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="254.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zr5-Ee-0uQ" id="mKi-t8-YjP">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gkr-7d-y91" userLabel="Terrain Field">
@@ -201,10 +224,10 @@
                             <tableViewSection headerTitle="Distance of Route" id="XdX-IS-B6h" userLabel="Distance of Route">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="khn-Np-pya">
-                                        <rect key="frame" x="0.0" y="353.33333333333331" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="354" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="khn-Np-pya" id="quD-WK-pUS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f02-4m-jIT" userLabel="Distance Field">
@@ -222,10 +245,10 @@
                             <tableViewSection headerTitle="Walk Duration" id="DiW-GU-gz2" userLabel="Walk Duration">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qMC-hS-gCp">
-                                        <rect key="frame" x="0.0" y="452.66666666666663" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="453.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qMC-hS-gCp" id="LWG-7j-NYe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmg-Ru-WAX" userLabel="Duration Field">
@@ -243,17 +266,17 @@
                             <tableViewSection headerTitle="Record Route" id="MOt-7a-CzA" userLabel="Record Route">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Qep-kG-Gq5">
-                                        <rect key="frame" x="0.0" y="552" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="553" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qep-kG-Gq5" id="BHn-9h-Mac">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JtA-X8-C0Q">
-                                                    <rect key="frame" x="8" y="8.0000000000000018" width="398" height="27.666666666666671"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="27.5"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQH-wb-acU" userLabel="Start Btn">
-                                                            <rect key="frame" x="0.0" y="0.0" width="199" height="27.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="152" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="Start">
                                                                 <color key="titleColor" red="0.2301687879" green="1" blue="0.1246113115" alpha="1" colorSpace="calibratedRGB"/>
@@ -263,7 +286,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k73-z1-Q7l" userLabel="Finish Btn">
-                                                            <rect key="frame" x="199" y="0.0" width="199" height="27.666666666666668"/>
+                                                            <rect key="frame" x="152" y="0.0" width="152" height="27.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="Finish">
                                                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
