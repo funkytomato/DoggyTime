@@ -12,15 +12,15 @@ import UIKit
 class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
     //MARK:- IBOutlets
-    @IBOutlet weak var dognameFd: UITextField!
-    @IBOutlet weak var sexFd: UITextField!
+    @IBOutlet weak var dognameField: UITextField!
+    //@IBOutlet weak var genderField: UITextField!
     @IBOutlet weak var genderPicker: UIPickerView!
     
-    @IBOutlet weak var breedFd: UITextField!
+    //@IBOutlet weak var breedField: UITextField!
     @IBOutlet weak var breedPicker: UIPickerView!
     @IBOutlet weak var breedpictureView: UIImageView!
     @IBOutlet weak var sizePicker: UIPickerView!
-    //@IBOutlet weak var sizeFd: UITextField!
+    //@IBOutlet weak var sizeField: UITextField!
     @IBOutlet weak var pictureView: UIImageView!
     
     var breedDataSource = ["German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
@@ -41,6 +41,10 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        print("DogProfileViewController deinit")
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -55,7 +59,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         sizePicker.dataSource = self
         
         //Do additional setup
-        self.dognameFd.text = dogData?.dogName
+        self.dognameField.text = dogData?.dogName
         
         //self.sexFd.text = dogData?.sex
         if let row = genderDataSource.index(of: (dogData?.sex.description)!)
@@ -87,42 +91,25 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
+        print("DogProfileViewController prepare segue")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDetail",
-            let dognameFd = ForenameField.text,
-            let sexFd = SurnameField.text,
-            let genderPicker = StreetField.text,
-            let breed =
-            let breedpictureView = TownField.text,
-            let sizePicker = PostCodeField.text,
-            let pictureView = MobileField.text
+            let dogname = dognameField.text,
+            let gender = dogData?.sex,
+            let breed = dogData?.breed,
+            let size = dogData?.size,
+            let picture = pictureView.image
         {
             
-            dogData = Client(dogname: dognameFd,
-                                breed: sexFd,
-                                sex: genderPicker,
-                                size: breed,
+            dogData = Dog(dogname: dogname,
+                                breed: breed,
+                                sex: gender,
+                                size: size,
                                 picture: pictureView.image)
             
             
         }
-        
-        
-        
-        @IBOutlet weak var dognameFd: UITextField!
-        @IBOutlet weak var sexFd: UITextField!
-        @IBOutlet weak var genderPicker: UIPickerView!
-        
-        @IBOutlet weak var breedFd: UITextField!
-        @IBOutlet weak var breedPicker: UIPickerView!
-        @IBOutlet weak var breedpictureView: UIImageView!
-        @IBOutlet weak var sizePicker: UIPickerView!
-        //@IBOutlet weak var sizeFd: UITextField!
-        @IBOutlet weak var pictureView: UIImageView!
-        
-        
     }
 }
 
@@ -175,7 +162,21 @@ extension DogProfileViewController
         if pickerView == breedPicker
         {
             print(breedDataSource[row])
+            
             breedpictureView.image = UIImage(named: breedDataSource[row])
+            dogData?.breed = breedDataSource[row]
+        }
+        else if pickerView == genderPicker
+        {
+            print(genderDataSource[row])
+            
+            dogData?.sex = genderDataSource[row]
+        }
+        else if pickerView == sizePicker
+        {
+            print(sizeDataSource[row])
+            
+            dogData?.size = sizeDataSource[row]
         }
     }
 }
