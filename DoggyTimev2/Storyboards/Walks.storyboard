@@ -88,7 +88,7 @@
                             <outlet property="delegate" destination="Y3G-6i-uFj" id="ulZ-Bw-G05"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Walks" id="dn4-u3-tGH"/>
+                    <navigationItem key="navigationItem" title="Walks" id="pp2-k1-cvz"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gu-2D-qkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,6 +317,18 @@
                             <outlet property="delegate" destination="88B-8i-OHK" id="50U-hz-N9d"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="9gq-oj-b3c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="o9r-YL-Kmu">
+                            <connections>
+                                <segue destination="tuV-Ji-a9i" kind="unwind" unwindAction="cancelToWalksViewController:" id="eeH-ya-Ckp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="jzy-jE-kCQ">
+                            <connections>
+                                <segue destination="tuV-Ji-a9i" kind="unwind" unwindAction="saveWalkDetail:" id="3WU-Bo-3Pm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateTimePicker" destination="o2h-vO-DnV" id="Joh-jf-gBU"/>
                         <outlet property="latitudeField" destination="PgS-G5-Xe1" id="7Lr-hS-8Tv"/>
@@ -328,6 +340,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3B8-J4-kk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tuV-Ji-a9i" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3506" y="143"/>
         </scene>
