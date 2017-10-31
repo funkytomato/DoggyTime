@@ -28,6 +28,7 @@ class WalksViewController: UITableViewController
     {
         print("WalksViewController viewDidLoad")
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -37,6 +38,7 @@ class WalksViewController: UITableViewController
 
     override func didReceiveMemoryWarning()
     {
+        print("WalksViewController didRecieveMemoryWarning")
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -49,6 +51,7 @@ extension WalksViewController
     
     @IBAction func saveWalkDetail(_ segue: UIStoryboardSegue)
     {
+        print("WalksViewController saveToWalkDetail")
         guard let profileViewController = segue.source as? WalkProfileTableViewController,
             let walk = profileViewController.walkData else
         {
@@ -92,7 +95,7 @@ extension WalksViewController
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("WalksViewController prepare")
+        print("WalksViewController prepare segue")
         if let walkProfileController = segue.destination as? WalkProfileTableViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {

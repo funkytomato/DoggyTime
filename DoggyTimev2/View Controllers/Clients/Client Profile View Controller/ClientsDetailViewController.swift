@@ -54,6 +54,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     override func viewDidLoad()
     {
+        print("ClientDetailsViewController viewDidLoad")
         super.viewDidLoad()
 
         ForenameField.text = clientData?.forename
@@ -75,6 +76,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        print("ClientsDetailViewController prepare segue")
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
