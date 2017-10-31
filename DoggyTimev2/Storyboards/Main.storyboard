@@ -291,15 +291,28 @@
                             <outlet property="delegate" destination="cEx-Jn-d1L" id="zbb-8v-Sw5"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="1DR-2g-P4L">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5jz-Yc-gQE">
+                            <connections>
+                                <segue destination="gcZ-Wj-4ft" kind="unwind" unwindAction="cancelToRoutesViewController:" id="2CP-8w-DnT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="xiS-oV-OXZ">
+                            <connections>
+                                <segue destination="gcZ-Wj-4ft" kind="unwind" unwindAction="saveRouteDetail:" id="PnY-r0-sQf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="distance" destination="f02-4m-jIT" id="dJW-g0-8Qc"/>
-                        <outlet property="duration" destination="Cmg-Ru-WAX" id="Ce9-uV-9H9"/>
-                        <outlet property="name" destination="rRt-M1-rUH" id="8Uj-Le-7r0"/>
-                        <outlet property="routeId" destination="kSn-I8-5I3" id="KkA-z8-BOH"/>
-                        <outlet property="terrain" destination="Gkr-7d-y91" id="4Tj-8a-vgf"/>
+                        <outlet property="distanceField" destination="f02-4m-jIT" id="NrT-oC-rcg"/>
+                        <outlet property="durationField" destination="Cmg-Ru-WAX" id="4WZ-ti-O8g"/>
+                        <outlet property="nameField" destination="rRt-M1-rUH" id="WSr-fV-HzZ"/>
+                        <outlet property="routeIdField" destination="kSn-I8-5I3" id="9s8-PW-NTJ"/>
+                        <outlet property="terrainField" destination="Gkr-7d-y91" id="QLt-Fp-sQa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sS-W6-0EI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gcZ-Wj-4ft" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2511.594202898551" y="-218.47826086956525"/>
         </scene>
