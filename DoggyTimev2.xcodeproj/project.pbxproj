@@ -87,6 +87,7 @@
 		18EB60851F9A20B50084FE8D /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606C1F9A20B50084FE8D /* Walk.swift */; };
 		18EB60861F9A20B50084FE8D /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606C1F9A20B50084FE8D /* Walk.swift */; };
 		18EB60871F9A20B50084FE8D /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606C1F9A20B50084FE8D /* Walk.swift */; };
+		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		18EB606C1F9A20B50084FE8D /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 				1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */,
 				18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */,
 				18EB60381F9A206E0084FE8D /* Main.storyboard */,
+				C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */,
 				1805B76E1F9E296900DCFB83 /* Walks.storyboard */,
 			);
 			path = Storyboards;
@@ -597,6 +600,7 @@
 			files = (
 				18EB60391F9A206E0084FE8D /* Main.storyboard in Resources */,
 				1800A50A1F9E35F400829A86 /* Camera.storyboard in Resources */,
+				C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */,
 				1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */,
 				18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */,
 				18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */,
