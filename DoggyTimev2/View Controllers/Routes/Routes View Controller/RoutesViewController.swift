@@ -65,3 +65,27 @@ extension RoutesViewController
         }
     }
 }
+
+// MARK:- IBActions
+extension RoutesViewController
+{
+    
+    @IBAction func cancelToRoutesViewController(_ segue: UIStoryboardSegue) { print("Back in the RoutesViewController") }
+    @IBAction func saveRouteDetail(_ segue: UIStoryboardSegue)
+    {
+        print("RoutesViewController saveRouteDetail")
+        guard let profileViewController = segue.source as? RouteProfileViewController,
+            let route = profileViewController.routeData else
+        {
+            return
+        }
+        
+        // Add the new client to the clients array
+        dataSource?.routes.append(route)
+        
+        //Update the tableView
+        let indexPath = IndexPath(row: (dataSource?.routes.count)!-1, section:0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+}
