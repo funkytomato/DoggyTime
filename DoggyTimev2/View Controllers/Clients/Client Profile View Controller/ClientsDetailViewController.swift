@@ -38,10 +38,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     
     // MARK: - Properties
-    //var clientData: Client
-    //var clientData = Client(context: PersistentService.context)
     weak var clientData: Client?
-    //var clientData : NSManagedObject? = nil
     
     
     // MARK:- Initializers
@@ -71,10 +68,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         eMailField.text = clientData?.email
         DognameField.text = clientData?.dogname
         //DogPicture?.image = (clientData.dogpicture)!
-
- }
-    
-
+    }
     
     
     // MARK: - Navigation
@@ -83,38 +77,33 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientsDetailViewController prepare segue")
+        print("segue identifer \(segue.identifier)")
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveClientDetail",
-            let clientForeName = ForenameField.text,
-            let clientSurName = SurnameField.text,
-            let clientStreet = StreetField.text,
-            let clientTown = TownField.text,
-            let clientPostCode = PostCodeField.text,
-            let clientMobile = MobileField.text,
-            let clienteMail = eMailField.text,
-            let clientDogName = DognameField.text
-            //let clientDogPicture = DogPicture
+        if let destinationViewController = segue.destination as? ClientsViewController,
+            let forename = ForenameField.text,
+            let surname = SurnameField.text,
+            let street = StreetField.text,
+            let town = TownField.text,
+            let postcode = PostCodeField.text,
+            let mobile = MobileField.text,
+            let email = eMailField.text,
+            let dogname = DognameField.text
         {
-/*
-            clientData = Client(forename: clientForeName,
-                            surname: clientSurName,
-                            street: clientAddress,
-                            town: clientTown,
-                            postcode: clientPostCode,
-                            mobile: clientMobile,
-                            eMail: clienteMail,
-                            dogname: clientDogName)
-            */
-            clientData?.forename = clientForeName
-            clientData?.surname = clientSurName
-            clientData?.street = clientStreet
-            clientData?.town = clientTown
-            clientData?.postcode = clientPostCode
-            clientData?.mobile = clientMobile
-            clientData?.email = clienteMail
-            clientData?.dogname = clientDogName
+
+            
+            let client = Client(context: PersistentService.context)
+            client.forename  = forename
+            client.surname = surname
+            client.street = street
+            client.town = town
+            client.postcode = postcode
+            client.mobile = mobile
+            client.email = email
+            client.dogname = dogname
+            
+            self.clientData = client
         }
     }
 }
