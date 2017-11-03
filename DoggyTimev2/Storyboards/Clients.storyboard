@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lai-uw-vdV" id="Iy0-4b-KYs">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="69"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-zW-fVs">
@@ -101,7 +101,13 @@
                             <outlet property="delegate" destination="62Z-sB-dF8" id="nzS-SR-qqH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Clients" id="T2Q-mf-mNM"/>
+                    <navigationItem key="navigationItem" title="Clients" id="T2Q-mf-mNM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yof-ad-GZ4">
+                            <connections>
+                                <segue destination="IYz-Rx-QGR" kind="show" id="zBi-Rg-irc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="83T-fk-Dc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,10 +131,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hj0-y3-YZK">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hj0-y3-YZK">
                                                     <rect key="frame" x="20" y="5" width="347" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <attributedString key="attributedText"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -264,7 +271,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Something" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-MV-1jp" userLabel="DogName Field">
-                                                    <rect key="frame" x="8" y="11" width="87" height="21.5"/>
+                                                    <rect key="frame" x="8" y="11" width="87" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" textContentType="name"/>
@@ -283,11 +290,11 @@
                                         <rect key="frame" x="0.0" y="575" width="320" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="fji-Hm-IeW" id="3ST-r4-5sK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="299"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="8" y="114" width="305" height="286"/>
+                                                    <rect key="frame" x="7" y="176" width="305" height="282"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -345,4 +352,7 @@
     <resources>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4Im-WR-aZl"/>
+    </inferredMetricsTieBreakers>
 </document>

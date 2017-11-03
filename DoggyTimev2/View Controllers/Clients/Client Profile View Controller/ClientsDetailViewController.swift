@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
@@ -37,7 +38,11 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     
     // MARK: - Properties
-    var clientData: Client?
+    //var clientData: Client
+    //var clientData = Client(context: PersistentService.context)
+    weak var clientData: Client?
+    //var clientData : NSManagedObject? = nil
+    
     
     // MARK:- Initializers
     required init?(coder aDecoder: NSCoder)
@@ -63,10 +68,11 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         TownField.text = clientData?.town
         PostCodeField.text = clientData?.postcode
         MobileField.text = clientData?.mobile
-        eMailField.text = clientData?.eMail
+        eMailField.text = clientData?.email
         DognameField.text = clientData?.dogname
-        DogPicture?.image = (clientData?.dogpicture)!
-    }
+        //DogPicture?.image = (clientData.dogpicture)!
+
+ }
     
 
     
@@ -83,15 +89,15 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         if segue.identifier == "SaveClientDetail",
             let clientForeName = ForenameField.text,
             let clientSurName = SurnameField.text,
-            let clientAddress = StreetField.text,
+            let clientStreet = StreetField.text,
             let clientTown = TownField.text,
             let clientPostCode = PostCodeField.text,
             let clientMobile = MobileField.text,
             let clienteMail = eMailField.text,
-            let clientDogName = DognameField.text,
-            let clientDogPicture = DogPicture
+            let clientDogName = DognameField.text
+            //let clientDogPicture = DogPicture
         {
-
+/*
             clientData = Client(forename: clientForeName,
                             surname: clientSurName,
                             street: clientAddress,
@@ -99,10 +105,16 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
                             postcode: clientPostCode,
                             mobile: clientMobile,
                             eMail: clienteMail,
-                            dogname: clientDogName,
-                            dogpicture: clientDogPicture.image)
- 
-            
+                            dogname: clientDogName)
+            */
+            clientData?.forename = clientForeName
+            clientData?.surname = clientSurName
+            clientData?.street = clientStreet
+            clientData?.town = clientTown
+            clientData?.postcode = clientPostCode
+            clientData?.mobile = clientMobile
+            clientData?.email = clienteMail
+            clientData?.dogname = clientDogName
         }
     }
 }
