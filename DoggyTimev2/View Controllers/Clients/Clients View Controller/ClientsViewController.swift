@@ -12,14 +12,9 @@ import CoreData
 
 class ClientsViewController: UITableViewController
 {
- //   @IBOutlet weak var tableView: UITableView
-    
     // MARK:- Properties
-    //let dataSource: ClientsDataSource?
     
     //Client data to send to detail
-    //var clientData : Client?
-    //var clients : [Client]
     var clients = [Client]()
     
     required init?(coder aDecoder: NSCoder)
@@ -42,14 +37,7 @@ class ClientsViewController: UITableViewController
             self.tableView.reloadData()
         }
         catch {}
-        
-        
-        /*
-        tableView.estimatedRowHeight = 60
-        tableView.rowHeight = UITableViewAutomaticDimension
-        //tableView.dataSource = dataSource
-        tableView.reloadData()
- */
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -62,7 +50,6 @@ class ClientsViewController: UITableViewController
             let selectedClient = clients[indexPath.row]
             clientDetailsViewController.clientData = selectedClient
         }
-        
     }
 }
 
@@ -75,6 +62,7 @@ extension ClientsViewController
     @IBAction func saveClientDetail(_ segue: UIStoryboardSegue)
     {
         print("ClientsViewController saveClientDetail")
+        print("Segue source\(segue.source)")
         guard let clientDetailsViewController = segue.source as? ClientsDetailViewController,
         let client = clientDetailsViewController.clientData else
         {
@@ -82,17 +70,9 @@ extension ClientsViewController
         }
         
         PersistentService.saveContext()
-        clients.append(client )
+        clients.append(client)
         self.tableView.reloadData()
-        
-        // Add the new client to the clients array
-        //dataSource?.clients.append(client)
-        
-        //Update the tableView
-        //let indexPath = IndexPath(row: (dataSource?.clients.count)!-1, section:0)
-        //tableView.insertRows(at: [indexPath], with: .automatic)
     }
-    
 }
 
 
@@ -100,7 +80,6 @@ extension ClientsViewController
 // MARK:- UITableViewDataSource
 extension ClientsViewController
 {
-
     override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
@@ -116,7 +95,7 @@ extension ClientsViewController
     {
         let cell    = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCell
         let client  = clients[indexPath.row]
-        //cell.client = client
+        cell.client = client
         return cell
     }
 }
