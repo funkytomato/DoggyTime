@@ -20,7 +20,7 @@ final class SampleData
             Client(forename: "Edward", surname: "King", street: "Buckingham Palace", town: "Pagham", postcode: "PO21 8UY", mobile: "0789765378", eMail: "king@gmail.com", dogname: "terry", dogpicture: #imageLiteral(resourceName: "terry"))!
         ]
     }
- */
+
  
     static func generateWalksData() -> [Walk]
     {
@@ -41,7 +41,7 @@ final class SampleData
             Dog(dogname: "Hitler", breed: "Boston Terrier", sex: "Male", size: "Large", picture: #imageLiteral(resourceName: "winston"))!
         ]
     }
-    
+     */
     static func generateWalkingDogsData() -> [Dog]
     {
         return [
@@ -52,7 +52,7 @@ final class SampleData
             Dog(dogname: "Hitler", breed: "Golden Retriever", sex: "Male", size: "Large", picture: #imageLiteral(resourceName: "winston"))!
         ]
     }
-    
+    /*
     static func generateRoutesData() -> [Route]
     {
         return [
@@ -64,4 +64,5 @@ final class SampleData
             Route(routeId: 6, name: "Arundel", terrain: "River", distance: 2, duration: 1.5)!
         ]
     }
+ */
 }
