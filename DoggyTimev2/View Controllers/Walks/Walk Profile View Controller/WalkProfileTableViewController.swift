@@ -27,13 +27,11 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     
     var locationDataSource = ["Pagham", "Chichester", "Selsey", "Elmer", "Summer Lane"]
     
-    let dataSource: WalksDataSource
-    var walkData: Walk?
+    weak var walkData: Walk?
     
     required init?(coder aDecoder: NSCoder)
     {
         print("init WalkProfileTableViewController")
-        self.dataSource = WalksDataSource(walks: SampleData.generateWalksData())
         super.init(coder: aDecoder)
     }
     
@@ -52,17 +50,17 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         
         dateTimePicker.addTarget(self, action: #selector(dateTimePickerValueChanged), for: .valueChanged)
         //locationPicker.addTarget(self, action: #selector(locationNamePickerValueChanged), for .valueChanged)
-        if let row = locationDataSource.index(of: (walkData?.locationName.description)!)
+        if let row = locationDataSource.index(of: (walkData?.locationname)!)
         {
             locationPicker.selectRow(row, inComponent: 0, animated: false)
         }
         
         
-        walkIdField.text = walkData?.walkNo.description
-        //dateTimePicker.setDate(walkData?.date, animated: true)
-       // timeField.text = walkData?.time.description
+//        walkIdField.text = walkData?.walkNo.description
+        dateTimePicker.setDate((walkData?.dateofwalk)! as Date, animated: true)
+        //timeField.text = walkData?.dateofwalk?.description(with: <#T##Any?#>)
         //dayOfWeekField.text = walkData?.dayOfWeek.description
-        locationNameField.text = walkData?.locationName.description
+        locationNameField.text = walkData?.locationname
         latitudeField.text = walkData?.latitude.description
         longitudeField.text = walkData?.longitude.description
         
@@ -89,6 +87,21 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             // You can save the reference to it, or pass data to it.
             //let selectedWalk = dataSource.walks[indexPath.row]
             childViewController.walkData = walkData
+        }
+        else if let destinationViewController = segue.destination as? WalksViewController,
+//let dateofwalk = dateTimePicker.date,
+            let time = timeField.text,
+            let dayofweek = dayOfWeekField.text,
+            let locationname = locationNameField.text,
+            let latitude = latitudeField.text,
+            let longitude = longitudeField.text
+        {
+            let walk = Walk(context: PersistentService.context)
+            //walk.dateofwalk = dateofwalk
+            walk.locationname = locationname
+            walk.latitude = Double(latitude)!
+            walk.longitude = Double(longitude)!
+            self.walkData = walk
         }
     }
 }
