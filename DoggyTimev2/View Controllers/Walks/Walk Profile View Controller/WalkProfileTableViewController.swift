@@ -146,7 +146,7 @@ extension WalkProfileTableViewController
     @objc func dateTimePickerValueChanged(sender: UIDatePicker)
     {
         //Function will be called everytime picker changes it's value
-        walkData?.date = sender.date
+        walkData?.dateofwalk = sender.date as NSDate
         print("WalkProfileTableViewController dateTimePickerValueChanged \(sender.date.description)")
     }
     
