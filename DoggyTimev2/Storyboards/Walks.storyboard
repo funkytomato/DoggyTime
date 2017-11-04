@@ -88,7 +88,13 @@
                             <outlet property="delegate" destination="Y3G-6i-uFj" id="ulZ-Bw-G05"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Walks" id="pp2-k1-cvz"/>
+                    <navigationItem key="navigationItem" title="Walks" id="pp2-k1-cvz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CEL-eF-jR6">
+                            <connections>
+                                <segue destination="88B-8i-OHK" kind="show" id="H6t-zb-8Vn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gu-2D-qkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -391,4 +397,7 @@
     <resources>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="H6t-zb-8Vn"/>
+    </inferredMetricsTieBreakers>
 </document>
