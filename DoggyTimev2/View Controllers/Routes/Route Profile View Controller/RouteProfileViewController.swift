@@ -68,7 +68,7 @@ class RouteProfileViewController: UITableViewController
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         //if segue.identifier == "SaveRouteDetail",
-        if let destinationViewController = segue.destination as? RoutesViewController,
+        if let _ = segue.destination as? RoutesViewController,
             //let routeId = routeData?.routeId,
             let name = nameField.text,
             let terrain = terrainField.text,
