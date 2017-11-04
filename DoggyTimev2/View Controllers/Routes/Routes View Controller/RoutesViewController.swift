@@ -12,15 +12,13 @@ class RoutesViewController: UITableViewController
 {
     
     //MARK:- Properties
-    let dataSource: RoutesDataSource?
     
     //Data to send to profile controller
-    var routeData: Route?
+    var routes = [Route]()
     
     required init?(coder aDecoder: NSCoder)
     {
         print("init RoutesViewController")
-        self.dataSource = RoutesDataSource(routes: SampleData.generateRoutesData())
         super.init(coder: aDecoder)
     }
     
@@ -29,11 +27,18 @@ class RoutesViewController: UITableViewController
         print("RoutesViewController viewDidLoad")
         super.viewDidLoad()
         
-        //Do additional setup
-        tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.dataSource = dataSource
-        tableView.reloadData()
+        //Fetch clients from CoreData
+        let fetchRequest: NSFetchRequest<Route> = Route.fetchRequest()
+        
+        do
+        {
+            let routes = try PersistentService.context.fetch(fetchRequest)
+            self.routes = routes
+            tableView.estimatedRowHeight = 80
+            tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.reloadData()
+        }
+        catch {}
     }
     
     override func didReceiveMemoryWarning()
@@ -42,25 +47,13 @@ class RoutesViewController: UITableViewController
         
         //Dispose of any resources that can be recreated
     }
-}
-
-//MARK:- UITableViewDataSource
-extension RoutesViewController
-{
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteCell
-        let route = dataSource?.routes[indexPath.row]
-        cell.route = route
-        return cell
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if let profileController = segue.destination as? RouteProfileViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
-            let selectedRoute = dataSource?.routes[indexPath.row]
+            let selectedRoute = routes[indexPath.row]
             profileController.routeData = selectedRoute
         }
     }
@@ -80,12 +73,33 @@ extension RoutesViewController
             return
         }
         
-        // Add the new client to the clients array
-        dataSource?.routes.append(route)
-        
-        //Update the tableView
-        let indexPath = IndexPath(row: (dataSource?.routes.count)!-1, section:0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        //Store to CoreData
+        PersistentService.saveContext()
+        routes.append(route)
+        self.tableView.reloadData()
     }
+}
+
+//MARK:- UITableViewDataSource
+extension RoutesViewController
+{
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return routes.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteCell
+        let route = routes[indexPath.row]
+        cell.route = route
+        return cell
+    }
+    
     
 }
