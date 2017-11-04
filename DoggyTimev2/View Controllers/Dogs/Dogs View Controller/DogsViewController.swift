@@ -7,20 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
 
 class DogsViewController: UITableViewController
 {
     //MARK:- Properties
-    let dataSource: DogsDataSource?
     
     //Data to send to profile controller
-    var dogData : Dog?
+    var dogs = [Dog]()
     
     required init?(coder aDecoder: NSCoder)
     {
         print("init DogsViewController")
-        self.dataSource = DogsDataSource(dogs: SampleData.generateDogsData())
         super.init(coder: aDecoder)
     }
     
@@ -29,11 +28,19 @@ class DogsViewController: UITableViewController
         print("DogsViewController viewDidLoad")
         super.viewDidLoad()
         
-        //Do additional setup
-        tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.dataSource = dataSource
-        tableView.reloadData()
+        //Fetch dogs from CoreData
+        let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
+        
+        do
+        {
+            let dogs = try PersistentService.context.fetch(fetchRequest)
+            self.dogs = dogs
+            tableView.estimatedRowHeight = 80
+            tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.reloadData()
+        }
+        catch {}
+        
     }
     
     override func didReceiveMemoryWarning()
@@ -41,6 +48,17 @@ class DogsViewController: UITableViewController
         super.didReceiveMemoryWarning()
         
         //Dispose of any resources that can be recreated
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        print("DogsViewController prepare segue")
+        if let dogProfileController = segue.destination as? DogProfileViewController,
+            let indexPath = self.tableView.indexPathForSelectedRow
+        {
+            let selectedDog = dogs[indexPath.row]
+            dogProfileController.dogData = selectedDog
+        }
     }
 }
 
@@ -59,12 +77,10 @@ extension DogsViewController
             return
         }
         
-        // Add the new walk to the walks array
-        dataSource?.dogs.append(dog)
-        
-        //Update the tableView
-        let indexPath = IndexPath(row: (dataSource?.dogs.count)!-1, section:0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        //Store to CoreData
+        PersistentService.saveContext()
+        clients.append(client)
+        self.tableView.reloadData()
     }
     
 }
@@ -72,23 +88,22 @@ extension DogsViewController
 //MARK:- UITableViewDataSource
 extension DogsViewController
 {
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return dogs.count
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         print("DogsViewController cellForRowAt")
         let cell = tableView.dequeueReusableCell(withIdentifier: "DogsCell", for: indexPath) as! DogsCell
-        let dog = dataSource?.dogs[indexPath.row]
+        let dog = dogs[indexPath.row]
         cell.dog = dog
         return cell
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        print("DogsViewController prepare segue")
-        if let dogProfileController = segue.destination as? DogProfileViewController,
-            let indexPath = self.tableView.indexPathForSelectedRow
-        {
-            let selectedDog = dataSource?.dogs[indexPath.row]
-            dogProfileController.dogData = selectedDog
-        }
     }
 }
