@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
@@ -37,7 +38,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     
     // MARK: - Properties
-    var clientData: Client?
+    weak var clientData: Client?
+    
     
     // MARK:- Initializers
     required init?(coder aDecoder: NSCoder)
@@ -54,6 +56,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     override func viewDidLoad()
     {
+        print("ClientDetailsViewController viewDidLoad")
         super.viewDidLoad()
 
         ForenameField.text = clientData?.forename
@@ -62,12 +65,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         TownField.text = clientData?.town
         PostCodeField.text = clientData?.postcode
         MobileField.text = clientData?.mobile
-        eMailField.text = clientData?.eMail
+        eMailField.text = clientData?.email
         DognameField.text = clientData?.dogname
-        DogPicture?.image = (clientData?.dogpicture)!
+        //DogPicture?.image = (clientData.dogpicture)!
     }
-    
-
     
     
     // MARK: - Navigation
@@ -75,32 +76,34 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        print("ClientsDetailViewController prepare segue")
+        print("segue identifer \(segue.identifier)")
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveClientDetail",
-            let clientForeName = ForenameField.text,
-            let clientSurName = SurnameField.text,
-            let clientAddress = StreetField.text,
-            let clientTown = TownField.text,
-            let clientPostCode = PostCodeField.text,
-            let clientMobile = MobileField.text,
-            let clienteMail = eMailField.text,
-            let clientDogName = DognameField.text,
-            let clientDogPicture = DogPicture
+        if let destinationViewController = segue.destination as? ClientsViewController,
+            let forename = ForenameField.text,
+            let surname = SurnameField.text,
+            let street = StreetField.text,
+            let town = TownField.text,
+            let postcode = PostCodeField.text,
+            let mobile = MobileField.text,
+            let email = eMailField.text,
+            let dogname = DognameField.text
         {
 
-            clientData = Client(forename: clientForeName,
-                            surname: clientSurName,
-                            street: clientAddress,
-                            town: clientTown,
-                            postcode: clientPostCode,
-                            mobile: clientMobile,
-                            eMail: clienteMail,
-                            dogname: clientDogName,
-                            dogpicture: clientDogPicture.image)
- 
             
+            let client = Client(context: PersistentService.context)
+            client.forename  = forename
+            client.surname = surname
+            client.street = street
+            client.town = town
+            client.postcode = postcode
+            client.mobile = mobile
+            client.email = email
+            client.dogname = dogname
+            
+            self.clientData = client
         }
     }
 }

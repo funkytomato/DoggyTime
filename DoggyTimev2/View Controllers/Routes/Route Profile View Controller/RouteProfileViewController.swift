@@ -11,11 +11,11 @@ import UIKit
 class RouteProfileViewController: UITableViewController
 {
     //MARK:- IBOutlets
-    @IBOutlet weak var routeId: UITextField!
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var terrain: UITextField!
-    @IBOutlet weak var distance: UITextField!
-    @IBOutlet weak var duration: UITextField!
+    @IBOutlet weak var routeIdField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var terrainField: UITextField!
+    @IBOutlet weak var distanceField: UITextField!
+    @IBOutlet weak var durationField: UITextField!
     
     @IBAction func startBtn(_ sender: Any) {
     }
@@ -31,27 +31,70 @@ class RouteProfileViewController: UITableViewController
     
     required init?(coder aDecoder: NSCoder)
     {
+        print("RouteProfileViewController init")
         self.dataSource = RoutesDataSource(routes: SampleData.generateRoutesData())
         super.init(coder: aDecoder)
     }
     
+    deinit {
+        print("RouteProfileViewController deinit")
+    }
+    
     override func viewDidLoad()
     {
+        print("RouteProfileViewController viewDidLoad")
         super.viewDidLoad()
         
-        self.routeId.text = routeData?.routeId.description
-        self.name.text = routeData?.name
-        self.terrain.text = routeData?.terrain
-        self.distance.text = routeData?.distance.description
-        self.duration.text = routeData?.duration.description
+        self.routeIdField.text = routeData?.routeId.description
+        self.nameField.text = routeData?.name
+        self.terrainField.text = routeData?.terrain
+        self.distanceField.text = routeData?.distance.description
+        self.durationField.text = routeData?.duration.description
         
         tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning()
     {
+        print("RouteProfileViewController didRecieveMemoryWarning")
         super.didReceiveMemoryWarning()
         
         //Dispose of any resources that can be recreated
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        print("RouteProfileViewController prepare segue")
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "SaveRouteDetail",
+            let routeId = routeData?.routeId,
+            let name = nameField.text,
+            let terrain = terrainField.text,
+            let distance = distanceField.text,
+            let duration = durationField.text
+        {
+            
+            routeData = Route(routeId: routeId,
+                                name: name,
+                                terrain: terrain,
+                                distance: distance.toFloat()!,
+                                duration: duration.toFloat()!)
+        }
+    }
+}
+
+extension String
+{
+    func toDouble()->Double?
+    {
+        return NumberFormatter().number(from: self)?.doubleValue
+    }
+    
+    func toFloat()->Float?
+    {
+        return NumberFormatter().number(from: self)?.floatValue
     }
 }

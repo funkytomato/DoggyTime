@@ -15,7 +15,7 @@ class ClientCell: UITableViewCell
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dogNameLabel: UILabel!
     @IBOutlet weak var dogImageView : UIImageView!
-    
+
     var client: Client?
     {
         didSet
@@ -28,7 +28,7 @@ class ClientCell: UITableViewCell
             dogImageView.image = image(imageName: client.dogname)
         }
     }
-    
+ 
     func image(imageName: String?) -> UIImage?
     {
         print("Dogs name:\(imageName!)")

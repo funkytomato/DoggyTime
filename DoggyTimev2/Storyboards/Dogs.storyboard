@@ -146,8 +146,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nda-Y4-5eI" userLabel="sexPicker">
-                                                    <rect key="frame" x="8" y="0.0" width="304" height="44"/>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nda-Y4-5eI" userLabel="genderPicker">
+                                                    <rect key="frame" x="8" y="-1" width="304" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 </pickerView>
                                             </subviews>
@@ -164,7 +164,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khw-KS-wie" userLabel="Breed Picker View">
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khw-KS-wie" userLabel="breedPicker">
                                                     <rect key="frame" x="8" y="0.0" width="304" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 </pickerView>
@@ -219,7 +219,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-U6-E8w">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LdF-U6-E8w" userLabel="profilePicture">
                                                     <rect key="frame" x="8" y="8" width="304" height="284"/>
                                                 </imageView>
                                             </subviews>
@@ -242,16 +242,29 @@
                             <outlet property="delegate" destination="nJZ-nX-1dH" id="LN3-bu-ZJZ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="eRW-d0-Wzd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rOe-7t-pUj">
+                            <connections>
+                                <segue destination="Dr8-Ze-tVw" kind="unwind" unwindAction="cancelToDogsViewController:" id="pf2-eP-paa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="XJf-ud-mD4">
+                            <connections>
+                                <segue destination="Dr8-Ze-tVw" kind="unwind" unwindAction="saveDogDetail:" id="kBA-bW-8nL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="breedPicker" destination="khw-KS-wie" id="zyP-Cf-196"/>
-                        <outlet property="breedpictureView" destination="u61-zG-4Xm" id="ung-Y9-aKD"/>
-                        <outlet property="dognameFd" destination="7Po-aR-MAt" id="HZK-JH-GXZ"/>
-                        <outlet property="genderPicker" destination="Nda-Y4-5eI" id="24S-wZ-bF0"/>
-                        <outlet property="pictureView" destination="LdF-U6-E8w" id="Fke-z2-4ik"/>
-                        <outlet property="sizePicker" destination="D82-R3-tGe" id="lHj-ef-Yfk"/>
+                        <outlet property="breedPicker" destination="khw-KS-wie" id="wDU-OM-Fx8"/>
+                        <outlet property="breedpictureView" destination="u61-zG-4Xm" id="U9p-a3-a7v"/>
+                        <outlet property="dognameField" destination="7Po-aR-MAt" id="Vae-cr-Uq0"/>
+                        <outlet property="genderPicker" destination="Nda-Y4-5eI" id="D3J-NW-33t"/>
+                        <outlet property="pictureView" destination="LdF-U6-E8w" id="tXG-YW-2df"/>
+                        <outlet property="sizePicker" destination="D82-R3-tGe" id="1x4-Jw-9K7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLO-Dc-mMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Dr8-Ze-tVw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1108.125" y="133.09859154929578"/>
         </scene>

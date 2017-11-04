@@ -10,6 +10,7 @@ import Foundation
 
 final class SampleData
 {
+    /*
     static func generateClientsData() -> [Client]
     {
         return [
@@ -19,7 +20,8 @@ final class SampleData
             Client(forename: "Edward", surname: "King", street: "Buckingham Palace", town: "Pagham", postcode: "PO21 8UY", mobile: "0789765378", eMail: "king@gmail.com", dogname: "terry", dogpicture: #imageLiteral(resourceName: "terry"))!
         ]
     }
-    
+ */
+ 
     static func generateWalksData() -> [Walk]
     {
         return [

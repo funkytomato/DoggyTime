@@ -48,11 +48,12 @@ class DogsViewController: UITableViewController
 //MARK:- IBActions
 extension DogsViewController
 {
-    @IBAction func cancelToWalksViewController(_ segue: UIStoryboardSegue) { print("Back in the DogsViewController")}
+    @IBAction func cancelToDogsViewController(_ segue: UIStoryboardSegue) { print("Back in the DogsViewController")}
     
-    @IBAction func saveWalkDetail(_ segue: UIStoryboardSegue)
+    @IBAction func saveDogDetail(_ segue: UIStoryboardSegue)
     {
-        guard let profileViewController = segue.source as? DogProfileTableViewController,
+        print("DogsViewController saveDogDetail")
+        guard let profileViewController = segue.source as? DogProfileViewController,
             let dog = profileViewController.dogData else
         {
             return
@@ -82,6 +83,7 @@ extension DogsViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        print("DogsViewController prepare segue")
         if let dogProfileController = segue.destination as? DogProfileViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
