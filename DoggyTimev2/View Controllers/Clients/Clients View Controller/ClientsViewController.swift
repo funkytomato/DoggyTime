@@ -34,8 +34,8 @@ class ClientsViewController: UITableViewController
         {
             let clients = try PersistentService.context.fetch(fetchRequest)
             self.clients = clients
-            tableView.estimatedRowHeight = 80
-            tableView.rowHeight = UITableViewAutomaticDimension
+            //tableView.estimatedRowHeight = 80
+            //tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.reloadData()
         }
         catch {}
@@ -82,7 +82,15 @@ extension ClientsViewController
 // MARK:- UITableViewDataSource
 extension ClientsViewController
 {
-
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return clients.count
+    }
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell
