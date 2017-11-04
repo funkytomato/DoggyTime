@@ -80,8 +80,8 @@ class RouteProfileViewController: UITableViewController
             let route = Route(context: PersistentService.context)
             route.name = name
             route.terrain = terrain
-            route.distance = Float(distance)!
-            route.duration = Float(duration)!
+            //route.distance = Float(distance)!
+            //route.duration = Float(duration)!
             
             self.routeData = route
             
