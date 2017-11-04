@@ -79,7 +79,7 @@ extension DogsViewController
         
         //Store to CoreData
         PersistentService.saveContext()
-        clients.append(client)
+        dogs.append(dog)
         self.tableView.reloadData()
     }
     
