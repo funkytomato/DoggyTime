@@ -101,7 +101,13 @@
                             <outlet property="delegate" destination="8Ky-Yp-Yzn" id="U3b-ER-UWN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dogs" id="vMc-hO-BlV"/>
+                    <navigationItem key="navigationItem" title="Dogs" id="vMc-hO-BlV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mhy-3Q-rA5">
+                            <connections>
+                                <segue destination="nJZ-nX-1dH" kind="show" id="G6l-5h-nzU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Qp-64-3U5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -301,4 +307,7 @@
         <image name="Affenpinscher" width="120" height="120"/>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="G6l-5h-nzU"/>
+    </inferredMetricsTieBreakers>
 </document>
