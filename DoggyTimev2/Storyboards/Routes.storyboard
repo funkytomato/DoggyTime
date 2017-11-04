@@ -118,7 +118,13 @@
                             <outlet property="delegate" destination="qvY-Rx-yYo" id="gVB-4h-uJq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Walking Routes" id="E4l-4v-OIB"/>
+                    <navigationItem key="navigationItem" title="Walking Routes" id="E4l-4v-OIB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nfK-eN-lHh">
+                            <connections>
+                                <segue destination="fqM-Cv-2ko" kind="show" id="KxG-mx-7Js"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spE-IK-bf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -318,4 +324,7 @@
             <point key="canvasLocation" x="2511.594202898551" y="-218.47826086956525"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KxG-mx-7Js"/>
+    </inferredMetricsTieBreakers>
 </document>
