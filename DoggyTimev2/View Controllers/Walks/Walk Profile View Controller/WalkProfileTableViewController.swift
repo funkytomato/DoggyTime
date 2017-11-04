@@ -88,10 +88,10 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             //let selectedWalk = dataSource.walks[indexPath.row]
             childViewController.walkData = walkData
         }
-        else if let destinationViewController = segue.destination as? WalksViewController,
+        else if let _ = segue.destination as? WalksViewController,
 //let dateofwalk = dateTimePicker.date,
-            let time = timeField.text,
-            let dayofweek = dayOfWeekField.text,
+            //let time = timeField.text,
+            //let dayofweek = dayOfWeekField.text,
             let locationname = locationNameField.text,
             let latitude = latitudeField.text,
             let longitude = longitudeField.text
