@@ -56,26 +56,28 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         sizePicker.delegate = self
         sizePicker.dataSource = self
         
-        //Do additional setup
-        self.dognameField.text = dogData?.dogname
-        
-        //self.sexFd.text = dogData?.sex
-        if let row = genderDataSource.index(of: (dogData?.gender)!)
+        if dogData != nil
         {
-            genderPicker.selectRow(row, inComponent: 0, animated: false)
+            self.dognameField.text = dogData?.dogname
+            
+            //self.sexFd.text = dogData?.sex
+            if let row = genderDataSource.index(of: (dogData?.gender)!)
+            {
+                genderPicker.selectRow(row, inComponent: 0, animated: false)
+            }
+            
+            
+            //self.breedFd.text = dogData?.breed
+            if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
+            {
+                breedPicker.selectRow(row, inComponent: 0, animated: false)
+                breedpictureView.image = UIImage(named: breedDataSource[row])
+            }
+            
+            //self.sizeFd.text = dogData?.size
+            //self.pictureView.image = dogData?.picture
         }
-        
-        
-        //self.breedFd.text = dogData?.breed
-        if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
-        {
-            breedPicker.selectRow(row, inComponent: 0, animated: false)
-            breedpictureView.image = UIImage(named: breedDataSource[row])
-        }
-        
-        //self.sizeFd.text = dogData?.size
-        //self.pictureView.image = dogData?.picture
-        
+
         tableView.reloadData()
     }
     
@@ -100,13 +102,6 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             let size = dogData?.size
            // let picture = pictureView.image
         {
-            /*
-            dogData = Dog(dogname: dogname,
-                                breed: breed,
-                                sex: gender,
-                                size: size,
-                                picture: pictureView.image)
-            */
             
             let dog = Dog(context: PersistentService.context)
             dog.dogname = dogname
@@ -116,8 +111,6 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             //dog.picture = picture
             
             self.dogData = dog
-            
-            
         }
     }
 }
