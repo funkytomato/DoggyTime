@@ -24,6 +24,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var eMailField: UITextField!
     
     @IBOutlet weak var DognameField: UITextField!
+    @IBOutlet weak var DogPicture: UIImageView!
+    
     @IBAction func photoLibraryBtn(_ sender: Any)
     {
         let picker = UIImagePickerController()
@@ -34,7 +36,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     }
     
     
-    @IBOutlet weak var DogPicture: UIImageView!
+
     
     
     // MARK: - Properties
@@ -77,11 +79,11 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientsDetailViewController prepare segue")
-        print("segue identifer \(segue.identifier)")
+        print("segue identifer \(String(describing: segue.identifier))")
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let destinationViewController = segue.destination as? ClientsViewController,
+        if let _ = segue.destination as? ClientsViewController,
             let forename = ForenameField.text,
             let surname = SurnameField.text,
             let street = StreetField.text,
