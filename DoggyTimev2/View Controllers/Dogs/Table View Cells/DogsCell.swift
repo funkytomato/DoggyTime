@@ -24,11 +24,11 @@ class DogsCell: UITableViewCell
         {
             guard let dog = dog else {return}
             
-            dogname.text = dog.dogName
+            dogname.text = dog.dogname
             breed.text = dog.breed
-            sex.text = dog.sex
+            sex.text = dog.gender
             size.text = dog.size
-            picture.image = dog.picture
+            //picture.image = dog.picture
         }
     }
     
