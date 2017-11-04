@@ -30,14 +30,12 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
     //MARK:- Properties
-    let dataSource: DogsDataSource?
     
     //Data to send to profile controller
-    var dogData : Dog?
+    weak var dogData : Dog?
     
     required init?(coder aDecoder: NSCoder)
     {
-        self.dataSource = DogsDataSource(dogs: SampleData.generateDogsData())
         super.init(coder: aDecoder)
     }
     
@@ -59,24 +57,24 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         sizePicker.dataSource = self
         
         //Do additional setup
-        self.dognameField.text = dogData?.dogName
+        self.dognameField.text = dogData?.dogname
         
         //self.sexFd.text = dogData?.sex
-        if let row = genderDataSource.index(of: (dogData?.sex.description)!)
+        if let row = genderDataSource.index(of: (dogData?.gender)!)
         {
             genderPicker.selectRow(row, inComponent: 0, animated: false)
         }
         
         
         //self.breedFd.text = dogData?.breed
-        if let row = breedDataSource.index(of: (dogData?.breed.description)!)
+        if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
         {
             breedPicker.selectRow(row, inComponent: 0, animated: false)
             breedpictureView.image = UIImage(named: breedDataSource[row])
         }
         
         //self.sizeFd.text = dogData?.size
-        self.pictureView.image = dogData?.picture
+        //self.pictureView.image = dogData?.picture
         
         tableView.reloadData()
     }
@@ -94,9 +92,10 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         print("DogProfileViewController prepare segue")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveClientDetail",
+        //if segue.identifier == "SaveClientDetail",
+        if let destinationViewController = segue.destination as? DogsViewController,
             let dogname = dognameField.text,
-            let gender = dogData?.sex,
+            let gender = dogData?.gender,
             let breed = dogData?.breed,
             let size = dogData?.size,
             let picture = pictureView.image
@@ -107,6 +106,16 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
                                 sex: gender,
                                 size: size,
                                 picture: pictureView.image)
+            
+            
+            let dog = Dog(context: PersistentService.context)
+            dog.dogname = dogname
+            dog.gender = gender
+            dog.breed = breed
+            dog.size = size
+            //dog.picture = picture
+            
+            self.dogData = dog
             
             
         }
@@ -170,7 +179,7 @@ extension DogProfileViewController
         {
             print(genderDataSource[row])
             
-            dogData?.sex = genderDataSource[row]
+            dogData?.gender = genderDataSource[row]
         }
         else if pickerView == sizePicker
         {
@@ -179,12 +188,5 @@ extension DogProfileViewController
             dogData?.size = sizeDataSource[row]
         }
     }
-}
-
-//MARK:- IBActions
-extension DogProfileViewController
-{
-    
-    
 }
 
