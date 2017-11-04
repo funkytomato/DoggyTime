@@ -19,7 +19,6 @@ class ClientsViewController: UITableViewController
     
     required init?(coder aDecoder: NSCoder)
     {
-        //self.dataSource = ClientsDataSource(clients: SampleData.generateClientsData())
         super.init(coder: aDecoder)
     }
     
@@ -28,12 +27,15 @@ class ClientsViewController: UITableViewController
         print("ClientsViewController viewDidLoad")
         super.viewDidLoad()
    
+        //Fetch clients from CoreData
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
         
         do
         {
             let clients = try PersistentService.context.fetch(fetchRequest)
             self.clients = clients
+            tableView.estimatedRowHeight = 80
+            tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.reloadData()
         }
         catch {}
@@ -45,7 +47,6 @@ class ClientsViewController: UITableViewController
         print("ClientsViewController prepare segue")
         if let clientDetailsViewController = segue.destination as? ClientsDetailViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
-            //let selectedObject = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
         {
             let selectedClient = clients[indexPath.row]
             clientDetailsViewController.clientData = selectedClient
@@ -64,11 +65,12 @@ extension ClientsViewController
         print("ClientsViewController saveClientDetail")
         print("Segue source\(segue.source)")
         guard let clientDetailsViewController = segue.source as? ClientsDetailViewController,
-        let client = clientDetailsViewController.clientData else
+            let client = clientDetailsViewController.clientData else
         {
             return
         }
         
+        //Store to CoreData
         PersistentService.saveContext()
         clients.append(client)
         self.tableView.reloadData()
@@ -80,15 +82,7 @@ extension ClientsViewController
 // MARK:- UITableViewDataSource
 extension ClientsViewController
 {
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 1
-    }
-  
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return clients.count
-    }
+
 
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell
