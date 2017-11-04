@@ -100,13 +100,13 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             let size = dogData?.size,
             let picture = pictureView.image
         {
-            
+            /*
             dogData = Dog(dogname: dogname,
                                 breed: breed,
                                 sex: gender,
                                 size: size,
                                 picture: pictureView.image)
-            
+            */
             
             let dog = Dog(context: PersistentService.context)
             dog.dogname = dogname
