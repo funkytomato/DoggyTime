@@ -23,7 +23,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     //@IBOutlet weak var sizeField: UITextField!
     @IBOutlet weak var pictureView: UIImageView!
     
-    var breedDataSource = ["German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
+    var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
     
     var genderDataSource = ["Male", "Female"]
     
@@ -39,7 +39,8 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         super.init(coder: aDecoder)
     }
     
-    deinit {
+    deinit
+    {
         print("DogProfileViewController deinit")
     }
     
@@ -77,6 +78,14 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             //self.sizeFd.text = dogData?.size
             //self.pictureView.image = dogData?.picture
         }
+        else
+        {
+            //Blank ViewController,  fill the dogData properties
+            self.dogData?.dogname = "Enter name"
+            self.dogData?.gender = "Male"
+            self.dogData?.breed = "Something"
+            self.dogData?.size = "Medium"
+        }
 
         tableView.reloadData()
     }
@@ -102,6 +111,9 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             let gender = dogData?.gender,
             let breed = dogData?.breed,
             let size = dogData?.size
+            //let gender = pickerView(genderPicker, titleForRow: 0, forComponent: 0),
+            //let breed = pickerView(breedPicker, titleForRow: 0, forComponent: 0),
+            //let size = pickerView(sizePicker, titleForRow: 0, forComponent: 0),
            // let picture = pictureView.image
         {
             
