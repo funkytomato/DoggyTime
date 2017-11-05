@@ -24,6 +24,7 @@ extension Route
         return NSFetchRequest<Route>(entityName: "Route")
     }
     
+    @NSManaged public var routeid: Int16
     @NSManaged public var name: String?
     @NSManaged public var terrain: String?
     @NSManaged public var distance: Float
