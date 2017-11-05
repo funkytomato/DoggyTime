@@ -95,7 +95,9 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         //if segue.identifier == "SaveClientDetail",
-        if let _ = segue.destination as? DogsViewController,
+        //if let _ = segue.destination as? DogsViewController,
+        if segue.identifier == "SaveDogDetail",
+            //let dogid = dog
             let dogname = dognameField.text,
             let gender = dogData?.gender,
             let breed = dogData?.breed,
