@@ -24,7 +24,8 @@ extension Walk
         return NSFetchRequest<Walk>(entityName: "Walk")
     }
     
-    @NSManaged public var dateofwalk: NSDate?
+    @NSManaged public var walkid:Int16
+    @NSManaged public var dateofwalk: Date?
     @NSManaged public var locationname: String?
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
