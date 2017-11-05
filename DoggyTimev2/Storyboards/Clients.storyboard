@@ -271,7 +271,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Something" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-MV-1jp" userLabel="DogName Field">
-                                                    <rect key="frame" x="8" y="11" width="87" height="22.5"/>
+                                                    <rect key="frame" x="8" y="11" width="87" height="21.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" textContentType="name"/>
@@ -294,7 +294,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="7" y="214" width="305" height="280"/>
+                                                    <rect key="frame" x="7" y="250" width="304" height="278"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -314,12 +314,12 @@
                     <navigationItem key="navigationItem" id="jqA-2h-TPQ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gMd-Hb-GfH">
                             <connections>
-                                <segue destination="Gys-BQ-g27" kind="unwind" unwindAction="cancelToClientsViewController:" id="uir-OZ-HuA"/>
+                                <segue destination="Gys-BQ-g27" kind="unwind" identifier="CancelClientDetail" unwindAction="cancelToClientsViewController:" id="uir-OZ-HuA"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="TM9-Wv-fTG">
                             <connections>
-                                <segue destination="Gys-BQ-g27" kind="unwind" unwindAction="saveClientDetail:" id="dGm-uH-hSZ"/>
+                                <segue destination="Gys-BQ-g27" kind="unwind" identifier="SaveClientDetail" unwindAction="saveClientDetail:" id="dGm-uH-hSZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

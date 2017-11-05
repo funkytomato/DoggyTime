@@ -251,12 +251,12 @@
                     <navigationItem key="navigationItem" id="eRW-d0-Wzd">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rOe-7t-pUj">
                             <connections>
-                                <segue destination="Dr8-Ze-tVw" kind="unwind" unwindAction="cancelToDogsViewController:" id="pf2-eP-paa"/>
+                                <segue destination="Dr8-Ze-tVw" kind="unwind" identifier="CancelDogDetail" unwindAction="cancelToDogsViewController:" id="pf2-eP-paa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="XJf-ud-mD4">
                             <connections>
-                                <segue destination="Dr8-Ze-tVw" kind="unwind" unwindAction="saveDogDetail:" id="kBA-bW-8nL"/>
+                                <segue destination="Dr8-Ze-tVw" kind="unwind" identifier="SaveDogDetail" unwindAction="saveDogDetail:" id="kBA-bW-8nL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -308,6 +308,6 @@
         <image name="dogwalker" width="27" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G6l-5h-nzU"/>
+        <segue reference="GeJ-SP-aKN"/>
     </inferredMetricsTieBreakers>
 </document>

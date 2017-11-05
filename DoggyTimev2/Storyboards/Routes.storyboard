@@ -301,12 +301,12 @@
                     <navigationItem key="navigationItem" id="yem-Wy-Fv2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="D0M-Sp-pbD">
                             <connections>
-                                <segue destination="2eb-xs-sie" kind="unwind" unwindAction="cancelToRoutesViewController:" id="7Cb-pw-aVu"/>
+                                <segue destination="2eb-xs-sie" kind="unwind" identifier="CancelRouteDetails" unwindAction="cancelToRoutesViewController:" id="7Cb-pw-aVu"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="pdE-oH-1d5">
                             <connections>
-                                <segue destination="2eb-xs-sie" kind="unwind" unwindAction="saveRouteDetail:" id="rdQ-oc-Vpi"/>
+                                <segue destination="2eb-xs-sie" kind="unwind" identifier="SaveRouteDetail" unwindAction="saveRouteDetail:" id="rdQ-oc-Vpi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

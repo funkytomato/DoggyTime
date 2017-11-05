@@ -326,12 +326,12 @@
                     <navigationItem key="navigationItem" id="9gq-oj-b3c">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="o9r-YL-Kmu">
                             <connections>
-                                <segue destination="tuV-Ji-a9i" kind="unwind" unwindAction="cancelToWalksViewController:" id="eeH-ya-Ckp"/>
+                                <segue destination="tuV-Ji-a9i" kind="unwind" identifier="CancelWalkDetail" unwindAction="cancelToWalksViewController:" id="eeH-ya-Ckp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="jzy-jE-kCQ">
                             <connections>
-                                <segue destination="tuV-Ji-a9i" kind="unwind" unwindAction="saveWalkDetail:" id="3WU-Bo-3Pm"/>
+                                <segue destination="tuV-Ji-a9i" kind="unwind" identifier="SaveWalkDetail" unwindAction="saveWalkDetail:" id="3WU-Bo-3Pm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
