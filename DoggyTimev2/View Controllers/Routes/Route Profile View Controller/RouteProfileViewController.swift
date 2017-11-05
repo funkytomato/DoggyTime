@@ -68,8 +68,9 @@ class RouteProfileViewController: UITableViewController
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         //if segue.identifier == "SaveRouteDetail",
-        if let _ = segue.destination as? RoutesViewController,
-            //let routeId = routeData?.routeId,
+        //if let _ = segue.destination as? RoutesViewController,
+        if segue.identifier == "SaveRouteDetail",
+            let routeid = routeIdField.text,
             let name = nameField.text,
             let terrain = terrainField.text,
             let distance = distanceField.text,
@@ -78,10 +79,11 @@ class RouteProfileViewController: UITableViewController
             
             
             let route = Route(context: PersistentService.context)
+            route.routeid = Int16(routeid)!
             route.name = name
             route.terrain = terrain
-            //route.distance = Float(distance)!
-            //route.duration = Float(duration)!
+            route.distance = Float(distance)!
+            route.duration = Float(duration)!
             
             self.routeData = route
             
