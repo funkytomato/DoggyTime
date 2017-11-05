@@ -35,10 +35,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         present(picker, animated: true, completion: nil)
     }
     
-    
 
-    
-    
     // MARK: - Properties
     weak var clientData: Client?
     
@@ -49,6 +46,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         print("init ClientDetailsViewController")
         super.init(coder: aDecoder)
     }
+    
     
     deinit
     {
@@ -74,7 +72,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -83,7 +80,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let _ = segue.destination as? ClientsViewController,
+        //if let _ = segue.destination as? ClientsViewController,
+        if segue.identifier == "SaveClientDetail",
             let forename = ForenameField.text,
             let surname = SurnameField.text,
             let street = StreetField.text,
