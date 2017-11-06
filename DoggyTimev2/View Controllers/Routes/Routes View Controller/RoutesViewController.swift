@@ -51,11 +51,25 @@ class RoutesViewController: UITableViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let profileController = segue.destination as? RouteProfileViewController,
+        if let profileViewController = segue.destination as? RouteProfileViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
+            //Load an existing Route profile
+            
             let selectedRoute = routes[indexPath.row]
-            profileController.routeData = selectedRoute
+            profileViewController.routeData = selectedRoute
+        }
+        else if let profileViewController = segue.destination as? RouteProfileViewController
+        {
+            //Create a new Route profile
+            
+            let route = Route(context: PersistentService.context)
+            route.name = "Enter route name"
+            route.terrain = "Unknown"
+            route.distance = 0.0
+            route.duration = 0.0
+            
+            profileViewController.routeData = route
         }
     }
 }
