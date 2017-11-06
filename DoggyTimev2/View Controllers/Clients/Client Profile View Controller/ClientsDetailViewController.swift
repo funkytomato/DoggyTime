@@ -58,7 +58,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     {
         print("ClientDetailsViewController viewDidLoad")
         super.viewDidLoad()
-
+        
+        
         ForenameField.text = clientData?.forename
         SurnameField.text = clientData?.surname
         StreetField.text = clientData?.street
@@ -91,7 +92,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             let dogname = DognameField.text
         {
 
-            
+            //get the latest data and pass to destinationController to be saved
             let client = Client(context: PersistentService.context)
             client.forename  = forename
             client.surname = surname
@@ -104,5 +105,33 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             
             self.clientData = client
         }
+    }
+}
+
+extension ClientsDetailViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) ->Bool
+    {
+        switch textField
+        {
+        case ForenameField:
+            SurnameField.becomeFirstResponder()
+        case SurnameField:
+            StreetField.becomeFirstResponder()
+        case StreetField:
+            TownField.becomeFirstResponder()
+        case TownField:
+            PostCodeField.becomeFirstResponder()
+        case PostCodeField:
+            MobileField.becomeFirstResponder()
+        case MobileField:
+            eMailField.becomeFirstResponder()
+        case eMailField:
+            DognameField.becomeFirstResponder()
+        default:
+            DognameField.resignFirstResponder()
+            
+        }
+        return true
     }
 }
