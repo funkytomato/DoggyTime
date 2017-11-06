@@ -77,7 +77,7 @@ class RouteProfileViewController: UITableViewController
             let duration = durationField.text
         {
             
-            
+            //Get the latest data and pass to destinationController to be saved
             let route = Route(context: PersistentService.context)
             route.routeid = Int16(routeid)!
             route.name = name
@@ -86,7 +86,6 @@ class RouteProfileViewController: UITableViewController
             route.duration = Float(duration)!
             
             self.routeData = route
-            
         }
     }
 }
