@@ -53,11 +53,25 @@ class DogsViewController: UITableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("DogsViewController prepare segue")
-        if let dogProfileController = segue.destination as? DogProfileViewController,
+        if let profileViewController = segue.destination as? DogProfileViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
+            //Load an existing dog profile
+
             let selectedDog = dogs[indexPath.row]
-            dogProfileController.dogData = selectedDog
+            profileViewController.dogData = selectedDog
+        }
+        else if let profileViewController = segue.destination as? DogProfileViewController
+        {
+            //Create a new Dog profile
+            
+            let dog = Dog(context: PersistentService.context)
+            dog.dogname = "Enter name"
+            dog.gender = "Male"
+            dog.breed = "Unknown"
+            dog.size = "Medium"
+            
+            profileViewController.dogData = dog
         }
     }
 }
