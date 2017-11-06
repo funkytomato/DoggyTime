@@ -58,7 +58,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             
             
             walkIdField.text = walkData?.walkid.description
-            locationNameField.text = walkData?.locationname
+            //locationNameField.text = walkData?.locationname
             
             print("date \(String(describing: walkData?.dateofwalk))")
             dateTimePicker.setDate((walkData?.dateofwalk)! as Date, animated: true)
@@ -169,7 +169,7 @@ extension WalkProfileTableViewController
     @objc func locationNamePickerValueChanged(sender: UIPickerView)
     {
         //Function will be called everytime picker changes it's value
-        //walkData?.locationName = sender.selectedRow(inComponent: <#T##Int#>)
+        //walkData?.locationname = sender.selectedRow(inComponent: 1)
         //print("WalkProfileTableViewController nameLocationPickerValueChanged \(sender.date.description)")
     }
 }
