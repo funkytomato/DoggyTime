@@ -58,14 +58,14 @@ class ClientsViewController: UITableViewController
             //Create a new Client profile
             
             let client = Client(context: PersistentService.context)
-            client.forename = "Enter forename"
-            client.surname = "Enter surname"
-            client.street = "Enter street"
-            client.town = "Enter town"
-            client.postcode = "Enter postcode"
-            client.mobile = "Enter mobile"
-            client.email = "Enter email"
-            client.dogname = "Enter dog's name"
+            client.forename = ""
+            client.surname = ""
+            client.street = ""
+            client.town = ""
+            client.postcode = ""
+            client.mobile = ""
+            client.email = ""
+            client.dogname = ""
             
             profileViewController.clientData = client
         }
