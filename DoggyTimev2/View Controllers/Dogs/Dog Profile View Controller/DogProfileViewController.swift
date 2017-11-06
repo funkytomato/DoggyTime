@@ -78,14 +78,6 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             //self.sizeFd.text = dogData?.size
             //self.pictureView.image = dogData?.picture
         }
-        else
-        {
-            //Blank ViewController,  fill the dogData properties
-            self.dogData?.dogname = "Enter name"
-            self.dogData?.gender = "Male"
-            self.dogData?.breed = "Something"
-            self.dogData?.size = "Medium"
-        }
 
         tableView.reloadData()
     }
@@ -103,17 +95,12 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         print("DogProfileViewController prepare segue")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        //if segue.identifier == "SaveClientDetail",
-        //if let _ = segue.destination as? DogsViewController,
         if segue.identifier == "SaveDogDetail",
             //let dogid = dog
             let dogname = dognameField.text,
             let gender = dogData?.gender,
             let breed = dogData?.breed,
             let size = dogData?.size
-            //let gender = pickerView(genderPicker, titleForRow: 0, forComponent: 0),
-            //let breed = pickerView(breedPicker, titleForRow: 0, forComponent: 0),
-            //let size = pickerView(sizePicker, titleForRow: 0, forComponent: 0),
            // let picture = pictureView.image
         {
             
