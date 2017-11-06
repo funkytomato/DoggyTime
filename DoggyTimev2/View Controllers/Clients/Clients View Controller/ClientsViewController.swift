@@ -45,11 +45,29 @@ class ClientsViewController: UITableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientsViewController prepare segue")
-        if let clientDetailsViewController = segue.destination as? ClientsDetailViewController,
+        if let profileViewController = segue.destination as? ClientsDetailViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
+            //Load an existing Client profile
+            
             let selectedClient = clients[indexPath.row]
-            clientDetailsViewController.clientData = selectedClient
+            profileViewController.clientData = selectedClient
+        }
+        else if let profileViewController = segue.destination as? ClientsDetailViewController
+        {
+            //Create a new Client profile
+            
+            let client = Client(context: PersistentService.context)
+            client.forename = "Enter forename"
+            client.surname = "Enter surname"
+            client.street = "Enter street"
+            client.town = "Enter town"
+            client.postcode = "Enter postcode"
+            client.mobile = "Enter mobile"
+            client.email = "Enter email"
+            client.dogname = "Enter dog's name"
+            
+            profileViewController.clientData = client
         }
     }
 }
@@ -69,8 +87,8 @@ extension ClientsViewController
     {
         print("ClientsViewController saveClientDetail")
         print("Segue source\(segue.source)")
-        guard let clientDetailsViewController = segue.source as? ClientsDetailViewController,
-            let client = clientDetailsViewController.clientData else
+        guard let profileViewController = segue.source as? ClientsDetailViewController,
+            let client = profileViewController.clientData else
         {
             return
         }
