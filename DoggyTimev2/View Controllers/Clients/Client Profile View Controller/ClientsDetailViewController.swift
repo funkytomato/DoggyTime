@@ -80,7 +80,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        //if let _ = segue.destination as? ClientsViewController,
         if segue.identifier == "SaveClientDetail",
             let forename = ForenameField.text,
             let surname = SurnameField.text,
