@@ -49,8 +49,8 @@ extension DogsOnWalkTableViewController
     {
         print("DogsOnWalkTableView Controller cellForRowAt")
         let cell = dogListView.dequeueReusableCell(withIdentifier: "DogNameCell", for: indexPath) as! DogNameCell
-        let dog  = walkData?.dogs[indexPath.row]
-        cell.dogname = dog
+       // let dog  = walkData?.dogs[indexPath.row]
+       // cell.dogname = dog
         return cell
     }
 }

@@ -24,15 +24,13 @@ class RouteProfileViewController: UITableViewController
     
     
     //MARK:- Properties
-    let dataSource: RoutesDataSource
     
     //Data to receive from RouteViewController
-    var routeData: Route?
+   weak var routeData: Route?
     
     required init?(coder aDecoder: NSCoder)
     {
         print("RouteProfileViewController init")
-        self.dataSource = RoutesDataSource(routes: SampleData.generateRoutesData())
         super.init(coder: aDecoder)
     }
     
@@ -69,19 +67,24 @@ class RouteProfileViewController: UITableViewController
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveRouteDetail",
+        //if segue.identifier == "SaveRouteDetail",
+        if let destinationViewController = segue.destination as? RoutesViewController,
             let routeId = routeData?.routeId,
             let name = nameField.text,
             let terrain = terrainField.text,
-            let distance = distanceField.text,
-            let duration = durationField.text
+            let distance = distanceField,
+            let duration = durationField
         {
             
-            routeData = Route(routeId: routeId,
-                                name: name,
-                                terrain: terrain,
-                                distance: distance.toFloat()!,
-                                duration: duration.toFloat()!)
+            
+            let route = Route(context: PersistentService.context)
+            route.name = name
+            route.terrain = terrain
+            route.distance = distance
+            route.duration = duration
+            
+            self.routeData = route
+            
         }
     }
 }

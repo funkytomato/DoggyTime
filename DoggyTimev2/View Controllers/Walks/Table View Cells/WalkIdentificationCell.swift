@@ -22,16 +22,16 @@ class WalkIdentificationCell: UITableViewCell
          {
             guard let walk = walk else {return}
             
-            self.walkIdLbl.text = walk.walkNo.description
+            //self.walkIdLbl.text = walk.walkNo.description
             
-            self.timeLbl.text = walk.date.hourOfDay()
+            //self.timeLbl.text = walk.date.hourOfDay()
             
             
-            self.dayLbl.text = walk.date.dayOfWeek()
-            print(walk.date.dayOfWeek()!)
+            //self.dayLbl.text = walk.date.dayOfWeek()
+            //print(walk.date.dayOfWeek()!)
             
 
-            self.locationLbl.text = walk.locationName
+            self.locationLbl.text = walk.locationname
          }
     }
 }

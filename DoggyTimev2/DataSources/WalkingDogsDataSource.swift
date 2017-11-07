@@ -32,7 +32,7 @@ extension WalkingDogsDataSource: UITableViewDataSource
         print("WalkingDogsDataSource cellForRowAt")
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DogNameCell.self)) as! DogNameCell
         let dog = dogsOnWalk[indexPath.row]
-        cell.dogname = dog.dogName
+        cell.dogname = dog.dogname
         return cell
     }
 }
