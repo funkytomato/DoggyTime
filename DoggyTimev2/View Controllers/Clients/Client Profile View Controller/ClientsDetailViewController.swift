@@ -24,6 +24,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var eMailField: UITextField!
     
     @IBOutlet weak var DognameField: UITextField!
+    @IBOutlet weak var DogTinyPicture: UIImageView!
+    
+    
+    
     @IBOutlet weak var DogPicture: UIImageView!
     
     @IBAction func photoLibraryBtn(_ sender: Any)
