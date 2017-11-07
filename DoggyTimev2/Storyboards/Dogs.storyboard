@@ -205,12 +205,35 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="FVa-O1-ldu">
+                                        <rect key="frame" x="0.0" y="599.5" width="320" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FVa-O1-ldu" id="Gq0-o2-N9f">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RG7-7F-bq0" userLabel="Breed Info Text View">
+                                                    <rect key="frame" x="8" y="11" width="304" height="128"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RG7-7F-bq0" firstAttribute="bottom" secondItem="Gq0-o2-N9f" secondAttribute="bottomMargin" id="Csz-go-Zg6"/>
+                                                <constraint firstItem="RG7-7F-bq0" firstAttribute="top" secondItem="Gq0-o2-N9f" secondAttribute="topMargin" id="Ja9-6L-7Jt"/>
+                                                <constraint firstItem="RG7-7F-bq0" firstAttribute="leading" secondItem="Gq0-o2-N9f" secondAttribute="leadingMargin" id="KLn-d6-XNB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RG7-7F-bq0" secondAttribute="trailing" id="Zi6-fC-nFu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Size" id="SXZ-Xt-rC2">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" id="bSH-dz-I7x">
-                                        <rect key="frame" x="0.0" y="655.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="805.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bSH-dz-I7x" id="Dfs-X6-LYw">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -231,7 +254,7 @@
                             <tableViewSection headerTitle="Picture" id="DiD-pr-J9w">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="rYT-zj-haZ">
-                                        <rect key="frame" x="0.0" y="755.5" width="320" height="300"/>
+                                        <rect key="frame" x="0.0" y="905.5" width="320" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rYT-zj-haZ" id="l5W-eo-3fg">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
