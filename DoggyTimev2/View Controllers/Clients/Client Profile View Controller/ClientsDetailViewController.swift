@@ -24,6 +24,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var eMailField: UITextField!
     
     @IBOutlet weak var DognameField: UITextField!
+    @IBOutlet weak var DogPicture: UIImageView!
+    
     @IBAction func photoLibraryBtn(_ sender: Any)
     {
         let picker = UIImagePickerController()
@@ -33,10 +35,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         present(picker, animated: true, completion: nil)
     }
     
-    
-    @IBOutlet weak var DogPicture: UIImageView!
-    
-    
+
     // MARK: - Properties
     weak var clientData: Client?
     
@@ -48,6 +47,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         super.init(coder: aDecoder)
     }
     
+    
     deinit
     {
         print("deinit ClientDetailsViewController")
@@ -58,7 +58,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     {
         print("ClientDetailsViewController viewDidLoad")
         super.viewDidLoad()
-
+        
+        
         ForenameField.text = clientData?.forename
         SurnameField.text = clientData?.surname
         StreetField.text = clientData?.street
@@ -72,16 +73,15 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientsDetailViewController prepare segue")
-        print("segue identifer \(segue.identifier)")
+        print("segue identifer \(String(describing: segue.identifier))")
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let destinationViewController = segue.destination as? ClientsViewController,
+        if segue.identifier == "SaveClientDetail",
             let forename = ForenameField.text,
             let surname = SurnameField.text,
             let street = StreetField.text,
@@ -92,7 +92,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             let dogname = DognameField.text
         {
 
-            
+            //get the latest data and pass to destinationController to be saved
             let client = Client(context: PersistentService.context)
             client.forename  = forename
             client.surname = surname
@@ -105,5 +105,33 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             
             self.clientData = client
         }
+    }
+}
+
+extension ClientsDetailViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) ->Bool
+    {
+        switch textField
+        {
+        case ForenameField:
+            SurnameField.becomeFirstResponder()
+        case SurnameField:
+            StreetField.becomeFirstResponder()
+        case StreetField:
+            TownField.becomeFirstResponder()
+        case TownField:
+            PostCodeField.becomeFirstResponder()
+        case PostCodeField:
+            MobileField.becomeFirstResponder()
+        case MobileField:
+            eMailField.becomeFirstResponder()
+        case eMailField:
+            DognameField.becomeFirstResponder()
+        default:
+            DognameField.resignFirstResponder()
+            
+        }
+        return true
     }
 }

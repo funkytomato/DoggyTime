@@ -44,6 +44,8 @@ final class SampleData
      */
     static func generateWalkingDogsData() -> [Dog]
     {
+        return []
+        /*
         return [
             Dog(dogname: "Hitler", breed: "Golden Retriever", sex: "Male", size: "Medium", picture: #imageLiteral(resourceName: "hitler"))!,
             Dog(dogname: "Fluffy", breed: "Border Collie", sex: "Male", size: "Medium", picture: #imageLiteral(resourceName: "fluffy"))!,
@@ -51,6 +53,7 @@ final class SampleData
             Dog(dogname: "Terry", breed: "Yorkshire Terrier", sex: "Female", size: "Small", picture: #imageLiteral(resourceName: "terry"))!,
             Dog(dogname: "Hitler", breed: "Golden Retriever", sex: "Male", size: "Large", picture: #imageLiteral(resourceName: "winston"))!
         ]
+        */
     }
     /*
     static func generateRoutesData() -> [Route]

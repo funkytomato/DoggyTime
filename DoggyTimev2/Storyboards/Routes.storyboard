@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wZj-0U-Rcc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wZj-0U-Rcc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,10 +45,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="cae-X8-EGU">
-                                            <rect key="frame" x="8" y="8" width="359" height="63.5"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="58"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQf-Xc-vte" userLabel="Name Lbl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="63.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="105" id="Sxr-Ev-vm2"/>
                                                     </constraints>
@@ -57,7 +57,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSG-Gj-ApJ">
-                                                    <rect key="frame" x="199" y="0.0" width="100" height="63.5"/>
+                                                    <rect key="frame" x="183" y="0.0" width="100" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="NsX-H5-hRQ"/>
                                                     </constraints>
@@ -66,7 +66,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp8-H9-57c">
-                                                    <rect key="frame" x="299" y="0.0" width="30" height="63.5"/>
+                                                    <rect key="frame" x="283" y="0.0" width="30" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="frZ-86-c0d"/>
                                                     </constraints>
@@ -75,7 +75,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWC-64-tua">
-                                                    <rect key="frame" x="329" y="0.0" width="30" height="63.5"/>
+                                                    <rect key="frame" x="313" y="0.0" width="30" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="9Kb-Vh-iCs"/>
                                                     </constraints>
@@ -118,7 +118,13 @@
                             <outlet property="delegate" destination="qvY-Rx-yYo" id="gVB-4h-uJq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Walking Routes" id="E4l-4v-OIB"/>
+                    <navigationItem key="navigationItem" title="Walking Routes" id="E4l-4v-OIB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nfK-eN-lHh">
+                            <connections>
+                                <segue destination="fqM-Cv-2ko" kind="show" id="KxG-mx-7Js"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spE-IK-bf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,6 +157,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fqM-Cv-2ko" id="8Zx-UH-Vsg"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -172,6 +181,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" textContentType="location"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fqM-Cv-2ko" id="n3q-oR-8Mu"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -193,6 +205,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fqM-Cv-2ko" id="NiF-tz-e57"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -214,6 +229,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fqM-Cv-2ko" id="ote-R5-abf"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -235,6 +253,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fqM-Cv-2ko" id="XHo-hM-NWx"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -251,10 +272,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TR1-cf-Dew">
-                                                    <rect key="frame" x="8" y="8" width="359" height="27.5"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="22"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQj-qh-XgP" userLabel="Start Btn">
-                                                            <rect key="frame" x="0.0" y="0.0" width="179.5" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="171.5" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="Start">
                                                                 <color key="titleColor" red="0.2301687879" green="1" blue="0.1246113115" alpha="1" colorSpace="calibratedRGB"/>
@@ -264,7 +285,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maO-A2-JYE" userLabel="Finish Btn">
-                                                            <rect key="frame" x="179.5" y="0.0" width="179.5" height="27.5"/>
+                                                            <rect key="frame" x="171.5" y="0.0" width="171.5" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="Finish">
                                                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -295,12 +316,12 @@
                     <navigationItem key="navigationItem" id="yem-Wy-Fv2">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="D0M-Sp-pbD">
                             <connections>
-                                <segue destination="2eb-xs-sie" kind="unwind" unwindAction="cancelToRoutesViewController:" id="7Cb-pw-aVu"/>
+                                <segue destination="2eb-xs-sie" kind="unwind" identifier="CancelRouteDetails" unwindAction="cancelToRoutesViewController:" id="7Cb-pw-aVu"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="pdE-oH-1d5">
                             <connections>
-                                <segue destination="2eb-xs-sie" kind="unwind" unwindAction="saveRouteDetail:" id="rdQ-oc-Vpi"/>
+                                <segue destination="2eb-xs-sie" kind="unwind" identifier="SaveRouteDetail" unwindAction="saveRouteDetail:" id="rdQ-oc-Vpi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,4 +339,7 @@
             <point key="canvasLocation" x="2511.594202898551" y="-218.47826086956525"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KxG-mx-7Js"/>
+    </inferredMetricsTieBreakers>
 </document>

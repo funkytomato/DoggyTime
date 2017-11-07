@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class WalksViewController: UITableViewController
@@ -52,11 +53,30 @@ class WalksViewController: UITableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("WalksViewController prepare segue")
-        if let walkProfileController = segue.destination as? WalkProfileTableViewController,
+        if let profileViewController = segue.destination as? WalkProfileTableViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
+            //Load an existing Walk profile
+            
             let selectedWalk = walks[indexPath.row]
-            walkProfileController.walkData = selectedWalk
+            profileViewController.walkData = selectedWalk
+        }
+        else if let profileViewController = segue.destination as? WalkProfileTableViewController
+        {
+            //Create a new Walk profile
+        
+            let walk = Walk(context: PersistentService.context)
+            walk.locationname = "Enter location name"
+            
+            //Set the current date and time
+            let date = Date()
+            walk.dateofwalk = date
+            
+            walk.latitude = 0.0
+            walk.longitude = 0.0
+            
+            profileViewController.walkData = walk
+            
         }
     }
 }
