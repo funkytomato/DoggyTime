@@ -232,11 +232,11 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Size" id="SXZ-Xt-rC2">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bSH-dz-I7x">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" id="bSH-dz-I7x">
                                         <rect key="frame" x="0.0" y="805.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bSH-dz-I7x" id="Dfs-X6-LYw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D82-R3-tGe" userLabel="sizePicker">
@@ -272,7 +272,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="xSB-fF-oXO" kind="presentation" id="yDf-Jr-g1O"/>
+                                            <segue destination="xSB-fF-oXO" kind="show" id="WOW-8W-PwZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
