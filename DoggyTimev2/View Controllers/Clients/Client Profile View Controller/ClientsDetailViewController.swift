@@ -132,6 +132,9 @@ extension ClientsDetailViewController: UITextFieldDelegate
             eMailField.becomeFirstResponder()
         case eMailField:
             DognameField.becomeFirstResponder()
+        case DognameField:
+            DognameField.resignFirstResponder()
+            
         default:
             DognameField.resignFirstResponder()
             
