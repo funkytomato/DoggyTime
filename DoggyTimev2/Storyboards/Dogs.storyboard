@@ -92,7 +92,7 @@
                                     <outlet property="picture" destination="mjh-Qe-5Uf" id="P0k-d4-y4v"/>
                                     <outlet property="sex" destination="XOJ-wu-8b1" id="5jp-RH-lus"/>
                                     <outlet property="size" destination="R9Y-rN-XKl" id="X0T-Ai-CAc"/>
-                                    <segue destination="nJZ-nX-1dH" kind="show" id="GeJ-SP-aKN"/>
+                                    <segue destination="SVJ-MR-lBQ" kind="show" id="GeJ-SP-aKN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -104,7 +104,7 @@
                     <navigationItem key="navigationItem" title="Dogs" id="vMc-hO-BlV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mhy-3Q-rA5">
                             <connections>
-                                <segue destination="nJZ-nX-1dH" kind="show" id="G6l-5h-nzU"/>
+                                <segue destination="SVJ-MR-lBQ" kind="show" id="G6l-5h-nzU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -307,7 +307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLO-Dc-mMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Dr8-Ze-tVw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1108.125" y="133.09859154929578"/>
+            <point key="canvasLocation" x="2042" y="133"/>
         </scene>
         <!--Camera-->
         <scene sceneID="KXg-5v-0hZ">
@@ -315,7 +315,7 @@
                 <viewControllerPlaceholder id="xSB-fF-oXO" userLabel="Camera" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvu-jp-NJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1992.8" y="133.13343328335833"/>
+            <point key="canvasLocation" x="3055" y="133"/>
         </scene>
         <!--Dogs-->
         <scene sceneID="Fry-WF-rSv">
@@ -337,12 +337,30 @@
             </objects>
             <point key="canvasLocation" x="-906" y="131"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yFP-Vw-JKk">
+            <objects>
+                <navigationController storyboardIdentifier="DogProfileNavController" automaticallyAdjustsScrollViewInsets="NO" id="SVJ-MR-lBQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J84-Yy-MJC">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nJZ-nX-1dH" kind="relationship" relationship="rootViewController" id="Jsc-id-LrJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUs-fZ-dhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108.125" y="133.09859154929578"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Affenpinscher" width="120" height="120"/>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GeJ-SP-aKN"/>
+        <segue reference="G6l-5h-nzU"/>
     </inferredMetricsTieBreakers>
 </document>
