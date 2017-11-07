@@ -292,7 +292,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dog's name" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2FM-MV-1jp" userLabel="DogName Field">
-                                                    <rect key="frame" x="8" y="6.5" width="112" height="30.5"/>
+                                                    <rect key="frame" x="8" y="6.5" width="112" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" textContentType="name"/>
@@ -318,7 +318,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="8" y="6777" width="303" height="277"/>
+                                                    <rect key="frame" x="8" y="10692" width="303" height="279"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -326,6 +326,30 @@
                                         <connections>
                                             <segue destination="Vf5-yE-cMG" kind="show" id="Koe-MJ-d2y"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" id="9zm-VA-wtg">
+                                        <rect key="frame" x="0.0" y="875" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="9zm-VA-wtg" id="zq4-bq-Uz7">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UR-Mb-eK3">
+                                                    <rect key="frame" x="8" y="11" width="304" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Add Dog"/>
+                                                    <connections>
+                                                        <segue destination="L09-ae-cjT" kind="show" id="AoP-UI-q0r"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6UR-Mb-eK3" secondAttribute="trailing" id="EUn-VX-Ix8"/>
+                                                <constraint firstItem="6UR-Mb-eK3" firstAttribute="top" secondItem="zq4-bq-Uz7" secondAttribute="topMargin" id="Ra4-rl-8mt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6UR-Mb-eK3" secondAttribute="bottom" id="XpU-ze-nea"/>
+                                                <constraint firstItem="6UR-Mb-eK3" firstAttribute="leading" secondItem="zq4-bq-Uz7" secondAttribute="leadingMargin" id="bX2-Sc-JRS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -370,7 +394,15 @@
                 <viewControllerPlaceholder storyboardName="Camera" id="Vf5-yE-cMG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Pk-Du-h0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3752" y="-870"/>
+            <point key="canvasLocation" x="3736" y="-1013"/>
+        </scene>
+        <!--DogProfile-->
+        <scene sceneID="Qvx-yM-xn9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Dogs" referencedIdentifier="DogProfile" id="L09-ae-cjT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEs-fw-iVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3752" y="-676"/>
         </scene>
     </scenes>
     <resources>
