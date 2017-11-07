@@ -182,5 +182,66 @@ extension DogProfileViewController
             dogData?.size = sizeDataSource[row]
         }
     }
+    
+    func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
+    {
+        switch pickerView
+        {
+        case genderPicker:
+            breedPicker.becomeFirstResponder()
+        case breedPicker:
+            sizePicker.becomeFirstResponder()
+        case sizePicker:
+            sizePicker.resignFirstResponder()
+        default:
+            sizePicker.resignFirstResponder()
+        }
+        
+        return true
+    }
 }
 
+extension DogProfileViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) ->Bool
+    {
+        switch textField
+        {
+        case dognameField:
+            genderPicker.becomeFirstResponder()
+//        case genderPicker:
+//            breedPicker.becomeFirstResponder()
+//        case breedPicker:
+//            sizePicker.becomeFirstResponder()
+//        case sizePicker:
+//            sizePicker.resignFirstResponder()
+
+        default:
+            sizePicker.resignFirstResponder()
+            
+        }
+        return true
+    }
+}
+
+/*
+extension DogProfileViewController: UIPickerViewDelegate
+{
+    func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
+    {
+        switch pickerView
+        {
+        case genderPicker:
+            breedPicker.becomeFirstResponder()
+        case breedPicker:
+            sizePicker.becomeFirstResponder()
+        case sizePicker:
+            sizePicker.resignFirstResponder()
+        default:
+            sizePicker.resignFirstResponder()
+        }
+        
+        return true
+    }
+}
+ */
