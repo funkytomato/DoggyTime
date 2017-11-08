@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Client" representedClassName="Client" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Client" representedClassName=".Client" syncable="YES">
         <attribute name="dogname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="forename" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,22 +9,26 @@
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dogsOwned" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dog" inverseName="owner" inverseEntity="Dog" syncable="YES"/>
     </entity>
-    <entity name="Dog" representedClassName="Dog" syncable="YES">
+    <entity name="Dog" representedClassName=".Dog" syncable="YES">
         <attribute name="breed" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dogname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dogpicture" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="walkcount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="dogsOwned" inverseEntity="Client" syncable="YES"/>
+        <relationship name="walking" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Walk" inverseName="dogsonwalk" inverseEntity="Walk" syncable="YES"/>
     </entity>
-    <entity name="Route" representedClassName="Route" syncable="YES">
+    <entity name="Route" representedClassName=".Route" syncable="YES">
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="terrain" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="walks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Walk" inverseName="routeName" inverseEntity="Walk" syncable="YES"/>
     </entity>
-    <entity name="Walk" representedClassName="Walk" syncable="YES">
+    <entity name="Walk" representedClassName=".Walk" syncable="YES">
         <attribute name="dateofwalk" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dogid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -32,11 +36,13 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="routeid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="walkid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="dogsonwalk" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dog" inverseName="walking" inverseEntity="Dog" syncable="YES"/>
+        <relationship name="routeName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="walks" inverseEntity="Route" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Client" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="Dog" positionX="-63" positionY="45" width="128" height="135"/>
-        <element name="Route" positionX="-36" positionY="72" width="128" height="105"/>
-        <element name="Walk" positionX="-54" positionY="63" width="128" height="150"/>
+        <element name="Client" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Dog" positionX="-63" positionY="45" width="128" height="165"/>
+        <element name="Route" positionX="-36" positionY="72" width="128" height="120"/>
+        <element name="Walk" positionX="-54" positionY="63" width="128" height="180"/>
     </elements>
 </model>
