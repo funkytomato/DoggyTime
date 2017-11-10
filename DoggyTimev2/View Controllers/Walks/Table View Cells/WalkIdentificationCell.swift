@@ -11,7 +11,6 @@ import UIKit
 class WalkIdentificationCell: UITableViewCell
 {
     //MARK:- IBOutlets
-    @IBOutlet weak var walkIdLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var dayLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
@@ -22,10 +21,9 @@ class WalkIdentificationCell: UITableViewCell
          {
             guard let walk = walk else {return}
             
-            self.walkIdLbl.text = walk.walkid.description
             self.timeLbl.text = walk.dateofwalk?.hourOfDay()
             self.dayLbl.text = walk.dateofwalk?.dayOfWeek()
-            self.locationLbl.text = walk.locationname
+            self.locationLbl.text = walk.locationName
             
             print(walk.dateofwalk?.dayOfWeek()! as Any)
             

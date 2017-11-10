@@ -14,9 +14,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    fileprivate let coreDataManager = CoreDataManager(modelName: "DoggyTimev2")
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        _ = coreDataManager.mainManagedObjectContext
+        
+        if let tab = window?.rootViewController as? UITabBarController
+        {
+            for child in tab.viewControllers ?? []
+            {
+
+                /*
+                guard let navigationController = window?.rootViewController as? UINavigationController,
+                    let clientsViewController = navigationController.topViewController as? ClientsViewController else {
+                        fatalError("Application Storyboard mis-configuration") }
+                
+                 clientsViewController.coreDataManager = coreDataManager
+                 */
+                
+                
+                
+                
+                
+                
+                
+                
+                if let child = child as? UINavigationController, let top = child.topViewController
+                {
+                    if top.responds(to: "ClientsViewController:")
+                    {
+                        top.perform("ClientsViewController", with: coreDataManager)
+                    }
+                }
+            }
+        }
+        
         return true
     }
 
@@ -40,8 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-        PersistentService.saveContext()
     }
 
 

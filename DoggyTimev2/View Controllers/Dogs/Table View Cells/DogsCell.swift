@@ -24,7 +24,7 @@ class DogsCell: UITableViewCell
         {
             guard let dog = dog else {return}
             
-            dogname.text = dog.dogname
+            dogname.text = dog.dogName
             breed.text = dog.breed
             sex.text = dog.gender
             size.text = dog.size

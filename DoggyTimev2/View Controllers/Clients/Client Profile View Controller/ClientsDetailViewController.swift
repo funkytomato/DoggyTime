@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+protocol AddClientViewControllerDelegate
+{
+    func controller(_ controller: ClientsDetailViewController, didAddClient forename: String, surname: String )
+}
+
 class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
@@ -25,9 +30,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var DognameField: UITextField!
     @IBOutlet weak var DogTinyPicture: UIImageView!
-    
-    
-    
     @IBOutlet weak var DogPicture: UIImageView!
     
     @IBAction func photoLibraryBtn(_ sender: Any)
@@ -39,9 +41,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         present(picker, animated: true, completion: nil)
     }
     
-
+    var delegate: AddClientViewControllerDelegate?
+    
     // MARK: - Properties
-    weak var clientData: Client?
+    var clientData: Client?
     
     
     // MARK:- Initializers
@@ -64,14 +67,14 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         super.viewDidLoad()
         
         
-        ForenameField.text = clientData?.forename
-        SurnameField.text = clientData?.surname
+        ForenameField.text = clientData?.foreName
+        SurnameField.text = clientData?.surName
         StreetField.text = clientData?.street
         TownField.text = clientData?.town
-        PostCodeField.text = clientData?.postcode
+        PostCodeField.text = clientData?.postCode
         MobileField.text = clientData?.mobile
-        eMailField.text = clientData?.email
-        DognameField.text = clientData?.dogname
+        eMailField.text = clientData?.eMail
+        //DognameField.text = clientData?.dogName
         //DogPicture?.image = (clientData.dogpicture)!
     }
     
@@ -85,31 +88,33 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveClientDetail",
-            let forename = ForenameField.text,
-            let surname = SurnameField.text,
-            let street = StreetField.text,
-            let town = TownField.text,
-            let postcode = PostCodeField.text,
-            let mobile = MobileField.text,
-            let email = eMailField.text,
-            let dogname = DognameField.text
+        if segue.identifier == "SaveClientDetail"
         {
-
-            //get the latest data and pass to destinationController to be saved
-            let client = Client(context: PersistentService.context)
-            client.forename  = forename
-            client.surname = surname
-            client.street = street
-            client.town = town
-            client.postcode = postcode
-            client.mobile = mobile
-            client.email = email
-            client.dogname = dogname
+            guard let forename = ForenameField.text else {return}
+            guard let surname = SurnameField.text else {return}
+            guard let street = StreetField.text else {return}
+            guard let town = TownField.text else {return}
+            guard let postcode = PostCodeField.text else {return}
+            guard let mobile = MobileField.text else {return}
+            guard let email = eMailField.text else {return}
+            guard let dogname = DognameField.text else {return}
             
-            self.clientData = client
+            // Update Client
+            //let client = Client(context: PersistentService.context)
+            clientData?.foreName  = forename
+            clientData?.surName = surname
+            clientData?.street = street
+            clientData?.town = town
+            clientData?.postCode = postcode
+            clientData?.mobile = mobile
+            clientData?.eMail = email
+            //clientData?.dogName = dogname
+            
+            //self.clientData = client
         }
     }
+    
+    
 }
 
 extension ClientsDetailViewController: UITextFieldDelegate
@@ -140,5 +145,28 @@ extension ClientsDetailViewController: UITextFieldDelegate
             
         }
         return true
+    }
+}
+
+//MARK:- IBActions
+extension ClientsDetailViewController
+{
+    // MARK: - Actions
+    
+    @IBAction func save(_ sender: Any) {
+        guard let forename = ForenameField.text else { return }
+        guard let surname = SurnameField.text else {return}
+        guard let street = StreetField.text else {return}
+        guard let delegate = delegate else { return }
+        
+        // Notify Delegate
+        delegate.controller(self, didAddClient: forename, surname: surname)
+        
+        // Dismiss View Controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

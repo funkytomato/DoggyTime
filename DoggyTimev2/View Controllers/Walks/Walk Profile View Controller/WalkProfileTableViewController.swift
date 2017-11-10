@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol AddWalkViewControllerDelegate
+{
+    func controller(_ controller: WalkProfileTableViewController, didAddWalk name: String)
+}
 
 class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
@@ -26,6 +30,8 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     @IBOutlet weak var LocationPicker: UIPickerView!
     
     var locationDataSource = ["Pagham", "Chichester", "Selsey", "Elmer", "Summer Lane"]
+    
+    var delegate: AddWalkViewControllerDelegate?
     
     weak var walkData: Walk?
     
@@ -56,8 +62,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
 //            guard let row = locationDataSource.index(of: (walkData?.locationname)!) else {return}
 //            locationPicker.selectRow(row, inComponent: 0, animated: false)
             
-            
-            WalkIdField.text = walkData?.walkid.description
             //locationNameField.text = walkData?.locationname
             
             print("date \(String(describing: walkData?.dateofwalk))")
@@ -96,7 +100,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         }
         //else if let _ = segue.destination as? WalksViewController,
         else if segue.identifier == "SaveWalkDetail",
-            let walkid = Int16(WalkIdField.text!),
             let locationname = LocationNameField.text,
             let latitude = LatitudeField.text,
             let longitude = LongitudeField.text
@@ -104,20 +107,21 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     
             let dateofwalk = DateTimePicker.date
             
-            let walk = Walk(context: PersistentService.context)
-            walk.walkid = walkid
-            walk.dateofwalk = dateofwalk
-            walk.locationname = locationname
+            //let walk = Walk(context: PersistentService.context)
+            
+            //Update Walk
+            walkData?.dateofwalk = dateofwalk
+            walkData?.locationName = locationname
             
             guard let latitude = Double(latitude) else {return}
             print("latitude\(latitude)")
-            walk.latitude = latitude
+            walkData?.latitude = latitude
             
             guard let longitude = Double(longitude) else {return}
             print("longitude\(longitude)")
-            walk.longitude = longitude
+            walkData?.longitude = longitude
             
-            self.walkData = walk
+            //self.walkData = walk
         }
     }
 }
@@ -211,6 +215,32 @@ extension WalkProfileTableViewController: UITextFieldDelegate
             
         }
         return true
+    }
+}
+
+//MARK:- IBActions
+extension WalkProfileTableViewController
+{
+    // MARK: - Actions
+    
+    @IBAction func save(_ sender: Any) {
+        //guard let dateofwalk = DateTimePicker.date else { return }
+        //guard let location = LocationPicker. else {return}
+        guard let latitude = LatitudeField.text else {return}
+        guard let longitude = LongitudeField.text else {return}
+        guard let delegate = delegate else { return }
+        
+        let name = "test"
+        
+        // Notify Delegate
+        delegate.controller(self, didAddWalk: name)
+        
+        // Dismiss View Controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

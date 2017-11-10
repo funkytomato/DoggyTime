@@ -22,10 +22,10 @@ class ClientCell: UITableViewCell
         {
             guard let client = client else {return}
             
-            nameLabel.text = client.forename
+            nameLabel.text = client.foreName
             addressLabel.text = client.street
-            dogNameLabel.text = client.dogname
-            dogImageView.image = image(imageName: client.dogname)
+            //dogNameLabel.text = client.dogsOwned.dogName
+            //dogImageView.image = image(imageName: client.dogName)
         }
     }
  

@@ -8,20 +8,24 @@
 
 import UIKit
 
+protocol AddDogViewControllerDelegate
+{
+    func controller(_ controller: DogProfileViewController, didAddDog dogname: String )
+}
 
 class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
     //MARK:- IBOutlets
-    @IBOutlet weak var dognameField: UITextField!
+    @IBOutlet weak var DognameField: UITextField!
     //@IBOutlet weak var genderField: UITextField!
-    @IBOutlet weak var genderPicker: UIPickerView!
+    @IBOutlet weak var GenderPicker: UIPickerView!
     
     //@IBOutlet weak var breedField: UITextField!
-    @IBOutlet weak var breedPicker: UIPickerView!
-    @IBOutlet weak var breedpictureView: UIImageView!
-    @IBOutlet weak var sizePicker: UIPickerView!
+    @IBOutlet weak var BreedPicker: UIPickerView!
+    @IBOutlet weak var BreedPictureView: UIImageView!
+    @IBOutlet weak var SizePicker: UIPickerView!
     //@IBOutlet weak var sizeField: UITextField!
-    @IBOutlet weak var pictureView: UIImageView!
+    @IBOutlet weak var ProfilePictureView: UIImageView!
     
     var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
     
@@ -30,6 +34,8 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
     //MARK:- Properties
+    
+    var delegate: AddDogViewControllerDelegate?
     
     //Data to send to profile controller
     weak var dogData : Dog?
@@ -48,35 +54,35 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     {
         super.viewDidLoad()
         
-        breedPicker.delegate = self
-        breedPicker.dataSource = self
+        BreedPicker.delegate = self
+        BreedPicker.dataSource = self
         
-        genderPicker.delegate = self
-        genderPicker.dataSource = self
+        GenderPicker.delegate = self
+        GenderPicker.dataSource = self
         
-        sizePicker.delegate = self
-        sizePicker.dataSource = self
+        SizePicker.delegate = self
+        SizePicker.dataSource = self
         
         if dogData != nil
         {
-            self.dognameField.text = dogData?.dogname
+            self.DognameField.text = dogData?.dogName
             
             //self.sexFd.text = dogData?.sex
             if let row = genderDataSource.index(of: (dogData?.gender)!)
             {
-                genderPicker.selectRow(row, inComponent: 0, animated: false)
+                GenderPicker.selectRow(row, inComponent: 0, animated: false)
             }
             
             
             //self.breedFd.text = dogData?.breed
             if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
             {
-                breedPicker.selectRow(row, inComponent: 0, animated: false)
-                breedpictureView.image = UIImage(named: breedDataSource[row])
+                BreedPicker.selectRow(row, inComponent: 0, animated: false)
+                BreedPictureView.image = UIImage(named: breedDataSource[row])
             }
             
             //self.sizeFd.text = dogData?.size
-            //self.pictureView.image = dogData?.picture
+            //self.ProfilePictureView.image = dogData?.picture
         }
 
         tableView.reloadData()
@@ -97,21 +103,21 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveDogDetail",
             //let dogid = dog
-            let dogname = dognameField.text,
+            let dogname = DognameField.text,
             let gender = dogData?.gender,
             let breed = dogData?.breed,
             let size = dogData?.size
            // let picture = pictureView.image
         {
             
-            let dog = Dog(context: PersistentService.context)
-            dog.dogname = dogname
-            dog.gender = gender
-            dog.breed = breed
-            dog.size = size
+            //let dog = Dog(context: PersistentService.context)
+            dogData?.dogName = dogname
+            dogData?.gender = gender
+            dogData?.breed = breed
+            dogData?.size = size
             //dog.picture = picture
             
-            self.dogData = dog
+            //self.dogData = dog
         }
     }
 }
@@ -126,15 +132,15 @@ extension DogProfileViewController
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
-        if pickerView == genderPicker
+        if pickerView == GenderPicker
         {
             return genderDataSource.count
         }
-        else if pickerView == breedPicker
+        else if pickerView == BreedPicker
         {
             return breedDataSource.count
         }
-        else if pickerView == sizePicker
+        else if pickerView == SizePicker
         {
             return sizeDataSource.count
         }
@@ -144,15 +150,15 @@ extension DogProfileViewController
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        if pickerView == genderPicker
+        if pickerView == GenderPicker
         {
             return genderDataSource[row] as String
         }
-        else if pickerView == breedPicker
+        else if pickerView == BreedPicker
         {
             return breedDataSource[row] as String
         }
-        else if pickerView == sizePicker
+        else if pickerView == SizePicker
         {
             return sizeDataSource[row] as String
         }
@@ -162,20 +168,20 @@ extension DogProfileViewController
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if pickerView == breedPicker
+        if pickerView == BreedPicker
         {
             print(breedDataSource[row])
             
-            breedpictureView.image = UIImage(named: breedDataSource[row])
+            BreedPictureView.image = UIImage(named: breedDataSource[row])
             dogData?.breed = breedDataSource[row]
         }
-        else if pickerView == genderPicker
+        else if pickerView == GenderPicker
         {
             print(genderDataSource[row])
             
             dogData?.gender = genderDataSource[row]
         }
-        else if pickerView == sizePicker
+        else if pickerView == SizePicker
         {
             print(sizeDataSource[row])
             
@@ -187,14 +193,14 @@ extension DogProfileViewController
     {
         switch pickerView
         {
-        case genderPicker:
-            breedPicker.becomeFirstResponder()
-        case breedPicker:
-            sizePicker.becomeFirstResponder()
-        case sizePicker:
-            sizePicker.resignFirstResponder()
+        case GenderPicker:
+            BreedPicker.becomeFirstResponder()
+        case BreedPicker:
+            SizePicker.becomeFirstResponder()
+        case SizePicker:
+            SizePicker.resignFirstResponder()
         default:
-            sizePicker.resignFirstResponder()
+            SizePicker.resignFirstResponder()
         }
         
         return true
@@ -207,8 +213,8 @@ extension DogProfileViewController: UITextFieldDelegate
     {
         switch textField
         {
-        case dognameField:
-            genderPicker.becomeFirstResponder()
+        case DognameField:
+            GenderPicker.becomeFirstResponder()
 //        case genderPicker:
 //            breedPicker.becomeFirstResponder()
 //        case breedPicker:
@@ -217,7 +223,7 @@ extension DogProfileViewController: UITextFieldDelegate
 //            sizePicker.resignFirstResponder()
 
         default:
-            sizePicker.resignFirstResponder()
+            SizePicker.resignFirstResponder()
             
         }
         return true
@@ -245,3 +251,27 @@ extension DogProfileViewController: UIPickerViewDelegate
     }
 }
  */
+
+//MARK:- IBActions
+extension DogProfileViewController
+{
+    // MARK: - Actions
+    
+    @IBAction func save(_ sender: Any) {
+        guard let dogname = DognameField.text else { return }
+        //guard let gender = SurnameField.text else {return}
+        //guard let street = StreetField.text else {return}
+        //guard let delegate = delegate else { return }
+        
+        // Notify Delegate
+        delegate?.controller(self, didAddDog: dogname)
+        
+        // Dismiss View Controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+

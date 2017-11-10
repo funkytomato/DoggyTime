@@ -14,6 +14,26 @@ class DogsViewController: UITableViewController
 {
     //MARK:- Properties
     
+    var coreDataManager: CoreDataManager!
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
+    {
+        // Initialize Fetch Request
+        let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
+        
+        // Add Sort Descriptors
+        let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
+    
     //Data to send to profile controller
     var dogs = [Dog]()
     
@@ -29,6 +49,18 @@ class DogsViewController: UITableViewController
         super.viewDidLoad()
         
         //Fetch dogs from CoreData
+        do
+        {
+            try fetchedResultsController.performFetch()
+        }
+        catch
+        {
+            let fetchError = error as NSError
+            print("Unable to Save Client")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+        /*
         let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
         
         do
@@ -40,7 +72,7 @@ class DogsViewController: UITableViewController
             self.tableView.reloadData()
         }
         catch {}
-        
+        */
     }
     
     override func didReceiveMemoryWarning()
@@ -58,15 +90,18 @@ class DogsViewController: UITableViewController
         {
             //Load an existing dog profile
 
-            let selectedDog = dogs[indexPath.row]
+            // Fetch Client
+            let selectedDog = fetchedResultsController.object(at: indexPath)
+            
+            //let selectedDog = dogs[indexPath.row]
             profileViewController.dogData = selectedDog
         }
         else if let profileViewController = segue.destination as? DogProfileViewController
         {
             //Create a new Dog profile
             
-            let dog = Dog(context: PersistentService.context)
-            dog.dogname = "Enter name"
+            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
+            dog.dogName = "Enter name"
             dog.gender = "Male"
             dog.breed = "Unknown"
             dog.size = "Medium"
@@ -92,12 +127,69 @@ extension DogsViewController
         }
         
         //Store to CoreData
+        do
+        {
+            try dog.managedObjectContext?.save()
+        }
+        catch
+        {
+            let saveError = error as NSError
+            print("Unable to Save Dog")
+            print("\(saveError), \(saveError.localizedDescription)")
+        }
+        
+        
+        /*
         PersistentService.saveContext()
         dogs.append(dog)
         self.tableView.reloadData()
+ */
+    }
+}
+
+extension DogsViewController: NSFetchedResultsControllerDelegate
+{
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch (type) {
+        case .insert:
+            if let indexPath = newIndexPath {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .delete:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .update:
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? DogsCell
+            {
+                configureCell(cell, at: indexPath)
+            }
+            break;
+        case .move:
+            if let indexPath = indexPath {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
+        }
     }
     
 }
+
 
 //MARK:- UITableViewDataSource
 extension DogsViewController
@@ -109,15 +201,76 @@ extension DogsViewController
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return dogs.count
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         print("DogsViewController cellForRowAt")
+        // Fetch Dog
+        let dog = fetchedResultsController.object(at: indexPath)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DogsCell", for: indexPath) as! DogsCell
-        let dog = dogs[indexPath.row]
+        //let dog = dogs[indexPath.row]
         cell.dog = dog
+        //configureCell(cell, at: indexPath)
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        // Fetch Dog
+        let dog = fetchedResultsController.object(at: indexPath)
+        
+        // Delete Dog
+        fetchedResultsController.managedObjectContext.delete(dog)
+    }
+    
+    func configureCell(_ cell: DogsCell, at indexPath: IndexPath)
+    {
+        // Fetch Dog
+        let dog = fetchedResultsController.object(at: indexPath)
+        
+        // Configure Cell
+        cell.dog = dog
+    }
+    
+}
+
+extension DogsViewController: AddDogViewControllerDelegate
+{
+    
+    func controller(_ controller: DogProfileViewController, didAddDog dogname: String)
+    {
+        
+        // Create Dog
+        let dog = Dog(context: coreDataManager.mainManagedObjectContext)
+        
+        // Populate Dog
+        dog.dogName = ""
+        dog.breed = ""
+        dog.size = ""
+        dog.gender = ""
+        dog.profilePicture = nil
+        dog.updatedAt = NSDate()
+        dog.createdAt = NSDate()
+        
+        do
+        {
+            try dog.managedObjectContext?.save()
+        }
+        catch
+        {
+            let saveError = error as NSError
+            print("Unable to Save Dog")
+            print("\(saveError), \(saveError.localizedDescription)")
+        }
+    }
+    
 }
