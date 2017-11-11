@@ -10,15 +10,32 @@ import UIKit
 import CoreData
 
 
+protocol CoreDataManagerDelegate
+{
+    //var coreDataManager: CoreDataManager! { get }
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+}
+
+
 class ClientsViewController: UITableViewController
 {
+    
+    var coreDataManager: CoreDataManager!
+    
+    /*
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        print("ClientsViewController setCoreDataManager protocol")
+        //self.coreDataManager = coreDataManager
+    }
+    */
     // MARK:- Properties
     /*
     fileprivate let coreDataManager = CoreDataManager(modelName: "DoggyTimev2")
 */
-    
-    var coreDataManager: CoreDataManager!
-    
+
+    var coreDataManagerDelegate: CoreDataManagerDelegate!
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Client> =
     {
@@ -301,3 +318,13 @@ extension ClientsViewController: AddClientViewControllerDelegate
     }
 }
 
+//MARK:- CoreDataManager Protocol
+extension ClientsViewController: CoreDataManagerDelegate
+{
+    //var coreDataManager: CoreDataManager
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        self.coreDataManager = coreDataManager
+    }
+}
