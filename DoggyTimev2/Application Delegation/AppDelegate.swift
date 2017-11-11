@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate let coreDataManager = CoreDataManager(modelName: "DoggyTimev2")
     
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
+    {
         // Override point for customization after application launch.
         _ = coreDataManager.mainManagedObjectContext
         
@@ -26,28 +27,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for child in tab.viewControllers ?? []
             {
 
-                /*
+            /*
                 guard let navigationController = window?.rootViewController as? UINavigationController,
                     let clientsViewController = navigationController.topViewController as? ClientsViewController else {
                         fatalError("Application Storyboard mis-configuration") }
                 
                  clientsViewController.coreDataManager = coreDataManager
-                 */
+              */
                 
-                
-                
-                
-                
-                
-                
+
+
                 
                 if let child = child as? UINavigationController, let top = child.topViewController
                 {
-                    if top.responds(to: "ClientsViewController:")
+                    
+                    //if ((top as? CoreDataManagerDelegate) != nil)
+                    if let mydelegate = top as? CoreDataManagerDelegate
                     {
-                        top.perform("ClientsViewController", with: coreDataManager)
+                        print("Client conforms!!!")
+                        mydelegate.setCoreDataManager(coreDataManager: coreDataManager)
+                        
                     }
+                    else
+                    {
+                        print("not conforming!!!")
+                    }
+            
+                    
+                    
+                    /*
+                    if child.conforms(to: CoreDataManagerDelegate)
+                    {
+                        print("Child conforms to CoreDataManagerDelegate")
+                    }
+                    
+                    if top.conforms(to: CoreDataManagerDelegate)
+                    {
+                        print("Top conforms to CoreDataManagerDelegate")
+                    }
+                     */
                 }
+                
+                
+            
+                /*
+                if ([segue.destinationViewController isKindOfClass:[GoalDetailsViewController class]])
+                {
+                    GoalDetailsViewController *goalsDetailsViewController = segue.destinationViewController;
+                    goalsDetailsViewController.goalName = @"Exercise Daily";
+                }
+                */
+                
             }
         }
         
