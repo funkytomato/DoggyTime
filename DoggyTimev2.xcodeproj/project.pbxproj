@@ -291,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				183242CD1FB35DEF00ACF480 /* Core Data Models */,
-				C2081CD91FAC93440098F11F /* Extensions */,
 				18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */,
 				18D471C11F9FBB93007D245D /* Managers */,
 			);
@@ -489,13 +488,6 @@
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimev2UITests;
-			sourceTree = "<group>";
-		};
-		C2081CD91FAC93440098F11F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C2156A201FB608EE00A6F3AC /* Protocols */ = {
