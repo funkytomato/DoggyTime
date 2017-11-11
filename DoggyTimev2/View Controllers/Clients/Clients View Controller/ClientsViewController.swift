@@ -11,9 +11,7 @@ import CoreData
 
 
 protocol CoreDataManagerDelegate
-{
-    //var coreDataManager: CoreDataManager! { get }
-    
+{    
     func setCoreDataManager(coreDataManager: CoreDataManager)
 }
 
@@ -41,6 +39,7 @@ class ClientsViewController: UITableViewController
     {
         // Initialize Fetch Request
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
+        print("fetchRequest:\(fetchRequest.description)")
         
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
@@ -48,6 +47,7 @@ class ClientsViewController: UITableViewController
         
         // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        print("fetchedResultsCOntroller\(fetchedResultsController.description)")
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
@@ -69,7 +69,7 @@ class ClientsViewController: UITableViewController
         print("ClientsViewController viewDidLoad")
         super.viewDidLoad()
    
-        
+        //Fetch clients from CoreData
         do
         {
             try fetchedResultsController.performFetch()
@@ -81,26 +81,8 @@ class ClientsViewController: UITableViewController
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-        //self.clients = fetchedResultsController.
-        //tableView.estimatedRowHeight = 80
-        //tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.reloadData()
         
-        
-        /*
-        //Fetch clients from CoreData
-        let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
-        
-        do
-        {
-            let clients = try PersistentService.context.fetch(fetchRequest)
-            self.clients = clients
-            //tableView.estimatedRowHeight = 80
-            //tableView.rowHeight = UITableViewAutomaticDimension
-            self.tableView.reloadData()
-        }
-        catch {}
-*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -116,9 +98,7 @@ class ClientsViewController: UITableViewController
             
             // Configure View Controller
             profileViewController.clientData = client
-            
-            //let selectedClient = clients[indexPath.row]
-            //profileViewController.clientData = selectedClient
+
         }
         else if let profileViewController = segue.destination as? ClientsDetailViewController
         {
@@ -162,8 +142,6 @@ extension ClientsViewController
         }
         
         //Store to CoreData
-        //let client =  Client(context: coreDataManager.mainManagedObjectContext)
-        
         do
         {
             try client.managedObjectContext?.save()
@@ -174,12 +152,6 @@ extension ClientsViewController
             print("Unable to Save Client")
             print("\(saveError), \(saveError.localizedDescription)")
         }
-        
-        /*
-        PersistentService.saveContext()
-        clients.append(client)
-        self.tableView.reloadData()
-        */
     }
 }
 
@@ -251,7 +223,6 @@ extension ClientsViewController
         let client = fetchedResultsController.object(at: indexPath)
         
         let cell    = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as! ClientCell
-        //let client  = clients[indexPath.row]
         cell.client = client
         //configureCell(cell, at: indexPath)
         return cell
@@ -278,16 +249,6 @@ extension ClientsViewController
     }
 }
 
-/*
-extension ClientsViewController: UITableViewDelegate
-{
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-}
- */
 
 extension ClientsViewController: AddClientViewControllerDelegate
 {
