@@ -9,11 +9,13 @@
 import UIKit
 import CoreData
 
+/*
 protocol AddClientViewControllerDelegate
 {
     func controller(_ controller: ClientsDetailViewController, didAddClient forename: String, surname: String )
 }
-
+*/
+ 
 class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
@@ -41,7 +43,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         present(picker, animated: true, completion: nil)
     }
     
-    var delegate: AddClientViewControllerDelegate?
+    //var delegate: AddClientViewControllerDelegate?
     
     // MARK: - Properties
     var clientData: Client?
@@ -148,6 +150,7 @@ extension ClientsDetailViewController: UITextFieldDelegate
     }
 }
 
+/*
 //MARK:- IBActions
 extension ClientsDetailViewController
 {
@@ -170,3 +173,4 @@ extension ClientsDetailViewController
         dismiss(animated: true, completion: nil)
     }
 }
+ */
