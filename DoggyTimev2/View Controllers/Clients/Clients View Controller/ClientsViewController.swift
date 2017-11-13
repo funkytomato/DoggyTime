@@ -249,7 +249,7 @@ extension ClientsViewController
     }
 }
 
-
+/*
 extension ClientsViewController: AddClientViewControllerDelegate
 {
     
@@ -257,7 +257,7 @@ extension ClientsViewController: AddClientViewControllerDelegate
     {
 
         // Create Client
-        let client = Client(context: coreDataManager.mainManagedObjectContext)
+        let client = Client(context: coreDataManager.managedObjectContext)
         
         // Populate Note
         client.foreName = ""
@@ -278,7 +278,8 @@ extension ClientsViewController: AddClientViewControllerDelegate
         }
     }
 }
-
+*/
+ 
 //MARK:- CoreDataManager Protocol
 extension ClientsViewController: CoreDataManagerDelegate
 {
