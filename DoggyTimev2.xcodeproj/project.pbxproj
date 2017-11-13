@@ -457,7 +457,6 @@
 		18EB60061F9A1ADF0084FE8D /* DoggyTimev2 */ = {
 			isa = PBXGroup;
 			children = (
-				C2156A201FB608EE00A6F3AC /* Protocols */,
 				C2F02A701FB0B96D00597345 /* Extensions */,
 				1808F7051F9E15690027B447 /* Application Delegation */,
 				18BE844C1FA24A7200CC7586 /* Camera */,
@@ -488,13 +487,6 @@
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimev2UITests;
-			sourceTree = "<group>";
-		};
-		C2156A201FB608EE00A6F3AC /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C2F02A701FB0B96D00597345 /* Extensions */ = {
