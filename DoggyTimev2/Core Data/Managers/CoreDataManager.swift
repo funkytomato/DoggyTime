@@ -106,14 +106,7 @@ final class CoreDataManager
         saveChanges()
     }
 
-    // MARK: - Helper Methods
 
-    private func setupNotificationHandling()
-    {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: Notification.Name.UIApplicationWillTerminate, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
-    }
 
     // MARK: -
 
@@ -151,4 +144,12 @@ final class CoreDataManager
         })
     }
 
+    // MARK: - Helper Methods
+    
+    private func setupNotificationHandling()
+    {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: Notification.Name.UIApplicationWillTerminate, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveChanges(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+    }
 }
