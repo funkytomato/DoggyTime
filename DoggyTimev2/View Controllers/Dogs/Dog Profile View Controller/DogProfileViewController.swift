@@ -7,24 +7,24 @@
 //
 
 import UIKit
-
-protocol AddDogViewControllerDelegate
-{
-    func controller(_ controller: DogProfileViewController, didAddDog dogname: String )
-}
-
+import CoreData
+ 
 class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
+    
+    //MARK:- Properties
+    //var delegate: AddDogViewControllerDelegate?
+    //Data to send to profile controller
+    var dogData : Dog?
+    
+    
     //MARK:- IBOutlets
     @IBOutlet weak var DognameField: UITextField!
-    //@IBOutlet weak var genderField: UITextField!
     @IBOutlet weak var GenderPicker: UIPickerView!
-    
-    //@IBOutlet weak var breedField: UITextField!
     @IBOutlet weak var BreedPicker: UIPickerView!
     @IBOutlet weak var BreedPictureView: UIImageView!
+    @IBOutlet weak var BreedInfoView: UITextView!
     @IBOutlet weak var SizePicker: UIPickerView!
-    //@IBOutlet weak var sizeField: UITextField!
     @IBOutlet weak var ProfilePictureView: UIImageView!
     
     var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
@@ -33,22 +33,18 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
-    //MARK:- Properties
-    
-    var delegate: AddDogViewControllerDelegate?
-    
-    //Data to send to profile controller
-    weak var dogData : Dog?
-    
+
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     }
     
+    
     deinit
     {
         print("DogProfileViewController deinit")
     }
+    
     
     override func viewDidLoad()
     {
@@ -88,12 +84,14 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         tableView.reloadData()
     }
     
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         
         //Dispose of any resources that can be recreated
     }
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -116,11 +114,10 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             dogData?.breed = breed
             dogData?.size = size
             //dog.picture = picture
-            
-            //self.dogData = dog
         }
     }
 }
+
 
 //MARK:- PickerView
 extension DogProfileViewController
@@ -252,6 +249,7 @@ extension DogProfileViewController: UIPickerViewDelegate
 }
  */
 
+/*
 //MARK:- IBActions
 extension DogProfileViewController
 {
@@ -274,4 +272,4 @@ extension DogProfileViewController
         dismiss(animated: true, completion: nil)
     }
 }
-
+*/
