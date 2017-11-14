@@ -42,6 +42,8 @@
 		18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */; };
 		18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */; };
 		18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */; };
+		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
+		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
 		18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */; };
 		18EB60201F9A1ADF0084FE8D /* DoggyTimev2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */; };
 		18EB602B1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */; };
@@ -60,9 +62,6 @@
 		18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60471F9A20A40084FE8D /* DogNameCell.swift */; };
 		18EB605F1F9A20A40084FE8D /* DogNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60471F9A20A40084FE8D /* DogNameCell.swift */; };
 		18EB60601F9A20A40084FE8D /* DogNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60471F9A20A40084FE8D /* DogNameCell.swift */; };
-		18EB60731F9A20B50084FE8D /* WalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60661F9A20B40084FE8D /* WalkCell.swift */; };
-		18EB60741F9A20B50084FE8D /* WalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60661F9A20B40084FE8D /* WalkCell.swift */; };
-		18EB60751F9A20B50084FE8D /* WalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60661F9A20B40084FE8D /* WalkCell.swift */; };
 		18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60681F9A20B40084FE8D /* WalksViewController.swift */; };
 		18EB607A1F9A20B50084FE8D /* WalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60681F9A20B40084FE8D /* WalksViewController.swift */; };
 		18EB607B1F9A20B50084FE8D /* WalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60681F9A20B40084FE8D /* WalksViewController.swift */; };
@@ -123,6 +122,8 @@
 		18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCatalogue.swift; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
+		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
+		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		18EB60041F9A1ADF0084FE8D /* DoggyTimev2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoggyTimev2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18EB60161F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,7 +138,6 @@
 		18EB60431F9A20A30084FE8D /* ClientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
 		18EB60451F9A20A40084FE8D /* ClientsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsDetailViewController.swift; sourceTree = "<group>"; };
 		18EB60471F9A20A40084FE8D /* DogNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogNameCell.swift; sourceTree = "<group>"; };
-		18EB60661F9A20B40084FE8D /* WalkCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkCell.swift; sourceTree = "<group>"; };
 		18EB60681F9A20B40084FE8D /* WalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalksViewController.swift; sourceTree = "<group>"; };
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -321,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				18EB60691F9A20B50084FE8D /* LocationCell.swift */,
-				18EB60661F9A20B40084FE8D /* WalkCell.swift */,
 				18EB60471F9A20A40084FE8D /* DogNameCell.swift */,
 				181BB82C1FA3836F0036EB07 /* WalkIdentificationCell.swift */,
 			);
@@ -434,6 +433,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		18E71F861FBB28B600735EEE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		18EB5FFB1F9A1ADF0084FE8D = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +470,7 @@
 				1808F7071F9E15910027B447 /* Core Data */,
 				1808F7031F9E15320027B447 /* DataSources */,
 				18A9B66A1FA24535003DAF51 /* Resources */,
+				18E71F861FBB28B600735EEE /* Protocols */,
 				1808F7061F9E15830027B447 /* Storyboards */,
 				1808F7011F9E150B0027B447 /* Test Data */,
 				18EB60161F9A1ADF0084FE8D /* Info.plist */,
@@ -493,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F02A711FB0B98500597345 /* Date.swift */,
+				18E71F871FBB3A8400735EEE /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -652,6 +661,7 @@
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
 				1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */,
+				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
 				18A5DB8A1FB4EE7E008C0C91 /* Route+CoreDataProperties.swift in Sources */,
 				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
@@ -663,10 +673,10 @@
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18A5DB891FB4EE7E008C0C91 /* Route+CoreDataClass.swift in Sources */,
 				18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
+				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
-				18EB60731F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
 				18EB60581F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */,
@@ -687,7 +697,6 @@
 				18EB607D1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */,
 				18EB605F1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
-				18EB60741F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18026BB41FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
 				18EB607A1F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 			);
@@ -706,7 +715,6 @@
 				18EB607E1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */,
 				18EB60601F9A20A40084FE8D /* DogNameCell.swift in Sources */,
-				18EB60751F9A20B50084FE8D /* WalkCell.swift in Sources */,
 				18026BB51FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
 				18EB607B1F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 			);
