@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                     //if ((top as? CoreDataManagerDelegate) != nil)
                     if let mydelegate = top as? CoreDataManagerDelegate
                     {
-                        print("Client conforms!!!")
+                        print("\(top.description) conforms!!!")
                         mydelegate.setCoreDataManager(coreDataManager: coreDataManager)
                     }
                     else
