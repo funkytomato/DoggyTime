@@ -9,12 +9,15 @@
 import UIKit
 import CoreData
 
+
 class RoutesViewController: UITableViewController
 {
     
     //MARK:- Properties
-    
+    var coreDataManagerDelegate: CoreDataManagerDelegate!
     var coreDataManager: CoreDataManager!
+    var routes = [Route]()
+    
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Route> =
     {
@@ -33,15 +36,14 @@ class RoutesViewController: UITableViewController
         
         return fetchedResultsController
     }()
-    
-    //Data to send to profile controller
-    var routes = [Route]()
+
     
     required init?(coder aDecoder: NSCoder)
     {
         print("init RoutesViewController")
         super.init(coder: aDecoder)
     }
+
     
     override func viewDidLoad()
     {
@@ -60,20 +62,9 @@ class RoutesViewController: UITableViewController
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-        /*
-        
-        let fetchRequest: NSFetchRequest<Route> = Route.fetchRequest()
-        
-        do
-        {
-            let routes = try PersistentService.context.fetch(fetchRequest)
-            self.routes = routes
-            tableView.estimatedRowHeight = 80
-            tableView.rowHeight = UITableViewAutomaticDimension
-            self.tableView.reloadData()
-        }
-        catch {}
- */
+        //tableView.estimatedRowHeight = 80
+        //tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning()
@@ -89,6 +80,7 @@ class RoutesViewController: UITableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
         {
             //Load an existing Route profile
+           
             // Fetch Route
             let selectedRoute = fetchedResultsController.object(at: indexPath)
             
@@ -98,7 +90,6 @@ class RoutesViewController: UITableViewController
         else if let profileViewController = segue.destination as? RouteProfileViewController
         {
             //Create a new Route profile
-            //Create a new Client profile
             let route = Route(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Route
@@ -127,6 +118,7 @@ extension RoutesViewController
             return
         }
         
+        //Store to CoreData
         do
         {
             try route.managedObjectContext?.save()
@@ -137,35 +129,35 @@ extension RoutesViewController
             print("Unable to Save Client")
             print("\(saveError), \(saveError.localizedDescription)")
         }
-        /*
-        //Store to CoreData
-        PersistentService.saveContext()
-        routes.append(route)
-        self.tableView.reloadData()
- */
     }
 }
 
 extension RoutesViewController: NSFetchedResultsControllerDelegate
 {
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+    {
+        switch (type)
+        {
         case .insert:
-            if let indexPath = newIndexPath {
+            if let indexPath = newIndexPath
+            {
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break;
         case .delete:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             break;
@@ -176,7 +168,8 @@ extension RoutesViewController: NSFetchedResultsControllerDelegate
             }
             break;
         case .move:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
@@ -213,7 +206,6 @@ extension RoutesViewController
         let route = fetchedResultsController.object(at: indexPath)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteCell
-        //let route = routes[indexPath.row]
         cell.route = route
         //configureCell(cell, at: indexPath)
         return cell
@@ -241,6 +233,17 @@ extension RoutesViewController
 }
 
 
+//MARK:- CoreDataManager Protocol
+extension RoutesViewController: CoreDataManagerDelegate
+{
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        self.coreDataManager = coreDataManager
+    }
+}
+
+/*
 extension RoutesViewController: AddRouteViewControllerDelegate
 {
     
@@ -273,3 +276,4 @@ extension RoutesViewController: AddRouteViewControllerDelegate
         }
     }
 }
+ */
