@@ -13,8 +13,10 @@ import CoreData
 class DogsViewController: UITableViewController
 {
     //MARK:- Properties
-    
     var coreDataManager: CoreDataManager!
+    var coreDataManagerDelegate: CoreDataManagerDelegate!
+    var dogs = [Dog]()
+    
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
     {
@@ -34,14 +36,13 @@ class DogsViewController: UITableViewController
         return fetchedResultsController
     }()
     
-    //Data to send to profile controller
-    var dogs = [Dog]()
     
     required init?(coder aDecoder: NSCoder)
     {
         print("init DogsViewController")
         super.init(coder: aDecoder)
     }
+    
     
     override func viewDidLoad()
     {
@@ -56,23 +57,13 @@ class DogsViewController: UITableViewController
         catch
         {
             let fetchError = error as NSError
-            print("Unable to Save Client")
+            print("Unable to Save Dog")
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-        /*
-        let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
-        
-        do
-        {
-            let dogs = try PersistentService.context.fetch(fetchRequest)
-            self.dogs = dogs
-            tableView.estimatedRowHeight = 80
-            tableView.rowHeight = UITableViewAutomaticDimension
-            self.tableView.reloadData()
-        }
-        catch {}
-        */
+        //tableView.estimatedRowHeight = 80
+        //tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning()
@@ -93,14 +84,14 @@ class DogsViewController: UITableViewController
             // Fetch Client
             let selectedDog = fetchedResultsController.object(at: indexPath)
             
-            //let selectedDog = dogs[indexPath.row]
+            //Configure View Controller
             profileViewController.dogData = selectedDog
         }
         else if let profileViewController = segue.destination as? DogProfileViewController
         {
             //Create a new Dog profile
-            
             let dog = Dog(context: coreDataManager.mainManagedObjectContext)
+            
             dog.dogName = "Enter name"
             dog.gender = "Male"
             dog.breed = "Unknown"
@@ -137,36 +128,35 @@ extension DogsViewController
             print("Unable to Save Dog")
             print("\(saveError), \(saveError.localizedDescription)")
         }
-        
-        
-        /*
-        PersistentService.saveContext()
-        dogs.append(dog)
-        self.tableView.reloadData()
- */
     }
 }
 
 extension DogsViewController: NSFetchedResultsControllerDelegate
 {
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+    {
+        switch (type)
+        {
         case .insert:
-            if let indexPath = newIndexPath {
+            if let indexPath = newIndexPath
+            {
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break;
         case .delete:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             break;
@@ -177,27 +167,31 @@ extension DogsViewController: NSFetchedResultsControllerDelegate
             }
             break;
         case .move:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
-            if let newIndexPath = newIndexPath {
+            if let newIndexPath = newIndexPath
+            {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break;
         }
     }
-    
 }
 
 
 //MARK:- UITableViewDataSource
 extension DogsViewController
 {
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -209,18 +203,22 @@ extension DogsViewController
         return sectionInfo.numberOfObjects
     }
     
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         print("DogsViewController cellForRowAt")
+        
         // Fetch Dog
         let dog = fetchedResultsController.object(at: indexPath)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DogsCell", for: indexPath) as! DogsCell
-        //let dog = dogs[indexPath.row]
+        
+        //Configure Cell
         cell.dog = dog
         //configureCell(cell, at: indexPath)
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
@@ -232,6 +230,7 @@ extension DogsViewController
         fetchedResultsController.managedObjectContext.delete(dog)
     }
     
+    
     func configureCell(_ cell: DogsCell, at indexPath: IndexPath)
     {
         // Fetch Dog
@@ -240,9 +239,21 @@ extension DogsViewController
         // Configure Cell
         cell.dog = dog
     }
-    
 }
 
+
+//MARK:- CoreDataManager Protocol
+extension DogsViewController: CoreDataManagerDelegate
+{
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        self.coreDataManager = coreDataManager
+    }
+}
+
+
+/*
 extension DogsViewController: AddDogViewControllerDelegate
 {
     
@@ -272,5 +283,5 @@ extension DogsViewController: AddDogViewControllerDelegate
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
-    
 }
+ */
