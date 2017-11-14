@@ -252,7 +252,6 @@ extension ClientsViewController
 //MARK:- CoreDataManager Protocol
 extension ClientsViewController: CoreDataManagerDelegate
 {
-    //var coreDataManager: CoreDataManager
     
     func setCoreDataManager(coreDataManager: CoreDataManager)
     {
