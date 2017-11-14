@@ -10,30 +10,15 @@ import UIKit
 import CoreData
 
 
-protocol CoreDataManagerDelegate
-{    
-    func setCoreDataManager(coreDataManager: CoreDataManager)
-}
-
-
 class ClientsViewController: UITableViewController
 {
     
-    var coreDataManager: CoreDataManager!
     
-    /*
-    func setCoreDataManager(coreDataManager: CoreDataManager)
-    {
-        print("ClientsViewController setCoreDataManager protocol")
-        //self.coreDataManager = coreDataManager
-    }
-    */
-    // MARK:- Properties
-    /*
-    fileprivate let coreDataManager = CoreDataManager(modelName: "DoggyTimev2")
-*/
-
+    //MARK:- Properties
+    var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
+    var clients = [Client]()
+    
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Client> =
     {
@@ -56,13 +41,11 @@ class ClientsViewController: UITableViewController
     }()
 
     
-    //List of all clients
-    var clients = [Client]()
-    
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     }
+    
     
     override func viewDidLoad()
     {
@@ -82,8 +65,8 @@ class ClientsViewController: UITableViewController
         }
         
         self.tableView.reloadData()
-        
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -125,11 +108,13 @@ class ClientsViewController: UITableViewController
 extension ClientsViewController
 {
     
+    
     @IBAction func cancelToClientsViewController(_ segue: UIStoryboardSegue)
     {
         print("Back in the ClientViewController")
         
     }
+    
     
     @IBAction func saveClientDetail(_ segue: UIStoryboardSegue)
     {
@@ -155,26 +140,33 @@ extension ClientsViewController
     }
 }
 
+
 extension ClientsViewController: NSFetchedResultsControllerDelegate
 {
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+    {
+        switch (type)
+        {
         case .insert:
-            if let indexPath = newIndexPath {
+            if let indexPath = newIndexPath
+            {
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break;
         case .delete:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             break;
@@ -185,26 +177,31 @@ extension ClientsViewController: NSFetchedResultsControllerDelegate
             }
             break;
         case .move:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
-            if let newIndexPath = newIndexPath {
+            if let newIndexPath = newIndexPath
+            {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break;
         }
     }
-    
 }
+
 
 // MARK:- UITableViewDataSource
 extension ClientsViewController
 {
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -216,6 +213,7 @@ extension ClientsViewController
         return sectionInfo.numberOfObjects
     }
 
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -227,6 +225,7 @@ extension ClientsViewController
         //configureCell(cell, at: indexPath)
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
@@ -249,36 +248,6 @@ extension ClientsViewController
     }
 }
 
-/*
-extension ClientsViewController: AddClientViewControllerDelegate
-{
-    
-    func controller(_ controller: ClientsDetailViewController, didAddClient forename: String, surname: String)
-    {
-
-        // Create Client
-        let client = Client(context: coreDataManager.managedObjectContext)
-        
-        // Populate Note
-        client.foreName = ""
-        client.surName = ""
-        client.street = ""
-        client.updatedAt = NSDate()
-        client.createdAt = NSDate()
-        
-        do
-        {
-            try client.managedObjectContext?.save()
-        }
-        catch
-        {
-            let saveError = error as NSError
-            print("Unable to Save Client")
-            print("\(saveError), \(saveError.localizedDescription)")
-        }
-    }
-}
-*/
  
 //MARK:- CoreDataManager Protocol
 extension ClientsViewController: CoreDataManagerDelegate
@@ -290,3 +259,35 @@ extension ClientsViewController: CoreDataManagerDelegate
         self.coreDataManager = coreDataManager
     }
 }
+
+
+/*
+ extension ClientsViewController: AddClientViewControllerDelegate
+ {
+ 
+ func controller(_ controller: ClientsDetailViewController, didAddClient forename: String, surname: String)
+ {
+ 
+ // Create Client
+ let client = Client(context: coreDataManager.managedObjectContext)
+ 
+ // Populate Note
+ client.foreName = ""
+ client.surName = ""
+ client.street = ""
+ client.updatedAt = NSDate()
+ client.createdAt = NSDate()
+ 
+ do
+ {
+ try client.managedObjectContext?.save()
+ }
+ catch
+ {
+ let saveError = error as NSError
+ print("Unable to Save Client")
+ print("\(saveError), \(saveError.localizedDescription)")
+ }
+ }
+ }
+ */
