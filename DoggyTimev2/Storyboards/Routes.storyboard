@@ -31,7 +31,7 @@
         <!--Routes-->
         <scene sceneID="z0o-P5-3KH">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController-ds6-SW-hy6" title="Routes" id="qvY-Rx-yYo" userLabel="Routes" customClass="RoutesViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UITableViewController" title="Routes" id="qvY-Rx-yYo" userLabel="Routes" customClass="RoutesViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="X8q-dv-znG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,7 +329,6 @@
                         <outlet property="distanceField" destination="eHd-fa-sun" id="JCA-LK-2En"/>
                         <outlet property="durationField" destination="qz1-mr-Y6V" id="1XR-at-MQc"/>
                         <outlet property="nameField" destination="j5h-IX-qYy" id="3w6-jc-m6F"/>
-                        <outlet property="routeIdField" destination="p1p-pt-ll4" id="aY2-0k-bvD"/>
                         <outlet property="terrainField" destination="Qoc-QI-Gmf" id="cbH-pu-wjD"/>
                     </connections>
                 </tableViewController>
@@ -340,6 +339,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KxG-mx-7Js"/>
+        <segue reference="zu2-46-WRq"/>
     </inferredMetricsTieBreakers>
 </document>

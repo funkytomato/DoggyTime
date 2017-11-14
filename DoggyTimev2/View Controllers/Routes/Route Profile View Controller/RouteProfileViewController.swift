@@ -7,26 +7,35 @@
 //
 
 import UIKit
+import CoreData
+
+/*
+protocol AddRouteViewControllerDelegate
+{
+    func controller(_ controller: RouteProfileViewController, didAddRoute name: String )
+}
+*/
+
 
 class RouteProfileViewController: UITableViewController
 {
-    //MARK:- IBOutlets
-    @IBOutlet weak var routeIdField: UITextField!
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var terrainField: UITextField!
-    @IBOutlet weak var distanceField: UITextField!
-    @IBOutlet weak var durationField: UITextField!
-    
-    @IBAction func startBtn(_ sender: Any) {
-    }
-    @IBAction func finishBtn(_ sender: Any) {
-    }
-    
     
     //MARK:- Properties
+    //var delegate: AddRouteViewControllerDelegate?
+    var routeData: Route?
     
-    //Data to receive from RouteViewController
-   weak var routeData: Route?
+    
+    //MARK:- IBOutlets
+    @IBOutlet weak var NameField: UITextField!
+    @IBOutlet weak var TerrainField: UITextField!
+    @IBOutlet weak var DistanceField: UITextField!
+    @IBOutlet weak var DurationField: UITextField!
+    
+    @IBAction func StartBtn(_ sender: Any) {
+    }
+    @IBAction func FinishBtn(_ sender: Any) {
+    }
+    
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -34,9 +43,11 @@ class RouteProfileViewController: UITableViewController
         super.init(coder: aDecoder)
     }
     
+    
     deinit {
         print("RouteProfileViewController deinit")
     }
+    
     
     override func viewDidLoad()
     {
@@ -44,13 +55,14 @@ class RouteProfileViewController: UITableViewController
         super.viewDidLoad()
         
         //self.routeIdField.text = routeData?.routeId.description
-        self.nameField.text = routeData?.name
-        self.terrainField.text = routeData?.terrain
-        self.distanceField.text = routeData?.distance.description
-        self.durationField.text = routeData?.duration.description
+        self.NameField.text = routeData?.name
+        self.TerrainField.text = routeData?.terrain
+        self.DistanceField.text = routeData?.distance.description
+        self.DurationField.text = routeData?.duration.description
         
-        tableView.reloadData()
+        //tableView.reloadData()
     }
+    
     
     override func didReceiveMemoryWarning()
     {
@@ -59,6 +71,7 @@ class RouteProfileViewController: UITableViewController
         
         //Dispose of any resources that can be recreated
     }
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -70,35 +83,48 @@ class RouteProfileViewController: UITableViewController
         //if segue.identifier == "SaveRouteDetail",
         //if let _ = segue.destination as? RoutesViewController,
         if segue.identifier == "SaveRouteDetail",
-            let routeid = routeIdField.text,
-            let name = nameField.text,
-            let terrain = terrainField.text,
-            let distance = distanceField.text,
-            let duration = durationField.text
+            //let routeid = routeIdField.text,
+            let name = NameField.text,
+            let terrain = TerrainField.text,
+            let distance = DistanceField.text,
+            let duration = DurationField.text
         {
             
             //Get the latest data and pass to destinationController to be saved
-            let route = Route(context: PersistentService.context)
-            route.routeid = Int16(routeid)!
-            route.name = name
-            route.terrain = terrain
-            route.distance = Float(distance)!
-            route.duration = Float(duration)!
-            
-            self.routeData = route
+            //let route = Route(context: PersistentService.context)
+            //route.routeid = Int16(routeid)!
+            routeData?.name = name
+            routeData?.terrain = terrain
+            routeData?.distance = Float(distance)!
+            routeData?.duration = Float(duration)!
         }
     }
 }
 
-extension String
+/*
+//MARK:- IBActions
+extension RouteProfileViewController
 {
-    func toDouble()->Double?
+    // MARK: - Actions
+    
+    @IBAction func save(_ sender: Any)
     {
-        return NumberFormatter().number(from: self)?.doubleValue
+        guard let name = NameField.text else { return }
+        guard let terrain = TerrainField.text else {return}
+        guard let distance = DistanceField.text else {return}
+        guard let duartion = DurationField.text else {return }
+        guard let delegate = delegate else { return }
+        
+        // Notify Delegate
+        delegate.controller(self, didAddRoute: name)
+        
+        // Dismiss View Controller
+        dismiss(animated: true, completion: nil)
     }
     
-    func toFloat()->Float?
+    @IBAction func cancel(_ sender: Any)
     {
-        return NumberFormatter().number(from: self)?.floatValue
+        dismiss(animated: true, completion: nil)
     }
 }
+ */

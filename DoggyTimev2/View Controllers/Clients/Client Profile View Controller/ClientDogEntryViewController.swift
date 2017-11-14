@@ -1,4 +1,12 @@
 //
+//  ClientDogEntryViewController.swift
+//  DoggyTimev2
+//
+//  Created by Jason Fry on 08/11/2017.
+//  Copyright © 2017 Jason Fry. All rights reserved.
+//
+
+//
 //  DogProfileViewController.swift
 //  DoggyTimev2
 //
@@ -8,23 +16,24 @@
 
 import UIKit
 import CoreData
- 
-class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
+
+protocol AddClientDogEntryViewControllerDelegate
 {
-    
-    //MARK:- Properties
-    //var delegate: AddDogViewControllerDelegate?
-    //Data to send to profile controller
-    var dogData : Dog?
-    
-    
+    func controller(_ controller: ClientDogEntryViewController, didAddClientDog dogname: String)
+}
+
+class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
+{
     //MARK:- IBOutlets
-    @IBOutlet weak var DognameField: UITextField!
+    @IBOutlet weak var DogNameField: UITextField!
+    //@IBOutlet weak var genderField: UITextField!
     @IBOutlet weak var GenderPicker: UIPickerView!
+    
+    //@IBOutlet weak var breedField: UITextField!
     @IBOutlet weak var BreedPicker: UIPickerView!
     @IBOutlet weak var BreedPictureView: UIImageView!
-    @IBOutlet weak var BreedInfoView: UITextView!
     @IBOutlet weak var SizePicker: UIPickerView!
+    //@IBOutlet weak var sizeField: UITextField!
     @IBOutlet weak var ProfilePictureView: UIImageView!
     
     var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
@@ -33,18 +42,22 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
-
+    //MARK:- Properties
+    
+    var delegate: AddClientDogEntryViewControllerDelegate?
+    
+    //Data to send to profile controller
+    weak var dogData : Dog?
+    
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     }
     
-    
     deinit
     {
         print("DogProfileViewController deinit")
     }
-    
     
     override func viewDidLoad()
     {
@@ -61,7 +74,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         
         if dogData != nil
         {
-            self.DognameField.text = dogData?.dogName
+            self.DogNameField.text = dogData?.dogName
             
             //self.sexFd.text = dogData?.sex
             if let row = genderDataSource.index(of: (dogData?.gender)!)
@@ -78,12 +91,11 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
             }
             
             //self.sizeFd.text = dogData?.size
-            //self.ProfilePictureView.image = dogData?.picture
+            //self.pictureView.image = dogData?.picture
         }
-
+        
         tableView.reloadData()
     }
-    
     
     override func didReceiveMemoryWarning()
     {
@@ -92,35 +104,36 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         //Dispose of any resources that can be recreated
     }
     
-    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("DogProfileViewController prepare segue")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveDogDetail",
+        if segue.identifier == "SaveClientDogDetail",
             //let dogid = dog
-            let dogname = DognameField.text,
+            let dogname = DogNameField.text,
             let gender = dogData?.gender,
             let breed = dogData?.breed,
             let size = dogData?.size
-           // let picture = pictureView.image
+            // let picture = PictureView.image
         {
             
+            // Update Client
             //let dog = Dog(context: PersistentService.context)
             dogData?.dogName = dogname
             dogData?.gender = gender
             dogData?.breed = breed
             dogData?.size = size
             //dog.picture = picture
+            
+            //self.dogData = dog
         }
     }
 }
 
-
 //MARK:- PickerView
-extension DogProfileViewController
+extension ClientDogEntryViewController
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
@@ -204,21 +217,21 @@ extension DogProfileViewController
     }
 }
 
-extension DogProfileViewController: UITextFieldDelegate
+extension ClientDogEntryViewController: UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) ->Bool
     {
         switch textField
         {
-        case DognameField:
+        case DogNameField:
             GenderPicker.becomeFirstResponder()
-//        case genderPicker:
-//            breedPicker.becomeFirstResponder()
-//        case breedPicker:
-//            sizePicker.becomeFirstResponder()
-//        case sizePicker:
-//            sizePicker.resignFirstResponder()
-
+            //        case genderPicker:
+            //            breedPicker.becomeFirstResponder()
+            //        case breedPicker:
+            //            sizePicker.becomeFirstResponder()
+            //        case sizePicker:
+            //            sizePicker.resignFirstResponder()
+            
         default:
             SizePicker.resignFirstResponder()
             
@@ -228,41 +241,42 @@ extension DogProfileViewController: UITextFieldDelegate
 }
 
 /*
-extension DogProfileViewController: UIPickerViewDelegate
-{
-    func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
-    {
-        switch pickerView
-        {
-        case genderPicker:
-            breedPicker.becomeFirstResponder()
-        case breedPicker:
-            sizePicker.becomeFirstResponder()
-        case sizePicker:
-            sizePicker.resignFirstResponder()
-        default:
-            sizePicker.resignFirstResponder()
-        }
-        
-        return true
-    }
-}
+ extension ClientDogEntryViewController: UIPickerViewDelegate
+ {
+ func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
+ {
+ switch pickerView
+ {
+ case genderPicker:
+ breedPicker.becomeFirstResponder()
+ case breedPicker:
+ sizePicker.becomeFirstResponder()
+ case sizePicker:
+ sizePicker.resignFirstResponder()
+ default:
+ sizePicker.resignFirstResponder()
+ }
+ 
+ return true
+ }
+ }
  */
 
-/*
 //MARK:- IBActions
-extension DogProfileViewController
+extension ClientDogEntryViewController
 {
     // MARK: - Actions
     
     @IBAction func save(_ sender: Any) {
-        guard let dogname = DognameField.text else { return }
-        //guard let gender = SurnameField.text else {return}
-        //guard let street = StreetField.text else {return}
-        //guard let delegate = delegate else { return }
+        guard let dogname = DogNameField.text else { return }
+        //guard let gender = GenderPicker.text else {return}
+        //guard let breed = BreedPicker.text else {return}
+        //guard let size = SizePicker.text else { return }
+        //guard let temperament =
+        guard let delegate = delegate else { return }
         
         // Notify Delegate
-        delegate?.controller(self, didAddDog: dogname)
+        delegate.controller(self, didAddClientDog: dogname)
         
         // Dismiss View Controller
         dismiss(animated: true, completion: nil)
@@ -272,4 +286,3 @@ extension DogProfileViewController
         dismiss(animated: true, completion: nil)
     }
 }
-*/

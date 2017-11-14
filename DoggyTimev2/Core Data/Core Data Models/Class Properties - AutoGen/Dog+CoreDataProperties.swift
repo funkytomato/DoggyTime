@@ -2,7 +2,7 @@
 //  Dog+CoreDataProperties.swift
 //  DoggyTimev2
 //
-//  Created by Jason Fry on 08/11/2017.
+//  Created by Jason Fry on 09/11/2017.
 //  Copyright © 2017 Jason Fry. All rights reserved.
 //
 //
@@ -18,11 +18,14 @@ extension Dog {
     }
 
     @NSManaged public var breed: String?
-    @NSManaged public var dogname: String?
-    @NSManaged public var dogpicture: NSData?
+    @NSManaged public var dogName: String?
+    @NSManaged public var profilePicture: NSData?
     @NSManaged public var gender: String?
     @NSManaged public var size: String?
     @NSManaged public var walkcount: Int16
+    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var temperament: String?
     @NSManaged public var owner: Client?
     @NSManaged public var walking: Walk?
 

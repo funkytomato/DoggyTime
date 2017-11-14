@@ -31,7 +31,7 @@
         <!--Walks-->
         <scene sceneID="GRD-SO-zeN">
             <objects>
-                <tableViewController id="Y3G-6i-uFj" customClass="WalksViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UITableViewController" id="Y3G-6i-uFj" customClass="WalksViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="irz-uN-Wcg">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,13 +44,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Walk #" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBp-w7-dcU" userLabel="WalkId Label">
-                                            <rect key="frame" x="8" y="10" width="31" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12 NOON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ui-sb-MHB" userLabel="Time Label">
                                             <rect key="frame" x="40" y="10" width="78" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -78,7 +71,6 @@
                                     <outlet property="dayLbl" destination="c7b-sC-cgo" id="Hze-1s-hJZ"/>
                                     <outlet property="locationLbl" destination="4s0-ny-noL" id="igD-BV-jcZ"/>
                                     <outlet property="timeLbl" destination="4Ui-sb-MHB" id="h5O-Kn-bvh"/>
-                                    <outlet property="walkIdLbl" destination="uBp-w7-dcU" id="s6f-nq-vmC"/>
                                     <segue destination="88B-8i-OHK" kind="show" id="swz-AL-478"/>
                                 </connections>
                             </tableViewCell>
@@ -99,68 +91,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gu-2D-qkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2273" y="143"/>
-        </scene>
-        <!--Walks-->
-        <scene sceneID="2c0-Ix-FCa">
-            <objects>
-                <tableViewController storyboardIdentifier="UITableViewController" id="d3D-Xw-acP" userLabel="Walks" customClass="WalksViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r3L-Sd-cWM">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalkCell" rowHeight="65" id="qLD-Mf-G7w" customClass="WalkCell" customModule="DoggyTimev2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="1024" height="65"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qLD-Mf-G7w" id="6Bc-wm-aUk">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="64.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M36-15-I3k" userLabel="Walk Number">
-                                            <rect key="frame" x="37" y="15" width="52" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dogs on walk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk5-Hs-lHv">
-                                            <rect key="frame" x="37" y="37" width="81" height="16"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAQ-8T-d16">
-                                            <rect key="frame" x="938" y="29" width="65.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="M36-15-I3k" firstAttribute="leading" secondItem="6Bc-wm-aUk" secondAttribute="leadingMargin" constant="17" id="2dv-iA-mMe"/>
-                                        <constraint firstItem="M36-15-I3k" firstAttribute="top" secondItem="6Bc-wm-aUk" secondAttribute="topMargin" id="AQB-33-tXm"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bAQ-8T-d16" secondAttribute="trailing" constant="0.33000000000000002" id="Dvv-sh-0v3"/>
-                                        <constraint firstItem="Uk5-Hs-lHv" firstAttribute="leading" secondItem="6Bc-wm-aUk" secondAttribute="leadingMargin" constant="17" id="FZk-aV-Msj"/>
-                                        <constraint firstItem="bAQ-8T-d16" firstAttribute="top" secondItem="6Bc-wm-aUk" secondAttribute="topMargin" constant="14" id="mUN-DI-l6P"/>
-                                        <constraint firstItem="Uk5-Hs-lHv" firstAttribute="top" secondItem="M36-15-I3k" secondAttribute="bottom" constant="1" id="xGy-kQ-bZz"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dogsOnWalkLabel" destination="Uk5-Hs-lHv" id="61j-Pv-MUs"/>
-                                    <outlet property="locationLabel" destination="bAQ-8T-d16" id="9EE-69-UFX"/>
-                                    <outlet property="walkNoLabel" destination="M36-15-I3k" id="AMX-Ub-VKw"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="d3D-Xw-acP" id="fC4-Lm-URh"/>
-                            <outlet property="delegate" destination="d3D-Xw-acP" id="wkp-3d-c0B"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="T0R-gj-keM"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gas-RR-LID" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1847" y="952"/>
         </scene>
         <!--Walk Profile Table View Controller-->
         <scene sceneID="Mln-C4-tXV">
@@ -306,7 +236,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <containerView opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="klN-bM-hcJ">
-                                                    <rect key="frame" x="8" y="0.0" width="1008" height="240"/>
+                                                    <rect key="frame" x="8" y="1" width="1008" height="240"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <segue destination="8zw-OC-8oW" kind="embed" identifier="embeddedDogsOnWalkController" id="nqM-jk-7EW"/>

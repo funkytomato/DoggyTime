@@ -22,7 +22,7 @@ class WalkCell: UITableViewCell
             guard let walk = walk else {return}
             
             //walkNoLabel.text = walk.walkNo.description
-            locationLabel.text = walk.locationname
+            locationLabel.text = walk.locationName
             //dogsOnWalkLabel.text = walk.dogs.description
         }
     }

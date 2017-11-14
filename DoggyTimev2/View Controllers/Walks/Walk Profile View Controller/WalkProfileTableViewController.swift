@@ -9,9 +9,21 @@
 import UIKit
 import MapKit
 
+/*
+protocol AddWalkViewControllerDelegate
+{
+    func controller(_ controller: WalkProfileTableViewController, didAddWalk name: String)
+}
+*/
+
 
 class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
+    
+    
+    //MARK:- Properties
+    //var delegate: AddWalkViewControllerDelegate?
+    weak var walkData: Walk?
     
     //MARK:- IBOutlets
     @IBOutlet weak var WalkIdField: UITextField!
@@ -27,18 +39,19 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     
     var locationDataSource = ["Pagham", "Chichester", "Selsey", "Elmer", "Summer Lane"]
     
-    weak var walkData: Walk?
-    
+
     required init?(coder aDecoder: NSCoder)
     {
         print("init WalkProfileTableViewController")
         super.init(coder: aDecoder)
     }
     
+    
     deinit
     {
         print("deinit WalkProfileTableViewController")
     }
+    
     
     override func viewDidLoad()
     {
@@ -56,8 +69,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
 //            guard let row = locationDataSource.index(of: (walkData?.locationname)!) else {return}
 //            locationPicker.selectRow(row, inComponent: 0, animated: false)
             
-            
-            WalkIdField.text = walkData?.walkid.description
             //locationNameField.text = walkData?.locationname
             
             print("date \(String(describing: walkData?.dateofwalk))")
@@ -72,6 +83,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         }
     }
     
+    
     override func didReceiveMemoryWarning()
     {
         print("WalkProfileTableViewController didReceiveMemoryWarning")
@@ -79,7 +91,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     }
     
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("WalkProfileTableViewController prepare segue")
@@ -96,28 +107,26 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         }
         //else if let _ = segue.destination as? WalksViewController,
         else if segue.identifier == "SaveWalkDetail",
-            let walkid = Int16(WalkIdField.text!),
-            let locationname = LocationNameField.text,
+            //let locationname = LocationNameField.text,
             let latitude = LatitudeField.text,
             let longitude = LongitudeField.text
         {
     
             let dateofwalk = DateTimePicker.date
             
-            let walk = Walk(context: PersistentService.context)
-            walk.walkid = walkid
-            walk.dateofwalk = dateofwalk
-            walk.locationname = locationname
+            //let walk = Walk(context: PersistentService.context)
+            
+            //Update Walk
+            walkData?.dateofwalk = dateofwalk
+            //walkData?.locationName = locationname
             
             guard let latitude = Double(latitude) else {return}
             print("latitude\(latitude)")
-            walk.latitude = latitude
+            walkData?.latitude = latitude
             
             guard let longitude = Double(longitude) else {return}
             print("longitude\(longitude)")
-            walk.longitude = longitude
-            
-            self.walkData = walk
+            walkData?.longitude = longitude
         }
     }
 }
@@ -125,10 +134,14 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK:- PickerView
 extension WalkProfileTableViewController
 {
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1
     }
+    
+    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
@@ -140,6 +153,7 @@ extension WalkProfileTableViewController
         return 1
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         if pickerView == LocationPicker
@@ -150,6 +164,7 @@ extension WalkProfileTableViewController
         return ""
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView == LocationPicker
@@ -158,6 +173,8 @@ extension WalkProfileTableViewController
             //breedpictureView.image = UIImage(named: breedDataSource[row])
         }
     }
+    
+    
     /*
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
@@ -214,3 +231,30 @@ extension WalkProfileTableViewController: UITextFieldDelegate
     }
 }
 
+/*
+//MARK:- IBActions
+extension WalkProfileTableViewController
+{
+    // MARK: - Actions
+    
+    @IBAction func save(_ sender: Any) {
+        //guard let dateofwalk = DateTimePicker.date else { return }
+        //guard let location = LocationPicker. else {return}
+        guard let latitude = LatitudeField.text else {return}
+        guard let longitude = LongitudeField.text else {return}
+        guard let delegate = delegate else { return }
+        
+        let name = "test"
+        
+        // Notify Delegate
+        delegate.controller(self, didAddWalk: name)
+        
+        // Dismiss View Controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+*/
