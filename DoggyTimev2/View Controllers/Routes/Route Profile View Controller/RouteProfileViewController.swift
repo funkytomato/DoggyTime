@@ -9,14 +9,22 @@
 import UIKit
 import CoreData
 
+/*
 protocol AddRouteViewControllerDelegate
 {
     func controller(_ controller: RouteProfileViewController, didAddRoute name: String )
 }
+*/
 
 
 class RouteProfileViewController: UITableViewController
 {
+    
+    //MARK:- Properties
+    //var delegate: AddRouteViewControllerDelegate?
+    var routeData: Route?
+    
+    
     //MARK:- IBOutlets
     @IBOutlet weak var NameField: UITextField!
     @IBOutlet weak var TerrainField: UITextField!
@@ -29,22 +37,17 @@ class RouteProfileViewController: UITableViewController
     }
     
     
-    //MARK:- Properties
-    
-    var delegate: AddRouteViewControllerDelegate?
-    
-    //Data to receive from RouteViewController
-   weak var routeData: Route?
-    
     required init?(coder aDecoder: NSCoder)
     {
         print("RouteProfileViewController init")
         super.init(coder: aDecoder)
     }
     
+    
     deinit {
         print("RouteProfileViewController deinit")
     }
+    
     
     override func viewDidLoad()
     {
@@ -57,8 +60,9 @@ class RouteProfileViewController: UITableViewController
         self.DistanceField.text = routeData?.distance.description
         self.DurationField.text = routeData?.duration.description
         
-        tableView.reloadData()
+        //tableView.reloadData()
     }
+    
     
     override func didReceiveMemoryWarning()
     {
@@ -67,6 +71,7 @@ class RouteProfileViewController: UITableViewController
         
         //Dispose of any resources that can be recreated
     }
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -92,26 +97,11 @@ class RouteProfileViewController: UITableViewController
             routeData?.terrain = terrain
             routeData?.distance = Float(distance)!
             routeData?.duration = Float(duration)!
-            
-            
-            //self.routeData = route
         }
     }
 }
 
-extension String
-{
-    func toDouble()->Double?
-    {
-        return NumberFormatter().number(from: self)?.doubleValue
-    }
-    
-    func toFloat()->Float?
-    {
-        return NumberFormatter().number(from: self)?.floatValue
-    }
-}
-
+/*
 //MARK:- IBActions
 extension RouteProfileViewController
 {
@@ -137,3 +127,4 @@ extension RouteProfileViewController
         dismiss(animated: true, completion: nil)
     }
 }
+ */
