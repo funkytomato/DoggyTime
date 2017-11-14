@@ -9,13 +9,21 @@
 import UIKit
 import MapKit
 
+/*
 protocol AddWalkViewControllerDelegate
 {
     func controller(_ controller: WalkProfileTableViewController, didAddWalk name: String)
 }
+*/
+
 
 class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
+    
+    
+    //MARK:- Properties
+    //var delegate: AddWalkViewControllerDelegate?
+    weak var walkData: Walk?
     
     //MARK:- IBOutlets
     @IBOutlet weak var WalkIdField: UITextField!
@@ -31,20 +39,19 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     
     var locationDataSource = ["Pagham", "Chichester", "Selsey", "Elmer", "Summer Lane"]
     
-    var delegate: AddWalkViewControllerDelegate?
-    
-    weak var walkData: Walk?
-    
+
     required init?(coder aDecoder: NSCoder)
     {
         print("init WalkProfileTableViewController")
         super.init(coder: aDecoder)
     }
     
+    
     deinit
     {
         print("deinit WalkProfileTableViewController")
     }
+    
     
     override func viewDidLoad()
     {
@@ -76,6 +83,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         }
     }
     
+    
     override func didReceiveMemoryWarning()
     {
         print("WalkProfileTableViewController didReceiveMemoryWarning")
@@ -83,7 +91,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     }
     
 
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("WalkProfileTableViewController prepare segue")
@@ -100,7 +107,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         }
         //else if let _ = segue.destination as? WalksViewController,
         else if segue.identifier == "SaveWalkDetail",
-            let locationname = LocationNameField.text,
+            //let locationname = LocationNameField.text,
             let latitude = LatitudeField.text,
             let longitude = LongitudeField.text
         {
@@ -111,7 +118,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             
             //Update Walk
             walkData?.dateofwalk = dateofwalk
-            walkData?.locationName = locationname
+            //walkData?.locationName = locationname
             
             guard let latitude = Double(latitude) else {return}
             print("latitude\(latitude)")
@@ -120,8 +127,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             guard let longitude = Double(longitude) else {return}
             print("longitude\(longitude)")
             walkData?.longitude = longitude
-            
-            //self.walkData = walk
         }
     }
 }
@@ -129,10 +134,14 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
 //MARK:- PickerView
 extension WalkProfileTableViewController
 {
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return 1
     }
+    
+    
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
@@ -144,6 +153,7 @@ extension WalkProfileTableViewController
         return 1
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         if pickerView == LocationPicker
@@ -154,6 +164,7 @@ extension WalkProfileTableViewController
         return ""
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if pickerView == LocationPicker
@@ -162,6 +173,8 @@ extension WalkProfileTableViewController
             //breedpictureView.image = UIImage(named: breedDataSource[row])
         }
     }
+    
+    
     /*
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
@@ -218,6 +231,7 @@ extension WalkProfileTableViewController: UITextFieldDelegate
     }
 }
 
+/*
 //MARK:- IBActions
 extension WalkProfileTableViewController
 {
@@ -243,4 +257,4 @@ extension WalkProfileTableViewController
         dismiss(animated: true, completion: nil)
     }
 }
-
+*/
