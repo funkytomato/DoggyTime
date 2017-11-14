@@ -9,16 +9,16 @@
 import UIKit
 import CoreData
 
-/*
-protocol AddClientViewControllerDelegate
-{
-    func controller(_ controller: ClientsDetailViewController, didAddClient forename: String, surname: String )
-}
-*/
  
 class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
+    
+    // MARK: - Properties
+    //var delegate: AddClientViewControllerDelegate?
+    var clientData: Client?
+    
+    
     //MARK:- IBOutlets
     @IBOutlet weak var ForenameField: UITextField!
     @IBOutlet weak var SurnameField: UITextField!
@@ -33,6 +33,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var DognameField: UITextField!
     @IBOutlet weak var DogTinyPicture: UIImageView!
     @IBOutlet weak var DogPicture: UIImageView!
+
     
     @IBAction func photoLibraryBtn(_ sender: Any)
     {
@@ -42,11 +43,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         present(picker, animated: true, completion: nil)
     }
-    
-    //var delegate: AddClientViewControllerDelegate?
-    
-    // MARK: - Properties
-    var clientData: Client?
     
     
     // MARK:- Initializers
@@ -102,7 +98,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             guard let dogname = DognameField.text else {return}
             
             // Update Client
-            //let client = Client(context: PersistentService.context)
             clientData?.foreName  = forename
             clientData?.surName = surname
             clientData?.street = street
@@ -111,13 +106,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             clientData?.mobile = mobile
             clientData?.eMail = email
             //clientData?.dogName = dogname
-            
-            //self.clientData = client
         }
     }
-    
-    
 }
+
 
 extension ClientsDetailViewController: UITextFieldDelegate
 {
