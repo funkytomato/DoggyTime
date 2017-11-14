@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="908" y="-869"/>
         </scene>
-        <!--setCoreDataManager-->
+        <!--Clients View Controller-->
         <scene sceneID="lD9-tB-rZC">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController" title="setCoreDataManager" id="62Z-sB-dF8" customClass="ClientsViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UITableViewController" id="62Z-sB-dF8" userLabel="Clients View Controller" customClass="ClientsViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aob-yf-vkn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -339,7 +339,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="8" y="1151107" width="304" height="278"/>
+                                                    <rect key="frame" x="8" y="1931687" width="304" height="278"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -417,10 +417,10 @@
             </objects>
             <point key="canvasLocation" x="3719" y="-1001"/>
         </scene>
-        <!--DogProfileNavController-->
+        <!--DogProfile-->
         <scene sceneID="Qvx-yM-xn9">
             <objects>
-                <viewControllerPlaceholder storyboardName="Dogs" referencedIdentifier="DogProfileNavController" id="L09-ae-cjT" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Dogs" referencedIdentifier="DogProfile" id="L09-ae-cjT" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ocr-wm-s31"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OEs-fw-iVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
