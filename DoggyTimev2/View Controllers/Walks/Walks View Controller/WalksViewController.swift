@@ -14,8 +14,8 @@ class WalksViewController: UITableViewController
 {
 
     //MARK:- Properties
-    
     var coreDataManager: CoreDataManager!
+    var walks = [Walk]()
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Walk> =
     {
@@ -35,8 +35,6 @@ class WalksViewController: UITableViewController
         return fetchedResultsController
     }()
     
-    //Data to send to detail controller
-    var walks = [Walk]()
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -48,7 +46,7 @@ class WalksViewController: UITableViewController
         print("WalksViewController viewDidLoad")
         super.viewDidLoad()
         
-        
+        //Fetch walks from CoreData
         do
         {
             try fetchedResultsController.performFetch()
@@ -59,20 +57,10 @@ class WalksViewController: UITableViewController
             print("Unable to Save Walk")
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
-  /*
-        // Do any additional setup after loading the view, typically from a nib.
-        let fetchRequest: NSFetchRequest<Walk> = Walk.fetchRequest()
         
-        do
-        {
-            let walks = try PersistentService.context.fetch(fetchRequest)
-            self.walks = walks
-            tableView.estimatedRowHeight = 60
-            tableView.rowHeight = UITableViewAutomaticDimension
-            self.tableView.reloadData()
-        }
-        catch {}
-*/
+        tableView.estimatedRowHeight = 60
+        tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning()
@@ -90,18 +78,19 @@ class WalksViewController: UITableViewController
         {
             //Load an existing Walk profile
             
-            let selectedWalk = walks[indexPath.row]
+            // Fetch Walk
+            let selectedWalk = fetchedResultsController.object(at: indexPath)
+            
+            //Configure View Controller
             profileViewController.walkData = selectedWalk
         }
         else if let profileViewController = segue.destination as? WalkProfileTableViewController
         {
             //Create a new Walk profile
-        
             let walk = Walk(context: coreDataManager.mainManagedObjectContext)
             //walk.locationName = "Enter location name"
             
             //Populate Walk
-            
             //Set the current date and time
             let date = Date()
             walk.dateofwalk = date
@@ -129,6 +118,7 @@ extension WalksViewController
             return
         }
         
+        //Store to CoreData
         do
         {
             try walk.managedObjectContext?.save()
@@ -139,71 +129,81 @@ extension WalksViewController
             print("Unable to Save Walk")
             print("\(saveError), \(saveError.localizedDescription)")
         }
-        
-        /*
-        //Store to CoreData
-        PersistentService.saveContext()
-        walks.append(walk)
-        self.tableView.reloadData()
- */
     }
 }
 
 extension WalksViewController: NSFetchedResultsControllerDelegate
 {
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
         tableView.endUpdates()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch (type) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+    {
+        switch (type)
+        {
         case .insert:
-            if let indexPath = newIndexPath {
+            if let indexPath = newIndexPath
+            {
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break;
         case .delete:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             break;
         case .update:
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? WalkCell
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? WalkIdentificationCell
             {
                 configureCell(cell, at: indexPath)
             }
             break;
         case .move:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath
+            {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
-            if let newIndexPath = newIndexPath {
+            if let newIndexPath = newIndexPath
+            {
                 tableView.insertRows(at: [newIndexPath], with: .fade)
             }
             break;
         }
     }
-    
 }
+
 
 // MARK:- UITableViewDataSource
 extension WalksViewController
 {
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
     
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return walks.count
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -212,12 +212,16 @@ extension WalksViewController
         let walk = fetchedResultsController.object(at: indexPath)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WalkIdentificationCell", for: indexPath) as! WalkIdentificationCell
-        //let walk = walks[indexPath.row]
+
+        //Configure Cell
         cell.walk = walk
+        //configureCell(cell, at: indexPath)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
         guard editingStyle == .delete else { return }
         
         // Fetch Walk
@@ -227,7 +231,8 @@ extension WalksViewController
         fetchedResultsController.managedObjectContext.delete(walk)
     }
     
-    func configureCell(_ cell: WalkCell, at indexPath: IndexPath)
+    
+    func configureCell(_ cell: WalkIdentificationCell, at indexPath: IndexPath)
     {
         // Fetch Walk
         let walk = fetchedResultsController.object(at: indexPath)
@@ -237,6 +242,19 @@ extension WalksViewController
     }
 }
 
+
+//MARK:- CoreDataManager Protocol
+extension WalksViewController: CoreDataManagerDelegate
+{
+    //var coreDataManager: CoreDataManager
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        self.coreDataManager = coreDataManager
+    }
+}
+
+/*
 extension WalksViewController: AddWalkViewControllerDelegate
 {
     
@@ -264,6 +282,6 @@ extension WalksViewController: AddWalkViewControllerDelegate
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
-    
 }
+ */
 
