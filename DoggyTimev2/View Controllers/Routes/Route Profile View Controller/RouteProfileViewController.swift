@@ -23,18 +23,31 @@ class RouteProfileViewController: UITableViewController
     //MARK:- Properties
     //var delegate: AddRouteViewControllerDelegate?
     var routeData: Route?
+  
+    //Picker DataSources
+    var TerrainDataSource = ["Sandy","Grass","RiverSide","Hilly","Beach"]
+    var TenNumbers = [0,1,2,3,4,5,6,7,8,9]
+    var Qtrs = [25,50,75]
+    var DistanceDataSource = ["0","1","2","3","4","5","6","7","8","9"]
+    var DurationDataSource = ["0","1","2","3","4","5","6","7","8","9"]
+  
+    var receivedString: String = ""
     
     
     //MARK:- IBOutlets
-    @IBOutlet weak var NameField: UITextField!
-    @IBOutlet weak var TerrainField: UITextField!
-    @IBOutlet weak var DistanceField: UITextField!
-    @IBOutlet weak var DurationField: UITextField!
+    @IBOutlet weak var PlaceNameField: UITextField!
+    @IBOutlet weak var TerrainPicker: UIPickerView!
+    @IBOutlet weak var DistancePicker: UIPickerView!
+    @IBOutlet weak var DurationPicker: UIPickerView!
     
+   
+    //MARK:- IBActions
     @IBAction func StartBtn(_ sender: Any) {
     }
     @IBAction func FinishBtn(_ sender: Any) {
     }
+    
+
     
     
     required init?(coder aDecoder: NSCoder)
@@ -54,11 +67,40 @@ class RouteProfileViewController: UITableViewController
         print("RouteProfileViewController viewDidLoad")
         super.viewDidLoad()
         
-        //self.routeIdField.text = routeData?.routeId.description
-        self.NameField.text = routeData?.name
-        self.TerrainField.text = routeData?.terrain
-        self.DistanceField.text = routeData?.distance.description
-        self.DurationField.text = routeData?.duration.description
+        TerrainPicker.delegate = self
+        TerrainPicker.dataSource = self
+        
+        DistancePicker.delegate = self
+        DistancePicker.dataSource = self
+        
+        DurationPicker.delegate = self
+        DurationPicker.dataSource = self
+        
+        
+        
+        if routeData != nil
+        {
+            self.PlaceNameField.text = routeData?.name
+            
+            //Set the terrain picker
+            if let row = TerrainDataSource.index(of: (routeData?.terrain)!)
+            {
+                TerrainPicker.selectRow(row, inComponent:0, animated: false)
+            }
+            
+            //Set the distance picker
+            if let row = TenNumbers.index(of: Int((routeData?.distance)!))
+            {
+                DistancePicker.selectRow(row, inComponent:0, animated: false)
+            }
+            
+            //Set the duration picker
+            if let row = TenNumbers.index(of: Int((routeData?.duration)!))
+            {
+                DurationPicker.selectRow(row, inComponent:0, animated: false)
+            }
+            
+        }
         
         //tableView.reloadData()
     }
@@ -80,26 +122,195 @@ class RouteProfileViewController: UITableViewController
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        //if segue.identifier == "SaveRouteDetail",
-        //if let _ = segue.destination as? RoutesViewController,
         if segue.identifier == "SaveRouteDetail",
-            //let routeid = routeIdField.text,
-            let name = NameField.text,
-            let terrain = TerrainField.text,
-            let distance = DistanceField.text,
-            let duration = DurationField.text
+            let name = PlaceNameField.text,
+            let terrain = routeData?.terrain,
+            let distance = routeData?.distance,
+            let duration = routeData?.duration
         {
             
             //Get the latest data and pass to destinationController to be saved
-            //let route = Route(context: PersistentService.context)
-            //route.routeid = Int16(routeid)!
             routeData?.name = name
             routeData?.terrain = terrain
-            routeData?.distance = Float(distance)!
-            routeData?.duration = Float(duration)!
+            routeData?.distance = Float(distance)
+            routeData?.duration = Float(duration)
         }
     }
 }
+
+
+//MARK:- PickerView
+extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource
+{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        if pickerView == DistancePicker
+        {
+            return 2
+        }
+        else if pickerView == DurationPicker
+        {
+            return 2
+        }
+        else
+        {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        if pickerView == TerrainPicker
+        {
+            return TerrainDataSource.count
+        }
+        else if pickerView == DistancePicker
+        {
+            if component == 0
+            {
+                return TenNumbers.count
+            }
+            else if component == 1
+            {
+                return Qtrs.count
+            }
+        }
+        else if pickerView == DurationPicker
+        {
+            if component == 0
+            {
+                return TenNumbers.count
+            }
+            else if component == 1
+            {
+                return Qtrs.count
+            }
+        }
+        
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
+        if pickerView == TerrainPicker
+        {
+            return TerrainDataSource[row] as String
+        }
+        else if pickerView == DistancePicker
+        {
+            if component == 0
+            {
+                return String(TenNumbers[row])
+            }
+            else
+            {
+                return String(Qtrs[row])
+            }
+        }
+        else if pickerView == DurationPicker
+        {
+            if component == 0
+            {
+                return String(TenNumbers[row])
+            }
+            else
+            {
+                return String(Qtrs[row])
+            }
+        }
+        
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if pickerView == TerrainPicker
+        {
+            print(TerrainDataSource[row])
+            
+            routeData?.terrain = TerrainDataSource[row]
+        }
+        else if pickerView == DistancePicker
+        {
+            //print(DistanceDataSource[row])
+            if component == 0
+            {
+                print("\(TenNumbers[row])")
+                print("\(Qtrs[row])")
+                
+                let tens = TenNumbers[row].description
+                let qtrs = Qtrs[row].description
+                
+                receivedString = tens + "." + qtrs
+                routeData?.distance = Float(receivedString)!
+            }
+            else
+            {
+                print("\(TenNumbers[row])")
+                print("\(Qtrs[row])")
+                
+                let tens = TenNumbers[row].description
+                let qtrs = Qtrs[row].description
+                
+                receivedString = tens + "." + qtrs
+                routeData?.distance = Float(receivedString)!
+            }
+            
+            //routeData?.distance = DistanceDataSource[row]
+        }
+        else if pickerView == DurationPicker
+        {
+            //print(DurationDataSource[row])
+            if component == 0
+            {
+                print("\(TenNumbers[row])")
+            }
+            else
+            {
+                print("\(Qtrs[row])")
+            }
+            
+            //routeData?.duration = DurationDataSource[row]
+        }
+    }
+    
+    func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
+    {
+        switch pickerView
+        {
+        case TerrainPicker:
+            DistancePicker.becomeFirstResponder()
+        case DistancePicker:
+            DurationPicker.resignFirstResponder()
+
+        default:
+            DurationPicker.resignFirstResponder()
+        }
+        
+        return true
+    }
+}
+
+/*
+extension RouteProfileViewController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) ->Bool
+    {
+        switch textField
+        {
+        case PlaceNameField:
+            TerrainPicker.becomeFirstResponder()
+
+        default:
+            PlaceNameField.resignFirstResponder()
+            
+        }
+        return true
+    }
+}
+*/
+
+
 
 /*
 //MARK:- IBActions

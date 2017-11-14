@@ -97,6 +97,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("DogProfileViewController prepare segue")
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveDogDetail",
