@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MapKit
 
 /*
 protocol AddRouteViewControllerDelegate
@@ -23,15 +24,21 @@ class RouteProfileViewController: UITableViewController
     //MARK:- Properties
     //var delegate: AddRouteViewControllerDelegate?
     var routeData: Route?
-  
+    var durationHrs: Int?
+    var durationMins: Int?
+    var distanceMiles: Int?
+    var distanceQtrs: Int?
+    
     //Picker DataSources
     var TerrainDataSource = ["Sandy","Grass","RiverSide","Hilly","Beach"]
-    var TenNumbers = [0,1,2,3,4,5,6,7,8,9]
-    var Qtrs = [25,50,75]
-    var DistanceDataSource = ["0","1","2","3","4","5","6","7","8","9"]
-    var DurationDataSource = ["0","1","2","3","4","5","6","7","8","9"]
+    var TenNumbersDataSource = [0,1,2,3,4,5,6,7,8,9]
+    var DurationQtrsDataSource = [0,15,30,45]
+    var DistanceQtrDataSource = [0,25,50,75]
+    
+    //var DistanceDataSource = ["0","1","2","3","4","5","6","7","8","9"]
+    //var DurationDataSource = ["0","1","2","3","4","5","6","7","8","9"]
   
-    var receivedString: String = ""
+    var numberString: String = ""
     
     
     //MARK:- IBOutlets
@@ -40,8 +47,13 @@ class RouteProfileViewController: UITableViewController
     @IBOutlet weak var DistancePicker: UIPickerView!
     @IBOutlet weak var DurationPicker: UIPickerView!
     
-   
+    @IBOutlet weak var ActualDistanceField: UITextField!
+    
+    @IBOutlet weak var ActualDurationField: UITextField!
     //MARK:- IBActions
+    @IBOutlet weak var RouteMapView: MKMapView!
+    
+    
     @IBAction func StartBtn(_ sender: Any) {
     }
     @IBAction func FinishBtn(_ sender: Any) {
@@ -76,11 +88,12 @@ class RouteProfileViewController: UITableViewController
         DurationPicker.delegate = self
         DurationPicker.dataSource = self
         
-        
+        //var distanceExpondent = routeData?.distanceMiles
+        //var distanceSignificand = routeData?.distanceQtrs
         
         if routeData != nil
         {
-            self.PlaceNameField.text = routeData?.name
+            self.PlaceNameField.text = routeData?.placeName
             
             //Set the terrain picker
             if let row = TerrainDataSource.index(of: (routeData?.terrain)!)
@@ -89,20 +102,31 @@ class RouteProfileViewController: UITableViewController
             }
             
             //Set the distance picker
-            if let row = TenNumbers.index(of: Int((routeData?.distance)!))
+            if let row = TenNumbersDataSource.index(of: Int((routeData?.distanceMiles)!))
             {
+                print("Hrs:\(String(describing: routeData?.distanceMiles))")
                 DistancePicker.selectRow(row, inComponent:0, animated: false)
             }
             
-            //Set the duration picker
-            if let row = TenNumbers.index(of: Int((routeData?.duration)!))
+            if let row = DistanceQtrDataSource.index(of: Int((routeData?.distanceQtrs)!))
             {
+                print("Qtrs:\(String(describing: routeData?.distanceQtrs))")
+                DistancePicker.selectRow(row, inComponent:1, animated: false)
+            }
+            
+            //Set the duration picker
+            if let row = TenNumbersDataSource.index(of: Int((routeData?.durationHrs)!))
+            {
+                print("Hrs:\(String(describing: routeData?.durationHrs))")
                 DurationPicker.selectRow(row, inComponent:0, animated: false)
             }
             
+            if let row = DurationQtrsDataSource.index(of: Int((routeData?.durationMins)!))
+            {
+                print("Hrs:\(String(describing: routeData?.durationMins))")
+                DurationPicker.selectRow(row, inComponent:1, animated: false)
+            }
         }
-        
-        //tableView.reloadData()
     }
     
     
@@ -123,17 +147,27 @@ class RouteProfileViewController: UITableViewController
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveRouteDetail",
-            let name = PlaceNameField.text,
+            let placeName = PlaceNameField.text,
             let terrain = routeData?.terrain,
-            let distance = routeData?.distance,
-            let duration = routeData?.duration
+            let actualDistance = routeData?.actualDistance,
+            let distanceMiles = routeData?.distanceMiles,
+            let distanceQtrs = routeData?.distanceQtrs,
+            let actualDuration = routeData?.actualDuration,
+            let durationHrs = routeData?.durationHrs,
+            let durationMins = routeData?.durationMins
+            
         {
             
             //Get the latest data and pass to destinationController to be saved
-            routeData?.name = name
+            routeData?.placeName = placeName
             routeData?.terrain = terrain
-            routeData?.distance = Float(distance)
-            routeData?.duration = Float(duration)
+            routeData?.actualDistance = Float(actualDistance)
+            routeData?.distanceMiles = Int16(distanceMiles)
+            routeData?.distanceQtrs = Int16(distanceQtrs)
+            routeData?.actualDuration = Float(actualDuration)
+            routeData?.durationHrs = Int16(durationHrs)
+            routeData?.durationMins = Int16(durationMins)
+            routeData?.profilePicture = nil
         }
     }
 }
@@ -168,22 +202,22 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         {
             if component == 0
             {
-                return TenNumbers.count
+                return TenNumbersDataSource.count
             }
             else if component == 1
             {
-                return Qtrs.count
+                return DistanceQtrDataSource.count
             }
         }
         else if pickerView == DurationPicker
         {
             if component == 0
             {
-                return TenNumbers.count
+                return TenNumbersDataSource.count
             }
             else if component == 1
             {
-                return Qtrs.count
+                return DurationQtrsDataSource.count
             }
         }
         
@@ -200,22 +234,22 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         {
             if component == 0
             {
-                return String(TenNumbers[row])
+                return String(TenNumbersDataSource[row])
             }
             else
             {
-                return String(Qtrs[row])
+                return String(DistanceQtrDataSource[row])
             }
         }
         else if pickerView == DurationPicker
         {
             if component == 0
             {
-                return String(TenNumbers[row])
+                return String(TenNumbersDataSource[row])
             }
             else
             {
-                return String(Qtrs[row])
+                return String(DurationQtrsDataSource[row])
             }
         }
         
@@ -232,45 +266,61 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         }
         else if pickerView == DistancePicker
         {
-            //print(DistanceDataSource[row])
+            var tens: String = "0"
+            var qtrs: String = "0"
+            
             if component == 0
             {
-                print("\(TenNumbers[row])")
-                print("\(Qtrs[row])")
+                print("\(TenNumbersDataSource[row])")
+                //print("\(Qtrs[row])")
                 
-                let tens = TenNumbers[row].description
-                let qtrs = Qtrs[row].description
-                
-                receivedString = tens + "." + qtrs
-                routeData?.distance = Float(receivedString)!
+                tens = TenNumbersDataSource[row].description
+                //let qtrs = Qtrs[row].description
+                routeData?.distanceMiles = Int16(tens)!
             }
             else
             {
-                print("\(TenNumbers[row])")
-                print("\(Qtrs[row])")
+               // print("\(TenNumbers[row])")
+                print("\(DistanceQtrDataSource[row])")
                 
-                let tens = TenNumbers[row].description
-                let qtrs = Qtrs[row].description
+               // let tens = TenNumbers[row].description
+                qtrs = DistanceQtrDataSource[row].description
                 
-                receivedString = tens + "." + qtrs
-                routeData?.distance = Float(receivedString)!
+                routeData?.distanceQtrs = Int16(qtrs)!
             }
             
-            //routeData?.distance = DistanceDataSource[row]
+            //numberString = tens + "." + qtrs
+            //routeData?.distance = Float(numberString)!
         }
         else if pickerView == DurationPicker
         {
-            //print(DurationDataSource[row])
+            var tens: String = "0"
+            var qtrs: String = "0"
+            
             if component == 0
             {
-                print("\(TenNumbers[row])")
+                print("\(TenNumbersDataSource[row])")
+                //print("\(Qtrs[row])")
+                
+                tens = TenNumbersDataSource[row].description
+                //let qtrs = Qtrs[row].description
+                
+                routeData?.durationHrs = Int16(tens)!
             }
             else
             {
-                print("\(Qtrs[row])")
+                // print("\(TenNumbers[row])")
+                print("\(DurationQtrsDataSource[row])")
+                
+                // let tens = TenNumbers[row].description
+                qtrs = DurationQtrsDataSource[row].description
+                
+                routeData?.durationMins = Int16(qtrs)!
             }
             
-            //routeData?.duration = DurationDataSource[row]
+            //numberString = tens + "." + qtrs
+            //routeData?.duration = Float(numberString)!
+
         }
     }
     
