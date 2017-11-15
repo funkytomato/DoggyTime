@@ -95,7 +95,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             guard let postcode = PostCodeField.text else {return}
             guard let mobile = MobileField.text else {return}
             guard let email = eMailField.text else {return}
-            guard let dogname = DognameField.text else {return}
+            //guard let dogname = DognameField.text else {return}
             
             // Update Client
             clientData?.foreName  = forename
