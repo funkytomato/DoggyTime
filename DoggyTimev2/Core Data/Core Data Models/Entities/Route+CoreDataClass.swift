@@ -2,7 +2,7 @@
 //  Route+CoreDataClass.swift
 //  DoggyTimev2
 //
-//  Created by Jason Fry on 09/11/2017.
+//  Created by Spaceman on 15/11/2017.
 //  Copyright © 2017 Jason Fry. All rights reserved.
 //
 //

@@ -2,7 +2,7 @@
 //  Route+CoreDataProperties.swift
 //  DoggyTimev2
 //
-//  Created by Jason Fry on 09/11/2017.
+//  Created by Spaceman on 15/11/2017.
 //  Copyright © 2017 Jason Fry. All rights reserved.
 //
 //
@@ -17,13 +17,17 @@ extension Route {
         return NSFetchRequest<Route>(entityName: "Route")
     }
 
-    @NSManaged public var distance: Float
-    @NSManaged public var duration: Float
-    @NSManaged public var name: String?
-    @NSManaged public var terrain: String?
+    @NSManaged public var actualDuration: Float
     @NSManaged public var createdAt: NSDate?
-    @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var actualDistance: Float
+    @NSManaged public var durationHrs: Int16
+    @NSManaged public var durationMins: Int16
+    @NSManaged public var placeName: String?
     @NSManaged public var profilePicture: NSData?
+    @NSManaged public var terrain: String?
+    @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var distanceMiles: Int16
+    @NSManaged public var distanceQtrs: Int16
     @NSManaged public var walks: Walk?
 
 }
