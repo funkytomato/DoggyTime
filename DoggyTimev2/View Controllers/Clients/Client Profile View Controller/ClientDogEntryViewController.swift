@@ -17,23 +17,25 @@
 import UIKit
 import CoreData
 
+/*
 protocol AddClientDogEntryViewControllerDelegate
 {
     func controller(_ controller: ClientDogEntryViewController, didAddClientDog dogname: String)
 }
+*/
 
 class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
     //MARK:- IBOutlets
     @IBOutlet weak var DogNameField: UITextField!
-    //@IBOutlet weak var genderField: UITextField!
     @IBOutlet weak var GenderPicker: UIPickerView!
     
-    //@IBOutlet weak var breedField: UITextField!
+
     @IBOutlet weak var BreedPicker: UIPickerView!
     @IBOutlet weak var BreedPictureView: UIImageView!
+    @IBOutlet weak var BreedInfoTextView: UITextView!
     @IBOutlet weak var SizePicker: UIPickerView!
-    //@IBOutlet weak var sizeField: UITextField!
+
     @IBOutlet weak var ProfilePictureView: UIImageView!
     
     var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
@@ -44,7 +46,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     //MARK:- Properties
     
-    var delegate: AddClientDogEntryViewControllerDelegate?
+    //var delegate: AddClientDogEntryViewControllerDelegate?
     
     //Data to send to profile controller
     weak var dogData : Dog?
@@ -262,6 +264,8 @@ extension ClientDogEntryViewController: UITextFieldDelegate
  }
  */
 
+/*
+
 //MARK:- IBActions
 extension ClientDogEntryViewController
 {
@@ -286,3 +290,4 @@ extension ClientDogEntryViewController
         dismiss(animated: true, completion: nil)
     }
 }
+*/
