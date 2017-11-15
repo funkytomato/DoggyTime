@@ -84,7 +84,7 @@ class RoutesViewController: UITableViewController
             // Fetch Route
             let selectedRoute = fetchedResultsController.object(at: indexPath)
             
-            //let selectedRoute = routes[indexPath.row]
+            //Configure View Controller
             profileViewController.routeData = selectedRoute
         }
         else if let profileViewController = segue.destination as? RouteProfileViewController
@@ -93,11 +93,15 @@ class RoutesViewController: UITableViewController
             let route = Route(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Route
-            //let route = Route(context: PersistentService.context)
-            route.name = "Enter route name"
-            route.terrain = "Unknown"
-            route.distance = 0.0
-            route.duration = 0.0
+            route.placeName = ""
+            route.terrain = ""
+            route.actualDistance = 0.0
+            route.distanceMiles = 0
+            route.distanceQtrs = 0
+            route.actualDuration = 0.0
+            route.durationHrs = 0
+            route.durationMins = 0
+
             
             profileViewController.routeData = route
         }
