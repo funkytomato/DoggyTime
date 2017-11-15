@@ -92,10 +92,14 @@ class DogsViewController: UITableViewController
             //Create a new Dog profile
             let dog = Dog(context: coreDataManager.mainManagedObjectContext)
             
-            dog.dogName = "Enter name"
-            dog.gender = "Male"
-            dog.breed = "Unknown"
-            dog.size = "Medium"
+            dog.dogName = ""
+            dog.gender = ""
+            dog.breed = ""
+            dog.size = ""
+            dog.profilePicture = nil
+            //dog.gender = "Male"
+            //dog.breed = "Unknown"
+            //dog.size = "Medium"
             
             profileViewController.dogData = dog
         }
@@ -220,7 +224,8 @@ extension DogsViewController
     }
     
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
         guard editingStyle == .delete else { return }
         
         // Fetch Dog

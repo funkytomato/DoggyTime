@@ -34,8 +34,6 @@
 		18A5DB861FB4EE7E008C0C91 /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB7E1FB4EE7E008C0C91 /* Client+CoreDataProperties.swift */; };
 		18A5DB871FB4EE7E008C0C91 /* Dog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB7F1FB4EE7E008C0C91 /* Dog+CoreDataClass.swift */; };
 		18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */; };
-		18A5DB891FB4EE7E008C0C91 /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB811FB4EE7E008C0C91 /* Route+CoreDataClass.swift */; };
-		18A5DB8A1FB4EE7E008C0C91 /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB821FB4EE7E008C0C91 /* Route+CoreDataProperties.swift */; };
 		18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */; };
 		18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B6681FA23704003DAF51 /* Assets.xcassets */; };
 		18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844D1FA24A7200CC7586 /* CameraViewController.swift */; };
@@ -71,6 +69,8 @@
 		18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
+		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
+		C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
 /* End PBXBuildFile section */
@@ -114,8 +114,6 @@
 		18A5DB7E1FB4EE7E008C0C91 /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		18A5DB7F1FB4EE7E008C0C91 /* Dog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		18A5DB811FB4EE7E008C0C91 /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
-		18A5DB821FB4EE7E008C0C91 /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BE844D1FA24A7200CC7586 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +139,8 @@
 		18EB60681F9A20B40084FE8D /* WalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalksViewController.swift; sourceTree = "<group>"; };
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -389,10 +389,10 @@
 		18A5DB791FB4EC68008C0C91 /* Class Properties - AutoGen */ = {
 			isa = PBXGroup;
 			children = (
+				C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */,
 				18A5DB7C1FB4EE7E008C0C91 /* Walk+CoreDataProperties.swift */,
 				18A5DB7E1FB4EE7E008C0C91 /* Client+CoreDataProperties.swift */,
 				18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */,
-				18A5DB821FB4EE7E008C0C91 /* Route+CoreDataProperties.swift */,
 			);
 			path = "Class Properties - AutoGen";
 			sourceTree = "<group>";
@@ -400,10 +400,10 @@
 		18A5DB7A1FB4EC97008C0C91 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */,
 				18A5DB7B1FB4EE7E008C0C91 /* Walk+CoreDataClass.swift */,
 				18A5DB7D1FB4EE7E008C0C91 /* Client+CoreDataClass.swift */,
 				18A5DB7F1FB4EE7E008C0C91 /* Dog+CoreDataClass.swift */,
-				18A5DB811FB4EE7E008C0C91 /* Route+CoreDataClass.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -662,7 +662,7 @@
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
 				1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */,
 				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
-				18A5DB8A1FB4EE7E008C0C91 /* Route+CoreDataProperties.swift in Sources */,
+				C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */,
 				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
 				18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */,
@@ -671,8 +671,8 @@
 				18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */,
 				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
-				18A5DB891FB4EE7E008C0C91 /* Route+CoreDataClass.swift in Sources */,
 				18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
+				C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */,
 				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
