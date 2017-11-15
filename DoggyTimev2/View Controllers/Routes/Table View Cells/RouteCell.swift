@@ -22,10 +22,10 @@ class RouteCell: UITableViewCell
         {
             guard let route = route else {return}
             
-            routeNameLbl.text = route.name
+            routeNameLbl.text = route.placeName
             terrainLbl.text = route.terrain
-            distanceLbl.text = route.distance.description
-            durationLbl.text = route.duration.description
+            distanceLbl.text = route.distanceMiles.description + " miles " + route.distanceQtrs.description
+            durationLbl.text = route.durationHrs.description + " hrs" + route.durationMins.description
            // route.picture = route.picture
         }
     }
