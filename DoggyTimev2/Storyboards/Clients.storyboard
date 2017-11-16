@@ -336,14 +336,11 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="2" y="9923999.5" width="308" height="280"/>
+                                                    <rect key="frame" x="2" y="21162458.5" width="309.5" height="280"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Vf5-yE-cMG" kind="show" id="Koe-MJ-d2y"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" id="9zm-VA-wtg">
                                         <rect key="frame" x="0.0" y="875.5" width="320" height="44"/>
@@ -405,14 +402,6 @@
                 <exit id="Gys-BQ-g27" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2951.25" y="-869.36619718309862"/>
-        </scene>
-        <!--Camera-->
-        <scene sceneID="YfT-KQ-7Ts">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Camera" id="Vf5-yE-cMG" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Pk-Du-h0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3719" y="-1001"/>
         </scene>
         <!--Dog Profile-->
         <scene sceneID="T7q-JX-xGw">
@@ -611,7 +600,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU1-NF-uFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Y7S-3X-VNp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4427" y="-848"/>
+            <point key="canvasLocation" x="4232" y="-869"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="Qa5-DM-7HR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Camera" id="SpH-18-Sks" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKt-QW-mdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5062" y="-908"/>
         </scene>
     </scenes>
     <resources>

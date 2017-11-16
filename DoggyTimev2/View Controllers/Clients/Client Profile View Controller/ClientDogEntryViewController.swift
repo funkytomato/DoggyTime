@@ -89,6 +89,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     {
         super.viewDidLoad()
         
+        /*
         //Fetch dogs from CoreData
         do
         {
@@ -100,6 +101,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             print("Unable to Save Dog")
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
+        */
         
         BreedPicker.delegate = self
         BreedPicker.dataSource = self
@@ -166,6 +168,27 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             dogData?.temperament = temperament
             //dogData?.profilePicture = picture
             
+        }
+        
+        if let profileViewController = segue.destination as? CameraViewController2
+        {
+            /*
+            //Create a new Dog profile
+            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
+            
+            //Populate Dog
+            dog.dogName = ""
+            dog.gender = ""
+            dog.breed = ""
+            dog.size = ""
+            dog.profilePicture = nil
+            dog.temperament = ""
+            dog.owner = clientData
+            
+            //Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
+            profileViewController.dogData = dog
+ */
         }
     }
 }
@@ -299,6 +322,7 @@ extension ClientDogEntryViewController: NSFetchedResultsControllerDelegate
         tableView.endUpdates()
     }
     
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
     {
         switch (type)
@@ -387,6 +411,59 @@ extension ClientDogEntryViewController
     }
 }
 */
+
+// MARK:- IBActions
+extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
+    /*
+    @IBAction func CameraAction(_ sender: Any?)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .camera
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        ProfilePictureView.image = info[UIImagePickerControllerOriginalImage] as? UIImage; dismiss(animated: true, completion: nil)
+    }
+    
+    */
+    @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
+    {
+        print("Back in the ClientsDetailViewController")
+        
+    }
+    
+    
+    @IBAction func saveClientDogDetail(_ segue: UIStoryboardSegue)
+    {
+        print("ClientsDetailViewController saveClientDetail")
+        print("Segue source\(segue.source)")
+        guard let profileViewController = segue.source as? ClientDogEntryViewController,
+            let dog = profileViewController.dogData else
+        {
+            return
+        }
+        
+        /*
+        //Store to CoreData
+        do
+        {
+            try dog.managedObjectContext?.save()
+        }
+        catch
+        {
+            let saveError = error as NSError
+            print("Unable to Save Dog")
+            print("\(saveError), \(saveError.localizedDescription)")
+        }
+ */
+    }
+}
+
 
 //MARK:- CoreDataManager Protocol
 extension ClientDogEntryViewController: CoreDataManagerDelegate
