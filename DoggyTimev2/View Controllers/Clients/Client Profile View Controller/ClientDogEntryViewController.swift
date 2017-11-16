@@ -26,30 +26,54 @@ protocol AddClientDogEntryViewControllerDelegate
 
 class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
+    
+    //var delegate: AddClientDogEntryViewControllerDelegate?
+    
+    //MARK:- Properties
+    var coreDataManager: CoreDataManager!
+    var coreDataManagerDelegate: CoreDataManagerDelegate!
+     weak var dogData : Dog?
+    
     //MARK:- IBOutlets
     @IBOutlet weak var DogNameField: UITextField!
     @IBOutlet weak var GenderPicker: UIPickerView!
     
-
     @IBOutlet weak var BreedPicker: UIPickerView!
     @IBOutlet weak var BreedPictureView: UIImageView!
     @IBOutlet weak var BreedInfoTextView: UITextView!
+    
     @IBOutlet weak var SizePicker: UIPickerView!
-
     @IBOutlet weak var ProfilePictureView: UIImageView!
     
+    
+    //MARK:- PickerView DataSources
     var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
     
     var genderDataSource = ["Male", "Female"]
     
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
-    //MARK:- Properties
     
-    //var delegate: AddClientDogEntryViewControllerDelegate?
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
+    {
+        // Initialize Fetch Request
+        let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
+        print("fetchRequest:\(fetchRequest.description)")
+        
+        // Add Sort Descriptors
+        let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        print("fetchedResultsCOntroller\(fetchedResultsController.description)")
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
     
-    //Data to send to profile controller
-    weak var dogData : Dog?
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -58,12 +82,24 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     deinit
     {
-        print("DogProfileViewController deinit")
+        print("ClientDogEntryViewController deinit")
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //Fetch dogs from CoreData
+        do
+        {
+            try fetchedResultsController.performFetch()
+        }
+        catch
+        {
+            let fetchError = error as NSError
+            print("Unable to Save Dog")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
         
         BreedPicker.delegate = self
         BreedPicker.dataSource = self
@@ -109,7 +145,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("DogProfileViewController prepare segue")
+        print("ClientDogEntryViewController prepare segue")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDogDetail",
@@ -117,19 +153,19 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             let dogname = DogNameField.text,
             let gender = dogData?.gender,
             let breed = dogData?.breed,
-            let size = dogData?.size
-            // let picture = PictureView.image
+            let size = dogData?.size,
+            let temperament = dogData?.temperament,
+            let picture = ProfilePictureView.image
         {
             
             // Update Client
-            //let dog = Dog(context: PersistentService.context)
             dogData?.dogName = dogname
             dogData?.gender = gender
             dogData?.breed = breed
             dogData?.size = size
-            //dog.picture = picture
+            dogData?.temperament = temperament
+            //dogData?.profilePicture = picture
             
-            //self.dogData = dog
         }
     }
 }
@@ -242,6 +278,59 @@ extension ClientDogEntryViewController: UITextFieldDelegate
     }
 }
 
+
+extension ClientDogEntryViewController: NSFetchedResultsControllerDelegate
+{
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        tableView.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+    {
+        switch (type)
+        {
+        case .insert:
+            if let indexPath = newIndexPath
+            {
+                tableView.insertRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .delete:
+            if let indexPath = indexPath
+            {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            break;
+        case .update:
+           /*
+            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? ClientCell
+            {
+                configureCell(cell, at: indexPath)
+            }
+ */
+            break;
+        case .move:
+            if let indexPath = indexPath
+            {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+            if let newIndexPath = newIndexPath
+            {
+                tableView.insertRows(at: [newIndexPath], with: .fade)
+            }
+            break;
+        }
+    }
+}
+
 /*
  extension ClientDogEntryViewController: UIPickerViewDelegate
  {
@@ -291,3 +380,14 @@ extension ClientDogEntryViewController
     }
 }
 */
+
+//MARK:- CoreDataManager Protocol
+extension ClientDogEntryViewController: CoreDataManagerDelegate
+{
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        self.coreDataManager = coreDataManager
+        coreDataManagerDelegate = self
+    }
+}

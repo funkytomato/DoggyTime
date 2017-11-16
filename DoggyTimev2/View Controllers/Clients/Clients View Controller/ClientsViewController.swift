@@ -80,8 +80,8 @@ class ClientsViewController: UITableViewController
             let client = fetchedResultsController.object(at: indexPath)
             
             // Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.clientData = client
-
         }
         else if let profileViewController = segue.destination as? ClientsDetailViewController
         {
@@ -98,6 +98,8 @@ class ClientsViewController: UITableViewController
             client.eMail = ""
             //client.dogame = ""
             
+            //Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.clientData = client
         }
     }
