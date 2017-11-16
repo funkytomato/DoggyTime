@@ -175,11 +175,14 @@ extension ClientDogEntryViewController
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
+        print("ClientDogEntryViewController numberOfComponents PickerView :\(pickerView.description)")
+        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
+        print("ClientDogEntryViewController numberOfRowsInComponent PickerView : \(pickerView.description)")
         if pickerView == GenderPicker
         {
             return genderDataSource.count
@@ -198,6 +201,7 @@ extension ClientDogEntryViewController
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
+        print("ClientDogEntryViewController titleForRow PickerView : \(pickerView.description)")
         if pickerView == GenderPicker
         {
             return genderDataSource[row] as String
@@ -216,6 +220,9 @@ extension ClientDogEntryViewController
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+        print("ClientDogEntryViewController didSelectRow PickerView : \(pickerView.description)")
+
+        
         if pickerView == BreedPicker
         {
             print(breedDataSource[row])
