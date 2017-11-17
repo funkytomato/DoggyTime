@@ -23,7 +23,7 @@ extension Route {
     @NSManaged public var durationHrs: Int16
     @NSManaged public var durationMins: Int16
     @NSManaged public var placeName: String?
-    @NSManaged public var profilePicture: NSData?
+    @NSManaged public var profilePicture: Data?
     @NSManaged public var terrain: String?
     @NSManaged public var updatedAt: NSDate?
     @NSManaged public var distanceMiles: Int16

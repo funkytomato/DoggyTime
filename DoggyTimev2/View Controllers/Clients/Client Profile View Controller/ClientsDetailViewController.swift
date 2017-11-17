@@ -33,7 +33,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var MobileField: UITextField!
     @IBOutlet weak var eMailField: UITextField!
     
-    @IBOutlet weak var DognameField: UITextField!
+    @IBOutlet weak var DogNameField: UITextField!
     @IBOutlet weak var DogTinyPicture: UIImageView!
     @IBOutlet weak var DogPicture: UIImageView!
 
@@ -47,7 +47,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         present(picker, animated: true, completion: nil)
     }
     
-    
+  /*
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
     {
         // Initialize Fetch Request
@@ -67,7 +67,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         return fetchedResultsController
     }()
-    
+ */
     
     // MARK:- Initializers
     required init?(coder aDecoder: NSCoder)
@@ -89,7 +89,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         super.viewDidLoad()
         
         //Fetch dogs from CoreData
-        do
+   /*     do
         {
             try fetchedResultsController.performFetch()
         }
@@ -99,7 +99,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             print("Unable to Save Dog")
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
-        
+     */
         
         ForenameField.text = clientData?.foreName
         SurnameField.text = clientData?.surName
@@ -151,6 +151,20 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             //clientData?.dogName = dogname
         }
         
+        if (segue.identifier == "embeddedDogsTableViewController")
+        {
+            print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
+            let childViewController = segue.destination as! DogsEmbeddedTableViewConroller
+            
+            // Now you have a pointer to the child view controller.
+            // You can save the reference to it, or pass data to it.
+            //let selectedWalk = dataSource.walks[indexPath.row]
+            var dogsOwned = clientData?.dogsOwned
+            //var pets = Array("Bobs","Hitler")
+            
+      //      childViewController.dogs = pets
+        }
+        
         if let profileViewController = segue.destination as? ClientDogEntryViewController,
  //       if segue.identifier == "AddDogSegue",
             let indexPath = self.tableView.indexPathForSelectedRow
@@ -158,11 +172,11 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             //Load an existing Dog profile
             
             // Fetch Dog
-            let dog = fetchedResultsController.object(at: indexPath)
+            //let dog = fetchedResultsController.object(at: indexPath)
             
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
-            profileViewController.dogData = dog
+            //profileViewController.dogData = dog
             
         }
         else if let profileViewController = segue.destination as? ClientDogEntryViewController
@@ -178,7 +192,22 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             dog.size = ""
             dog.profilePicture = nil
             dog.temperament = ""
+            dog.createdAt = NSDate()
+            dog.updatedAt = NSDate()
             dog.owner = clientData
+            
+        
+            //Store to ObjectContext
+            do
+            {
+                try dog.managedObjectContext?.save()
+            }
+            catch
+            {
+                let saveError = error as NSError
+                print("Unable to Save Dog")
+                print("\(saveError), \(saveError.localizedDescription)")
+            }
             
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
@@ -218,7 +247,7 @@ extension ClientsDetailViewController
         catch
         {
             let saveError = error as NSError
-            print("Unable to Save Dog")
+            print("Unable to Save Client Dog")
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
@@ -244,18 +273,19 @@ extension ClientsDetailViewController: UITextFieldDelegate
         case MobileField:
             eMailField.becomeFirstResponder()
         case eMailField:
-            DognameField.becomeFirstResponder()
-        case DognameField:
-            DognameField.resignFirstResponder()
+            DogNameField.becomeFirstResponder()
+        case DogNameField:
+            DogNameField.resignFirstResponder()
             
         default:
-            DognameField.resignFirstResponder()
+            DogNameField.resignFirstResponder()
             
         }
         return true
     }
 }
 
+/*
 extension ClientsDetailViewController: NSFetchedResultsControllerDelegate
 {
     
@@ -307,7 +337,7 @@ extension ClientsDetailViewController: NSFetchedResultsControllerDelegate
         }
     }
 }
-
+*/
 
 //MARK:- CoreDataManager Protocol
 extension ClientsDetailViewController: CoreDataManagerDelegate

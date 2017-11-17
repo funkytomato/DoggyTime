@@ -19,7 +19,7 @@ extension Dog {
 
     @NSManaged public var breed: String?
     @NSManaged public var dogName: String?
-    @NSManaged public var profilePicture: NSData?
+    @NSManaged public var profilePicture: Data?
     @NSManaged public var gender: String?
     @NSManaged public var size: String?
     @NSManaged public var walkcount: Int16

@@ -53,7 +53,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
-    
+   /*
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
     {
         // Initialize Fetch Request
@@ -73,7 +73,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         
         return fetchedResultsController
     }()
-    
+    */
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -308,7 +308,7 @@ extension ClientDogEntryViewController: UITextFieldDelegate
     }
 }
 
-
+/*
 extension ClientDogEntryViewController: NSFetchedResultsControllerDelegate
 {
     
@@ -361,7 +361,8 @@ extension ClientDogEntryViewController: NSFetchedResultsControllerDelegate
         }
     }
 }
-
+*/
+ 
 /*
  extension ClientDogEntryViewController: UIPickerViewDelegate
  {
@@ -448,7 +449,7 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
             return
         }
         
-        /*
+        
         //Store to CoreData
         do
         {
@@ -457,10 +458,10 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
         catch
         {
             let saveError = error as NSError
-            print("Unable to Save Dog")
+            print("Unable to Save Client Dog")
             print("\(saveError), \(saveError.localizedDescription)")
         }
- */
+ 
     }
 }
 
