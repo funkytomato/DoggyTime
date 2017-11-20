@@ -288,7 +288,7 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73U-Tr-T3t">
                                                     <rect key="frame" x="8" y="11" width="304" height="22"/>
                                                     <connections>
-                                                        <segue destination="cRJ-x8-St0" kind="embed" id="gf4-4o-cAG"/>
+                                                        <segue destination="cRJ-x8-St0" kind="embed" identifier="embeddedDogsTableViewController" id="gf4-4o-cAG"/>
                                                     </connections>
                                                 </containerView>
                                             </subviews>
@@ -308,7 +308,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="3" y="176794984" width="306" height="280"/>
+                                                    <rect key="frame" x="3" y="191122997" width="306" height="280"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -599,11 +599,10 @@
             </objects>
             <point key="canvasLocation" x="4149" y="-869"/>
         </scene>
-        <!--Data Source-->
+        <!--EmbeddedDogsTableViewController-->
         <scene sceneID="whL-g0-rxR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w2v-eI-0Hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="cRJ-x8-St0" customClass="DogsEmbeddedTableViewConroller" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cRJ-x8-St0" userLabel="EmbeddedDogsTableViewController" customClass="DogsEmbeddedTableViewConroller" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhh-GW-IXl"/>
                         <viewControllerLayoutGuide type="bottom" id="2jp-jR-IQo"/>
@@ -612,25 +611,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="304" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-uS-vSm" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTimev2" customModuleProvider="target">
-                                <rect key="frame" x="-36" y="-11" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-uS-vSm" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTimev2" customModuleProvider="target">
+                                <rect key="frame" x="16" y="0.0" width="272" height="22"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ku-uS-vSm" id="La0-4R-rnJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="21.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Dog name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaS-Rw-PqH" userLabel="DogNameField">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Dog name" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WaS-Rw-PqH" userLabel="DogNameField">
+                                            <rect key="frame" x="0.0" y="0.0" width="272" height="22"/>
                                             <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="WaS-Rw-PqH" firstAttribute="top" secondItem="La0-4R-rnJ" secondAttribute="top" id="SJs-Fa-Fvv"/>
-                                        <constraint firstAttribute="trailing" secondItem="WaS-Rw-PqH" secondAttribute="trailing" id="h7M-nS-JW0"/>
-                                        <constraint firstAttribute="bottom" secondItem="WaS-Rw-PqH" secondAttribute="bottom" id="kji-hs-Mqf"/>
-                                        <constraint firstItem="WaS-Rw-PqH" firstAttribute="leading" secondItem="La0-4R-rnJ" secondAttribute="leading" id="wl7-x0-q9q"/>
+                                        <constraint firstItem="WaS-Rw-PqH" firstAttribute="top" secondItem="La0-4R-rnJ" secondAttribute="top" id="AnF-6c-ddk"/>
+                                        <constraint firstAttribute="trailing" secondItem="WaS-Rw-PqH" secondAttribute="trailing" id="XKq-dA-Hp4"/>
+                                        <constraint firstItem="WaS-Rw-PqH" firstAttribute="leading" secondItem="La0-4R-rnJ" secondAttribute="leading" id="mVq-DD-Aj3"/>
+                                        <constraint firstAttribute="bottom" secondItem="WaS-Rw-PqH" secondAttribute="bottom" id="pX6-Yw-vKG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -639,6 +637,12 @@
                             </tableViewCell>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="7Ku-uS-vSm" secondAttribute="bottom" id="8Qz-hz-aM6"/>
+                            <constraint firstItem="7Ku-uS-vSm" firstAttribute="top" secondItem="1qn-do-Xtg" secondAttribute="topMargin" id="9Jl-eD-aiu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Ku-uS-vSm" secondAttribute="trailing" id="JH6-t0-NuM"/>
+                            <constraint firstItem="7Ku-uS-vSm" firstAttribute="leading" secondItem="1qn-do-Xtg" secondAttribute="leadingMargin" id="Ykh-co-8oL"/>
+                        </constraints>
                         <connections>
                             <outlet property="dataSource" destination="cRJ-x8-St0" id="yOv-AG-q67"/>
                             <outlet property="delegate" destination="cRJ-x8-St0" id="Ic7-Ku-dWs"/>
@@ -648,8 +652,9 @@
                         <outlet property="dogListView" destination="1qn-do-Xtg" id="vli-Wt-Nah"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2v-eI-0Hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2951" y="-248"/>
+            <point key="canvasLocation" x="2949.375" y="-248.2394366197183"/>
         </scene>
     </scenes>
     <resources>

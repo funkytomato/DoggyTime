@@ -22,6 +22,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     var dogData: Dog?
     
     
+    
+    
     //MARK:- IBOutlets
     @IBOutlet weak var ForenameField: UITextField!
     @IBOutlet weak var SurnameField: UITextField!
@@ -108,13 +110,15 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         PostCodeField.text = clientData?.postCode
         MobileField.text = clientData?.mobile
         eMailField.text = clientData?.eMail
-        
-        
-        //  DO I SET THE DOG ID HERE TOO?
-        
+
+        //Fetch the Client's dogs
+        let dogs = clientData?.value(forKeyPath: "dogsOwned.dog")
         
         //DognameField.text = clientData?.dogName
         //DogPicture?.image = (clientData.dogpicture)!
+
+        
+        //  DO I SET THE DOG ID HERE TOO?
     }
     
     
@@ -147,8 +151,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             clientData?.postCode = postcode
             clientData?.mobile = mobile
             clientData?.eMail = email
+            print("clientData.dogsOwned\(clientData?.dogsOwned)")
             
             //clientData?.dogName = dogname
+            //clientData?.mutableSetValueForKey("dogsOwned").addObject(dog)
         }
         
         if (segue.identifier == "embeddedDogsTableViewController")
@@ -160,9 +166,16 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             // You can save the reference to it, or pass data to it.
             //let selectedWalk = dataSource.walks[indexPath.row]
             var dogsOwned = clientData?.dogsOwned
-            //var pets = Array("Bobs","Hitler")
+            print("dogsOwned \(dogsOwned)")
             
-      //      childViewController.dogs = pets
+            let dogsOwned2 = clientData?.value(forKeyPath: "dogsOwned.dog")
+            print("dogsOwned2: \(dogsOwned2)")
+            
+            var pets = Array(dogsOwned!) as! [Dog]
+            print("pets: \(pets)")
+            
+            childViewController.dogs = pets
+            
         }
         
         if let profileViewController = segue.destination as? ClientDogEntryViewController,
@@ -194,6 +207,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             dog.temperament = ""
             dog.createdAt = NSDate()
             dog.updatedAt = NSDate()
+            //dog.uuid = ""
             dog.owner = clientData
             
         

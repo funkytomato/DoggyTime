@@ -79,6 +79,8 @@ class ClientsViewController: UITableViewController
             // Fetch Client
             let client = fetchedResultsController.object(at: indexPath)
             
+            print(": \(client.dogsOwned)")
+            
             // Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.clientData = client
@@ -127,6 +129,8 @@ extension ClientsViewController
         {
             return
         }
+        
+        print("\(client.dogsOwned)")
         
         //Store to CoreData
         do

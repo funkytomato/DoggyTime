@@ -42,6 +42,7 @@
 		18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844D1FA24A7200CC7586 /* CameraViewController.swift */; };
 		18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */; };
 		18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */; };
+		18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF23F11FC0B31D001CDA84 /* Client.swift */; };
 		18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */; };
 		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
 		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
@@ -126,6 +127,7 @@
 		18BE844D1FA24A7200CC7586 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCatalogue.swift; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = "DoggyTimev2/Core Data/Extensions/Client.swift"; sourceTree = SOURCE_ROOT; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
 		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
 		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 			children = (
 				18A5DB7A1FB4EC97008C0C91 /* Entities */,
 				18A5DB791FB4EC68008C0C91 /* Class Properties - AutoGen */,
+				18CF23F11FC0B31D001CDA84 /* Client.swift */,
 			);
 			path = "Core Data Models";
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 		18D471C11F9FBB93007D245D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				18E71F861FBB28B600735EEE /* Protocols */,
 				183243021FB3A47100ACF480 /* CoreDataManager.swift */,
 			);
 			path = Managers;
@@ -489,7 +493,6 @@
 				1808F7071F9E15910027B447 /* Core Data */,
 				1808F7031F9E15320027B447 /* DataSources */,
 				18A9B66A1FA24535003DAF51 /* Resources */,
-				18E71F861FBB28B600735EEE /* Protocols */,
 				1808F7061F9E15830027B447 /* Storyboards */,
 				1808F7011F9E150B0027B447 /* Test Data */,
 				18EB60161F9A1ADF0084FE8D /* Info.plist */,
@@ -699,6 +702,7 @@
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
 				C24998091FBDE31F00771188 /* CameraViewController2.swift in Sources */,
+				18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,

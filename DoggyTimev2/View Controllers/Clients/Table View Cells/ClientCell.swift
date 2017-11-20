@@ -24,7 +24,13 @@ class ClientCell: UITableViewCell
             
             nameLabel.text = client.foreName
             addressLabel.text = client.street
-            //dogNameLabel.text = client.dogsOwned.dogName
+            
+            var dogsOwned = client.dogsOwned
+            var pets = Array(dogsOwned!)
+            
+            print("dogsOwned\(dogsOwned)")
+             print("pets\(pets)")
+            
             //dogImageView.image = image(imageName: client.dogName)
         }
     }

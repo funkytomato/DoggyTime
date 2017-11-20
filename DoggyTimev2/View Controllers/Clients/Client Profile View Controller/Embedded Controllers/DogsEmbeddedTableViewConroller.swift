@@ -14,16 +14,17 @@ class DogsEmbeddedTableViewConroller: UITableViewController
     @IBOutlet var dogListView: UITableView!
     
     //MARK:- Properties
-    let dataSource: WalkingDogsDataSource?
+    //let dataSource: WalkingDogsDataSource?
     
     //Data to send dogs on walk controller
-    var dogs: [Dog]?
+    var dogs: [Dog]? = []
     
     
     required init?(coder aDecoder: NSCoder)
     {
         //self.dataSource = WalkingDogsDataSource(dogsOnWalk: SampleData.generateWalkingDogsData())
-        self.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
+        print("dogs =\(dogs)")
+        //self.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
         super.init(coder: aDecoder)
     }
     
@@ -34,7 +35,7 @@ class DogsEmbeddedTableViewConroller: UITableViewController
         
         tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.dataSource = dataSource
+        //tableView.dataSource = dataSource
         tableView.reloadData()
     }
     

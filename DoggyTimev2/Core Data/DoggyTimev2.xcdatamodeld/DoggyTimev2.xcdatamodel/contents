@@ -57,7 +57,7 @@
         <relationship name="routeName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="walks" inverseEntity="Route" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Client" positionX="-90" positionY="-108" width="128" height="223"/>
+        <element name="Client" positionX="-90" positionY="-108" width="128" height="225"/>
         <element name="Dog" positionX="-83" positionY="285" width="128" height="223"/>
         <element name="Route" positionX="-495" positionY="288" width="128" height="238"/>
         <element name="Walk" positionX="-443" positionY="-99" width="128" height="208"/>
