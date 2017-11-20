@@ -24,7 +24,7 @@ protocol AddClientDogEntryViewControllerDelegate
 }
 */
 
-class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
+class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate
 {
     
     //var delegate: AddClientDogEntryViewControllerDelegate?
@@ -32,7 +32,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     //MARK:- Properties
     var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
-     weak var dogData : Dog?
+    var dogData : Dog?
     
     //MARK:- IBOutlets
     @IBOutlet weak var DogNameField: UITextField!
@@ -148,26 +148,49 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientDogEntryViewController prepare segue")
+        print("segue identifier:\(segue.identifier)")
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDogDetail",
             //let dogid = dog
-            let dogname = DogNameField.text,
-            let gender = dogData?.gender,
-            let breed = dogData?.breed,
-            let size = dogData?.size,
-            let temperament = dogData?.temperament,
-            let picture = ProfilePictureView.image
+            let dogname = DogNameField.text
+            //let gender = dogData?.gender,
+            //let breed = dogData?.breed,
+            //let size = dogData?.size,
+            //let temperament = dogData?.temperament,
+            //let picture = ProfilePictureView.image
         {
+            //Create a new Dog profile
+            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
+            
             
             // Update Client
             dogData?.dogName = dogname
-            dogData?.gender = gender
-            dogData?.breed = breed
-            dogData?.size = size
-            dogData?.temperament = temperament
+            //dogData?.gender = gender
+            //dogData?.breed = breed
+            //dogData?.size = size
+            //dogData?.temperament = temperament
+            dogData?.updatedAt = NSDate()
             //dogData?.profilePicture = picture
             
+            /*
+            //Store to ObjectContext
+            do
+            {
+                try dog.managedObjectContext?.save()
+                //try clientData?.managedObjectContext?.save()
+            }
+            catch
+            {
+                let saveError = error as NSError
+                print("Unable to Save Dog")
+                print("\(saveError), \(saveError.localizedDescription)")
+            }
+            */
+            
+            
+            //Configure View Controller
+            self.dogData? = dog
         }
         
         if let profileViewController = segue.destination as? CameraViewController2
@@ -441,7 +464,7 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
     
     @IBAction func saveClientDogDetail(_ segue: UIStoryboardSegue)
     {
-        print("ClientsDetailViewController saveClientDetail")
+        print("ClientDogEntryViewController saveClientDogDetail")
         print("Segue source\(segue.source)")
         guard let profileViewController = segue.source as? ClientDogEntryViewController,
             let dog = profileViewController.dogData else
@@ -454,6 +477,7 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
         do
         {
             try dog.managedObjectContext?.save()
+            print("ClientDogEntryViewController saveClientDogDetail dog:\(dog)")
         }
         catch
         {

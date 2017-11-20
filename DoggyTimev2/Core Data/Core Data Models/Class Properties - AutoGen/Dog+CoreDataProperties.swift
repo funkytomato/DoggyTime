@@ -11,9 +11,11 @@ import Foundation
 import CoreData
 
 
-extension Dog {
+extension Dog
+{
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Dog> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Dog>
+    {
         return NSFetchRequest<Dog>(entityName: "Dog")
     }
 

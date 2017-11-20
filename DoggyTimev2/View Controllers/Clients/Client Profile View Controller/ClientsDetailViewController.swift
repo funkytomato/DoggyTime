@@ -112,7 +112,11 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         eMailField.text = clientData?.eMail
 
         //Fetch the Client's dogs
-        let dogs = clientData?.value(forKeyPath: "dogsOwned.dog")
+        
+        //This is done in embedded controller and prepare segue
+        //var dogsOwned = clientData?.dogsOwned
+        //var pets = Array(dogsOwned!)
+        //print("pets\(pets)")
         
         //DognameField.text = clientData?.dogName
         //DogPicture?.image = (clientData.dogpicture)!
@@ -151,35 +155,32 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             clientData?.postCode = postcode
             clientData?.mobile = mobile
             clientData?.eMail = email
+            //clientData?.addToDogsOwned(dogData!)
+            
             print("clientData.dogsOwned\(clientData?.dogsOwned)")
             
             //clientData?.dogName = dogname
             //clientData?.mutableSetValueForKey("dogsOwned").addObject(dog)
         }
         
-        if (segue.identifier == "embeddedDogsTableViewController")
+        if (segue.identifier == "embeddedDogsTableViewController"),
+            let childViewController = segue.destination as? DogsEmbeddedTableViewConroller
         {
             print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
-            let childViewController = segue.destination as! DogsEmbeddedTableViewConroller
             
-            // Now you have a pointer to the child view controller.
-            // You can save the reference to it, or pass data to it.
-            //let selectedWalk = dataSource.walks[indexPath.row]
-            var dogsOwned = clientData?.dogsOwned
-            print("dogsOwned \(dogsOwned)")
-            
-            let dogsOwned2 = clientData?.value(forKeyPath: "dogsOwned.dog")
-            print("dogsOwned2: \(dogsOwned2)")
-            
-            var pets = Array(dogsOwned!) as! [Dog]
-            print("pets: \(pets)")
+            let dogsOwned = clientData?.dogsOwned
+            print("embeddedDogsTableViewController dogsOwned \(dogsOwned!)")
+        
+            let pets = Array(dogsOwned!) as! [Dog]
+            print("embeddedDogsTableViewController pets: \(pets)")
             
             childViewController.dogs = pets
             
         }
         
-        if let profileViewController = segue.destination as? ClientDogEntryViewController,
- //       if segue.identifier == "AddDogSegue",
+        //if let profileViewController = segue.destination as? ClientDogEntryViewController,
+        if segue.identifier == "AddDogSegue",
+            let profileViewController = segue.destination as? ClientDogEntryViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
             //Load an existing Dog profile
@@ -192,29 +193,36 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             //profileViewController.dogData = dog
             
         }
-        else if let profileViewController = segue.destination as? ClientDogEntryViewController
-       // else if segue.identifier == "AddDogSegue"
+        //else if let profileViewController = segue.destination as? ClientDogEntryViewController
+        else if segue.identifier == "AddDogSegue",
+            let profileViewController = segue.destination as? ClientDogEntryViewController
         {
+            
             //Create a new Dog profile
             let dog = Dog(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Dog
-            dog.dogName = ""
-            dog.gender = ""
+            dog.dogName = "Bruno Marley"
             dog.breed = ""
-            dog.size = ""
+            dog.gender = "Male"
+            dog.size = "Medium"
+            dog.temperament = "Good"
             dog.profilePicture = nil
             dog.temperament = ""
             dog.createdAt = NSDate()
             dog.updatedAt = NSDate()
             //dog.uuid = ""
             dog.owner = clientData
+           
             
-        
+            clientData?.addToDogsOwned(dog)
+            
+        /*
             //Store to ObjectContext
             do
             {
                 try dog.managedObjectContext?.save()
+                //try clientData?.managedObjectContext?.save()
             }
             catch
             {
@@ -222,6 +230,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
                 print("Unable to Save Dog")
                 print("\(saveError), \(saveError.localizedDescription)")
             }
+            */
             
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
@@ -242,7 +251,7 @@ extension ClientsDetailViewController
         
     }
     
-    
+
     @IBAction func saveClientDogDetail(_ segue: UIStoryboardSegue)
     {
         print("ClientsDetailViewController saveClientDetail")
@@ -257,6 +266,7 @@ extension ClientsDetailViewController
         do
         {
             try dog.managedObjectContext?.save()
+            print("ClientsDetailViewController saveClientDogDetail dog:\(dog)")
         }
         catch
         {
@@ -265,6 +275,7 @@ extension ClientsDetailViewController
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
+
 }
 
 

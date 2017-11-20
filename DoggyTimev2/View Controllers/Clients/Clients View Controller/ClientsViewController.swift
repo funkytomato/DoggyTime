@@ -79,7 +79,7 @@ class ClientsViewController: UITableViewController
             // Fetch Client
             let client = fetchedResultsController.object(at: indexPath)
             
-            print(": \(client.dogsOwned)")
+            print("ClientsViewController prepare for client profile: \(client.dogsOwned)")
             
             // Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
@@ -89,17 +89,18 @@ class ClientsViewController: UITableViewController
         {
             //Create a new Client profile
             let client = Client(context: coreDataManager.mainManagedObjectContext)
-            
+
             //Populate Client
-            client.foreName = ""
+            client.foreName = "Bob"
             client.surName = ""
             client.street = ""
             client.town = ""
             client.postCode = ""
             client.mobile = ""
             client.eMail = ""
-            //client.dogame = ""
-            
+            client.createdAt = NSDate()
+            client.updatedAt = NSDate()
+                       
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.clientData = client

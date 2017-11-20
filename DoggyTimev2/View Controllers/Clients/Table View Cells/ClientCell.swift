@@ -8,6 +8,15 @@
 
 import UIKit
 
+struct ClientCellData
+{
+    var name: String!
+    var address: String!
+    var dogsnames: String!
+    var thumbnail: Data!
+}
+
+
 class ClientCell: UITableViewCell
 {
     //MARK:- IBOutlets
@@ -25,12 +34,12 @@ class ClientCell: UITableViewCell
             nameLabel.text = client.foreName
             addressLabel.text = client.street
             
-            var dogsOwned = client.dogsOwned
-            var pets = Array(dogsOwned!)
+            //let pets = client.dogsOwned
             
-            print("dogsOwned\(dogsOwned)")
-             print("pets\(pets)")
             
+            //dogNameLabel.text = pets![0].dogName
+            //dogNameLabel.text = client.dogsnames
+            //dogImageView.image = client.thumbnail
             //dogImageView.image = image(imageName: client.dogName)
         }
     }

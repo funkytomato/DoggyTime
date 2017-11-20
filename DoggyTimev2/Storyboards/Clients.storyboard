@@ -308,7 +308,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="3" y="191122997" width="306" height="280"/>
+                                                    <rect key="frame" x="2" y="462240085" width="308" height="280"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -326,7 +326,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Add Dog"/>
                                                     <connections>
-                                                        <segue destination="9jA-Il-CvW" kind="presentation" id="saw-Wx-jS7"/>
+                                                        <segue destination="HN3-6e-gxA" kind="show" identifier="AddDogSegue" id="dOh-SU-lX4"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -549,12 +549,12 @@
                     <navigationItem key="navigationItem" title="Dog Profile" id="YHs-TF-tC5" userLabel="Dog Profile">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Aew-wv-CjP">
                             <connections>
-                                <segue destination="Y7S-3X-VNp" kind="unwind" unwindAction="cancelToClientsDetailViewController:" id="h1X-Gc-oXr"/>
+                                <segue destination="Y7S-3X-VNp" kind="unwind" unwindAction="cancelToClientsDetailViewController:" id="C3O-hP-rgO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="zMv-dF-TcB">
                             <connections>
-                                <segue destination="Y7S-3X-VNp" kind="unwind" unwindAction="saveClientDogDetail:" id="OKX-6T-wPA"/>
+                                <segue destination="Y7S-3X-VNp" kind="unwind" identifier="SaveClientDogDetail" unwindAction="saveClientDogDetail:" id="5Lk-EJ-9Nb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -571,7 +571,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU1-NF-uFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Y7S-3X-VNp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5276" y="-869"/>
+            <point key="canvasLocation" x="4163" y="-869"/>
         </scene>
         <!--Camera-->
         <scene sceneID="Qa5-DM-7HR">
@@ -580,24 +580,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKt-QW-mdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6095" y="-869"/>
-        </scene>
-        <!--Dog Profile Navigation Controller-->
-        <scene sceneID="6Ud-FQ-Okw">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9jA-Il-CvW" userLabel="Dog Profile Navigation Controller" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NLv-Gc-BGM">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="HN3-6e-gxA" kind="relationship" relationship="rootViewController" id="xe1-lf-Ng3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OPw-ZJ-Yp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4149" y="-869"/>
         </scene>
         <!--EmbeddedDogsTableViewController-->
         <scene sceneID="whL-g0-rxR">
@@ -611,7 +593,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="304" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-uS-vSm" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTimev2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogNameCell" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-uS-vSm" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTimev2" customModuleProvider="target">
                                 <rect key="frame" x="16" y="0.0" width="272" height="22"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ku-uS-vSm" id="La0-4R-rnJ">
                                     <rect key="frame" x="0.0" y="0.0" width="272" height="21.5"/>
