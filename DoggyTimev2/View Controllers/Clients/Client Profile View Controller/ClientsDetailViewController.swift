@@ -22,8 +22,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     var dogData: Dog?
     
     
-    
-    
     //MARK:- IBOutlets
     @IBOutlet weak var ForenameField: UITextField!
     @IBOutlet weak var SurnameField: UITextField!
@@ -49,27 +47,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         present(picker, animated: true, completion: nil)
     }
     
-  /*
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
-    {
-        // Initialize Fetch Request
-        let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
-        print("fetchRequest:\(fetchRequest.description)")
-        
-        // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        print("fetchedResultsCOntroller\(fetchedResultsController.description)")
-        
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
- */
     
     // MARK:- Initializers
     required init?(coder aDecoder: NSCoder)
@@ -90,19 +67,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         print("ClientDetailsViewController viewDidLoad")
         super.viewDidLoad()
         
-        //Fetch dogs from CoreData
-   /*     do
-        {
-            try fetchedResultsController.performFetch()
-        }
-        catch
-        {
-            let fetchError = error as NSError
-            print("Unable to Save Dog")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
-     */
-        
+        //Populate the UI
         ForenameField.text = clientData?.foreName
         SurnameField.text = clientData?.surName
         StreetField.text = clientData?.street
@@ -110,19 +75,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         PostCodeField.text = clientData?.postCode
         MobileField.text = clientData?.mobile
         eMailField.text = clientData?.eMail
-
-        //Fetch the Client's dogs
-        
-        //This is done in embedded controller and prepare segue
-        //var dogsOwned = clientData?.dogsOwned
-        //var pets = Array(dogsOwned!)
-        //print("pets\(pets)")
-        
-        //DognameField.text = clientData?.dogName
-        //DogPicture?.image = (clientData.dogpicture)!
-
-        
-        //  DO I SET THE DOG ID HERE TOO?
     }
     
     
@@ -136,6 +88,28 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        //Prepare the embedded table view to display the client's pet dogs
+        if (segue.identifier == "PetList"),
+            let childViewController = segue.destination as? DogsEmbeddedTableViewConroller
+        {
+            print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
+            
+            //Fetch the list of client dogs
+            let dogsOwned = clientData?.dogsOwned
+            let pets = Array(dogsOwned!) as! [Dog]
+            
+            print("embeddedDogsTableViewController dogsOwned \(dogsOwned!)")
+            print("embeddedDogsTableViewController pets: \(pets)")
+            
+            //Configure the controller
+            childViewController.dogs = pets
+            
+        }
+        
+        
+        //Prepare the Client's profile to be saved
         if segue.identifier == "SaveClientDetail"
         {
             guard let forename = ForenameField.text else {return}
@@ -145,7 +119,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             guard let postcode = PostCodeField.text else {return}
             guard let mobile = MobileField.text else {return}
             guard let email = eMailField.text else {return}
-            //guard let dogname = DognameField.text else {return}
+            
             
             // Update Client
             clientData?.foreName  = forename
@@ -155,30 +129,11 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             clientData?.postCode = postcode
             clientData?.mobile = mobile
             clientData?.eMail = email
-            //clientData?.addToDogsOwned(dogData!)
-            
-            print("clientData.dogsOwned\(clientData?.dogsOwned)")
-            
-            //clientData?.dogName = dogname
-            //clientData?.mutableSetValueForKey("dogsOwned").addObject(dog)
         }
         
-        if (segue.identifier == "PetList"),
-            let childViewController = segue.destination as? DogsEmbeddedTableViewConroller
-        {
-            print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
-            
-            let dogsOwned = clientData?.dogsOwned
-            print("embeddedDogsTableViewController dogsOwned \(dogsOwned!)")
+
         
-            let pets = Array(dogsOwned!) as! [Dog]
-            print("embeddedDogsTableViewController pets: \(pets)")
-            
-            childViewController.dogs = pets
-            
-        }
-        
-        //if let profileViewController = segue.destination as? ClientDogEntryViewController,
+        //Prepare the dog entry controller to load an existing dog profile
         if segue.identifier == "AddDogSegue",
             let profileViewController = segue.destination as? ClientDogEntryViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
@@ -191,9 +146,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             //profileViewController.dogData = dog
-            
         }
-        //else if let profileViewController = segue.destination as? ClientDogEntryViewController
+
+            
+        //Prepare the dog entry controller to create a new dog profile
         else if segue.identifier == "AddDogSegue",
             let profileViewController = segue.destination as? ClientDogEntryViewController
         {
@@ -214,23 +170,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             //dog.uuid = ""
             dog.owner = clientData
            
-            
+         
+            //Create relationship between client and dog
             clientData?.addToDogsOwned(dog)
-            
-        /*
-            //Store to ObjectContext
-            do
-            {
-                try dog.managedObjectContext?.save()
-                //try clientData?.managedObjectContext?.save()
-            }
-            catch
-            {
-                let saveError = error as NSError
-                print("Unable to Save Dog")
-                print("\(saveError), \(saveError.localizedDescription)")
-            }
-            */
+        
             
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
@@ -240,7 +183,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
 }
 
 
-
 // MARK:- IBActions
 extension ClientsDetailViewController
 {
@@ -248,10 +190,10 @@ extension ClientsDetailViewController
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
         print("Back in the ClientsDetailViewController")
-        
     }
     
 
+    //Save the dog profile from the Client Dog Entry window
     @IBAction func saveClientDogDetail(_ segue: UIStoryboardSegue)
     {
         print("ClientsDetailViewController saveClientDetail")
@@ -275,10 +217,10 @@ extension ClientsDetailViewController
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
-
 }
 
 
+//MARK:- Automatic tab to next field entry
 extension ClientsDetailViewController: UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) ->Bool
@@ -310,59 +252,6 @@ extension ClientsDetailViewController: UITextFieldDelegate
     }
 }
 
-/*
-extension ClientsDetailViewController: NSFetchedResultsControllerDelegate
-{
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
-    {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
-    {
-        tableView.endUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
-    {
-        switch (type)
-        {
-        case .insert:
-            if let indexPath = newIndexPath
-            {
-                tableView.insertRows(at: [indexPath], with: .fade)
-            }
-            break;
-        case .delete:
-            if let indexPath = indexPath
-            {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            break;
-        case .update:
-            /*
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? ClientCell
-            {
-                configureCell(cell, at: indexPath)
-            }
- */
-            break;
-        case .move:
-            if let indexPath = indexPath
-            {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            
-            if let newIndexPath = newIndexPath
-            {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
-            }
-            break;
-        }
-    }
-}
-*/
 
 //MARK:- CoreDataManager Protocol
 extension ClientsDetailViewController: CoreDataManagerDelegate
