@@ -11,6 +11,7 @@ import UIKit
 class DogsEmbeddedTableViewConroller: UITableViewController
 {
    
+    
     @IBOutlet var dogListView: UITableView!
     
     /*
@@ -24,22 +25,15 @@ class DogsEmbeddedTableViewConroller: UITableViewController
  */
  
     //MARK:- Properties
-    //let dataSource: WalkingDogsDataSource?
-    //var dataSource: UITableViewDataSource?
-    
-    //Data to send dogs on walk controller
-    //var dogs: [Dog]? = []
     var dogs: [Dog]?
     
     
     required init?(coder aDecoder: NSCoder)
     {
-        //self.dataSource = WalkingDogsDataSource(dogsOnWalk: SampleData.generateWalkingDogsData())
         print("DogsEmbeddedTableViewController init dogs =\(dogs)")
-        //self.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
-        //dataSource = self
         super.init(coder: aDecoder)
     }
+    
     
     override func viewDidLoad()
     {
@@ -47,13 +41,8 @@ class DogsEmbeddedTableViewConroller: UITableViewController
         super.viewDidLoad()
         
         
-        
         dogListView.estimatedRowHeight = 40
         dogListView.rowHeight = UITableViewAutomaticDimension
-        //tableView.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
-        //dogListView.dataSource = self
-        //dogListView.delegate = self
-        //dogListView.register(DogNameCell.self, forCellReuseIdentifier: "cell")
         dogListView.reloadData()
     }
     
@@ -67,16 +56,19 @@ class DogsEmbeddedTableViewConroller: UITableViewController
 extension DogsEmbeddedTableViewConroller
 {
     
+    
     override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         print("DogsEmbeddedTableViewConroller numberOfRowsInSection")
         return self.dogs!.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {      
