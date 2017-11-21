@@ -10,11 +10,22 @@ import UIKit
 
 class DogsEmbeddedTableViewConroller: UITableViewController
 {
-    
+   
     @IBOutlet var dogListView: UITableView!
     
+    /*
+    @IBOutlet var dogListView: UITableView!
+    {
+        didSet
+        {
+            dogListView.dataSource = self
+        }
+    }
+ */
+ 
     //MARK:- Properties
     //let dataSource: WalkingDogsDataSource?
+    //var dataSource: UITableViewDataSource?
     
     //Data to send dogs on walk controller
     //var dogs: [Dog]? = []
@@ -26,6 +37,7 @@ class DogsEmbeddedTableViewConroller: UITableViewController
         //self.dataSource = WalkingDogsDataSource(dogsOnWalk: SampleData.generateWalkingDogsData())
         print("DogsEmbeddedTableViewController init dogs =\(dogs)")
         //self.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
+        //dataSource = self
         super.init(coder: aDecoder)
     }
     
@@ -34,11 +46,15 @@ class DogsEmbeddedTableViewConroller: UITableViewController
         print("DogsEmbeddedTableViewConroller viewDidLoad")
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 40
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
-        //tableView.dataSource = dataSource
-        tableView.reloadData()
+        
+        
+        dogListView.estimatedRowHeight = 40
+        dogListView.rowHeight = UITableViewAutomaticDimension
+        //tableView.dataSource = WalkingDogsDataSource(dogsOnWalk: dogs!)
+        //dogListView.dataSource = self
+        //dogListView.delegate = self
+        //dogListView.register(DogNameCell.self, forCellReuseIdentifier: "cell")
+        dogListView.reloadData()
     }
     
     override func didReceiveMemoryWarning()
@@ -50,6 +66,18 @@ class DogsEmbeddedTableViewConroller: UITableViewController
 //MARK:- UITableViewDataSource
 extension DogsEmbeddedTableViewConroller
 {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        print("DogsEmbeddedTableViewConroller numberOfRowsInSection")
+        return self.dogs!.count
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {      
         print("DogsEmbeddedTableView Controller cellForRowAt")

@@ -163,7 +163,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             //clientData?.mutableSetValueForKey("dogsOwned").addObject(dog)
         }
         
-        if (segue.identifier == "embeddedDogsTableViewController"),
+        if (segue.identifier == "PetList"),
             let childViewController = segue.destination as? DogsEmbeddedTableViewConroller
         {
             print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
