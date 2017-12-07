@@ -96,6 +96,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         {
             print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
             
+            //Configure View Controller
+            childViewController.setCoreDataManager(coreDataManager: coreDataManager)
+            
+            /*
             //Fetch the list of client dogs
             let dogsOwned = clientData?.dogsOwned
             let pets = Array(dogsOwned!) as! [Dog]
@@ -105,7 +109,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             
             //Configure the controller
             childViewController.dogs = pets
-            
+            */
         }
         
         
