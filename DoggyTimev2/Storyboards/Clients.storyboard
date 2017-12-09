@@ -278,72 +278,11 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Pet Details" id="bcJ-D5-Ta9">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="120" id="0LP-qt-K63">
-                                        <rect key="frame" x="0.0" y="532" width="320" height="120"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0LP-qt-K63" id="esO-r4-qc3">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7M-rl-oOg" userLabel="DogListView">
-                                                    <rect key="frame" x="8" y="11" width="304" height="98"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientDogCell" id="6IO-pb-uVN" customClass="ClientDogCell" customModule="DoggyTimev2" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="28" width="304" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6IO-pb-uVN" id="t4B-cM-Dfu">
-                                                                <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-UJ-EHl" userLabel="DogNameLabel">
-                                                                        <rect key="frame" x="15" y="11" width="274" height="22"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="s3k-UJ-EHl" firstAttribute="top" secondItem="t4B-cM-Dfu" secondAttribute="topMargin" id="9UI-63-fDy"/>
-                                                                    <constraint firstAttribute="trailingMargin" secondItem="s3k-UJ-EHl" secondAttribute="trailing" id="pa5-gs-Ncw"/>
-                                                                    <constraint firstItem="s3k-UJ-EHl" firstAttribute="leading" secondItem="t4B-cM-Dfu" secondAttribute="leadingMargin" id="toY-N6-FIV"/>
-                                                                    <constraint firstAttribute="bottomMargin" secondItem="s3k-UJ-EHl" secondAttribute="bottom" id="xpR-Aa-vF6"/>
-                                                                </constraints>
-                                                            </tableViewCellContentView>
-                                                            <connections>
-                                                                <outlet property="DogNameLabel" destination="s3k-UJ-EHl" id="dlh-Hb-dkr"/>
-                                                            </connections>
-                                                        </tableViewCell>
-                                                    </prototypes>
-                                                </tableView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Q7M-rl-oOg" secondAttribute="bottom" id="AGn-DL-wW2"/>
-                                                <constraint firstItem="Q7M-rl-oOg" firstAttribute="leading" secondItem="esO-r4-qc3" secondAttribute="leadingMargin" id="KOm-eC-cTC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Q7M-rl-oOg" secondAttribute="trailing" id="nN4-Sr-zuU"/>
-                                                <constraint firstItem="Q7M-rl-oOg" firstAttribute="top" secondItem="esO-r4-qc3" secondAttribute="topMargin" id="sQs-2V-KVc"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" rowHeight="300" id="fji-Hm-IeW">
-                                        <rect key="frame" x="0.0" y="652" width="320" height="300"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="fji-Hm-IeW" id="3ST-r4-5sK">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="2" y="2.4018344977555784e+18" width="308" height="0.0"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" id="9zm-VA-wtg">
-                                        <rect key="frame" x="0.0" y="951" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="532" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="9zm-VA-wtg" id="zq4-bq-Uz7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UR-Mb-eK3">
@@ -361,6 +300,68 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="6UR-Mb-eK3" secondAttribute="bottom" id="XpU-ze-nea"/>
                                                 <constraint firstItem="6UR-Mb-eK3" firstAttribute="leading" secondItem="zq4-bq-Uz7" secondAttribute="leadingMargin" id="bX2-Sc-JRS"/>
                                             </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="120" id="0LP-qt-K63">
+                                        <rect key="frame" x="0.0" y="576" width="320" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0LP-qt-K63" id="esO-r4-qc3">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q7M-rl-oOg" userLabel="DogListView">
+                                                    <rect key="frame" x="8" y="11" width="304" height="98"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientDogCell" id="6IO-pb-uVN" customClass="ClientDogCell" customModule="DoggyTimev2" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="28" width="304" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6IO-pb-uVN" id="t4B-cM-Dfu">
+                                                                <rect key="frame" x="0.0" y="0.0" width="304" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-UJ-EHl" userLabel="DogNameLabel">
+                                                                        <rect key="frame" x="16" y="11" width="272" height="22"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="s3k-UJ-EHl" firstAttribute="top" secondItem="t4B-cM-Dfu" secondAttribute="topMargin" id="9UI-63-fDy"/>
+                                                                    <constraint firstAttribute="trailingMargin" secondItem="s3k-UJ-EHl" secondAttribute="trailing" id="pa5-gs-Ncw"/>
+                                                                    <constraint firstItem="s3k-UJ-EHl" firstAttribute="leading" secondItem="t4B-cM-Dfu" secondAttribute="leadingMargin" id="toY-N6-FIV"/>
+                                                                    <constraint firstAttribute="bottomMargin" secondItem="s3k-UJ-EHl" secondAttribute="bottom" id="xpR-Aa-vF6"/>
+                                                                </constraints>
+                                                            </tableViewCellContentView>
+                                                            <color key="backgroundColor" red="0.14037543750000001" green="0.3854155822" blue="0.70371788739999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <connections>
+                                                                <outlet property="DogNameLabel" destination="s3k-UJ-EHl" id="dlh-Hb-dkr"/>
+                                                            </connections>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Q7M-rl-oOg" secondAttribute="bottom" id="AGn-DL-wW2"/>
+                                                <constraint firstItem="Q7M-rl-oOg" firstAttribute="leading" secondItem="esO-r4-qc3" secondAttribute="leadingMargin" id="KOm-eC-cTC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Q7M-rl-oOg" secondAttribute="trailing" id="nN4-Sr-zuU"/>
+                                                <constraint firstItem="Q7M-rl-oOg" firstAttribute="top" secondItem="esO-r4-qc3" secondAttribute="topMargin" id="sQs-2V-KVc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" rowHeight="300" id="fji-Hm-IeW">
+                                        <rect key="frame" x="0.0" y="696" width="320" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="fji-Hm-IeW" id="3ST-r4-5sK">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" highlightedImage="Akita" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
+                                                    <rect key="frame" x="2" y="2.3114324227443917e+18" width="308" height="0.0"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -658,6 +659,7 @@
     </scenes>
     <resources>
         <image name="Affenpinscher" width="120" height="120"/>
+        <image name="Akita" width="120" height="120"/>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
