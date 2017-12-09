@@ -229,7 +229,7 @@ extension ClientsDetailViewController
         //Store to CoreData
         do
         {
-            //try clientData?.managedObjectContext?.save()
+            try clientData?.managedObjectContext?.save()
             try dog.managedObjectContext?.save()
             print("ClientsDetailViewController saveClientDogDetail dog:\(dog)")
         }
