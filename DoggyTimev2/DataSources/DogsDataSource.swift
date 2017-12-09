@@ -21,16 +21,30 @@ class DogsDataSource: NSObject
 
 extension DogsDataSource: UITableViewDataSource
 {
+    
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        print("DogsDataSource sections")
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        print("DogsDataSource heightForRowAt")
+        return 40
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        print("DogsDataSource numberOfRowsInSection")
+        print("DogsDataSource numberOfRowsInSection \(self.dogs.count)")
         return self.dogs.count
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         print("DogsDataSource cellForRowAt")
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DogsCell.self)) as! DogsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ClientDogCell.self)) as! ClientDogCell
         let dog = dogs[indexPath.row]
         cell.dog = dog
         return cell
