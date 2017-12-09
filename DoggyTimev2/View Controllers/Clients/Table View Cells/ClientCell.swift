@@ -34,9 +34,15 @@ class ClientCell: UITableViewCell
             nameLabel.text = client.foreName
             addressLabel.text = client.street
             
-            //let pets = client.dogsOwned
-            
-            
+            //Fetch the list of client dogs
+            let dogsOwned = (client.dogsOwned)!
+            guard let pets = Array(dogsOwned) as? [Dog] else { return }
+            if pets.count > 0
+            {
+                guard let dogname = pets[0].dogName else { return }
+                dogNameLabel.text = dogname
+            }
+                
             //dogNameLabel.text = pets![0].dogName
             //dogNameLabel.text = client.dogsnames
             //dogImageView.image = client.thumbnail
