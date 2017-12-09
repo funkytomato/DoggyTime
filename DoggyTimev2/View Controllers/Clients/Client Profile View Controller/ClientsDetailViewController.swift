@@ -21,6 +21,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     var clientData: Client?
     var dogData: Dog?
     
+    var dogsOwned = [Dog]()
+    var dataSource: DogsDataSource?
+    
+    
     
     //MARK:- IBOutlets
     @IBOutlet weak var ForenameField: UITextField!
@@ -33,8 +37,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var MobileField: UITextField!
     @IBOutlet weak var eMailField: UITextField!
     
-    @IBOutlet weak var DogNameField: UITextField!
-    @IBOutlet weak var DogTinyPicture: UIImageView!
+
+    @IBOutlet weak var DogListView: UITableView!
     @IBOutlet weak var DogPicture: UIImageView!
 
     
@@ -52,8 +56,12 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     required init?(coder aDecoder: NSCoder)
     {
         print("init ClientDetailsViewController")
+        
+        self.dataSource = DogsDataSource(dogs: dogsOwned)
+
         super.init(coder: aDecoder)
-    }
+        
+     }
     
     
     deinit
@@ -75,6 +83,16 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         PostCodeField.text = clientData?.postCode
         MobileField.text = clientData?.mobile
         eMailField.text = clientData?.eMail
+        
+        //Fetch the list of client dogs
+        let dogsOwned = (clientData?.dogsOwned)!
+        let pets = Array(dogsOwned) as! [Dog]
+        self.dataSource = DogsDataSource(dogs: pets)
+        
+        DogListView.estimatedRowHeight = 40
+        DogListView.rowHeight = UITableViewAutomaticDimension
+        DogListView.dataSource = dataSource
+        DogListView.reloadData()
     }
     
     
@@ -211,6 +229,7 @@ extension ClientsDetailViewController
         //Store to CoreData
         do
         {
+            //try clientData?.managedObjectContext?.save()
             try dog.managedObjectContext?.save()
             print("ClientsDetailViewController saveClientDogDetail dog:\(dog)")
         }
@@ -220,6 +239,14 @@ extension ClientsDetailViewController
             print("Unable to Save Client Dog")
             print("\(saveError), \(saveError.localizedDescription)")
         }
+        
+        //Update the pet list
+        //Fetch the list of client dogs
+        let dogsOwned = (clientData?.dogsOwned)!
+        let pets = Array(dogsOwned) as! [Dog]
+        self.dataSource = DogsDataSource(dogs: pets)
+        DogListView.dataSource = dataSource
+        DogListView.reloadData()
     }
 }
 
@@ -244,17 +271,16 @@ extension ClientsDetailViewController: UITextFieldDelegate
         case MobileField:
             eMailField.becomeFirstResponder()
         case eMailField:
-            DogNameField.becomeFirstResponder()
-        case DogNameField:
-            DogNameField.resignFirstResponder()
+            eMailField.resignFirstResponder()
             
         default:
-            DogNameField.resignFirstResponder()
+            eMailField.resignFirstResponder()
             
         }
         return true
     }
 }
+
 
 
 //MARK:- CoreDataManager Protocol
