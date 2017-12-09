@@ -12,8 +12,11 @@ import UIKit
 class ClientDogCell: UITableViewCell
 {
     //MARK:- IBOutlets
-    @IBOutlet weak var DogNameLabel: UILabel!
     @IBOutlet weak var DogImageView : UIImageView!
+    
+
+    @IBOutlet weak var DogNameLabel: UILabel!
+    
     
     var dog: Dog?
     {
