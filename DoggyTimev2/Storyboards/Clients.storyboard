@@ -48,43 +48,51 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-zW-fVs">
-                                            <rect key="frame" x="10" y="0.0" width="150" height="59"/>
+                                            <rect key="frame" x="10" y="0.0" width="49.5" height="59"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-2w-YVL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="22.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="3W3-fc-JQP" userLabel="width = 130"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymf-9H-yqU">
-                                                    <rect key="frame" x="0.0" y="22.5" width="150" height="16"/>
+                                                    <rect key="frame" x="0.0" y="43" width="49.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="68.5" translatesAutoresizingMaskIntoConstraints="NO" id="QcC-nh-BY5">
-                                                    <rect key="frame" x="0.0" y="38.5" width="150" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="QcC-nh-BY5" secondAttribute="bottom" id="Pfb-wH-wnZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="QcC-nh-BY5" secondAttribute="trailing" id="btb-Jp-XcG"/>
                                                 <constraint firstAttribute="trailing" secondItem="ymf-9H-yqU" secondAttribute="trailing" id="vL4-sv-VJm"/>
                                             </constraints>
                                         </stackView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-Ub-4RO" userLabel="Dog Image View">
-                                            <rect key="frame" x="166" y="0.0" width="121" height="62"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="QRv-Dy-WqG">
+                                            <rect key="frame" x="83" y="0.0" width="203" height="69.5"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="HDb-Pg-x5V">
+                                                    <rect key="frame" x="0.0" y="0.0" width="203" height="69.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dog Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="68.5" translatesAutoresizingMaskIntoConstraints="NO" id="QcC-nh-BY5">
+                                                            <rect key="frame" x="0.0" y="49" width="83" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Airedale Terrier" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-Ub-4RO" userLabel="Dog Image View">
+                                                            <rect key="frame" x="83" y="0.0" width="120" height="69.5"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="QRv-Dy-WqG" firstAttribute="top" secondItem="Iy0-4b-KYs" secondAttribute="top" id="KXm-uA-Wn0"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="lU1-zW-fVs" secondAttribute="bottom" id="SU2-7U-XHT"/>
+                                        <constraint firstAttribute="trailing" secondItem="QRv-Dy-WqG" secondAttribute="trailing" id="Szo-pd-9nk"/>
+                                        <constraint firstAttribute="bottom" secondItem="QRv-Dy-WqG" secondAttribute="bottom" id="WHr-Xx-n38"/>
+                                        <constraint firstItem="QRv-Dy-WqG" firstAttribute="leading" secondItem="lU1-zW-fVs" secondAttribute="trailing" constant="23.5" id="lWe-5F-pVh"/>
                                         <constraint firstItem="lU1-zW-fVs" firstAttribute="top" secondItem="Iy0-4b-KYs" secondAttribute="top" id="z18-j1-KVz"/>
                                         <constraint firstItem="lU1-zW-fVs" firstAttribute="leading" secondItem="Iy0-4b-KYs" secondAttribute="leading" constant="10" id="zHF-S4-fFQ"/>
                                     </constraints>
@@ -358,7 +366,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" highlightedImage="Akita" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="2" y="2.3114324227443917e+18" width="308" height="0.0"/>
+                                                    <rect key="frame" x="2" y="2.2884141239998874e+18" width="308" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -659,6 +667,7 @@
     </scenes>
     <resources>
         <image name="Affenpinscher" width="120" height="120"/>
+        <image name="Airedale Terrier" width="120" height="120"/>
         <image name="Akita" width="120" height="120"/>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
