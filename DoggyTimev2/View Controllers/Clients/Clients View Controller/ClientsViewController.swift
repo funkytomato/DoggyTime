@@ -71,7 +71,7 @@ class ClientsViewController: UITableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientsViewController prepare segue")
-        if let profileViewController = segue.destination as? ClientsDetailViewController,
+        if let profileViewController = segue.destination as? ClientProfileViewController,
             let indexPath = self.tableView.indexPathForSelectedRow
         {
             //Load an existing Client profile
@@ -85,7 +85,7 @@ class ClientsViewController: UITableViewController
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.clientData = client
         }
-        else if let profileViewController = segue.destination as? ClientsDetailViewController
+        else if let profileViewController = segue.destination as? ClientProfileViewController
         {
             //Create a new Client profile
             let client = Client(context: coreDataManager.mainManagedObjectContext)
@@ -125,7 +125,7 @@ extension ClientsViewController
     {
         print("ClientsViewController saveClientDetail")
         print("Segue source\(segue.source)")
-        guard let profileViewController = segue.source as? ClientsDetailViewController,
+        guard let profileViewController = segue.source as? ClientProfileViewController,
             let client = profileViewController.clientData else
         {
             return
