@@ -26,14 +26,21 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     var dogData : Dog?
     
     //MARK:- IBOutlets
+    @IBOutlet weak var OwnerNameLabel: UILabel!
+    @IBOutlet weak var WalkCountLabel: UILabel!
+    @IBOutlet weak var NextWalkDateLabel: UILabel!
+    @IBOutlet weak var NextWalkLocationLabel: UILabel!
+    @IBOutlet weak var UpdatedDateLabel: UILabel!
+    
     @IBOutlet weak var DogNameField: UITextField!
     @IBOutlet weak var GenderPicker: UIPickerView!
+    @IBOutlet weak var SizePicker: UIPickerView!
+    @IBOutlet weak var TemperamentPicker: UIPickerView!
     
     @IBOutlet weak var BreedPicker: UIPickerView!
     @IBOutlet weak var BreedPictureView: UIImageView!
     @IBOutlet weak var BreedInfoTextView: UITextView!
     
-    @IBOutlet weak var SizePicker: UIPickerView!
     @IBOutlet weak var ProfilePictureView: UIImageView!
     
     
@@ -43,6 +50,8 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     var genderDataSource = ["Male", "Female"]
     
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
+    
+    var temperamentDataSource = ["Green", "Yellow", "Red", "Black"]
     
     required init?(coder aDecoder: NSCoder)
     {
@@ -67,15 +76,41 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         SizePicker.delegate = self
         SizePicker.dataSource = self
         
+        TemperamentPicker.delegate = self
+        TemperamentPicker.dataSource = self
+        
         if dogData != nil
         {
+
+            guard let owner = dogData?.owner?.foreName else { return }
+            self.OwnerNameLabel.text = owner
+            
+            guard let walkcount = dogData?.walkcount.description else { return }
+            self.WalkCountLabel.text = walkcount
+            
+            
+            //self.NextWalkDateLabel.text = dogData?.walking.time
+            
+            guard let updatedAt = dogData?.updatedAt?.description else { return }
+            self.UpdatedDateLabel.text = updatedAt
+            
+            
             self.DogNameField.text = dogData?.dogName
             
             if let row = genderDataSource.index(of: (dogData?.gender)!)
             {
                 GenderPicker.selectRow(row, inComponent: 0, animated: false)
             }
+       
+            if let row = sizeDataSource.index(of: (dogData?.size?.description)!)
+            {
+                SizePicker.selectRow(row, inComponent: 0, animated: false)
+            }
             
+            if let row = temperamentDataSource.index(of: (dogData?.temperament?.description)!)
+            {
+                TemperamentPicker.selectRow(row, inComponent: 0, animated: false)
+            }
 
             if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
             {
@@ -99,15 +134,16 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     {
         print("ClientDogEntryViewController prepare segue")
         print("segue identifier:\(segue.identifier)")
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDogDetail",
-            let dogname = DogNameField.text
-            //let gender = dogData?.gender,
-            //let breed = dogData?.breed,
-            //let size = dogData?.size,
-            //let temperament = dogData?.temperament,
-            //let picture = ProfilePictureView.image
+            let dogname = DogNameField.text,
+            let gender = dogData?.gender,
+            let breed = dogData?.breed,
+            let size = dogData?.size,
+            let temperament = dogData?.temperament,
+            let picture = ProfilePictureView.image
         {
             //Create a new Dog profile
             let dog = Dog(context: coreDataManager.mainManagedObjectContext)
@@ -115,17 +151,12 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             
             // Update Client
             dogData?.dogName = dogname
-            //dogData?.gender = gender
-            //dogData?.breed = breed
-            //dogData?.size = size
-            //dogData?.temperament = temperament
+            dogData?.gender = gender
+            dogData?.breed = breed
+            dogData?.size = size
+            dogData?.temperament = temperament
             dogData?.updatedAt = NSDate()
-            //dogData?.profilePicture = picture
-        
-            
-            
-            //Configure View Controller
-            self.dogData? = dog
+            dogData?.profilePicture = picture as? Data
         }
         
         if let profileViewController = segue.destination as? CameraViewController2
