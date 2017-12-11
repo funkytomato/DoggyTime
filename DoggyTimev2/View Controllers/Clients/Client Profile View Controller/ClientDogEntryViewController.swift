@@ -15,19 +15,10 @@
 //
 
 import UIKit
-import CoreData
 
-/*
-protocol AddClientDogEntryViewControllerDelegate
-{
-    func controller(_ controller: ClientDogEntryViewController, didAddClientDog dogname: String)
-}
-*/
 
 class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate
 {
-    
-    //var delegate: AddClientDogEntryViewControllerDelegate?
     
     //MARK:- Properties
     var coreDataManager: CoreDataManager!
@@ -53,28 +44,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     var sizeDataSource = ["Tiny", "Small", "Medium", "LARGE"]
     
-   /*
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Dog> =
-    {
-        // Initialize Fetch Request
-        let fetchRequest: NSFetchRequest<Dog> = Dog.fetchRequest()
-        print("fetchRequest:\(fetchRequest.description)")
-        
-        // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        print("fetchedResultsCOntroller\(fetchedResultsController.description)")
-        
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
-    */
-    
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
@@ -89,20 +58,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     {
         super.viewDidLoad()
         
-        /*
-        //Fetch dogs from CoreData
-        do
-        {
-            try fetchedResultsController.performFetch()
-        }
-        catch
-        {
-            let fetchError = error as NSError
-            print("Unable to Save Dog")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
-        */
-        
         BreedPicker.delegate = self
         BreedPicker.dataSource = self
         
@@ -116,22 +71,17 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         {
             self.DogNameField.text = dogData?.dogName
             
-            //self.sexFd.text = dogData?.sex
             if let row = genderDataSource.index(of: (dogData?.gender)!)
             {
                 GenderPicker.selectRow(row, inComponent: 0, animated: false)
             }
             
-            
-            //self.breedFd.text = dogData?.breed
+
             if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
             {
                 BreedPicker.selectRow(row, inComponent: 0, animated: false)
                 BreedPictureView.image = UIImage(named: breedDataSource[row])
             }
-            
-            //self.sizeFd.text = dogData?.size
-            //self.pictureView.image = dogData?.picture
         }
         
         tableView.reloadData()
@@ -152,7 +102,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDogDetail",
-            //let dogid = dog
             let dogname = DogNameField.text
             //let gender = dogData?.gender,
             //let breed = dogData?.breed,
@@ -172,21 +121,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             //dogData?.temperament = temperament
             dogData?.updatedAt = NSDate()
             //dogData?.profilePicture = picture
-            
-            /*
-            //Store to ObjectContext
-            do
-            {
-                try dog.managedObjectContext?.save()
-                //try clientData?.managedObjectContext?.save()
-            }
-            catch
-            {
-                let saveError = error as NSError
-                print("Unable to Save Dog")
-                print("\(saveError), \(saveError.localizedDescription)")
-            }
-            */
+        
             
             
             //Configure View Controller
@@ -331,110 +266,6 @@ extension ClientDogEntryViewController: UITextFieldDelegate
     }
 }
 
-/*
-extension ClientDogEntryViewController: NSFetchedResultsControllerDelegate
-{
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
-    {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
-    {
-        tableView.endUpdates()
-    }
-    
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
-    {
-        switch (type)
-        {
-        case .insert:
-            if let indexPath = newIndexPath
-            {
-                tableView.insertRows(at: [indexPath], with: .fade)
-            }
-            break;
-        case .delete:
-            if let indexPath = indexPath
-            {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            break;
-        case .update:
-           /*
-            if let indexPath = indexPath, let cell = tableView.cellForRow(at: indexPath) as? ClientCell
-            {
-                configureCell(cell, at: indexPath)
-            }
- */
-            break;
-        case .move:
-            if let indexPath = indexPath
-            {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            
-            if let newIndexPath = newIndexPath
-            {
-                tableView.insertRows(at: [newIndexPath], with: .fade)
-            }
-            break;
-        }
-    }
-}
-*/
- 
-/*
- extension ClientDogEntryViewController: UIPickerViewDelegate
- {
- func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
- {
- switch pickerView
- {
- case genderPicker:
- breedPicker.becomeFirstResponder()
- case breedPicker:
- sizePicker.becomeFirstResponder()
- case sizePicker:
- sizePicker.resignFirstResponder()
- default:
- sizePicker.resignFirstResponder()
- }
- 
- return true
- }
- }
- */
-
-/*
-
-//MARK:- IBActions
-extension ClientDogEntryViewController
-{
-    // MARK: - Actions
-    
-    @IBAction func save(_ sender: Any) {
-        guard let dogname = DogNameField.text else { return }
-        //guard let gender = GenderPicker.text else {return}
-        //guard let breed = BreedPicker.text else {return}
-        //guard let size = SizePicker.text else { return }
-        //guard let temperament =
-        guard let delegate = delegate else { return }
-        
-        // Notify Delegate
-        delegate.controller(self, didAddClientDog: dogname)
-        
-        // Dismiss View Controller
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-}
-*/
 
 // MARK:- IBActions
 extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINavigationControllerDelegate
@@ -457,7 +288,7 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
     */
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
-        print("Back in the ClientsDetailViewController")
+        print("Back to the ClientProfileViewController")
         
     }
     

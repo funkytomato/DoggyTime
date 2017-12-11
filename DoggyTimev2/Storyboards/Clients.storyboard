@@ -34,7 +34,7 @@
         <!--Clients View Controller-->
         <scene sceneID="lD9-tB-rZC">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController" id="62Z-sB-dF8" userLabel="Clients View Controller" customClass="ClientsViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="62Z-sB-dF8" userLabel="Clients View Controller" customClass="ClientsViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aob-yf-vkn">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
                                     <outlet property="dogImageView" destination="1xQ-Ub-4RO" id="JBM-zj-r8o"/>
                                     <outlet property="dogNameLabel" destination="QcC-nh-BY5" id="5v4-Oj-r7A"/>
                                     <outlet property="nameLabel" destination="tDz-2w-YVL" id="vCq-zC-Rjs"/>
-                                    <segue destination="IYz-Rx-QGR" kind="show" id="4Im-WR-aZl"/>
+                                    <segue destination="IYz-Rx-QGR" kind="show" identifier="ShowClientProfile" id="4Im-WR-aZl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -114,7 +114,7 @@
                     <navigationItem key="navigationItem" title="Clients" id="T2Q-mf-mNM">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yof-ad-GZ4">
                             <connections>
-                                <segue destination="IYz-Rx-QGR" kind="show" id="zBi-Rg-irc"/>
+                                <segue destination="IYz-Rx-QGR" kind="show" identifier="AddClientSegue" id="zBi-Rg-irc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -126,7 +126,7 @@
         <!--Client Profile-->
         <scene sceneID="QzA-MH-OLD">
             <objects>
-                <tableViewController id="IYz-Rx-QGR" customClass="ClientsDetailViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ClientProfile" id="IYz-Rx-QGR" customClass="ClientProfileViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MeF-da-T5l">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,7 +333,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <state key="normal" title="Add Dog"/>
                                                     <connections>
-                                                        <segue destination="HN3-6e-gxA" kind="show" identifier="AddDogSegue" id="dOh-SU-lX4"/>
+                                                        <segue destination="HN3-6e-gxA" kind="show" identifier="AddDogSegue" id="8k5-3z-Y40"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -380,6 +380,7 @@
                                                             <color key="backgroundColor" red="0.14037543750000001" green="0.3854155822" blue="0.70371788739999996" alpha="1" colorSpace="calibratedRGB"/>
                                                             <connections>
                                                                 <outlet property="DogNameLabel" destination="s3k-UJ-EHl" id="dlh-Hb-dkr"/>
+                                                                <segue destination="HN3-6e-gxA" kind="show" identifier="ShowDogProfileSegue" id="8zR-Pc-tra"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
@@ -656,7 +657,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU1-NF-uFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Y7S-3X-VNp" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4163" y="-869"/>
+            <point key="canvasLocation" x="4014" y="-869"/>
         </scene>
         <!--Camera-->
         <scene sceneID="Qa5-DM-7HR">
@@ -719,9 +720,11 @@
         <image name="Affenpinscher" width="120" height="120"/>
         <image name="Airedale Terrier" width="120" height="120"/>
         <image name="Akita" width="120" height="120"/>
+        <image name="Australian Shepherd" width="120" height="120"/>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="8zR-Pc-tra"/>
         <segue reference="4Im-WR-aZl"/>
     </inferredMetricsTieBreakers>
 </document>

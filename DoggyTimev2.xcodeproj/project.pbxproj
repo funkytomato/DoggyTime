@@ -59,9 +59,6 @@
 		18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60431F9A20A30084FE8D /* ClientsViewController.swift */; };
 		18EB60531F9A20A40084FE8D /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60431F9A20A30084FE8D /* ClientsViewController.swift */; };
 		18EB60541F9A20A40084FE8D /* ClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60431F9A20A30084FE8D /* ClientsViewController.swift */; };
-		18EB60581F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60451F9A20A40084FE8D /* ClientsDetailViewController.swift */; };
-		18EB60591F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60451F9A20A40084FE8D /* ClientsDetailViewController.swift */; };
-		18EB605A1F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60451F9A20A40084FE8D /* ClientsDetailViewController.swift */; };
 		18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60471F9A20A40084FE8D /* DogNameCell.swift */; };
 		18EB605F1F9A20A40084FE8D /* DogNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60471F9A20A40084FE8D /* DogNameCell.swift */; };
 		18EB60601F9A20A40084FE8D /* DogNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60471F9A20A40084FE8D /* DogNameCell.swift */; };
@@ -78,6 +75,7 @@
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
 		C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
+		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
 /* End PBXBuildFile section */
 
@@ -145,7 +143,6 @@
 		18EB60381F9A206E0084FE8D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18EB60421F9A20A30084FE8D /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
 		18EB60431F9A20A30084FE8D /* ClientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsViewController.swift; sourceTree = "<group>"; };
-		18EB60451F9A20A40084FE8D /* ClientsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientsDetailViewController.swift; sourceTree = "<group>"; };
 		18EB60471F9A20A40084FE8D /* DogNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogNameCell.swift; sourceTree = "<group>"; };
 		18EB60681F9A20B40084FE8D /* WalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalksViewController.swift; sourceTree = "<group>"; };
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
@@ -154,6 +151,7 @@
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
+		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,8 +366,8 @@
 		1808F7101F9E17210027B447 /* Client Profile View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */,
 				18953DB61FBF486F00DAACC8 /* Embedded Controllers */,
-				18EB60451F9A20A40084FE8D /* ClientsDetailViewController.swift */,
 				183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */,
 			);
 			path = "Client Profile View Controller";
@@ -674,6 +672,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */,
+				C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */,
 				18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */,
 				18A5DB841FB4EE7E008C0C91 /* Walk+CoreDataProperties.swift in Sources */,
@@ -711,7 +710,6 @@
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
-				18EB60581F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */,
 				182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -720,7 +718,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB60591F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */,
 				18EB60201F9A1ADF0084FE8D /* DoggyTimev2Tests.swift in Sources */,
 				18EB60501F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BAC1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
@@ -738,7 +735,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB605A1F9A20A40084FE8D /* ClientsDetailViewController.swift in Sources */,
 				18EB602B1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift in Sources */,
 				18EB60511F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BAD1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
