@@ -15,7 +15,7 @@
 //
 
 import UIKit
-//import CoreData
+
 
 class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate
 {
@@ -288,7 +288,7 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
     */
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
-        print("Back in the ClientsDetailViewController")
+        print("Back to the ClientProfileViewController")
         
     }
     
