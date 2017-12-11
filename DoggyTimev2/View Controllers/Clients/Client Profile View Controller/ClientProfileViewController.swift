@@ -61,13 +61,13 @@ class ClientProfileViewController: UITableViewController, UIImagePickerControlle
     
     deinit
     {
-        print("deinit ClientDetailsViewController")
+        print("deinit ClientProfileViewController")
     }
  
     
     override func viewDidLoad()
     {
-        print("ClientDetailsViewController viewDidLoad")
+        print("ClientProfileViewController viewDidLoad")
         super.viewDidLoad()
         
         //Populate the UI
@@ -102,7 +102,7 @@ class ClientProfileViewController: UITableViewController, UIImagePickerControlle
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("ClientsDetailViewController prepare segue")
+        print("ClientProfileViewController prepare segue")
         print("segue identifer \(String(describing: segue.identifier))")
         print("segue destination \(String(describing: segue.destination))")
         
@@ -137,9 +137,10 @@ class ClientProfileViewController: UITableViewController, UIImagePickerControlle
             let profileViewController = segue.destination as? ClientDogEntryViewController,
             let indexPath = self.DogListView.indexPathForSelectedRow
         {
-            //Load an existing Dog profile
+            //profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             
-            // Fetch Dog
+            
+            //Fetch Dog
             let dog = self.dogsOwned[indexPath.item]
             
             //Configure View Controller
@@ -157,7 +158,7 @@ class ClientProfileViewController: UITableViewController, UIImagePickerControlle
             let dog = Dog(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Dog
-            dog.dogName = ""
+            dog.dogName = "Bruno"
             dog.breed = ""
             dog.gender = ""
             dog.size = ""
@@ -188,14 +189,14 @@ extension ClientProfileViewController
     
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
-        print("Back in the ClientsDetailViewController")
+        print("Back in the ClientProfileViewController")
     }
     
 
     //Save the dog profile from the Client Dog Entry window
     @IBAction func saveClientDogDetail(_ segue: UIStoryboardSegue)
     {
-        print("ClientsDetailViewController saveClientDetail")
+        print("ClientProfileViewController saveClientDetail")
         print("Segue source\(segue.source)")
         guard let profileViewController = segue.source as? ClientDogEntryViewController,
             let dog = profileViewController.dogData else
@@ -208,7 +209,7 @@ extension ClientProfileViewController
         {
             try clientData?.managedObjectContext?.save()
             try dog.managedObjectContext?.save()
-            print("ClientsDetailViewController saveClientDogDetail dog:\(dog)")
+            print("ClientProfileViewController saveClientDogDetail dog:\(dog)")
         }
         catch
         {
