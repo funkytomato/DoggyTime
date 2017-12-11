@@ -89,6 +89,10 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
                 GenderPicker.selectRow(row, inComponent: 0, animated: false)
             }
             
+            if let row = sizeDataSource.index(of: (dogData?.size?.description)!)
+            {
+                SizePicker.selectRow(row, inComponent: 0, animated: false)
+            }
             
             //self.breedFd.text = dogData?.breed
             if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
