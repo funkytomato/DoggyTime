@@ -140,7 +140,6 @@ class ClientProfileViewController: UITableViewController, UIImagePickerControlle
             //Load an existing Dog profile
             
             // Fetch Dog
-            //let dog = fetchedResultsController.object(at: indexPath)
             let dog = self.dogsOwned[indexPath.item]
             
             //Configure View Controller
