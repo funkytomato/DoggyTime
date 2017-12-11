@@ -44,20 +44,20 @@
                                 <rect key="frame" x="0.0" y="28" width="1024" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lai-uw-vdV" id="Iy0-4b-KYs">
-                                    <rect key="frame" x="0.0" y="0.0" width="986" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="986" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-zW-fVs">
-                                            <rect key="frame" x="10" y="0.0" width="206" height="55"/>
+                                            <rect key="frame" x="10" y="18.5" width="49.5" height="36.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-2w-YVL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="39"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymf-9H-yqU">
-                                                    <rect key="frame" x="0.0" y="39" width="206" height="16"/>
+                                                    <rect key="frame" x="0.0" y="20.5" width="49.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -67,34 +67,32 @@
                                                 <constraint firstAttribute="trailing" secondItem="ymf-9H-yqU" secondAttribute="trailing" id="vL4-sv-VJm"/>
                                             </constraints>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="T2m-Vi-6Sx">
-                                            <rect key="frame" x="322" y="0.0" width="121" height="62"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="T2m-Vi-6Sx">
+                                            <rect key="frame" x="805" y="-5" width="181" height="60"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-Ub-4RO" userLabel="Dog Image View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="121" height="62"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dog Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="68.5" translatesAutoresizingMaskIntoConstraints="NO" id="QcC-nh-BY5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="81" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="81" id="C6h-Ue-LqI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Australian Shepherd" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-Ub-4RO" userLabel="Dog Image View">
+                                                    <rect key="frame" x="81" y="0.0" width="100" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="eGI-Af-zPs"/>
+                                                        <constraint firstAttribute="width" constant="100" id="stU-7e-qCu"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="68.5" translatesAutoresizingMaskIntoConstraints="NO" id="QcC-nh-BY5">
-                                            <rect key="frame" x="233" y="37" width="81" height="18"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="81" id="C6h-Ue-LqI"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="T2m-Vi-6Sx" secondAttribute="trailing" constant="543" id="F2Y-7J-Nm7"/>
-                                        <constraint firstItem="QcC-nh-BY5" firstAttribute="bottom" secondItem="Iy0-4b-KYs" secondAttribute="bottomMargin" id="MdN-R5-jze"/>
+                                        <constraint firstAttribute="trailing" secondItem="T2m-Vi-6Sx" secondAttribute="trailing" id="5Cc-N0-Tmg"/>
+                                        <constraint firstItem="lU1-zW-fVs" firstAttribute="leading" secondItem="Iy0-4b-KYs" secondAttribute="leading" constant="10" id="NzK-Nd-l5t"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="lU1-zW-fVs" secondAttribute="bottom" id="SU2-7U-XHT"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="T2m-Vi-6Sx" secondAttribute="bottom" constant="-7" id="Tck-LP-39J"/>
-                                        <constraint firstItem="QcC-nh-BY5" firstAttribute="leading" secondItem="lU1-zW-fVs" secondAttribute="trailing" constant="17" id="Ypr-Zj-sWh"/>
-                                        <constraint firstItem="T2m-Vi-6Sx" firstAttribute="top" secondItem="lU1-zW-fVs" secondAttribute="top" id="l9a-i3-0Uu"/>
-                                        <constraint firstItem="T2m-Vi-6Sx" firstAttribute="leading" secondItem="QcC-nh-BY5" secondAttribute="trailing" constant="8" symbolic="YES" id="uBB-nt-ad7"/>
-                                        <constraint firstItem="lU1-zW-fVs" firstAttribute="top" secondItem="Iy0-4b-KYs" secondAttribute="top" id="z18-j1-KVz"/>
-                                        <constraint firstItem="lU1-zW-fVs" firstAttribute="leading" secondItem="Iy0-4b-KYs" secondAttribute="leading" constant="10" id="zHF-S4-fFQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -322,10 +320,10 @@
                             <tableViewSection headerTitle="Pet Details" id="bcJ-D5-Ta9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" id="9zm-VA-wtg">
-                                        <rect key="frame" x="0.0" y="531" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="531.5" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="9zm-VA-wtg" id="zq4-bq-Uz7">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UR-Mb-eK3">
@@ -364,7 +362,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3k-UJ-EHl" userLabel="DogNameLabel">
-                                                                        <rect key="frame" x="15" y="11" width="274" height="22"/>
+                                                                        <rect key="frame" x="15" y="11" width="954" height="22"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -395,14 +393,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" rowHeight="300" id="fji-Hm-IeW">
-                                        <rect key="frame" x="0.0" y="695" width="1024" height="300"/>
+                                        <rect key="frame" x="0.0" y="695.5" width="1024" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="fji-Hm-IeW" id="3ST-r4-5sK">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="299"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" highlightedImage="Akita" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="121" y="2.6464370653396992e+18" width="306" height="0.0"/>
+                                                    <rect key="frame" x="122" y="2.7000340450109901e+18" width="306" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -722,6 +720,7 @@
     <resources>
         <image name="Affenpinscher" width="120" height="120"/>
         <image name="Akita" width="120" height="120"/>
+        <image name="Australian Shepherd" width="120" height="120"/>
         <image name="dogwalker" width="27" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
