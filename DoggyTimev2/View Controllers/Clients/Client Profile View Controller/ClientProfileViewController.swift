@@ -1,5 +1,5 @@
 //
-//  ClientsDetailViewController.swift
+//  ClientProfileViewController.swift
 //  DoggyTime
 //
 //  Created by Spaceman on 15/09/2017.
@@ -10,21 +10,20 @@ import UIKit
 import CoreData
 
  
-class ClientsDetailViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class ClientProfileViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
 
     
     // MARK: - Properties
-    //var delegate: AddClientViewControllerDelegate?
     var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
+    var petDataSource: DogsDataSource?
+    
+    
+    //Selected client's profile data
     var clientData: Client?
-    var dogData: Dog?
-    
     var dogsOwned = [Dog]()
-    var dataSource: DogsDataSource?
-    
-    
+
     
     //MARK:- IBOutlets
     @IBOutlet weak var ForenameField: UITextField!
@@ -55,12 +54,8 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
     // MARK:- Initializers
     required init?(coder aDecoder: NSCoder)
     {
-        print("init ClientDetailsViewController")
-        
-        self.dataSource = DogsDataSource(dogs: dogsOwned)
-
+        self.petDataSource = DogsDataSource(dogs: dogsOwned)
         super.init(coder: aDecoder)
-        
      }
     
     
@@ -84,14 +79,21 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         MobileField.text = clientData?.mobile
         eMailField.text = clientData?.eMail
         
+        updatePetView()
+    }
+    
+    
+    //Update the client's pet list
+    private func updatePetView()
+    {
         //Fetch the list of client dogs
         let dogsOwned = (clientData?.dogsOwned)!
-        let pets = Array(dogsOwned) as! [Dog]
-        self.dataSource = DogsDataSource(dogs: pets)
+        self.dogsOwned = Array(dogsOwned) as! [Dog]
+        self.petDataSource = DogsDataSource(dogs: self.dogsOwned)
         
         DogListView.estimatedRowHeight = 40
         DogListView.rowHeight = UITableViewAutomaticDimension
-        DogListView.dataSource = dataSource
+        DogListView.dataSource = petDataSource
         DogListView.reloadData()
     }
     
@@ -106,30 +108,6 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        
-        //Prepare the embedded table view to display the client's pet dogs
-        if (segue.identifier == "PetList"),
-            let childViewController = segue.destination as? DogsEmbeddedTableViewConroller
-        {
-            print("ClientsDetailViewController prepare got DogsEmbeddedTableViewController")
-            
-            //Configure View Controller
-            childViewController.setCoreDataManager(coreDataManager: coreDataManager)
-            
-            /*
-            //Fetch the list of client dogs
-            let dogsOwned = clientData?.dogsOwned
-            let pets = Array(dogsOwned!) as! [Dog]
-            
-            print("embeddedDogsTableViewController dogsOwned \(dogsOwned!)")
-            print("embeddedDogsTableViewController pets: \(pets)")
-            
-            //Configure the controller
-            childViewController.dogs = pets
-            */
-        }
-        
         
         //Prepare the Client's profile to be saved
         if segue.identifier == "SaveClientDetail"
@@ -153,21 +131,21 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             clientData?.eMail = email
         }
         
-
         
         //Prepare the dog entry controller to load an existing dog profile
-        if segue.identifier == "AddDogSegue",
+        if segue.identifier == "ShowDogProfileSegue",
             let profileViewController = segue.destination as? ClientDogEntryViewController,
-            let indexPath = self.tableView.indexPathForSelectedRow
+            let indexPath = self.DogListView.indexPathForSelectedRow
         {
             //Load an existing Dog profile
             
             // Fetch Dog
             //let dog = fetchedResultsController.object(at: indexPath)
+            let dog = self.dogsOwned[indexPath.item]
             
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
-            //profileViewController.dogData = dog
+            profileViewController.dogData = dog
         }
 
             
@@ -180,10 +158,10 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
             let dog = Dog(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Dog
-            dog.dogName = "Bruno Marley"
+            dog.dogName = ""
             dog.breed = ""
-            dog.gender = "Male"
-            dog.size = "Medium"
+            dog.gender = ""
+            dog.size = ""
             dog.temperament = "Good"
             dog.profilePicture = nil
             dog.temperament = ""
@@ -206,7 +184,7 @@ class ClientsDetailViewController: UITableViewController, UIImagePickerControlle
 
 
 // MARK:- IBActions
-extension ClientsDetailViewController
+extension ClientProfileViewController
 {
     
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
@@ -241,18 +219,13 @@ extension ClientsDetailViewController
         }
         
         //Update the pet list
-        //Fetch the list of client dogs
-        let dogsOwned = (clientData?.dogsOwned)!
-        let pets = Array(dogsOwned) as! [Dog]
-        self.dataSource = DogsDataSource(dogs: pets)
-        DogListView.dataSource = dataSource
-        DogListView.reloadData()
+        updatePetView()
     }
 }
 
 
 //MARK:- Automatic tab to next field entry
-extension ClientsDetailViewController: UITextFieldDelegate
+extension ClientProfileViewController: UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) ->Bool
     {
@@ -282,42 +255,12 @@ extension ClientsDetailViewController: UITextFieldDelegate
 }
 
 
-
 //MARK:- CoreDataManager Protocol
-extension ClientsDetailViewController: CoreDataManagerDelegate
+extension ClientProfileViewController: CoreDataManagerDelegate
 {
     
     func setCoreDataManager(coreDataManager: CoreDataManager)
     {
-        print("ClientsDetailViewController setCoreDataManager")
         self.coreDataManager = coreDataManager
     }
 }
-
-
-
-
-/*
-//MARK:- IBActions
-extension ClientsDetailViewController
-{
-    // MARK: - Actions
-    
-    @IBAction func save(_ sender: Any) {
-        guard let forename = ForenameField.text else { return }
-        guard let surname = SurnameField.text else {return}
-        guard let street = StreetField.text else {return}
-        guard let delegate = delegate else { return }
-        
-        // Notify Delegate
-        delegate.controller(self, didAddClient: forename, surname: surname)
-        
-        // Dismiss View Controller
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-}
- */
