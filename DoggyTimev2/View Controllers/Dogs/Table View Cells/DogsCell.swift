@@ -28,7 +28,12 @@ class DogsCell: UITableViewCell
             breed.text = dog.breed
             sex.text = dog.gender
             size.text = dog.size
-            //picture.image = dog.picture
+            
+            if let thumbnailData = dog.profilePicture
+            {
+                let image = UIImage(data: thumbnailData)
+                self.picture.image = image
+            }
         }
     }
     

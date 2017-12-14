@@ -16,10 +16,11 @@ class WalkingDogsDataSource: NSObject
     init(dogsOnWalk:[Dog])
     {
         self.dogsOnWalk = dogsOnWalk
+        print("WalkingDogsDataSource dogsOnWalk \(dogsOnWalk)")
     }
 }
 
-extension WalkingDogsDataSource: UITableViewDataSource
+extension WalkingDogsDataSource: UITableViewDataSource, UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {

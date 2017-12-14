@@ -186,10 +186,9 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         {
             return 2
         }
-        else
-        {
-            return 1
-        }
+
+        return 1
+
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int

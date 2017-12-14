@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HiG-Jj-Nkf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dlg-pl-Saf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Camera View Controller-->
+        <!--OldCamera View Controller-->
         <scene sceneID="IvK-Kb-35H">
             <objects>
-                <viewController id="HiG-Jj-Nkf" customClass="CameraViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HiG-Jj-Nkf" userLabel="OldCamera View Controller" customClass="CameraViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jqO-zg-Chx"/>
                         <viewControllerLayoutGuide type="bottom" id="bF1-uS-c5H"/>
@@ -56,6 +58,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yb1-Hx-9y9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1854" y="-50"/>
+        </scene>
+        <!--Camera View Controller2-->
+        <scene sceneID="MoE-Hm-4qh">
+            <objects>
+                <viewController id="Dlg-pl-Saf" customClass="CameraViewController2" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HXN-P8-la3"/>
+                        <viewControllerLayoutGuide type="bottom" id="BnU-gt-Gwn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7AM-0j-fxc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4g-MO-6vq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECn-0o-QFn">
+                                <rect key="frame" x="150" y="572" width="75" height="74.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ECn-0o-QFn" secondAttribute="height" multiplier="1:1" id="ndO-fW-10k"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Click"/>
+                                <connections>
+                                    <action selector="onTapTakePhoto:" destination="Dlg-pl-Saf" eventType="touchUpInside" id="OSE-gz-zOX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bz-VW-12e">
+                                <rect key="frame" x="16" y="40" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2bz-VW-12e" secondAttribute="trailing" constant="16" id="8tC-D8-8lJ"/>
+                            <constraint firstItem="2bz-VW-12e" firstAttribute="leading" secondItem="7AM-0j-fxc" secondAttribute="leading" constant="16" id="KBk-Zd-V44"/>
+                            <constraint firstAttribute="trailing" secondItem="B4g-MO-6vq" secondAttribute="trailing" id="On7-mQ-snh"/>
+                            <constraint firstItem="BnU-gt-Gwn" firstAttribute="top" secondItem="B4g-MO-6vq" secondAttribute="bottom" id="aI1-zL-1RO"/>
+                            <constraint firstItem="2bz-VW-12e" firstAttribute="top" secondItem="HXN-P8-la3" secondAttribute="bottom" constant="20" id="c2b-1B-pel"/>
+                            <constraint firstItem="B4g-MO-6vq" firstAttribute="leading" secondItem="7AM-0j-fxc" secondAttribute="leading" id="eEZ-Va-lAu"/>
+                            <constraint firstItem="ECn-0o-QFn" firstAttribute="centerX" secondItem="7AM-0j-fxc" secondAttribute="centerX" id="hPQ-dS-nR7"/>
+                            <constraint firstItem="BnU-gt-Gwn" firstAttribute="top" secondItem="ECn-0o-QFn" secondAttribute="bottom" constant="20" id="oBB-mI-VRx"/>
+                            <constraint firstItem="B4g-MO-6vq" firstAttribute="top" secondItem="7AM-0j-fxc" secondAttribute="top" id="udy-3h-Peq"/>
+                            <constraint firstItem="ECn-0o-QFn" firstAttribute="width" secondItem="7AM-0j-fxc" secondAttribute="width" multiplier="0.2" id="xOf-yT-7oV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z63-Ft-RvS"/>
+                    </view>
+                    <connections>
+                        <outlet property="captureButton" destination="ECn-0o-QFn" id="tK6-WE-2XM"/>
+                        <outlet property="messageLabel" destination="2bz-VW-12e" id="umq-3i-5IT"/>
+                        <outlet property="previewView" destination="B4g-MO-6vq" id="niQ-2W-32k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jvK-dg-khI" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
     </scenes>
 </document>

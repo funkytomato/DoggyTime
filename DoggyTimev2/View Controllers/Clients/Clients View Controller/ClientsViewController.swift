@@ -71,33 +71,42 @@ class ClientsViewController: UITableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientsViewController prepare segue")
-        if let profileViewController = segue.destination as? ClientsDetailViewController,
-            let indexPath = self.tableView.indexPathForSelectedRow
-        {
-            //Load an existing Client profile
-            
-            // Fetch Client
-            let client = fetchedResultsController.object(at: indexPath)
-            
-            // Configure View Controller
-            profileViewController.clientData = client
-
-        }
-        else if let profileViewController = segue.destination as? ClientsDetailViewController
+        
+        //Create a new Client Profile
+        if segue.identifier == "AddClientSegue",
+            let profileViewController = segue.destination as? ClientProfileViewController
         {
             //Create a new Client profile
             let client = Client(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Client
-            client.foreName = ""
-            client.surName = ""
-            client.street = ""
-            client.town = ""
-            client.postCode = ""
-            client.mobile = ""
-            client.eMail = ""
-            //client.dogame = ""
+            client.foreName = "Bob"
+            client.surName = "Marley"
+            client.street = "16 The Green"
+            client.town = "Pagham"
+            client.postCode = "PO21 4WR"
+            client.mobile = "07967441749"
+            client.eMail = "bob@gmail.com"
+            client.createdAt = NSDate()
+            client.updatedAt = NSDate()
             
+            //Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
+            profileViewController.clientData = client
+        }
+        //Load an existing Client Profile
+        else if segue.identifier == "ShowClientProfile",
+            let profileViewController = segue.destination as? ClientProfileViewController,
+            let indexPath = self.tableView.indexPathForSelectedRow
+        {
+
+            // Fetch Client
+            let client = fetchedResultsController.object(at: indexPath)
+            
+            print("ClientsViewController prepare for client profile: \(client.dogsOwned)")
+            
+            // Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.clientData = client
         }
     }
@@ -120,11 +129,13 @@ extension ClientsViewController
     {
         print("ClientsViewController saveClientDetail")
         print("Segue source\(segue.source)")
-        guard let profileViewController = segue.source as? ClientsDetailViewController,
+        guard let profileViewController = segue.source as? ClientProfileViewController,
             let client = profileViewController.clientData else
         {
             return
         }
+        
+        print("\(client.dogsOwned)")
         
         //Store to CoreData
         do

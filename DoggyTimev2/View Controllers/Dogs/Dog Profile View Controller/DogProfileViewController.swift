@@ -27,7 +27,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var SizePicker: UIPickerView!
     @IBOutlet weak var ProfilePictureView: UIImageView!
     
-    
+   /*
     @IBAction func CameraAction(_ sender: UIButton)
     {
         let picker = UIImagePickerController()
@@ -46,7 +46,7 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
         present(picker, animated: true, completion: nil)
         
     }
-    
+    */
     var breedDataSource = ["Unknown","German Shephard", "Rottweiler", "Beagle", "Bulldog", "Great Dane", "Poodle", "Doberman Pinscher", "Dachshund", "Siberian Huskey", "English Mastiff", "Pit Bull", "Boxer", "Chihuahua",   "Border Collie", "Pug", "Golden Retriever", "Labrador Retriever", "Pointer", "Terrier", "Chow Chow", "Yorkshire Terrier", "Vizsla", "Australian Sheperd", "Maltese Dog", "Greyhound", "Cavalier King Charles Spaniel", "Malinois", "Akita", "Affenpinscher", "Old English Sheepdog", "St. Bernard", "Pomeranian", "Saluki", "Lhasa Apso", "Australian Cattle Dog", "Pekingese", "Alaskan Malamute", "Cardigan Welsh Corgi", "Staffordshire Bull Terrier", "Basset Hound", "Newfoundland", "Great Pyrenees", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "Bernese Mountain Dog", "Bull Terrier", "Bullmastiff", "French Bulldog", "Norwich Terrier", "Bichon Frise", "Shetland Sheepdog", "Airedale Terrier", "Boston Terrier"]
     
     var genderDataSource = ["Male", "Female"]
@@ -89,6 +89,10 @@ class DogProfileViewController: UITableViewController, UIPickerViewDelegate, UIP
                 GenderPicker.selectRow(row, inComponent: 0, animated: false)
             }
             
+            if let row = sizeDataSource.index(of: (dogData?.size?.description)!)
+            {
+                SizePicker.selectRow(row, inComponent: 0, animated: false)
+            }
             
             //self.breedFd.text = dogData?.breed
             if let row = breedDataSource.index(of: (dogData?.breed?.description)!)

@@ -26,7 +26,7 @@ extension Client {
     @NSManaged public var town: String?
     @NSManaged public var createdAt: NSDate?
     @NSManaged public var updatedAt: NSDate?
-    @NSManaged public var profilePicture: NSData?
+    @NSManaged public var profilePicture: Data?
     @NSManaged public var dogsOwned: NSSet?
 
 }

@@ -26,7 +26,7 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     weak var walkData: Walk?
     
     //MARK:- IBOutlets
-    @IBOutlet weak var WalkIdField: UITextField!
+   // @IBOutlet weak var WalkIdField: UITextField!
     @IBOutlet weak var DateTimePicker: UIDatePicker!
     //@IBOutlet weak var TimeField: UITextField!
     @IBOutlet weak var DayOfWeekField: UITextField!
@@ -213,8 +213,6 @@ extension WalkProfileTableViewController: UITextFieldDelegate
     {
         switch textField
         {
-        case WalkIdField:
-            DateTimePicker.becomeFirstResponder()
         case DateTimePicker:
             LocationPicker.becomeFirstResponder()
         case LocationPicker:
