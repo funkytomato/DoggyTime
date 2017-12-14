@@ -207,6 +207,10 @@ extension ClientDogEntryViewController
         {
             return sizeDataSource.count
         }
+        else if pickerView == TemperamentPicker
+        {
+            return temperamentDataSource.count
+        }
         
         return 1
     }
@@ -225,6 +229,10 @@ extension ClientDogEntryViewController
         else if pickerView == SizePicker
         {
             return sizeDataSource[row] as String
+        }
+        else if pickerView == TemperamentPicker
+        {
+            return temperamentDataSource[row] as String
         }
         
         return ""
@@ -254,6 +262,10 @@ extension ClientDogEntryViewController
             
             dogData?.size = sizeDataSource[row]
         }
+        else if pickerView == TemperamentPicker
+        {
+            dogData?.temperament = temperamentDataSource[row]
+        }
     }
     
     func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
@@ -265,9 +277,11 @@ extension ClientDogEntryViewController
         case BreedPicker:
             SizePicker.becomeFirstResponder()
         case SizePicker:
-            SizePicker.resignFirstResponder()
+            TemperamentPicker.becomeFirstResponder()
+        case TemperamentPicker:
+            TemperamentPicker.resignFirstResponder()
         default:
-            SizePicker.resignFirstResponder()
+            TemperamentPicker.resignFirstResponder()
         }
         
         return true
