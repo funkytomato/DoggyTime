@@ -402,7 +402,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" highlightedImage="Akita" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="118" y="2.4712550487339423e+18" width="309" height="0.0"/>
+                                                    <rect key="frame" x="118" y="2.5045094625761884e+18" width="309" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -467,49 +467,13 @@
                                                     <rect key="frame" x="20" y="15" width="984" height="30"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlj-Bg-8Yd">
-                                                            <rect key="frame" x="0.0" y="5" width="128.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="5" width="492" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Walks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB2-MW-Oaq">
-                                                            <rect key="frame" x="128.5" y="5" width="111.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalkCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGp-lv-ipp">
-                                                            <rect key="frame" x="240" y="5" width="107.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Walk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjA-AV-lKh">
-                                                            <rect key="frame" x="347.5" y="5" width="99" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalkDateTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2G-GO-OvN">
-                                                            <rect key="frame" x="446.5" y="5" width="140" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfP-he-Vr3">
-                                                            <rect key="frame" x="586.5" y="5" width="137.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalkLocation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4i-kz-KgI">
-                                                            <rect key="frame" x="724" y="5" width="131.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="updatedDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IS-dp-ony">
-                                                            <rect key="frame" x="855.5" y="5" width="128.5" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="updatedDate" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IS-dp-ony">
+                                                            <rect key="frame" x="492" y="5" width="492" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -525,12 +489,69 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="3fc-tx-SkE">
+                                        <rect key="frame" x="0.0" y="115.5" width="1024" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3fc-tx-SkE" id="819-5R-tob">
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Og1-ix-wUS">
+                                                    <rect key="frame" x="20" y="15" width="984" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Walks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTv-Ni-vOm">
+                                                            <rect key="frame" x="0.0" y="5" width="151.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalkCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUV-bW-jDW">
+                                                            <rect key="frame" x="151.5" y="5" width="145" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Walk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsv-5h-ArU">
+                                                            <rect key="frame" x="296.5" y="5" width="134" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalkDateTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4d-cz-wcJ">
+                                                            <rect key="frame" x="430.5" y="5" width="189.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walk Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRm-br-S3U">
+                                                            <rect key="frame" x="620" y="5" width="186" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WalkLocation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOP-Sa-H6V">
+                                                            <rect key="frame" x="806" y="5" width="178" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Og1-ix-wUS" secondAttribute="trailing" id="1fI-gf-2ar"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Og1-ix-wUS" secondAttribute="bottom" id="4jg-Ic-gX5"/>
+                                                <constraint firstItem="Og1-ix-wUS" firstAttribute="top" secondItem="819-5R-tob" secondAttribute="topMargin" id="skX-58-YKu"/>
+                                                <constraint firstItem="Og1-ix-wUS" firstAttribute="leading" secondItem="819-5R-tob" secondAttribute="leadingMargin" id="wdH-cx-oSF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Dog Name" id="wdZ-Q4-XWZ" userLabel="Dog Name">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CNW-UD-nCn">
-                                        <rect key="frame" x="0.0" y="171.5" width="1024" height="52"/>
+                                        <rect key="frame" x="0.0" y="231.5" width="1024" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CNW-UD-nCn" id="aaA-Vw-wj7">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
@@ -559,7 +580,7 @@
                             <tableViewSection headerTitle="Gender" id="cQS-x3-djF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="NHB-sR-KZR">
-                                        <rect key="frame" x="0.0" y="279.5" width="1024" height="120"/>
+                                        <rect key="frame" x="0.0" y="339.5" width="1024" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NHB-sR-KZR" id="sIM-xy-3a7">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
@@ -585,7 +606,7 @@
                             <tableViewSection headerTitle="Size" id="TH1-ZI-UGe">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="knD-f0-y4E">
-                                        <rect key="frame" x="0.0" y="455.5" width="1024" height="120"/>
+                                        <rect key="frame" x="0.0" y="515.5" width="1024" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="knD-f0-y4E" id="ZBT-7Y-wbR">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
@@ -611,7 +632,7 @@
                             <tableViewSection headerTitle="Temperament" id="XMQ-XE-5hi" userLabel="Temperament">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="InV-dS-JBR">
-                                        <rect key="frame" x="0.0" y="631.5" width="1024" height="120"/>
+                                        <rect key="frame" x="0.0" y="691.5" width="1024" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="InV-dS-JBR" id="nch-eo-3wc">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
@@ -634,7 +655,7 @@
                             <tableViewSection headerTitle="Breed" id="bMD-aQ-bgk">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="a2C-zk-ccc">
-                                        <rect key="frame" x="0.0" y="807.5" width="1024" height="120"/>
+                                        <rect key="frame" x="0.0" y="867.5" width="1024" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a2C-zk-ccc" id="VX6-tB-uVy">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
@@ -656,7 +677,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="mgf-kb-QEm">
-                                        <rect key="frame" x="0.0" y="927.5" width="1024" height="300"/>
+                                        <rect key="frame" x="0.0" y="987.5" width="1024" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mgf-kb-QEm" id="M7J-hH-81u">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="299.5"/>
@@ -675,7 +696,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="7GD-Yc-Bhu">
-                                        <rect key="frame" x="0.0" y="1227.5" width="1024" height="150"/>
+                                        <rect key="frame" x="0.0" y="1287.5" width="1024" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7GD-Yc-Bhu" id="gW2-YW-qp6">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="149.5"/>
@@ -702,7 +723,7 @@
                             <tableViewSection headerTitle="Picture" id="jq6-84-10f">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="Rh4-ej-dML">
-                                        <rect key="frame" x="0.0" y="1433.5" width="1024" height="300"/>
+                                        <rect key="frame" x="0.0" y="1493.5" width="1024" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rh4-ej-dML" id="fG0-L8-8xV">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="299.5"/>
@@ -746,14 +767,14 @@
                         <outlet property="BreedPictureView" destination="fSg-fo-hVA" id="hy3-QL-p52"/>
                         <outlet property="DogNameField" destination="NT1-33-dMf" id="rSY-yz-0EQ"/>
                         <outlet property="GenderPicker" destination="kv1-d6-OfE" id="vKR-UZ-1jt"/>
-                        <outlet property="NextWalkDateLabel" destination="I2G-GO-OvN" id="WFU-GC-QT9"/>
-                        <outlet property="NextWalkLocationLabel" destination="H4i-kz-KgI" id="R82-L9-66O"/>
-                        <outlet property="OwnerNameLabel" destination="qlj-Bg-8Yd" id="6cR-Dl-IYG"/>
+                        <outlet property="NextWalkDateLabel" destination="Y4d-cz-wcJ" id="Jw3-4M-LyI"/>
+                        <outlet property="NextWalkLocationLabel" destination="nOP-Sa-H6V" id="WWH-eJ-awT"/>
+                        <outlet property="OwnerNameLabel" destination="qlj-Bg-8Yd" id="0wZ-Ak-vQq"/>
                         <outlet property="ProfilePictureView" destination="CiJ-kn-MEI" id="ssF-sl-eJF"/>
                         <outlet property="SizePicker" destination="D9p-Uh-wOq" id="pi4-EW-la0"/>
                         <outlet property="TemperamentPicker" destination="gc4-We-Dbj" id="DHJ-W6-DoQ"/>
-                        <outlet property="UpdatedDateLabel" destination="5IS-dp-ony" id="KSc-mV-CMY"/>
-                        <outlet property="WalkCountLabel" destination="qGp-lv-ipp" id="LHk-gI-fg2"/>
+                        <outlet property="UpdatedDateLabel" destination="5IS-dp-ony" id="Ykz-rV-EKa"/>
+                        <outlet property="WalkCountLabel" destination="vUV-bW-jDW" id="9L8-kb-zuj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hU1-NF-uFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -768,54 +789,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKt-QW-mdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5172" y="-869"/>
-        </scene>
-        <!--EmbeddedDogsTableViewController-->
-        <scene sceneID="wPt-wg-frW">
-            <objects>
-                <tableViewController id="6J1-Rs-q30" userLabel="EmbeddedDogsTableViewController" customClass="DogsEmbeddedTableViewConroller" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ugx-Tt-IUa" userLabel="DogListView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogNameCell" id="iNB-gw-R24" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTimev2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="1024" height="52"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iNB-gw-R24" id="VMn-v4-33X">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5jI-UD-UAP" userLabel="DogNameField">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="5jI-UD-UAP" firstAttribute="top" secondItem="VMn-v4-33X" secondAttribute="top" id="4g1-wa-QEM"/>
-                                        <constraint firstItem="5jI-UD-UAP" firstAttribute="leading" secondItem="VMn-v4-33X" secondAttribute="leading" id="Tvn-68-3TN"/>
-                                        <constraint firstAttribute="bottom" secondItem="5jI-UD-UAP" secondAttribute="bottom" id="fcS-pW-WPd"/>
-                                        <constraint firstAttribute="trailing" secondItem="5jI-UD-UAP" secondAttribute="trailing" id="txE-jt-WGZ"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dognameLabel" destination="5jI-UD-UAP" id="9W5-Cl-ZTn"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="6J1-Rs-q30" id="gck-6S-KYe"/>
-                            <outlet property="delegate" destination="6J1-Rs-q30" id="XWM-eT-xRT"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <outlet property="dogListView" destination="ugx-Tt-IUa" id="QLo-bA-Ugb"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kpM-8O-HBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2888" y="108"/>
         </scene>
     </scenes>
     <resources>
