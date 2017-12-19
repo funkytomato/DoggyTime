@@ -117,6 +117,9 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
                 BreedPicker.selectRow(row, inComponent: 0, animated: false)
                 BreedPictureView.image = UIImage(named: breedDataSource[row])
             }
+            
+            guard let profilePicture = dogData?.profilePicture else { return }
+            self.ProfilePictureView.image = UIImage(data: profilePicture)
         }
         
         tableView.reloadData()
@@ -159,7 +162,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             dogData?.profilePicture = picture as? Data
         }
         
-        if let profileViewController = segue.destination as? CameraViewController2
+        if let profileViewController = segue.destination as? CameraViewController
         {
             /*
             //Create a new Dog profile
@@ -178,6 +181,19 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.dogData = dog
  */
+        }
+        
+        if segue.identifier == "saveProfilePicture"
+        {
+            print("save profile picture")
+            
+            //Updata the dog's profile picture
+            //dogData?.profilePicture =
+        }
+        
+        if segue.identifier == "cancelProfilePicture"
+        {
+            print("cancel profile picture")
         }
     }
 }
@@ -331,10 +347,39 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
     }
     
     */
+    @IBAction func cancelProfielPicture(_ segue: UIStoryboardSegue)
+    {
+        print("cancelProfilePicture")
+    }
+
+    @IBAction func saveProfilePicture(_ segue: UIStoryboardSegue)
+    {
+        print("saveProfilePicture")
+        guard let profileViewController = segue.source as? AVCameraViewController,
+            let image = profileViewController.profileImage else
+        {
+            return
+        }
+        
+        dogData?.profilePicture = image
+        
+        //Store to CoreData
+        do
+        {
+            try dogData?.managedObjectContext?.save()
+            print("ClientDogEntryViewController saveClientDogDetail dog:\(dogData)")
+        }
+        catch
+        {
+            let saveError = error as NSError
+            print("Unable to Save Client Dog")
+            print("\(saveError), \(saveError.localizedDescription)")
+        }
+    }
+    
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
         print("Back to the ClientProfileViewController")
-        
     }
     
     
@@ -361,7 +406,6 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
             print("Unable to Save Client Dog")
             print("\(saveError), \(saveError.localizedDescription)")
         }
- 
     }
 }
 
@@ -369,7 +413,6 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
 //MARK:- CoreDataManager Protocol
 extension ClientDogEntryViewController: CoreDataManagerDelegate
 {
-    
     func setCoreDataManager(coreDataManager: CoreDataManager)
     {
         self.coreDataManager = coreDataManager
