@@ -30,6 +30,11 @@
 		182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */; };
 		183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */; };
 		183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183243021FB3A47100ACF480 /* CoreDataManager.swift */; };
+		184617601FE93EF60055EFF7 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846175F1FE93EF50055EFF7 /* ImageViewController.swift */; };
+		1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8A51FE7FB7A0051B915 /* CameraManager.swift */; };
+		1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AB1FE812770051B915 /* CameraViewController.swift */; };
+		1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AF1FE8564D0051B915 /* AVCameraController.swift */; };
+		1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8B11FE856A20051B915 /* AVCameraViewController.swift */; };
 		1893E6771FDC688F00F49024 /* DogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893E6761FDC688E00F49024 /* DogsDataSource.swift */; };
 		18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18953DB71FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift */; };
 		18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB7B1FB4EE7E008C0C91 /* Walk+CoreDataClass.swift */; };
@@ -40,8 +45,6 @@
 		18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */; };
 		18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */; };
 		18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B6681FA23704003DAF51 /* Assets.xcassets */; };
-		18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844D1FA24A7200CC7586 /* CameraViewController.swift */; };
-		18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */; };
 		18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */; };
 		18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF23F11FC0B31D001CDA84 /* Client.swift */; };
 		18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */; };
@@ -71,7 +74,6 @@
 		18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
-		C24998091FBDE31F00771188 /* CameraViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24998081FBDE31F00771188 /* CameraViewController2.swift */; };
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
 		C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
@@ -114,6 +116,11 @@
 		182465531FA361DD00647762 /* DogsOnWalkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsOnWalkTableViewController.swift; sourceTree = "<group>"; };
 		183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDogEntryViewController.swift; sourceTree = "<group>"; };
 		183243021FB3A47100ACF480 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1846175F1FE93EF50055EFF7 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		1870B8A51FE7FB7A0051B915 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		1870B8AB1FE812770051B915 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		1870B8AF1FE8564D0051B915 /* AVCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraController.swift; sourceTree = "<group>"; };
+		1870B8B11FE856A20051B915 /* AVCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraViewController.swift; sourceTree = "<group>"; };
 		1893E6761FDC688E00F49024 /* DogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsDataSource.swift; sourceTree = "<group>"; };
 		18953DB71FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsEmbeddedTableViewConroller.swift; sourceTree = "<group>"; };
 		18A5DB7B1FB4EE7E008C0C91 /* Walk+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -124,8 +131,6 @@
 		18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		18BE844D1FA24A7200CC7586 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCatalogue.swift; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = "DoggyTimev2/Core Data/Extensions/Client.swift"; sourceTree = SOURCE_ROOT; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
@@ -147,7 +152,6 @@
 		18EB60681F9A20B40084FE8D /* WalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalksViewController.swift; sourceTree = "<group>"; };
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		C24998081FBDE31F00771188 /* CameraViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController2.swift; sourceTree = "<group>"; };
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
@@ -289,8 +293,8 @@
 			children = (
 				1800A5091F9E35F400829A86 /* Camera.storyboard */,
 				1805B76C1F9E26D700DCFB83 /* Clients.storyboard */,
-				1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */,
 				18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */,
+				1805B7701F9E2B2F00DCFB83 /* Dogs.storyboard */,
 				18EB60381F9A206E0084FE8D /* Main.storyboard */,
 				C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */,
 				1805B76E1F9E296900DCFB83 /* Walks.storyboard */,
@@ -441,9 +445,11 @@
 		18BE844C1FA24A7200CC7586 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				18BE844D1FA24A7200CC7586 /* CameraViewController.swift */,
-				18BE844E1FA24A7200CC7586 /* PhotoCatalogue.swift */,
-				C24998081FBDE31F00771188 /* CameraViewController2.swift */,
+				1846175F1FE93EF50055EFF7 /* ImageViewController.swift */,
+				1870B8B11FE856A20051B915 /* AVCameraViewController.swift */,
+				1870B8AF1FE8564D0051B915 /* AVCameraController.swift */,
+				1870B8AB1FE812770051B915 /* CameraViewController.swift */,
+				1870B8A51FE7FB7A0051B915 /* CameraManager.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -672,21 +678,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */,
+				1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */,
 				C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */,
 				18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */,
 				18A5DB841FB4EE7E008C0C91 /* Walk+CoreDataProperties.swift in Sources */,
 				18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */,
 				183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */,
-				18BE844F1FA24A7200CC7586 /* CameraViewController.swift in Sources */,
 				1820A12C1FBF369B003B3793 /* ClientDogCell.swift in Sources */,
 				18A5DB871FB4EE7E008C0C91 /* Dog+CoreDataClass.swift in Sources */,
+				184617601FE93EF60055EFF7 /* ImageViewController.swift in Sources */,
 				18A5DB861FB4EE7E008C0C91 /* Client+CoreDataProperties.swift in Sources */,
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */,
+				1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */,
 				18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
+				1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */,
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
+				1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */,
 				1893E6771FDC688F00F49024 /* DogsDataSource.swift in Sources */,
 				1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */,
 				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
@@ -695,7 +705,6 @@
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
 				18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
-				18BE84501FA24A7200CC7586 /* PhotoCatalogue.swift in Sources */,
 				18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */,
 				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
@@ -704,7 +713,6 @@
 				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
-				C24998091FBDE31F00771188 /* CameraViewController2.swift in Sources */,
 				18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
@@ -880,7 +888,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
 				INFOPLIST_FILE = DoggyTimev2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimev2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -899,7 +907,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
 				INFOPLIST_FILE = DoggyTimev2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimev2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
