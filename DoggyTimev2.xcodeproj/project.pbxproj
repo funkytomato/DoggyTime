@@ -31,6 +31,7 @@
 		183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */; };
 		183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183243021FB3A47100ACF480 /* CoreDataManager.swift */; };
 		184617601FE93EF60055EFF7 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846175F1FE93EF50055EFF7 /* ImageViewController.swift */; };
+		186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */; };
 		1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8A51FE7FB7A0051B915 /* CameraManager.swift */; };
 		1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AB1FE812770051B915 /* CameraViewController.swift */; };
 		1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AF1FE8564D0051B915 /* AVCameraController.swift */; };
@@ -117,6 +118,7 @@
 		183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDogEntryViewController.swift; sourceTree = "<group>"; };
 		183243021FB3A47100ACF480 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1846175F1FE93EF50055EFF7 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		1870B8A51FE7FB7A0051B915 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		1870B8AB1FE812770051B915 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1870B8AF1FE8564D0051B915 /* AVCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraController.swift; sourceTree = "<group>"; };
@@ -404,6 +406,14 @@
 			path = "Core Data Models";
 			sourceTree = "<group>";
 		};
+		186DDDC11FEC4FDC00E34140 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		18953DB61FBF486F00DAACC8 /* Embedded Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +506,7 @@
 			children = (
 				1808F7051F9E15690027B447 /* Application Delegation */,
 				18BE844C1FA24A7200CC7586 /* Camera */,
+				186DDDC11FEC4FDC00E34140 /* Categories */,
 				1808F7071F9E15910027B447 /* Core Data */,
 				1808F7031F9E15320027B447 /* DataSources */,
 				C2F02A701FB0B96D00597345 /* Extensions */,
@@ -691,6 +702,7 @@
 				18A5DB861FB4EE7E008C0C91 /* Client+CoreDataProperties.swift in Sources */,
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */,
+				186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */,
 				1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */,
 				18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
