@@ -29,37 +29,27 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     //Collasible Sections
     let kHeaderSectionTag: Int = 6900;
     
-    var expandedSectionHeaderNumber: Int = -1
+    var expandedSectionHeaderNumber: Int = 2
     var expandedSectionHeader: UITableViewHeaderFooterView!
     var sectionItems: Array<Any> = []
     var sectionNames: Array<Any> = []
     
-    
-    //Another collasible offering
     struct Section
     {
         var name: String!
         var items: [String]!
         var collapsed: Bool!
         
-        init(name: String, items: [String], collapsed: Bool = false)
+        init(name:String, items: [String], collapsed: Bool = false)
         {
             self.name = name
             self.items = items
             self.collapsed = false
         }
     }
-    
-    /*
     var sections = [Section]()
-   // sections = [Section([name: "Details", items: ["Owner Details","Walk Details"]])]
+
     
-    sections = [
-    Section(name: "Mac", items: ["MacBook", "MacBook Air", "MacBook Pro", "iMac", "Mac Pro", "Mac mini", "Accessories", "OS X El Capitan"]),
-    Section(name: "iPad", items: ["iPad Pro", "iPad Air 2", "iPad mini 4", "Accessories"]),
-    Section(name: "iPhone", items: ["iPhone 6s", "iPhone 6", "iPhone SE", "Accessories"])
-    ]
-    */
     
     //Show/Hide PickerViews
     
@@ -77,14 +67,10 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     @IBOutlet weak var DogNameField: UITextField!
     @IBOutlet weak var GenderField: UITextField!
-    //@IBOutlet weak var GenderPicker: UIPickerView!
     @IBOutlet weak var SizeField: UITextField!
-    @IBOutlet weak var BreedField: UITextField!
     @IBOutlet weak var TemperamentField: UITextField!
-    //@IBOutlet weak var SizePicker: UIPickerView!
-    //@IBOutlet weak var TemperamentPicker: UIPickerView!
-    
-    //@IBOutlet weak var BreedPicker: UIPickerView!
+
+    @IBOutlet weak var BreedField: UITextField!
     @IBOutlet weak var BreedPictureView: UIImageView!
     @IBOutlet weak var BreedInfoTextView: UITextView!
     
@@ -117,7 +103,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     {
         super.viewDidLoad()
         
-        sectionNames = ["Details","Dog Name","Gender","Size","Temperament","Breed","Picture"]
+        sectionNames = ["Owner Details","Dog Name","Gender","Size","Temperament","Breed","Picture"]
         sectionItems = [["Owner Details","Walk Details"],
                         ["Dog Name"],
                         ["Gender"],
@@ -125,6 +111,17 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
                         ["Temperament"],
                         ["Breed","Breed Picture","Breed Info"],
                         ["Profile Picture"]]
+        
+        sections = [
+            Section(name: "Owner Details", items: ["Owner Details","Walk Details"]),
+            Section(name: "Dog Name", items: ["Dog Name"]),
+            Section(name: "Gender", items: ["Gender"]),
+            Section(name: "Size", items: ["Size"]),
+            Section(name: "Temperament", items: ["Temperament"]),
+            Section(name: "Breed", items: ["Breed", "Breed Picture", "Breed Info"]),
+            Section(name: "Picture", items: ["Profile Picture"])
+        ]
+        
         
         self.tableView!.tableFooterView = UIView()
 
@@ -178,32 +175,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             
             guard let profilePicture = dogData?.profilePicture else { return }
             self.ProfilePictureView.image = UIImage(data: profilePicture)
-            
-            /*
-            if let row = genderDataSource.index(of: (dogData?.gender)!)
-            {
-                genderPicker.selectRow(row, inComponent: 0, animated: false)
-            }
-       
-            if let row = sizeDataSource.index(of: (dogData?.size?.description)!)
-            {
-                SizePicker.selectRow(row, inComponent: 0, animated: false)
-            }
-            
-            if let row = temperamentDataSource.index(of: (dogData?.temperament?.description)!)
-            {
-                TemperamentPicker.selectRow(row, inComponent: 0, animated: false)
-            }
- 
-            if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
-            {
-                BreedPicker.selectRow(row, inComponent: 0, animated: false)
-                BreedPictureView.image = UIImage(named: breedDataSource[row])
-            }
- 
-            guard let profilePicture = dogData?.profilePicture else { return }
-            self.ProfilePictureView.image = UIImage(data: profilePicture)
- */
         }
         
         tableView.reloadData()
@@ -226,15 +197,12 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDogDetail",
             let dogname = DogNameField.text,
-            let gender = dogData?.gender,
-            let breed = dogData?.breed,
-            let size = dogData?.size,
-            let temperament = dogData?.temperament,
+            let gender = GenderField.text,
+            let breed = BreedField.text,
+            let size = SizeField.text,
+            let temperament = TemperamentField.text,
             let picture = ProfilePictureView.image
-        {
-            //Create a new Dog profile
-            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
-            
+        {            
             
             // Update Client
             dogData?.dogName = dogname
@@ -248,23 +216,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         
         if let profileViewController = segue.destination as? CameraViewController
         {
-            /*
-            //Create a new Dog profile
-            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
-            
-            //Populate Dog
-            dog.dogName = ""
-            dog.gender = ""
-            dog.breed = ""
-            dog.size = ""
-            dog.profilePicture = nil
-            dog.temperament = ""
-            dog.owner = clientData
-            
-            //Configure View Controller
-            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
-            profileViewController.dogData = dog
- */
         }
         
         if segue.identifier == "saveProfilePicture"
@@ -404,8 +355,8 @@ extension ClientDogEntryViewController
     
     override func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 7
-        /*
+
+        
         if sectionNames.count > 0
         {
             tableView.backgroundView = nil
@@ -422,13 +373,13 @@ extension ClientDogEntryViewController
             self.tableView.backgroundView = messageLabel;
         }
         return 0
-        */
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-/*
+
+        
         if section == 0
         {
             return 1
@@ -436,8 +387,14 @@ extension ClientDogEntryViewController
         
         
         var count = sections.count
-        */
+        for section in sections
+        {
+            count += section.items.count
+        }
+        return count
         
+        
+    /*
         if (self.expandedSectionHeaderNumber == section)
         {
             let arrayOfItems = self.sectionItems[section] as! NSArray
@@ -447,16 +404,16 @@ extension ClientDogEntryViewController
         {
             return 0;
         }
- 
+ */
     }
     
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        /*
+        
         switch section
         {
-            case 0: return "Details"
+            case 0: return "Owner Details"
             case 1: return "Dog Name"
             case 2: return "Gender"
             case 3: return "Size"
@@ -465,21 +422,43 @@ extension ClientDogEntryViewController
             case 6: return "Picture"
             default: return ""
         }
-        */
         
+        /*
         if (self.sectionNames.count != 0)
         {
             return self.sectionNames[section] as? String
         }
  
         return ""
+ */
+    }
  
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        if indexPath.section == 0
+        {
+            return tableView.rowHeight
+        }
+        
+        //Calculate the real section index and row index
+        let section = getSectionIndex(indexPath.row)
+        let row = getRowIndex(indexPath.row)
+        
+        //Header has fixed height
+        if row == 0
+        {
+            return 50.0
+        }
+        
+        return sections[section].collapsed! ? 0 : 44.0
     }
     
+    /*
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
         return 44.0;
     }
+    */
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
@@ -510,17 +489,7 @@ extension ClientDogEntryViewController
         headerTapGesture.addTarget(self, action: #selector(ClientDogEntryViewController.sectionHeaderWasTouched(_:)))
         header.addGestureRecognizer(headerTapGesture)
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as UITableViewCell
-        let section = self.sectionItems[indexPath.section] as! NSArray
-        cell.textLabel?.textColor = UIColor.black
-        cell.textLabel?.text = section[indexPath.row] as? String
-        
-        return cell
-    }
-    */
+
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -594,10 +563,10 @@ extension ClientDogEntryViewController
         }
         else
         {
-            UIView.animate(withDuration: 0.4, animations:
-                {
+            UIView.animate(withDuration: 0.4, animations: {
                 imageView.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
             })
+            
             var indexesPath = [IndexPath]()
             for i in 0 ..< sectionData.count
             {
@@ -638,25 +607,10 @@ extension ClientDogEntryViewController: UITextFieldDelegate
 }
 
 
-// MARK:- IBActions
-extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+// MARK:- IBActions for UINavigationControllerDelegate
+extension ClientDogEntryViewController
 {
-    /*
-    @IBAction func CameraAction(_ sender: Any?)
-    {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .camera
-        
-        present(picker, animated: true, completion: nil)
-    }
-    
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-    {
-        ProfilePictureView.image = info[UIImagePickerControllerOriginalImage] as? UIImage; dismiss(animated: true, completion: nil)
-    }
-    
-    */
+
     @IBAction func cancelProfielPicture(_ segue: UIStoryboardSegue)
     {
         print("cancelProfilePicture")
