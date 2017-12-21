@@ -432,7 +432,7 @@ extension ClientDogEntryViewController
         return ""
  */
     }
- 
+ /*
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if indexPath.section == 0
@@ -452,7 +452,7 @@ extension ClientDogEntryViewController
         
         return sections[section].collapsed! ? 0 : 44.0
     }
-    
+   */
     /*
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
