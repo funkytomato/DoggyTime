@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -402,7 +403,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" highlightedImage="Akita" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="116" y="2.6376515054563492e+18" width="308" height="0.0"/>
+                                                    <rect key="frame" x="119" y="2.7547614316760924e+18" width="305" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -454,7 +455,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Picture" id="exb-sh-pAj" userLabel="Details">
+                            <tableViewSection headerTitle="Details" id="exb-sh-pAj" userLabel="Details">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="qT7-cN-7HY">
                                         <rect key="frame" x="0.0" y="55.5" width="1024" height="60"/>
@@ -579,105 +580,88 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Gender" id="cQS-x3-djF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="NHB-sR-KZR">
-                                        <rect key="frame" x="0.0" y="339.5" width="1024" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NHB-sR-KZR">
+                                        <rect key="frame" x="0.0" y="339.5" width="1024" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NHB-sR-KZR" id="sIM-xy-3a7">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView tag="1" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-d6-OfE" userLabel="GenderPicker">
-                                                    <rect key="frame" x="20" y="0.0" width="1004" height="120"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="HN3-6e-gxA" id="anl-fs-z2j"/>
-                                                    </connections>
-                                                </pickerView>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tGv-ME-MCw" userLabel="GenderField">
+                                                    <rect key="frame" x="20" y="5" width="1004" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kv1-d6-OfE" firstAttribute="leading" secondItem="sIM-xy-3a7" secondAttribute="leading" constant="20" id="GxO-pc-lbp"/>
-                                                <constraint firstAttribute="bottom" secondItem="kv1-d6-OfE" secondAttribute="bottom" id="LSK-ly-XJx"/>
-                                                <constraint firstAttribute="trailing" secondItem="kv1-d6-OfE" secondAttribute="trailing" id="T4J-af-2cW"/>
-                                                <constraint firstItem="kv1-d6-OfE" firstAttribute="top" secondItem="sIM-xy-3a7" secondAttribute="top" id="nug-b7-2pX"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Size" id="TH1-ZI-UGe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="knD-f0-y4E">
-                                        <rect key="frame" x="0.0" y="515.5" width="1024" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="knD-f0-y4E">
+                                        <rect key="frame" x="0.0" y="447.5" width="1024" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="knD-f0-y4E" id="ZBT-7Y-wbR">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9p-Uh-wOq" userLabel="SizePicker">
-                                                    <rect key="frame" x="20" y="0.0" width="1004" height="120"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="HN3-6e-gxA" id="Upx-tF-jiQ"/>
-                                                    </connections>
-                                                </pickerView>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OYJ-HV-T1z" userLabel="SizeField">
+                                                    <rect key="frame" x="20" y="5" width="1004" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="D9p-Uh-wOq" secondAttribute="trailing" id="2ar-Yx-40w"/>
-                                                <constraint firstAttribute="bottom" secondItem="D9p-Uh-wOq" secondAttribute="bottom" id="P3n-iC-oTT"/>
-                                                <constraint firstItem="D9p-Uh-wOq" firstAttribute="leading" secondItem="ZBT-7Y-wbR" secondAttribute="leading" constant="20" id="av7-LA-wOt"/>
-                                                <constraint firstItem="D9p-Uh-wOq" firstAttribute="top" secondItem="ZBT-7Y-wbR" secondAttribute="top" id="weI-Qk-dv5"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Temperament" id="XMQ-XE-5hi" userLabel="Temperament">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="InV-dS-JBR">
-                                        <rect key="frame" x="0.0" y="691.5" width="1024" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="InV-dS-JBR">
+                                        <rect key="frame" x="0.0" y="555.5" width="1024" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="InV-dS-JBR" id="nch-eo-3wc">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gc4-We-Dbj" userLabel="TemperamentPicker">
-                                                    <rect key="frame" x="20" y="0.0" width="1004" height="120"/>
-                                                </pickerView>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S5a-Ai-uRx" userLabel="TemperamentField">
+                                                    <rect key="frame" x="20" y="5" width="1004" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="gc4-We-Dbj" secondAttribute="bottom" id="4JE-mD-wa3"/>
-                                                <constraint firstAttribute="trailing" secondItem="gc4-We-Dbj" secondAttribute="trailing" id="Lqy-Kg-EQP"/>
-                                                <constraint firstItem="gc4-We-Dbj" firstAttribute="leading" secondItem="nch-eo-3wc" secondAttribute="leading" constant="20" id="VzY-jm-Ez2"/>
-                                                <constraint firstItem="gc4-We-Dbj" firstAttribute="top" secondItem="nch-eo-3wc" secondAttribute="top" id="Y5L-aB-G1i"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Breed" id="bMD-aQ-bgk">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="a2C-zk-ccc">
-                                        <rect key="frame" x="0.0" y="867.5" width="1024" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="a2C-zk-ccc">
+                                        <rect key="frame" x="0.0" y="663.5" width="1024" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a2C-zk-ccc" id="VX6-tB-uVy">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wre-KD-BHJ" userLabel="BreedPicker">
-                                                    <rect key="frame" x="20" y="0.0" width="1004" height="119.5"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="HN3-6e-gxA" id="zaP-s9-j97"/>
-                                                    </connections>
-                                                </pickerView>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UlQ-re-CPb" userLabel="BreedField">
+                                                    <rect key="frame" x="20" y="5" width="1004" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Wre-KD-BHJ" secondAttribute="trailing" id="3MA-8G-Ugl"/>
-                                                <constraint firstItem="Wre-KD-BHJ" firstAttribute="leading" secondItem="VX6-tB-uVy" secondAttribute="leading" constant="20" id="A6T-Hc-xfb"/>
-                                                <constraint firstAttribute="bottom" secondItem="Wre-KD-BHJ" secondAttribute="bottom" id="VpB-7T-c6e"/>
-                                                <constraint firstItem="Wre-KD-BHJ" firstAttribute="top" secondItem="VX6-tB-uVy" secondAttribute="top" id="jlI-hs-N9p"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="mgf-kb-QEm">
-                                        <rect key="frame" x="0.0" y="987.5" width="1024" height="300"/>
+                                        <rect key="frame" x="0.0" y="715.5" width="1024" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mgf-kb-QEm" id="M7J-hH-81u">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="299.5"/>
@@ -696,7 +680,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="7GD-Yc-Bhu">
-                                        <rect key="frame" x="0.0" y="1287.5" width="1024" height="150"/>
+                                        <rect key="frame" x="0.0" y="1015.5" width="1024" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7GD-Yc-Bhu" id="gW2-YW-qp6">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="149.5"/>
@@ -723,14 +707,14 @@
                             <tableViewSection headerTitle="Picture" id="jq6-84-10f">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="Rh4-ej-dML">
-                                        <rect key="frame" x="0.0" y="1493.5" width="1024" height="300"/>
+                                        <rect key="frame" x="0.0" y="1221.5" width="1024" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rh4-ej-dML" id="fG0-L8-8xV">
                                             <rect key="frame" x="0.0" y="0.0" width="1024" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CiJ-kn-MEI" userLabel="ProfilePicture">
-                                                    <rect key="frame" x="176" y="15" width="672" height="270"/>
+                                                    <rect key="frame" x="20" y="15" width="984" height="270"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -765,17 +749,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="BreedField" destination="UlQ-re-CPb" id="sqc-ZU-18n"/>
                         <outlet property="BreedInfoTextView" destination="HMs-We-sEQ" id="bPV-YC-VUU"/>
-                        <outlet property="BreedPicker" destination="Wre-KD-BHJ" id="oOi-up-WZF"/>
                         <outlet property="BreedPictureView" destination="fSg-fo-hVA" id="hy3-QL-p52"/>
                         <outlet property="DogNameField" destination="NT1-33-dMf" id="rSY-yz-0EQ"/>
-                        <outlet property="GenderPicker" destination="kv1-d6-OfE" id="vKR-UZ-1jt"/>
+                        <outlet property="GenderField" destination="tGv-ME-MCw" id="ryr-ba-KVI"/>
                         <outlet property="NextWalkDateLabel" destination="Y4d-cz-wcJ" id="Jw3-4M-LyI"/>
                         <outlet property="NextWalkLocationLabel" destination="nOP-Sa-H6V" id="WWH-eJ-awT"/>
                         <outlet property="OwnerNameLabel" destination="qlj-Bg-8Yd" id="0wZ-Ak-vQq"/>
                         <outlet property="ProfilePictureView" destination="CiJ-kn-MEI" id="ssF-sl-eJF"/>
-                        <outlet property="SizePicker" destination="D9p-Uh-wOq" id="pi4-EW-la0"/>
-                        <outlet property="TemperamentPicker" destination="gc4-We-Dbj" id="DHJ-W6-DoQ"/>
+                        <outlet property="SizeField" destination="OYJ-HV-T1z" id="065-GY-jJd"/>
+                        <outlet property="TemperamentField" destination="S5a-Ai-uRx" id="ssb-na-ikk"/>
                         <outlet property="UpdatedDateLabel" destination="5IS-dp-ony" id="Ykz-rV-EKa"/>
                         <outlet property="WalkCountLabel" destination="vUV-bW-jDW" id="9L8-kb-zuj"/>
                     </connections>
