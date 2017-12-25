@@ -25,14 +25,15 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     var dogData : Dog?
     
+    let defaults = UserDefaults.standard
     
     //Collasible Sections
     let kHeaderSectionTag: Int = 6900;
     
     var expandedSectionHeaderNumber: Int = 2
     var expandedSectionHeader: UITableViewHeaderFooterView!
-    var sectionItems: Array<Any> = []
-    var sectionNames: Array<Any> = []
+    //var sectionItems: Array<Any> = []
+    //var sectionNames: Array<Any> = []
     
     struct Section
     {
@@ -102,7 +103,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        /*
         sectionNames = ["Owner Details","Dog Name","Gender","Size","Temperament","Breed","Picture"]
         sectionItems = [["Owner Details","Walk Details"],
                         ["Dog Name"],
@@ -111,7 +112,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
                         ["Temperament"],
                         ["Breed","Breed Picture","Breed Info"],
                         ["Profile Picture"]]
-        
+        */
         sections = [
             Section(name: "Owner Details", items: ["Owner Details","Walk Details"]),
             Section(name: "Dog Name", items: ["Dog Name"]),
@@ -121,6 +122,8 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             Section(name: "Breed", items: ["Breed", "Breed Picture", "Breed Info"]),
             Section(name: "Picture", items: ["Profile Picture"])
         ]
+        
+        //defaults.set(true, forKey: "OwnerDetailsCollapsed")
         
         
         self.tableView!.tableFooterView = UIView()
@@ -357,10 +360,13 @@ extension ClientDogEntryViewController
     {
 
         
-        if sectionNames.count > 0
+        //if sectionNames.count > 0
+        if sections.count > 0
         {
             tableView.backgroundView = nil
-            return sectionNames.count
+            //return sectionNames.count
+            print("sections count:\(sections.count)")
+            return sections.count
         }
         else
         {
@@ -389,8 +395,11 @@ extension ClientDogEntryViewController
         var count = sections.count
         for section in sections
         {
-            count += section.items.count
+            //count += section.items.count        //FRY:  items is being accumulated
+            print("count\(section.items.count)")
+            return section.items.count
         }
+        print("count\(count)")
         return count
         
         
@@ -527,7 +536,8 @@ extension ClientDogEntryViewController
     
     func tableViewCollapeSection(_ section: Int, imageView: UIImageView)
     {
-        let sectionData = self.sectionItems[section] as! NSArray
+        //let sectionData = self.sectionItems[section] as! NSArray
+        let sectionData = sections[section].items as! NSArray
         
         self.expandedSectionHeaderNumber = -1;
         if (sectionData.count == 0)
@@ -554,7 +564,8 @@ extension ClientDogEntryViewController
     
     func tableViewExpandSection(_ section: Int, imageView: UIImageView)
     {
-        let sectionData = self.sectionItems[section] as! NSArray
+        //let sectionData = self.sectionItems[section] as! NSArray
+        let sectionData = self.sections[section].items as! NSArray
         
         if (sectionData.count == 0)
         {
