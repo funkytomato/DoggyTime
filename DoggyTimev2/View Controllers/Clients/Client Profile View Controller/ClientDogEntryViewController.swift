@@ -25,7 +25,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     var dogData : Dog?
     
-    let defaults = UserDefaults.standard
+    let defaults = UserDefaultsManager()
     
     //Collasible Sections
     let kHeaderSectionTag: Int = 6900;
@@ -35,11 +35,12 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         var items: [String]!
         var collapsed: Bool!
         
-        init(name:String, items: [String], collapsed: Bool = false)
+        //init(name:String, items: [String], collapsed: Bool = false)
+        init(name:String, items: [String], collapsed: Bool)
         {
             self.name = name
             self.items = items
-            self.collapsed = false
+            self.collapsed = collapsed
         }
     }
     var sections = [Section]()
@@ -99,16 +100,18 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         super.viewDidLoad()
 
         sections = [
-            Section(name: "Owner Details", items: ["Owner Details","Walk Details"]),
-            Section(name: "Dog Name", items: ["Dog Name"]),
-            Section(name: "Gender", items: ["Gender"]),
-            Section(name: "Size", items: ["Size"]),
-            Section(name: "Temperament", items: ["Temperament"]),
-            Section(name: "Breed", items: ["Breed", "Breed Picture", "Breed Info"]),
-            Section(name: "Picture", items: ["Profile Picture"])
+            Section(name: "Owner Details", items: ["Owner Details","Walk Details"], collapsed: UserDefaultsManager.ownerSectionCollapsed),
+            Section(name: "Dog Name", items: ["Dog Name"], collapsed: UserDefaultsManager.dognameSectionCollapsed),
+            Section(name: "Gender", items: ["Gender"], collapsed: UserDefaultsManager.genderSectionCollapsed),
+            Section(name: "Size", items: ["Size"], collapsed: UserDefaultsManager.sizeSectionCollapsed),
+            Section(name: "Temperament", items: ["Temperament"], collapsed: UserDefaultsManager.temperamentSectionCollapsed),
+            Section(name: "Breed", items: ["Breed", "Breed Picture", "Breed Info"], collapsed: UserDefaultsManager.breedSectionCollapsed),
+            Section(name: "Picture", items: ["Profile Picture"], collapsed: UserDefaultsManager.pictureSectionCollapsed)
         ]
         
-        //defaults.set(true, forKey: "OwnerDetailsCollapsed")
+        
+       // let sectionCollapsed = UserDefaults.standard.bool(forKey: "collapsedSectionKey")
+        print(UserDefaultsManager.dognameSectionCollapsed)
         
         
         self.tableView!.tableFooterView = UIView()
@@ -434,6 +437,51 @@ extension ClientDogEntryViewController
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func setUserDefaults(_ section: Int, _ newValue: Bool)
+    {
+        switch section
+        {
+        case 0:
+            UserDefaultsManager.ownerSectionCollapsed = newValue
+        case 1:
+            UserDefaultsManager.dognameSectionCollapsed = newValue
+        case 2:
+            UserDefaultsManager.genderSectionCollapsed = newValue
+        case 3:
+            UserDefaultsManager.sizeSectionCollapsed = newValue
+        case 4:
+            UserDefaultsManager.temperamentSectionCollapsed = newValue
+        case 5:
+            UserDefaultsManager.breedSectionCollapsed = newValue
+        case 6:
+            UserDefaultsManager.pictureSectionCollapsed = newValue
+        default:
+            return
+        }
+    }
+    
+    func getUserDefaults(_ section: Int) -> Bool
+    {
+        switch section
+        {
+        case 0:
+            return UserDefaultsManager.ownerSectionCollapsed
+        case 1:
+            return UserDefaultsManager.dognameSectionCollapsed
+        case 2:
+            return UserDefaultsManager.genderSectionCollapsed
+        case 3:
+            return UserDefaultsManager.sizeSectionCollapsed
+        case 4:
+            return UserDefaultsManager.temperamentSectionCollapsed
+        case 5:
+            return UserDefaultsManager.breedSectionCollapsed
+        case 6:
+            return UserDefaultsManager.pictureSectionCollapsed
+        default:
+            return false
+        }
+    }
     
     
     // MARK: - Expand / Collapse Methods
@@ -448,6 +496,7 @@ extension ClientDogEntryViewController
         if (sections[section].collapsed == true)
         {
             sections[section].collapsed = false
+            setUserDefaults(section, false)
             tableViewExpandSection(section, imageView: eImageView!)
         }
         else
@@ -455,6 +504,7 @@ extension ClientDogEntryViewController
             if sections[section].collapsed == false
             {
                 sections[section].collapsed = true
+                setUserDefaults(section, true)
                 tableViewCollapeSection(section, imageView: eImageView!)
             }
             else
