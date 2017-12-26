@@ -29,8 +29,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     //Collasible Sections
     let kHeaderSectionTag: Int = 6900;
-//    var expandedSectionHeaderNumber: Int = -1
-//    var expandedSectionHeader: UITableViewHeaderFooterView!
     struct Section
     {
         var name: String!
@@ -449,7 +447,6 @@ extension ClientDogEntryViewController
 
         if (sections[section].collapsed == true)
         {
-            //self.expandedSectionHeaderNumber = section
             sections[section].collapsed = false
             tableViewExpandSection(section, imageView: eImageView!)
         }
@@ -462,7 +459,6 @@ extension ClientDogEntryViewController
             }
             else
             {
-                //let cImageView = self.view.viewWithTag(kHeaderSectionTag + self.expandedSectionHeaderNumber) as? UIImageView
                 let cImageView = self.view.viewWithTag(kHeaderSectionTag + section) as? UIImageView
                 
                 tableViewCollapeSection(section, imageView: cImageView!)
