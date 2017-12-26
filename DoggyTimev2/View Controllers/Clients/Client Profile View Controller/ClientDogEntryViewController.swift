@@ -29,12 +29,8 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     
     //Collasible Sections
     let kHeaderSectionTag: Int = 6900;
-    
-    var expandedSectionHeaderNumber: Int = 2
-    var expandedSectionHeader: UITableViewHeaderFooterView!
-    //var sectionItems: Array<Any> = []
-    //var sectionNames: Array<Any> = []
-    
+//    var expandedSectionHeaderNumber: Int = -1
+//    var expandedSectionHeader: UITableViewHeaderFooterView!
     struct Section
     {
         var name: String!
@@ -103,16 +99,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        /*
-        sectionNames = ["Owner Details","Dog Name","Gender","Size","Temperament","Breed","Picture"]
-        sectionItems = [["Owner Details","Walk Details"],
-                        ["Dog Name"],
-                        ["Gender"],
-                        ["Size"],
-                        ["Temperament"],
-                        ["Breed","Breed Picture","Breed Info"],
-                        ["Profile Picture"]]
-        */
+
         sections = [
             Section(name: "Owner Details", items: ["Owner Details","Walk Details"]),
             Section(name: "Dog Name", items: ["Dog Name"]),
@@ -360,11 +347,9 @@ extension ClientDogEntryViewController
     {
 
         
-        //if sectionNames.count > 0
         if sections.count > 0
         {
             tableView.backgroundView = nil
-            //return sectionNames.count
             print("sections count:\(sections.count)")
             return sections.count
         }
@@ -385,35 +370,15 @@ extension ClientDogEntryViewController
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
 
-        
-        if section == 0
+
+        if sections[section].collapsed == false
         {
-            return 1
-        }
-        
-        
-        var count = sections.count
-        for section in sections
-        {
-            //count += section.items.count        //FRY:  items is being accumulated
-            print("count\(section.items.count)")
-            return section.items.count
-        }
-        print("count\(count)")
-        return count
-        
-        
-    /*
-        if (self.expandedSectionHeaderNumber == section)
-        {
-            let arrayOfItems = self.sectionItems[section] as! NSArray
-            return arrayOfItems.count;
+            return sections[section].items.count
         }
         else
         {
-            return 0;
+            return 0
         }
- */
     }
     
     
@@ -431,48 +396,14 @@ extension ClientDogEntryViewController
             case 6: return "Picture"
             default: return ""
         }
-        
-        /*
-        if (self.sectionNames.count != 0)
-        {
-            return self.sectionNames[section] as? String
-        }
- 
-        return ""
- */
     }
- /*
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        if indexPath.section == 0
-        {
-            return tableView.rowHeight
-        }
-        
-        //Calculate the real section index and row index
-        let section = getSectionIndex(indexPath.row)
-        let row = getRowIndex(indexPath.row)
-        
-        //Header has fixed height
-        if row == 0
-        {
-            return 50.0
-        }
-        
-        return sections[section].collapsed! ? 0 : 44.0
-    }
-   */
-    /*
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-        return 44.0;
-    }
-    */
+    
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
     {
         return 0;
     }
+    
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
@@ -499,6 +430,7 @@ extension ClientDogEntryViewController
         header.addGestureRecognizer(headerTapGesture)
     }
 
+    
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -514,42 +446,45 @@ extension ClientDogEntryViewController
         let section    = headerView.tag
         let eImageView = headerView.viewWithTag(kHeaderSectionTag + section) as? UIImageView
         
-        if (self.expandedSectionHeaderNumber == -1)
+
+        if (sections[section].collapsed == true)
         {
-            self.expandedSectionHeaderNumber = section
+            //self.expandedSectionHeaderNumber = section
+            sections[section].collapsed = false
             tableViewExpandSection(section, imageView: eImageView!)
         }
         else
         {
-            if (self.expandedSectionHeaderNumber == section)
+            if sections[section].collapsed == false
             {
+                sections[section].collapsed = true
                 tableViewCollapeSection(section, imageView: eImageView!)
             }
             else
             {
-                let cImageView = self.view.viewWithTag(kHeaderSectionTag + self.expandedSectionHeaderNumber) as? UIImageView
-                tableViewCollapeSection(self.expandedSectionHeaderNumber, imageView: cImageView!)
+                //let cImageView = self.view.viewWithTag(kHeaderSectionTag + self.expandedSectionHeaderNumber) as? UIImageView
+                let cImageView = self.view.viewWithTag(kHeaderSectionTag + section) as? UIImageView
+                
+                tableViewCollapeSection(section, imageView: cImageView!)
                 tableViewExpandSection(section, imageView: eImageView!)
             }
         }
     }
     
+    
     func tableViewCollapeSection(_ section: Int, imageView: UIImageView)
     {
-        //let sectionData = self.sectionItems[section] as! NSArray
+
         let sectionData = sections[section].items as! NSArray
         
-        self.expandedSectionHeaderNumber = -1;
+        sections[section].collapsed = true
         if (sectionData.count == 0)
         {
             return;
         }
         else
         {
-            UIView.animate(withDuration: 0.4, animations:
-                {
-                imageView.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(Double.pi)) / 180.0)
-            })
+            UIView.animate(withDuration: 0.4, animations: { imageView.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(Double.pi)) / 180.0) })
             var indexesPath = [IndexPath]()
             for i in 0 ..< sectionData.count
             {
@@ -562,21 +497,19 @@ extension ClientDogEntryViewController
         }
     }
     
+    
     func tableViewExpandSection(_ section: Int, imageView: UIImageView)
     {
-        //let sectionData = self.sectionItems[section] as! NSArray
+
         let sectionData = self.sections[section].items as! NSArray
         
         if (sectionData.count == 0)
         {
-            self.expandedSectionHeaderNumber = -1;
             return;
         }
         else
         {
-            UIView.animate(withDuration: 0.4, animations: {
-                imageView.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
-            })
+            UIView.animate(withDuration: 0.4, animations: { imageView.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)})
             
             var indexesPath = [IndexPath]()
             for i in 0 ..< sectionData.count
@@ -584,13 +517,14 @@ extension ClientDogEntryViewController
                 let index = IndexPath(row: i, section: section)
                 indexesPath.append(index)
             }
-            self.expandedSectionHeaderNumber = section
+
             self.tableView!.beginUpdates()
             self.tableView!.insertRows(at: indexesPath, with: UITableViewRowAnimation.fade)
             self.tableView!.endUpdates()
         }
     }
 }
+
 
 extension ClientDogEntryViewController: UITextFieldDelegate
 {
@@ -651,6 +585,7 @@ extension ClientDogEntryViewController
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
+    
     
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
