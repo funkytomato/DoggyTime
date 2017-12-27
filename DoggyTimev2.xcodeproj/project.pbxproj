@@ -31,6 +31,7 @@
 		183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */; };
 		183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183243021FB3A47100ACF480 /* CoreDataManager.swift */; };
 		184617601FE93EF60055EFF7 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846175F1FE93EF50055EFF7 /* ImageViewController.swift */; };
+		184AD3E91FF1ED44003B720C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */; };
 		186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */; };
 		1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8A51FE7FB7A0051B915 /* CameraManager.swift */; };
 		1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AB1FE812770051B915 /* CameraViewController.swift */; };
@@ -118,6 +119,7 @@
 		183242FE1FB383B600ACF480 /* ClientDogEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDogEntryViewController.swift; sourceTree = "<group>"; };
 		183243021FB3A47100ACF480 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1846175F1FE93EF50055EFF7 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		1870B8A51FE7FB7A0051B915 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		1870B8AB1FE812770051B915 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				1808F7011F9E150B0027B447 /* Test Data */,
 				18EB60161F9A1ADF0084FE8D /* Info.plist */,
 				1808F7041F9E15550027B447 /* View Controllers */,
+				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
 			);
 			path = DoggyTimev2;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
 				C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */,
 				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
+				184AD3E91FF1ED44003B720C /* UserDefaultsManager.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
 				18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
