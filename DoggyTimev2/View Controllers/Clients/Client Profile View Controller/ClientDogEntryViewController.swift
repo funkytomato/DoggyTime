@@ -25,6 +25,35 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     var dogData : Dog?
     
+    let defaults = UserDefaultsManager()
+    
+    //Collasible Sections
+    let kHeaderSectionTag: Int = 6900;
+    struct Section
+    {
+        var name: String!
+        var items: [String]!
+        var collapsed: Bool!
+        
+        //init(name:String, items: [String], collapsed: Bool = false)
+        init(name:String, items: [String], collapsed: Bool)
+        {
+            self.name = name
+            self.items = items
+            self.collapsed = collapsed
+        }
+    }
+    var sections = [Section]()
+
+    
+    
+    //Show/Hide PickerViews
+    
+    let genderPicker = UIPickerView()
+    let sizePicker = UIPickerView()
+    let breedPicker = UIPickerView()
+    let temperamentPicker = UIPickerView()
+    
     //MARK:- IBOutlets
     @IBOutlet weak var OwnerNameLabel: UILabel!
     @IBOutlet weak var WalkCountLabel: UILabel!
@@ -33,15 +62,18 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     @IBOutlet weak var UpdatedDateLabel: UILabel!
     
     @IBOutlet weak var DogNameField: UITextField!
-    @IBOutlet weak var GenderPicker: UIPickerView!
-    @IBOutlet weak var SizePicker: UIPickerView!
-    @IBOutlet weak var TemperamentPicker: UIPickerView!
-    
-    @IBOutlet weak var BreedPicker: UIPickerView!
+    @IBOutlet weak var GenderField: UITextField!
+    @IBOutlet weak var SizeField: UITextField!
+    @IBOutlet weak var TemperamentField: UITextField!
+
+    @IBOutlet weak var BreedField: UITextField!
     @IBOutlet weak var BreedPictureView: UIImageView!
     @IBOutlet weak var BreedInfoTextView: UITextView!
     
     @IBOutlet weak var ProfilePictureView: UIImageView!
+    
+    
+    
     
     
     //MARK:- PickerView DataSources
@@ -66,18 +98,36 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
+        sections = [
+            Section(name: "Owner Details", items: ["Owner Details","Walk Details"], collapsed: UserDefaultsManager.ownerSectionCollapsed),
+            Section(name: "Dog Name", items: ["Dog Name"], collapsed: UserDefaultsManager.dognameSectionCollapsed),
+            Section(name: "Gender", items: ["Gender"], collapsed: UserDefaultsManager.genderSectionCollapsed),
+            Section(name: "Size", items: ["Size"], collapsed: UserDefaultsManager.sizeSectionCollapsed),
+            Section(name: "Temperament", items: ["Temperament"], collapsed: UserDefaultsManager.temperamentSectionCollapsed),
+            Section(name: "Breed", items: ["Breed", "Breed Picture", "Breed Info"], collapsed: UserDefaultsManager.breedSectionCollapsed),
+            Section(name: "Picture", items: ["Profile Picture"], collapsed: UserDefaultsManager.pictureSectionCollapsed)
+        ]
         
-        BreedPicker.delegate = self
-        BreedPicker.dataSource = self
         
-        GenderPicker.delegate = self
-        GenderPicker.dataSource = self
+       // let sectionCollapsed = UserDefaults.standard.bool(forKey: "collapsedSectionKey")
+        print(UserDefaultsManager.dognameSectionCollapsed)
         
-        SizePicker.delegate = self
-        SizePicker.dataSource = self
         
-        TemperamentPicker.delegate = self
-        TemperamentPicker.dataSource = self
+        self.tableView!.tableFooterView = UIView()
+
+        
+        genderPicker.delegate = self
+        genderPicker.dataSource = self
+        
+        sizePicker.delegate = self
+        sizePicker.dataSource = self
+        
+        temperamentPicker.delegate = self
+        temperamentPicker.dataSource = self
+        
+        breedPicker.delegate = self
+        breedPicker.dataSource = self
         
         if dogData != nil
         {
@@ -96,25 +146,21 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             
             
             self.DogNameField.text = dogData?.dogName
-            
-            if let row = genderDataSource.index(of: (dogData?.gender)!)
-            {
-                GenderPicker.selectRow(row, inComponent: 0, animated: false)
-            }
-       
-            if let row = sizeDataSource.index(of: (dogData?.size?.description)!)
-            {
-                SizePicker.selectRow(row, inComponent: 0, animated: false)
-            }
-            
-            if let row = temperamentDataSource.index(of: (dogData?.temperament?.description)!)
-            {
-                TemperamentPicker.selectRow(row, inComponent: 0, animated: false)
-            }
 
+            self.GenderField.text = dogData?.gender
+            GenderField.inputView = genderPicker
+        
+            self.SizeField.text = dogData?.size
+            SizeField.inputView = sizePicker
+            
+            self.TemperamentField.text = dogData?.temperament
+            TemperamentField.inputView = temperamentPicker
+            
+            self.BreedField.text = dogData?.breed
+            BreedField.inputView = breedPicker
+            
             if let row = breedDataSource.index(of: (dogData?.breed?.description)!)
             {
-                BreedPicker.selectRow(row, inComponent: 0, animated: false)
                 BreedPictureView.image = UIImage(named: breedDataSource[row])
             }
             
@@ -142,15 +188,12 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         // Pass the selected object to the new view controller.
         if segue.identifier == "SaveClientDogDetail",
             let dogname = DogNameField.text,
-            let gender = dogData?.gender,
-            let breed = dogData?.breed,
-            let size = dogData?.size,
-            let temperament = dogData?.temperament,
+            let gender = GenderField.text,
+            let breed = BreedField.text,
+            let size = SizeField.text,
+            let temperament = TemperamentField.text,
             let picture = ProfilePictureView.image
-        {
-            //Create a new Dog profile
-            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
-            
+        {            
             
             // Update Client
             dogData?.dogName = dogname
@@ -164,23 +207,6 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
         
         if let profileViewController = segue.destination as? CameraViewController
         {
-            /*
-            //Create a new Dog profile
-            let dog = Dog(context: coreDataManager.mainManagedObjectContext)
-            
-            //Populate Dog
-            dog.dogName = ""
-            dog.gender = ""
-            dog.breed = ""
-            dog.size = ""
-            dog.profilePicture = nil
-            dog.temperament = ""
-            dog.owner = clientData
-            
-            //Configure View Controller
-            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
-            profileViewController.dogData = dog
- */
         }
         
         if segue.identifier == "saveProfilePicture"
@@ -211,19 +237,19 @@ extension ClientDogEntryViewController
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         print("ClientDogEntryViewController numberOfRowsInComponent PickerView : \(pickerView.description)")
-        if pickerView == GenderPicker
+        if pickerView == genderPicker
         {
             return genderDataSource.count
         }
-        else if pickerView == BreedPicker
+        else if pickerView == breedPicker
         {
             return breedDataSource.count
         }
-        else if pickerView == SizePicker
+        else if pickerView == sizePicker
         {
             return sizeDataSource.count
         }
-        else if pickerView == TemperamentPicker
+        else if pickerView == temperamentPicker
         {
             return temperamentDataSource.count
         }
@@ -234,19 +260,19 @@ extension ClientDogEntryViewController
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         print("ClientDogEntryViewController titleForRow PickerView : \(pickerView.description)")
-        if pickerView == GenderPicker
+        if pickerView == genderPicker
         {
             return genderDataSource[row] as String
         }
-        else if pickerView == BreedPicker
+        else if pickerView == breedPicker
         {
             return breedDataSource[row] as String
         }
-        else if pickerView == SizePicker
+        else if pickerView == sizePicker
         {
             return sizeDataSource[row] as String
         }
-        else if pickerView == TemperamentPicker
+        else if pickerView == temperamentPicker
         {
             return temperamentDataSource[row] as String
         }
@@ -259,50 +285,292 @@ extension ClientDogEntryViewController
         print("ClientDogEntryViewController didSelectRow PickerView : \(pickerView.description)")
 
         
-        if pickerView == BreedPicker
+        if pickerView == breedPicker
         {
             print(breedDataSource[row])
             
             BreedPictureView.image = UIImage(named: breedDataSource[row])
             dogData?.breed = breedDataSource[row]
+            BreedField.text = breedDataSource[row]
         }
-        else if pickerView == GenderPicker
+        else if pickerView == genderPicker
         {
             print(genderDataSource[row])
             
             dogData?.gender = genderDataSource[row]
+            GenderField.text = genderDataSource[row]
         }
-        else if pickerView == SizePicker
+        else if pickerView == sizePicker
         {
             print(sizeDataSource[row])
             
             dogData?.size = sizeDataSource[row]
+            SizeField.text = sizeDataSource[row]
         }
-        else if pickerView == TemperamentPicker
+        else if pickerView == temperamentPicker
         {
             dogData?.temperament = temperamentDataSource[row]
+            TemperamentField.text = temperamentDataSource[row]
         }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        tableView.reloadData()
     }
     
     func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
     {
         switch pickerView
         {
-        case GenderPicker:
-            BreedPicker.becomeFirstResponder()
-        case BreedPicker:
-            SizePicker.becomeFirstResponder()
-        case SizePicker:
-            TemperamentPicker.becomeFirstResponder()
-        case TemperamentPicker:
-            TemperamentPicker.resignFirstResponder()
+        case genderPicker:
+            breedPicker.becomeFirstResponder()
+        case breedPicker:
+            sizePicker.becomeFirstResponder()
+        case sizePicker:
+            temperamentPicker.becomeFirstResponder()
+        case temperamentPicker:
+            temperamentPicker.resignFirstResponder()
         default:
-            TemperamentPicker.resignFirstResponder()
+            temperamentPicker.resignFirstResponder()
         }
         
         return true
     }
 }
+
+
+//MARK:- TableView Methods
+extension ClientDogEntryViewController
+{
+
+    
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+
+        
+        if sections.count > 0
+        {
+            tableView.backgroundView = nil
+            print("sections count:\(sections.count)")
+            return sections.count
+        }
+        else
+        {
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height))
+            messageLabel.text = "Retrieving data.\nPlease wait."
+            messageLabel.numberOfLines = 0;
+            messageLabel.textAlignment = .center;
+            messageLabel.font = UIFont(name: "HelveticaNeue", size: 20.0)!
+            messageLabel.sizeToFit()
+            self.tableView.backgroundView = messageLabel;
+        }
+        return 0
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+
+
+        if sections[section].collapsed == false
+        {
+            return sections[section].items.count
+        }
+        else
+        {
+            return 0
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        
+        switch section
+        {
+            case 0: return "Owner Details"
+            case 1: return "Dog Name"
+            case 2: return "Gender"
+            case 3: return "Size"
+            case 4: return "Temperament"
+            case 5: return "Breed"
+            case 6: return "Picture"
+            default: return ""
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return 0;
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    {
+        //recast your view as a UITableViewHeaderFooterView
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.colorWithHexString(hexStr: "#408000")
+        header.textLabel?.textColor = UIColor.white
+        
+        if let viewWithTag = self.view.viewWithTag(kHeaderSectionTag + section)
+        {
+            viewWithTag.removeFromSuperview()
+        }
+        
+        let headerFrame = self.view.frame.size
+        let theImageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18));
+        theImageView.image = UIImage(named: "Chevron-Dn-Wht")
+        theImageView.tag = kHeaderSectionTag + section
+        header.addSubview(theImageView)
+        
+        // make headers touchable
+        header.tag = section
+        let headerTapGesture = UITapGestureRecognizer()
+        headerTapGesture.addTarget(self, action: #selector(ClientDogEntryViewController.sectionHeaderWasTouched(_:)))
+        header.addGestureRecognizer(headerTapGesture)
+    }
+
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func setUserDefaults(_ section: Int, _ newValue: Bool)
+    {
+        switch section
+        {
+        case 0:
+            UserDefaultsManager.ownerSectionCollapsed = newValue
+        case 1:
+            UserDefaultsManager.dognameSectionCollapsed = newValue
+        case 2:
+            UserDefaultsManager.genderSectionCollapsed = newValue
+        case 3:
+            UserDefaultsManager.sizeSectionCollapsed = newValue
+        case 4:
+            UserDefaultsManager.temperamentSectionCollapsed = newValue
+        case 5:
+            UserDefaultsManager.breedSectionCollapsed = newValue
+        case 6:
+            UserDefaultsManager.pictureSectionCollapsed = newValue
+        default:
+            return
+        }
+    }
+    
+    func getUserDefaults(_ section: Int) -> Bool
+    {
+        switch section
+        {
+        case 0:
+            return UserDefaultsManager.ownerSectionCollapsed
+        case 1:
+            return UserDefaultsManager.dognameSectionCollapsed
+        case 2:
+            return UserDefaultsManager.genderSectionCollapsed
+        case 3:
+            return UserDefaultsManager.sizeSectionCollapsed
+        case 4:
+            return UserDefaultsManager.temperamentSectionCollapsed
+        case 5:
+            return UserDefaultsManager.breedSectionCollapsed
+        case 6:
+            return UserDefaultsManager.pictureSectionCollapsed
+        default:
+            return false
+        }
+    }
+    
+    
+    // MARK: - Expand / Collapse Methods
+    
+    @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer)
+    {
+        let headerView = sender.view as! UITableViewHeaderFooterView
+        let section    = headerView.tag
+        let eImageView = headerView.viewWithTag(kHeaderSectionTag + section) as? UIImageView
+        
+
+        if (sections[section].collapsed == true)
+        {
+            sections[section].collapsed = false
+            setUserDefaults(section, false)
+            tableViewExpandSection(section, imageView: eImageView!)
+        }
+        else
+        {
+            if sections[section].collapsed == false
+            {
+                sections[section].collapsed = true
+                setUserDefaults(section, true)
+                tableViewCollapeSection(section, imageView: eImageView!)
+            }
+            else
+            {
+                let cImageView = self.view.viewWithTag(kHeaderSectionTag + section) as? UIImageView
+                
+                tableViewCollapeSection(section, imageView: cImageView!)
+                tableViewExpandSection(section, imageView: eImageView!)
+            }
+        }
+    }
+    
+    
+    func tableViewCollapeSection(_ section: Int, imageView: UIImageView)
+    {
+
+        let sectionData = sections[section].items as! NSArray
+        
+        sections[section].collapsed = true
+        if (sectionData.count == 0)
+        {
+            return;
+        }
+        else
+        {
+            UIView.animate(withDuration: 0.4, animations: { imageView.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(Double.pi)) / 180.0) })
+            var indexesPath = [IndexPath]()
+            for i in 0 ..< sectionData.count
+            {
+                let index = IndexPath(row: i, section: section)
+                indexesPath.append(index)
+            }
+            self.tableView!.beginUpdates()
+            self.tableView!.deleteRows(at: indexesPath, with: UITableViewRowAnimation.fade)
+            self.tableView!.endUpdates()
+        }
+    }
+    
+    
+    func tableViewExpandSection(_ section: Int, imageView: UIImageView)
+    {
+
+        let sectionData = self.sections[section].items as! NSArray
+        
+        if (sectionData.count == 0)
+        {
+            return;
+        }
+        else
+        {
+            UIView.animate(withDuration: 0.4, animations: { imageView.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)})
+            
+            var indexesPath = [IndexPath]()
+            for i in 0 ..< sectionData.count
+            {
+                let index = IndexPath(row: i, section: section)
+                indexesPath.append(index)
+            }
+
+            self.tableView!.beginUpdates()
+            self.tableView!.insertRows(at: indexesPath, with: UITableViewRowAnimation.fade)
+            self.tableView!.endUpdates()
+        }
+    }
+}
+
 
 extension ClientDogEntryViewController: UITextFieldDelegate
 {
@@ -311,16 +579,18 @@ extension ClientDogEntryViewController: UITextFieldDelegate
         switch textField
         {
         case DogNameField:
-            GenderPicker.becomeFirstResponder()
-            //        case genderPicker:
-            //            breedPicker.becomeFirstResponder()
-            //        case breedPicker:
-            //            sizePicker.becomeFirstResponder()
-            //        case sizePicker:
-            //            sizePicker.resignFirstResponder()
+            GenderField.becomeFirstResponder()
+        case GenderField:
+            SizeField.becomeFirstResponder()
+        case SizeField:
+            BreedField.becomeFirstResponder()
+        case BreedField:
+            TemperamentField.becomeFirstResponder()
+        case TemperamentField:
+            TemperamentField.resignFirstResponder()
             
         default:
-            SizePicker.resignFirstResponder()
+            DogNameField.resignFirstResponder()
             
         }
         return true
@@ -328,25 +598,10 @@ extension ClientDogEntryViewController: UITextFieldDelegate
 }
 
 
-// MARK:- IBActions
-extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+// MARK:- IBActions for UINavigationControllerDelegate
+extension ClientDogEntryViewController
 {
-    /*
-    @IBAction func CameraAction(_ sender: Any?)
-    {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .camera
-        
-        present(picker, animated: true, completion: nil)
-    }
-    
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-    {
-        ProfilePictureView.image = info[UIImagePickerControllerOriginalImage] as? UIImage; dismiss(animated: true, completion: nil)
-    }
-    
-    */
+
     @IBAction func cancelProfielPicture(_ segue: UIStoryboardSegue)
     {
         print("cancelProfilePicture")
@@ -376,6 +631,7 @@ extension ClientDogEntryViewController //: UIImagePickerControllerDelegate, UINa
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
+    
     
     @IBAction func cancelToClientsDetailViewController(_ segue: UIStoryboardSegue)
     {
