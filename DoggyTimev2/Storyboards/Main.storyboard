@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,6 +23,7 @@
                         <segue destination="Jh5-4n-dlo" kind="relationship" relationship="viewControllers" id="ePn-PK-KEg"/>
                         <segue destination="xg5-8o-FXR" kind="relationship" relationship="viewControllers" id="oM5-oX-D8a"/>
                         <segue destination="0iA-Ne-wXS" kind="relationship" relationship="viewControllers" id="0Nh-wr-y9a"/>
+                        <segue destination="8Fp-XZ-JXT" kind="relationship" relationship="viewControllers" id="JDK-If-q94"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -57,13 +58,23 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rm-Xu-DPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="696"/>
+            <point key="canvasLocation" x="8" y="610"/>
+        </scene>
+        <!--Map Nav Controller-->
+        <scene sceneID="qC6-rb-sB2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Maps" id="8Fp-XZ-JXT" userLabel="Map Nav Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Maps" image="dogwalker" selectedImage="dogwalker" id="vEc-yD-ps1" userLabel="Map"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCK-S1-gQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8" y="685"/>
         </scene>
         <!--Routes Nav Controller-->
         <scene sceneID="ZeS-Ti-DzQ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Routes" id="0iA-Ne-wXS" userLabel="Routes Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="53X-j3-CVs"/>
+                    <tabBarItem key="tabBarItem" title="Routes" image="dogwalker" id="53X-j3-CVs"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vW3-vY-LQR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
