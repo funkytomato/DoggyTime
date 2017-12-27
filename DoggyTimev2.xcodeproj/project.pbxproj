@@ -76,6 +76,8 @@
 		18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
+		18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F24B0D1FF401C600498D8B /* Maps.storyboard */; };
+		18F24B101FF4078D00498D8B /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F24B0F1FF4078D00498D8B /* MapsViewController.swift */; };
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
 		C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
@@ -156,6 +158,8 @@
 		18EB60681F9A20B40084FE8D /* WalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalksViewController.swift; sourceTree = "<group>"; };
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		18F24B0D1FF401C600498D8B /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
+		18F24B0F1FF4078D00498D8B /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 				18EB60381F9A206E0084FE8D /* Main.storyboard */,
 				C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */,
 				1805B76E1F9E296900DCFB83 /* Walks.storyboard */,
+				18F24B0D1FF401C600498D8B /* Maps.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				1808F7071F9E15910027B447 /* Core Data */,
 				1808F7031F9E15320027B447 /* DataSources */,
 				C2F02A701FB0B96D00597345 /* Extensions */,
+				18F24B0C1FF3FEB900498D8B /* Maps */,
 				18A9B66A1FA24535003DAF51 /* Resources */,
 				1808F7061F9E15830027B447 /* Storyboards */,
 				1808F7011F9E150B0027B447 /* Test Data */,
@@ -538,6 +544,15 @@
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimev2UITests;
+			sourceTree = "<group>";
+		};
+		18F24B0C1FF3FEB900498D8B /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				18F24B0F1FF4078D00498D8B /* MapsViewController.swift */,
+			);
+			name = Maps;
+			path = Extensions/Maps;
 			sourceTree = "<group>";
 		};
 		C2F02A701FB0B96D00597345 /* Extensions */ = {
@@ -658,6 +673,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18EB60391F9A206E0084FE8D /* Main.storyboard in Resources */,
+				18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */,
 				1800A50A1F9E35F400829A86 /* Camera.storyboard in Resources */,
 				C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */,
 				1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */,
@@ -691,6 +707,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F24B101FF4078D00498D8B /* MapsViewController.swift in Sources */,
 				18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */,
 				1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */,
 				C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */,
