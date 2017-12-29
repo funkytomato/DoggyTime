@@ -31,7 +31,7 @@
 import UIKit
 import MapKit
 
-class DogWalkRouteMap
+class Map
 {
   var name: String?
   var boundary: [CLLocationCoordinate2D] = []
@@ -67,13 +67,13 @@ class DogWalkRouteMap
   
   init(filename: String)
   {
-    guard let properties = Park.plist(filename) as? [String : Any],
+    guard let properties = Map.plist(filename) as? [String : Any],
       let boundaryPoints = properties["boundary"] as? [String] else { return }
     
-    midCoordinate = Park.parseCoord(dict: properties, fieldName: "midCoord")
-    overlayTopLeftCoordinate = Park.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
-    overlayTopRightCoordinate = Park.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
-    overlayBottomLeftCoordinate = Park.parseCoord(dict: properties, fieldName: "overlayBottomLeftCoord")
+    midCoordinate = Map.parseCoord(dict: properties, fieldName: "midCoord")
+    overlayTopLeftCoordinate = Map.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
+    overlayTopRightCoordinate = Map.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
+    overlayBottomLeftCoordinate = Map.parseCoord(dict: properties, fieldName: "overlayBottomLeftCoord")
     
     let cgPoints = boundaryPoints.map { CGPointFromString($0) }
     boundary = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
