@@ -18,6 +18,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     @IBOutlet weak var mapView: MKMapView!
 
+    
+    //MRK:- Locate User on map
     @IBAction func locateMeButton(_ sender: UIBarButtonItem)
     {
         if (CLLocationManager.locationServicesEnabled())
@@ -27,11 +29,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 locationManager = CLLocationManager()
             }
             
-            locationManager?.requestWhenInUseAuthorization()
+
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
+            locationManager.startUpdatingHeading()
             isCurrentLocation = true
         }
     }
@@ -85,14 +89,16 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         super.viewDidLoad()
 
         //Load coordinates from CoreData
-        //dogWalkRouteMapOverlay = DogWalkRouteMapOverlay()
+        mapOverlay = MapOverlay(map: map)
         
-        let currentLocationButton = UIBarButtonItem(title: "Current Location", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MapsViewController.currentLocationButtonAction(_:)))
+        /*
+        let currentLocationButton = UIBarButtonItem(title: "Locate Me!!!", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MapsViewController.currentLocationButtonAction(_:)))
         self.navigationItem.leftBarButtonItem = currentLocationButton
-        
+
         let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapsViewController.searchButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = searchButton
-        
+*/
+ 
         //Config the mapview to show the user location
         mapView.delegate = self
         mapView.mapType = .hybrid
@@ -168,9 +174,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK:- Add Character locations
     func addCharacterLocation()
     {
-        mapView.add(Character(filename: "BatmanLocations", color: .blue))
-        mapView.add(Character(filename: "TazLocations", color: .orange))
-        mapView.add(Character(filename: "TweetyBirdLocations", color: .yellow))
+        //mapView.add(Character(filename: "BatmanLocations", color: .blue))
+        //mapView.add(Character(filename: "TazLocations", color: .orange))
+        //mapView.add(Character(filename: "TweetyBirdLocations", color: .yellow))
     }
     
     // MARK: Helper methods
@@ -199,7 +205,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     
     //MARK :- Locate me
-    
+  /*
     @objc func currentLocationButtonAction(_ sender: UIBarButtonItem)
     {
         if (CLLocationManager.locationServicesEnabled())
@@ -231,7 +237,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
-    
+    */
 
     // MARK: - UISearchBarDelegate
     
@@ -291,7 +297,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
-        
+        /*
         if (overlay is MKPolyline)
         {
             let pr = MKPolylineRenderer(overlay: overlay)
@@ -299,7 +305,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             pr.lineWidth = 5
             return pr
         }
- 
+ */
         
         if overlay is MapOverlay
         {
@@ -376,7 +382,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
             var area = [oldCoordinates, newCoordinates]
-            var polyline = MKPolyline(coordinates: &area, count: area.count)
+            let polyline = MKPolyline(coordinates: &area, count: area.count)
             mapView.add(polyline)
         }
         
