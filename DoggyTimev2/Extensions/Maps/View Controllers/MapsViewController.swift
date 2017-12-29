@@ -69,7 +69,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     
     //MARK:- Overlay variables
-    fileprivate var dogWalkRouteMapOverlay: DogWalkRouteMapOverlay!
+    fileprivate var mapOverlay: MapOverlay!
+    var selectedOptions : [MapOptionsType] = []
+    var map = Map(filename: "MagicMountain")
     
     
     //MARK:- Activity Indication
@@ -83,7 +85,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         super.viewDidLoad()
 
         //Load coordinates from CoreData
-        dogWalkRouteMapOverlay = DogWalkRouteMapOverlay()
+        //dogWalkRouteMapOverlay = DogWalkRouteMapOverlay()
         
         let currentLocationButton = UIBarButtonItem(title: "Current Location", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MapsViewController.currentLocationButtonAction(_:)))
         self.navigationItem.leftBarButtonItem = currentLocationButton
@@ -99,9 +101,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         
         //Config the size/region of the mapview
-        let latDelta = dogWalkRouteMapOverlay.overlayTopLeftCoordinate.latitude - dogWalkRouteMapOverlay.overlayBottomRightCoordinate.latitude
+        let latDelta = map.overlayTopLeftCoordinate.latitude - map.overlayBottomRightCoordinate.latitude
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        let region = MKCoordinateSpanMake(dogWalkRouteMapOverlay.midCoordinate, span)
+        let region = MKCoordinateRegionMake(map.midCoordinate, span)
         mapView.region = region
         
         
@@ -122,18 +124,18 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK: Add the map overlay
     func addOverlay()
     {
-        let overlay = DogWalkRouteMapOverlay()
+        let overlay = MapOverlay(map: map)
         mapView.add(overlay)
     }
     
     //MARK:- Add Attraction Pins
     func addAttractionPins()
     {
-        guard let attractions = DogWalkRouteMapOverlay.plist("PooStops") as? [[String : String]] else {return}
+        guard let attractions = Map.plist("MagicMountainAttractions") as? [[String : String]] else {return}
         
         for attraction in attractions
         {
-            let coordinate = Park.parseCoord(dict: attraction, fieldName: "location")
+            let coordinate = Map.parseCoord(dict: attraction, fieldName: "location")
             let title = attraction["name"] ?? ""
             let typeRawValue = Int(attraction["type"] ?? "0") ?? 0
             let type = AttractionType(rawValue: typeRawValue) ?? .misc
@@ -147,7 +149,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK:- Add Route
     func addRoute()
     {
-        guard let points = Park.plist("EntranceToGoliathRoute") as? [String] else { return }
+        guard let points = Map.plist("EntranceToGoliathRoute") as? [String] else { return }
         
         let cgPoints = points.map { CGPointFromString($0) }
         let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
@@ -159,7 +161,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK:- Add Boundary
     func addBoundary()
     {
-        mapView.add(MKPolygon(coordinates: park.boundary, count: park.boundary.count))
+        mapView.add(MKPolygon(coordinates: map.boundary, count: map.boundary.count))
     }
     
     
@@ -299,9 +301,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
  
         
-        if overlay is DogWalkRouteMapOverlay
+        if overlay is MapOverlay
         {
-            return DogWalkRouteMapOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "overlay_park"))
+            return MapOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "overlay_park"))
         }
         else if overlay is MKPolyline
         {
