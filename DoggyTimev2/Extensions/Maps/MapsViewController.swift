@@ -52,24 +52,27 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     
     //MARK:- Map variables
-    
     fileprivate var locationManager: CLLocationManager!
     fileprivate var isCurrentLocation: Bool = false
     fileprivate var annotation: MKAnnotation!
 
+    
     //MARK:- Route variables
     var previousLocation: CLLocation!
     
-    //MARK:- Search variables
     
+    //MARK:- Search variable
     fileprivate var searchController: UISearchController!
     fileprivate var localSearchRequest: MKLocalSearchRequest!
     fileprivate var localSearch: MKLocalSearch!
     fileprivate var localSearchResponse: MKLocalSearchResponse!
     
     
-    //MARK:- Activity Indication
+    //MARK:- Overlay variables
+    fileprivate var dogWalkRouteMapOverlay: DogWalkRouteMapOverlay!
     
+    
+    //MARK:- Activity Indication
     fileprivate var activityIndicator: UIActivityIndicatorView!
     
     
@@ -79,6 +82,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     {
         super.viewDidLoad()
 
+        //Load coordinates from CoreData
+        dogWalkRouteMapOverlay = DogWalkRouteMapOverlay()
+        
         let currentLocationButton = UIBarButtonItem(title: "Current Location", style: UIBarButtonItemStyle.plain, target: self, action: #selector(MapsViewController.currentLocationButtonAction(_:)))
         self.navigationItem.leftBarButtonItem = currentLocationButton
         
@@ -91,6 +97,15 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.showsUserLocation = true
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
         
+        
+        //Config the size/region of the mapview
+        let latDelta = dogWalkRouteMapOverlay.overlayTopLeftCoordinate.latitude - dogWalkRouteMapOverlay.overlayBottomRightCoordinate.latitude
+        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+        let region = MKCoordinateSpanMake(dogWalkRouteMapOverlay.midCoordinate, span)
+        mapView.region = region
+        
+        
+        //Config the activity monitor
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
@@ -101,6 +116,83 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         super.viewWillAppear(animated)
         
         activityIndicator.center = self.view.center
+    }
+    
+    
+    //MARK: Add the map overlay
+    func addOverlay()
+    {
+        let overlay = DogWalkRouteMapOverlay()
+        mapView.add(overlay)
+    }
+    
+    //MARK:- Add Attraction Pins
+    func addAttractionPins()
+    {
+        guard let attractions = DogWalkRouteMapOverlay.plist("PooStops") as? [[String : String]] else {return}
+        
+        for attraction in attractions
+        {
+            let coordinate = Park.parseCoord(dict: attraction, fieldName: "location")
+            let title = attraction["name"] ?? ""
+            let typeRawValue = Int(attraction["type"] ?? "0") ?? 0
+            let type = AttractionType(rawValue: typeRawValue) ?? .misc
+            let subtitle = attraction["subtitle"] ?? ""
+            let annotation = AttractionAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    
+    //MARK:- Add Route
+    func addRoute()
+    {
+        guard let points = Park.plist("EntranceToGoliathRoute") as? [String] else { return }
+        
+        let cgPoints = points.map { CGPointFromString($0) }
+        let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
+        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+        
+        mapView.add(myPolyline)
+    }
+    
+    //MARK:- Add Boundary
+    func addBoundary()
+    {
+        mapView.add(MKPolygon(coordinates: park.boundary, count: park.boundary.count))
+    }
+    
+    
+    //MARK:- Add Character locations
+    func addCharacterLocation()
+    {
+        mapView.add(Character(filename: "BatmanLocations", color: .blue))
+        mapView.add(Character(filename: "TazLocations", color: .orange))
+        mapView.add(Character(filename: "TweetyBirdLocations", color: .yellow))
+    }
+    
+    // MARK: Helper methods
+    func loadSelectedOptions()
+    {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        
+        for option in selectedOptions
+        {
+            switch (option)
+            {
+                case .mapOverlay:
+                    self.addOverlay()
+                case .mapPins:
+                    self.addAttractionPins()
+                case .mapRoute:
+                    self.addRoute()
+                case .mapBoundary:
+                    self.addBoundary()
+                case .mapCharacterLocation:
+                    self.addCharacterLocation()
+            }
+        }
     }
     
     
@@ -205,10 +297,40 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             pr.lineWidth = 5
             return pr
         }
+ 
+        
+        if overlay is DogWalkRouteMapOverlay
+        {
+            return DogWalkRouteMapOverlayView(overlay: overlay, overlayImage: #imageLiteral(resourceName: "overlay_park"))
+        }
+        else if overlay is MKPolyline
+        {
+            let lineView = MKPolylineRenderer(overlay: overlay)
+            lineView.strokeColor = UIColor.green
+            return lineView
+        }
+        else if overlay is MKPolygon
+        {
+            let polygonView = MKPolygonRenderer(overlay: overlay)
+            polygonView.strokeColor = UIColor.magenta
+            return polygonView
+        }
+        else if let character = overlay as? Character
+        {
+            let circleView = MKCircleRenderer(overlay: character)
+            circleView.strokeColor = character.color
+            return circleView
+        }
         
         return MKOverlayRenderer()
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        let annotationView = AttractionAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
+        annotationView.canShowCallout = true
+        return annotationView
+    }
     
     
     // MARK: - CLLocationManagerDelegate
@@ -237,12 +359,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             self.mapView.removeAnnotation(annotation)
         }
  
- 
+ /*
         let pointAnnotation = MKPointAnnotation()
         pointAnnotation.coordinate = location!.coordinate
         pointAnnotation.title = ""
         mapView.addAnnotation(pointAnnotation)
-        
+   */
     
         //Draw the route/path
         if let oldLocationNew = oldLocation as CLLocation?
