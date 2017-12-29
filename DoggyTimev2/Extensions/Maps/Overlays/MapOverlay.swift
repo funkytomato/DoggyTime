@@ -38,14 +38,16 @@
 import UIKit
 import MapKit
 
-class DogWalkRouteMapOverlay: NSObject, MKOverlay
+class MapOverlay: NSObject, MKOverlay
 {
 
     
     var coordinate: CLLocationCoordinate2D
     var boundingMapRect: MKMapRect
     
-    init(park: Park) {
-        boundingMapRect = park.overlayBoundingMapRect
-        coordinate = park.midCoordinate
+    init(map: Map)
+    {
+        boundingMapRect = map.overlayBoundingMapRect
+        coordinate = map.midCoordinate
+    }
 }
