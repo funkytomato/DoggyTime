@@ -32,13 +32,19 @@
 		183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183243021FB3A47100ACF480 /* CoreDataManager.swift */; };
 		184617601FE93EF60055EFF7 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846175F1FE93EF50055EFF7 /* ImageViewController.swift */; };
 		184AD3E91FF1ED44003B720C /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */; };
+		18610B261FF66D6D00889212 /* BatmanLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B201FF66D6C00889212 /* BatmanLocations.plist */; };
+		18610B271FF66D6D00889212 /* EntranceToGoliathRoute.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B211FF66D6C00889212 /* EntranceToGoliathRoute.plist */; };
+		18610B281FF66D6D00889212 /* MagicMountain.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B221FF66D6C00889212 /* MagicMountain.plist */; };
+		18610B291FF66D6D00889212 /* MagicMountainAttractions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B231FF66D6C00889212 /* MagicMountainAttractions.plist */; };
+		18610B2A1FF66D6D00889212 /* TazLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B241FF66D6C00889212 /* TazLocations.plist */; };
+		18610B2B1FF66D6D00889212 /* TweetyBirdLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B251FF66D6C00889212 /* TweetyBirdLocations.plist */; };
 		186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */; };
 		1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8A51FE7FB7A0051B915 /* CameraManager.swift */; };
 		1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AB1FE812770051B915 /* CameraViewController.swift */; };
 		1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AF1FE8564D0051B915 /* AVCameraController.swift */; };
 		1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8B11FE856A20051B915 /* AVCameraViewController.swift */; };
-		187ABCA21FF580A600C6F794 /* DogWalkRouteMapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA11FF580A600C6F794 /* DogWalkRouteMapOverlayView.swift */; };
-		187ABCA41FF581E200C6F794 /* DogWalkRouteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA31FF581E200C6F794 /* DogWalkRouteMap.swift */; };
+		187ABCA21FF580A600C6F794 /* MapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA11FF580A600C6F794 /* MapOverlayView.swift */; };
+		187ABCA41FF581E200C6F794 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA31FF581E200C6F794 /* Map.swift */; };
 		187ABCA61FF5827F00C6F794 /* MapOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */; };
 		187ABCA81FF5871C00C6F794 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA71FF5871C00C6F794 /* Character.swift */; };
 		187ABCAB1FF5873C00C6F794 /* AttractionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */; };
@@ -55,7 +61,7 @@
 		18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B6681FA23704003DAF51 /* Assets.xcassets */; };
 		18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */; };
 		18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF23F11FC0B31D001CDA84 /* Client.swift */; };
-		18D226DE1FF51AA6006DBBCA /* DogWalkRouteMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D226DD1FF51AA6006DBBCA /* DogWalkRouteMapOverlay.swift */; };
+		18D226DE1FF51AA6006DBBCA /* MapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D226DD1FF51AA6006DBBCA /* MapOverlay.swift */; };
 		18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */; };
 		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
 		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
@@ -129,13 +135,19 @@
 		183243021FB3A47100ACF480 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1846175F1FE93EF50055EFF7 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		18610B201FF66D6C00889212 /* BatmanLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BatmanLocations.plist; sourceTree = "<group>"; };
+		18610B211FF66D6C00889212 /* EntranceToGoliathRoute.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EntranceToGoliathRoute.plist; sourceTree = "<group>"; };
+		18610B221FF66D6C00889212 /* MagicMountain.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MagicMountain.plist; sourceTree = "<group>"; };
+		18610B231FF66D6C00889212 /* MagicMountainAttractions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MagicMountainAttractions.plist; sourceTree = "<group>"; };
+		18610B241FF66D6C00889212 /* TazLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TazLocations.plist; sourceTree = "<group>"; };
+		18610B251FF66D6C00889212 /* TweetyBirdLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TweetyBirdLocations.plist; sourceTree = "<group>"; };
 		186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		1870B8A51FE7FB7A0051B915 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		1870B8AB1FE812770051B915 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1870B8AF1FE8564D0051B915 /* AVCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraController.swift; sourceTree = "<group>"; };
 		1870B8B11FE856A20051B915 /* AVCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraViewController.swift; sourceTree = "<group>"; };
-		187ABCA11FF580A600C6F794 /* DogWalkRouteMapOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogWalkRouteMapOverlayView.swift; sourceTree = "<group>"; };
-		187ABCA31FF581E200C6F794 /* DogWalkRouteMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogWalkRouteMap.swift; sourceTree = "<group>"; };
+		187ABCA11FF580A600C6F794 /* MapOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayView.swift; sourceTree = "<group>"; };
+		187ABCA31FF581E200C6F794 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOptionsViewController.swift; sourceTree = "<group>"; };
 		187ABCA71FF5871C00C6F794 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionAnnotation.swift; sourceTree = "<group>"; };
@@ -152,7 +164,7 @@
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = "DoggyTimev2/Core Data/Extensions/Client.swift"; sourceTree = SOURCE_ROOT; };
-		18D226DD1FF51AA6006DBBCA /* DogWalkRouteMapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogWalkRouteMapOverlay.swift; sourceTree = "<group>"; };
+		18D226DD1FF51AA6006DBBCA /* MapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlay.swift; sourceTree = "<group>"; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
 		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
 		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -427,6 +439,55 @@
 			path = "Core Data Models";
 			sourceTree = "<group>";
 		};
+		18610B1F1FF66D6C00889212 /* Park Information */ = {
+			isa = PBXGroup;
+			children = (
+				18610B201FF66D6C00889212 /* BatmanLocations.plist */,
+				18610B211FF66D6C00889212 /* EntranceToGoliathRoute.plist */,
+				18610B221FF66D6C00889212 /* MagicMountain.plist */,
+				18610B231FF66D6C00889212 /* MagicMountainAttractions.plist */,
+				18610B241FF66D6C00889212 /* TazLocations.plist */,
+				18610B251FF66D6C00889212 /* TweetyBirdLocations.plist */,
+			);
+			path = "Park Information";
+			sourceTree = "<group>";
+		};
+		18610B2C1FF66D8400889212 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				18D226DD1FF51AA6006DBBCA /* MapOverlay.swift */,
+				187ABCA11FF580A600C6F794 /* MapOverlayView.swift */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
+		18610B2D1FF66DD900889212 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */,
+				187ABCAA1FF5873C00C6F794 /* AttractionAnnotationView.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
+		18610B2E1FF66DFB00889212 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */,
+				18F24B0F1FF4078D00498D8B /* MapsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		18610B2F1FF66E0B00889212 /* Map Model */ = {
+			isa = PBXGroup;
+			children = (
+				187ABCA71FF5871C00C6F794 /* Character.swift */,
+				187ABCA31FF581E200C6F794 /* Map.swift */,
+			);
+			path = "Map Model";
+			sourceTree = "<group>";
+		};
 		186DDDC11FEC4FDC00E34140 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +586,7 @@
 		18EB60061F9A1ADF0084FE8D /* DoggyTimev2 */ = {
 			isa = PBXGroup;
 			children = (
+				18610B1F1FF66D6C00889212 /* Park Information */,
 				1808F7051F9E15690027B447 /* Application Delegation */,
 				18BE844C1FA24A7200CC7586 /* Camera */,
 				186DDDC11FEC4FDC00E34140 /* Categories */,
@@ -563,14 +625,10 @@
 		18F24B0C1FF3FEB900498D8B /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */,
-				187ABCAA1FF5873C00C6F794 /* AttractionAnnotationView.swift */,
-				187ABCA71FF5871C00C6F794 /* Character.swift */,
-				187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */,
-				187ABCA31FF581E200C6F794 /* DogWalkRouteMap.swift */,
-				18F24B0F1FF4078D00498D8B /* MapsViewController.swift */,
-				18D226DD1FF51AA6006DBBCA /* DogWalkRouteMapOverlay.swift */,
-				187ABCA11FF580A600C6F794 /* DogWalkRouteMapOverlayView.swift */,
+				18610B2D1FF66DD900889212 /* Annotations */,
+				18610B2E1FF66DFB00889212 /* View Controllers */,
+				18610B2F1FF66E0B00889212 /* Map Model */,
+				18610B2C1FF66D8400889212 /* Overlays */,
 			);
 			name = Maps;
 			path = Extensions/Maps;
@@ -695,12 +753,18 @@
 			files = (
 				18EB60391F9A206E0084FE8D /* Main.storyboard in Resources */,
 				18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */,
+				18610B261FF66D6D00889212 /* BatmanLocations.plist in Resources */,
 				1800A50A1F9E35F400829A86 /* Camera.storyboard in Resources */,
 				C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */,
+				18610B2A1FF66D6D00889212 /* TazLocations.plist in Resources */,
+				18610B281FF66D6D00889212 /* MagicMountain.plist in Resources */,
 				1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */,
+				18610B2B1FF66D6D00889212 /* TweetyBirdLocations.plist in Resources */,
+				18610B291FF66D6D00889212 /* MagicMountainAttractions.plist in Resources */,
 				18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */,
 				18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */,
 				1805B76D1F9E26D700DCFB83 /* Clients.storyboard in Resources */,
+				18610B271FF66D6D00889212 /* EntranceToGoliathRoute.plist in Resources */,
 				1805B7711F9E2B2F00DCFB83 /* Dogs.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,10 +811,10 @@
 				1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */,
 				18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
-				187ABCA41FF581E200C6F794 /* DogWalkRouteMap.swift in Sources */,
+				187ABCA41FF581E200C6F794 /* Map.swift in Sources */,
 				1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */,
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
-				18D226DE1FF51AA6006DBBCA /* DogWalkRouteMapOverlay.swift in Sources */,
+				18D226DE1FF51AA6006DBBCA /* MapOverlay.swift in Sources */,
 				1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */,
 				1893E6771FDC688F00F49024 /* DogsDataSource.swift in Sources */,
 				1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */,
@@ -774,7 +838,7 @@
 				18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
 				187ABCAB1FF5873C00C6F794 /* AttractionAnnotation.swift in Sources */,
-				187ABCA21FF580A600C6F794 /* DogWalkRouteMapOverlayView.swift in Sources */,
+				187ABCA21FF580A600C6F794 /* MapOverlayView.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
 				187ABCA81FF5871C00C6F794 /* Character.swift in Sources */,
