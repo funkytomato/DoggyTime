@@ -34,8 +34,8 @@ import MapKit
 enum PointOfInterestType: Int
 {
     case misc = 0
-    case ride
-    case food
+    case poo
+    case danger
     case firstAid
   
     func image() -> UIImage
@@ -44,9 +44,9 @@ enum PointOfInterestType: Int
         {
             case .misc:
                 return #imageLiteral(resourceName: "star")
-            case .ride:
+            case .poo:
                 return #imageLiteral(resourceName: "ride")
-            case .food:
+            case .danger:
                 return #imageLiteral(resourceName: "food")
             case .firstAid:
                 return #imageLiteral(resourceName: "firstaid")
