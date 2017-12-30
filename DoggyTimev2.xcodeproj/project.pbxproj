@@ -43,12 +43,6 @@
 		1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AB1FE812770051B915 /* CameraViewController.swift */; };
 		1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AF1FE8564D0051B915 /* AVCameraController.swift */; };
 		1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8B11FE856A20051B915 /* AVCameraViewController.swift */; };
-		187ABCA21FF580A600C6F794 /* MapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA11FF580A600C6F794 /* MapOverlayView.swift */; };
-		187ABCA41FF581E200C6F794 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA31FF581E200C6F794 /* Map.swift */; };
-		187ABCA61FF5827F00C6F794 /* MapOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */; };
-		187ABCA81FF5871C00C6F794 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA71FF5871C00C6F794 /* Character.swift */; };
-		187ABCAB1FF5873C00C6F794 /* AttractionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */; };
-		187ABCAC1FF5873C00C6F794 /* AttractionAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187ABCAA1FF5873C00C6F794 /* AttractionAnnotationView.swift */; };
 		1893E6771FDC688F00F49024 /* DogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893E6761FDC688E00F49024 /* DogsDataSource.swift */; };
 		18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18953DB71FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift */; };
 		18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB7B1FB4EE7E008C0C91 /* Walk+CoreDataClass.swift */; };
@@ -57,11 +51,18 @@
 		18A5DB861FB4EE7E008C0C91 /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB7E1FB4EE7E008C0C91 /* Client+CoreDataProperties.swift */; };
 		18A5DB871FB4EE7E008C0C91 /* Dog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB7F1FB4EE7E008C0C91 /* Dog+CoreDataClass.swift */; };
 		18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */; };
+		18A7D5231FF836BD00156BE7 /* PointOfInterestAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5211FF836BD00156BE7 /* PointOfInterestAnnotation.swift */; };
+		18A7D5241FF836BD00156BE7 /* PointOfInterestAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5221FF836BD00156BE7 /* PointOfInterestAnnotationView.swift */; };
+		18A7D5281FF836E000156BE7 /* MapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5261FF836E000156BE7 /* MapOverlay.swift */; };
+		18A7D5291FF836E000156BE7 /* MapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5271FF836E000156BE7 /* MapOverlayView.swift */; };
+		18A7D5321FF837B700156BE7 /* MapOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D52F1FF837B700156BE7 /* MapOptionsViewController.swift */; };
+		18A7D5331FF837B700156BE7 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5311FF837B700156BE7 /* MapsViewController.swift */; };
+		18A7D5371FF837D300156BE7 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5351FF837D300156BE7 /* Character.swift */; };
+		18A7D5381FF837D300156BE7 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7D5361FF837D300156BE7 /* MapModel.swift */; };
 		18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */; };
 		18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B6681FA23704003DAF51 /* Assets.xcassets */; };
 		18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */; };
 		18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF23F11FC0B31D001CDA84 /* Client.swift */; };
-		18D226DE1FF51AA6006DBBCA /* MapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D226DD1FF51AA6006DBBCA /* MapOverlay.swift */; };
 		18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */; };
 		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
 		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
@@ -90,7 +91,6 @@
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F24B0D1FF401C600498D8B /* Maps.storyboard */; };
-		18F24B101FF4078D00498D8B /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F24B0F1FF4078D00498D8B /* MapsViewController.swift */; };
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
 		C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
@@ -146,12 +146,6 @@
 		1870B8AB1FE812770051B915 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1870B8AF1FE8564D0051B915 /* AVCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraController.swift; sourceTree = "<group>"; };
 		1870B8B11FE856A20051B915 /* AVCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCameraViewController.swift; sourceTree = "<group>"; };
-		187ABCA11FF580A600C6F794 /* MapOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayView.swift; sourceTree = "<group>"; };
-		187ABCA31FF581E200C6F794 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOptionsViewController.swift; sourceTree = "<group>"; };
-		187ABCA71FF5871C00C6F794 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionAnnotation.swift; sourceTree = "<group>"; };
-		187ABCAA1FF5873C00C6F794 /* AttractionAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionAnnotationView.swift; sourceTree = "<group>"; };
 		1893E6761FDC688E00F49024 /* DogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DogsDataSource.swift; sourceTree = "<group>"; };
 		18953DB71FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsEmbeddedTableViewConroller.swift; sourceTree = "<group>"; };
 		18A5DB7B1FB4EE7E008C0C91 /* Walk+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -160,11 +154,18 @@
 		18A5DB7E1FB4EE7E008C0C91 /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		18A5DB7F1FB4EE7E008C0C91 /* Dog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		18A5DB801FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		18A7D5211FF836BD00156BE7 /* PointOfInterestAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAnnotation.swift; sourceTree = "<group>"; };
+		18A7D5221FF836BD00156BE7 /* PointOfInterestAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointOfInterestAnnotationView.swift; sourceTree = "<group>"; };
+		18A7D5261FF836E000156BE7 /* MapOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlay.swift; sourceTree = "<group>"; };
+		18A7D5271FF836E000156BE7 /* MapOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOverlayView.swift; sourceTree = "<group>"; };
+		18A7D52F1FF837B700156BE7 /* MapOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapOptionsViewController.swift; sourceTree = "<group>"; };
+		18A7D5311FF837B700156BE7 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
+		18A7D5351FF837D300156BE7 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		18A7D5361FF837D300156BE7 /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = "DoggyTimev2/Core Data/Extensions/Client.swift"; sourceTree = SOURCE_ROOT; };
-		18D226DD1FF51AA6006DBBCA /* MapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlay.swift; sourceTree = "<group>"; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
 		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
 		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -185,7 +186,6 @@
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		18F24B0D1FF401C600498D8B /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
-		18F24B0F1FF4078D00498D8B /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
@@ -306,10 +306,11 @@
 		1808F7041F9E15550027B447 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				18026BA61FA5F9960011EB3F /* Routes */,
-				1805B7721F9E2D5C00DCFB83 /* Dogs */,
-				1808F70A1F9E161C0027B447 /* Walks */,
 				1808F70B1F9E16230027B447 /* Clients */,
+				1805B7721F9E2D5C00DCFB83 /* Dogs */,
+				18026BA61FA5F9960011EB3F /* Routes */,
+				18A7D52D1FF837B700156BE7 /* Map */,
+				1808F70A1F9E161C0027B447 /* Walks */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -452,42 +453,6 @@
 			path = "Park Information";
 			sourceTree = "<group>";
 		};
-		18610B2C1FF66D8400889212 /* Overlays */ = {
-			isa = PBXGroup;
-			children = (
-				18D226DD1FF51AA6006DBBCA /* MapOverlay.swift */,
-				187ABCA11FF580A600C6F794 /* MapOverlayView.swift */,
-			);
-			path = Overlays;
-			sourceTree = "<group>";
-		};
-		18610B2D1FF66DD900889212 /* Annotations */ = {
-			isa = PBXGroup;
-			children = (
-				187ABCA91FF5873C00C6F794 /* AttractionAnnotation.swift */,
-				187ABCAA1FF5873C00C6F794 /* AttractionAnnotationView.swift */,
-			);
-			path = Annotations;
-			sourceTree = "<group>";
-		};
-		18610B2E1FF66DFB00889212 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				187ABCA51FF5827F00C6F794 /* MapOptionsViewController.swift */,
-				18F24B0F1FF4078D00498D8B /* MapsViewController.swift */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		18610B2F1FF66E0B00889212 /* Map Model */ = {
-			isa = PBXGroup;
-			children = (
-				187ABCA71FF5871C00C6F794 /* Character.swift */,
-				187ABCA31FF581E200C6F794 /* Map.swift */,
-			);
-			path = "Map Model";
-			sourceTree = "<group>";
-		};
 		186DDDC11FEC4FDC00E34140 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +489,58 @@
 				18A5DB7F1FB4EE7E008C0C91 /* Dog+CoreDataClass.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		18A7D5201FF836BD00156BE7 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				18A7D5211FF836BD00156BE7 /* PointOfInterestAnnotation.swift */,
+				18A7D5221FF836BD00156BE7 /* PointOfInterestAnnotationView.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
+		18A7D5251FF836E000156BE7 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				18A7D5261FF836E000156BE7 /* MapOverlay.swift */,
+				18A7D5271FF836E000156BE7 /* MapOverlayView.swift */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
+		18A7D52D1FF837B700156BE7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				18A7D52E1FF837B700156BE7 /* Maps Options ViewController */,
+				18A7D5301FF837B700156BE7 /* Maps View Controller */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		18A7D52E1FF837B700156BE7 /* Maps Options ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18A7D52F1FF837B700156BE7 /* MapOptionsViewController.swift */,
+			);
+			path = "Maps Options ViewController";
+			sourceTree = "<group>";
+		};
+		18A7D5301FF837B700156BE7 /* Maps View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18A7D5311FF837B700156BE7 /* MapsViewController.swift */,
+			);
+			path = "Maps View Controller";
+			sourceTree = "<group>";
+		};
+		18A7D5341FF837D300156BE7 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				18A7D5351FF837D300156BE7 /* Character.swift */,
+				18A7D5361FF837D300156BE7 /* MapModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		18A9B66A1FA24535003DAF51 /* Resources */ = {
@@ -586,19 +603,21 @@
 		18EB60061F9A1ADF0084FE8D /* DoggyTimev2 */ = {
 			isa = PBXGroup;
 			children = (
-				18610B1F1FF66D6C00889212 /* Park Information */,
+				18A7D5201FF836BD00156BE7 /* Annotations */,
 				1808F7051F9E15690027B447 /* Application Delegation */,
 				18BE844C1FA24A7200CC7586 /* Camera */,
 				186DDDC11FEC4FDC00E34140 /* Categories */,
 				1808F7071F9E15910027B447 /* Core Data */,
 				1808F7031F9E15320027B447 /* DataSources */,
 				C2F02A701FB0B96D00597345 /* Extensions */,
-				18F24B0C1FF3FEB900498D8B /* Maps */,
+				18A7D5251FF836E000156BE7 /* Overlays */,
+				18610B1F1FF66D6C00889212 /* Park Information */,
 				18A9B66A1FA24535003DAF51 /* Resources */,
 				1808F7061F9E15830027B447 /* Storyboards */,
 				1808F7011F9E150B0027B447 /* Test Data */,
 				18EB60161F9A1ADF0084FE8D /* Info.plist */,
 				1808F7041F9E15550027B447 /* View Controllers */,
+				18A7D5341FF837D300156BE7 /* View Models */,
 				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
 			);
 			path = DoggyTimev2;
@@ -620,18 +639,6 @@
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimev2UITests;
-			sourceTree = "<group>";
-		};
-		18F24B0C1FF3FEB900498D8B /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				18610B2D1FF66DD900889212 /* Annotations */,
-				18610B2E1FF66DFB00889212 /* View Controllers */,
-				18610B2F1FF66E0B00889212 /* Map Model */,
-				18610B2C1FF66D8400889212 /* Overlays */,
-			);
-			name = Maps;
-			path = Extensions/Maps;
 			sourceTree = "<group>";
 		};
 		C2F02A701FB0B96D00597345 /* Extensions */ = {
@@ -792,7 +799,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F24B101FF4078D00498D8B /* MapsViewController.swift in Sources */,
 				18A5DB881FB4EE7E008C0C91 /* Dog+CoreDataProperties.swift in Sources */,
 				1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */,
 				C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */,
@@ -808,40 +814,41 @@
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */,
 				186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */,
+				18A7D5371FF837D300156BE7 /* Character.swift in Sources */,
+				18A7D5331FF837B700156BE7 /* MapsViewController.swift in Sources */,
 				1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */,
 				18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
-				187ABCA41FF581E200C6F794 /* Map.swift in Sources */,
 				1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */,
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
-				18D226DE1FF51AA6006DBBCA /* MapOverlay.swift in Sources */,
 				1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */,
 				1893E6771FDC688F00F49024 /* DogsDataSource.swift in Sources */,
 				1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */,
+				18A7D5231FF836BD00156BE7 /* PointOfInterestAnnotation.swift in Sources */,
 				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
 				C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */,
 				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				184AD3E91FF1ED44003B720C /* UserDefaultsManager.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
+				18A7D5241FF836BD00156BE7 /* PointOfInterestAnnotationView.swift in Sources */,
 				18EB607C1F9A20B50084FE8D /* LocationCell.swift in Sources */,
 				18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */,
-				187ABCA61FF5827F00C6F794 /* MapOptionsViewController.swift in Sources */,
 				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
-				187ABCAC1FF5873C00C6F794 /* AttractionAnnotationView.swift in Sources */,
+				18A7D5321FF837B700156BE7 /* MapOptionsViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
 				C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */,
+				18A7D5381FF837D300156BE7 /* MapModel.swift in Sources */,
 				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
+				18A7D5281FF836E000156BE7 /* MapOverlay.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
 				18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */,
+				18A7D5291FF836E000156BE7 /* MapOverlayView.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
-				187ABCAB1FF5873C00C6F794 /* AttractionAnnotation.swift in Sources */,
-				187ABCA21FF580A600C6F794 /* MapOverlayView.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
-				187ABCA81FF5871C00C6F794 /* Character.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
 				182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */,
 			);
