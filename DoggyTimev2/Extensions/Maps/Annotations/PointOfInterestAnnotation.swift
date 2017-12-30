@@ -31,7 +31,7 @@
 import UIKit
 import MapKit
 
-enum AttractionType: Int
+enum PointOfInterestType: Int
 {
     case misc = 0
     case ride
@@ -54,16 +54,18 @@ enum AttractionType: Int
     }
 }
 
-class AttractionAnnotation: NSObject, MKAnnotation {
-  var coordinate: CLLocationCoordinate2D
-  var title: String?
-  var subtitle: String?
-  var type: AttractionType
+class PointofInterestAnnotation: NSObject, MKAnnotation
+{
+    var coordinate: CLLocationCoordinate2D
+    var title: String?
+    var subtitle: String?
+    var type: AttractionType
   
-  init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: AttractionType) {
-    self.coordinate = coordinate
-    self.title = title
-    self.subtitle = subtitle
-    self.type = type
-  }
+    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: AttractionType)
+    {
+        self.coordinate = coordinate
+        self.title = title
+        self.subtitle = subtitle
+        self.type = type
+    }
 }
