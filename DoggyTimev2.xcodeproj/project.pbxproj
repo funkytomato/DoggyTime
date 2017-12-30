@@ -62,7 +62,6 @@
 		18A9B6671FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18A9B6651FA236A2003DAF51 /* DoggyTimev2.xcdatamodeld */; };
 		18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A9B6681FA23704003DAF51 /* Assets.xcassets */; };
 		18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */; };
-		18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF23F11FC0B31D001CDA84 /* Client.swift */; };
 		18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */; };
 		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
 		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
@@ -165,7 +164,6 @@
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = DoggyTimev2/Extensions/Client.swift; sourceTree = SOURCE_ROOT; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
 		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
 		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -646,7 +644,6 @@
 				C2F02A711FB0B98500597345 /* Date.swift */,
 				18E71F871FBB3A8400735EEE /* String.swift */,
 				1820A12D1FBF3D52003B3793 /* UIImage.swift */,
-				18CF23F11FC0B31D001CDA84 /* Client.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -844,7 +841,6 @@
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A7D5281FF836E000156BE7 /* MapOverlay.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
-				18CF23F21FC0B31D001CDA84 /* Client.swift in Sources */,
 				18A7D5291FF836E000156BE7 /* MapOverlayView.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
