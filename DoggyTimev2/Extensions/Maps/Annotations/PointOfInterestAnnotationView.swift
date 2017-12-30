@@ -31,7 +31,7 @@
 import UIKit
 import MapKit
 
-class PointofInterestAnnotationView: MKAnnotationView
+class PointOfInterestAnnotationView: MKAnnotationView
 {
   
     // Required for MKAnnotationView
@@ -43,7 +43,7 @@ class PointofInterestAnnotationView: MKAnnotationView
     override init(annotation: MKAnnotation?, reuseIdentifier: String?)
     {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        guard let attractionAnnotation = self.annotation as? AttractionAnnotation else { return }
+        guard let attractionAnnotation = self.annotation as? PointOfInterestAnnotation else { return }
     
         image = attractionAnnotation.type.image()
     }

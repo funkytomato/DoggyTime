@@ -54,14 +54,14 @@ enum PointOfInterestType: Int
     }
 }
 
-class PointofInterestAnnotation: NSObject, MKAnnotation
+class PointOfInterestAnnotation: NSObject, MKAnnotation
 {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
-    var type: AttractionType
+    var type: PointOfInterestType
   
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: AttractionType)
+    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: PointOfInterestType)
     {
         self.coordinate = coordinate
         self.title = title

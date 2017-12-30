@@ -134,8 +134,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.add(overlay)
     }
     
-    //MARK:- Add Attraction Pins
-    func addAttractionPins()
+    //MARK:- Add Point Of Interest Pins
+    func addPointOfInterestPins()
     {
         guard let attractions = Map.plist("MagicMountainAttractions") as? [[String : String]] else {return}
         
@@ -144,9 +144,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let coordinate = Map.parseCoord(dict: attraction, fieldName: "location")
             let title = attraction["name"] ?? ""
             let typeRawValue = Int(attraction["type"] ?? "0") ?? 0
-            let type = AttractionType(rawValue: typeRawValue) ?? .misc
+            let type = PointOfInterestType(rawValue: typeRawValue) ?? .misc
             let subtitle = attraction["subtitle"] ?? ""
-            let annotation = AttractionAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
+            let annotation = PointOfInterestAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
             mapView.addAnnotation(annotation)
         }
     }
@@ -192,7 +192,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 case .mapOverlay:
                     self.addOverlay()
                 case .mapPins:
-                    self.addAttractionPins()
+                    self.addPointOfInterestPins()
                 case .mapRoute:
                     self.addRoute()
                 case .mapBoundary:
@@ -335,7 +335,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let annotationView = AttractionAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
+        let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
         annotationView.canShowCallout = true
         return annotationView
     }
