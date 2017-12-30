@@ -165,7 +165,7 @@
 		18A9B6661FA236A2003DAF51 /* DoggyTimev2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTimev2.xcdatamodel; sourceTree = "<group>"; };
 		18A9B6681FA23704003DAF51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BE84511FA24A8500CC7586 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = "DoggyTimev2/Core Data/Extensions/Client.swift"; sourceTree = SOURCE_ROOT; };
+		18CF23F11FC0B31D001CDA84 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Client.swift; path = DoggyTimev2/Extensions/Client.swift; sourceTree = SOURCE_ROOT; };
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
 		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
 		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -435,7 +435,6 @@
 			children = (
 				18A5DB7A1FB4EC97008C0C91 /* Entities */,
 				18A5DB791FB4EC68008C0C91 /* Class Properties - AutoGen */,
-				18CF23F11FC0B31D001CDA84 /* Client.swift */,
 			);
 			path = "Core Data Models";
 			sourceTree = "<group>";
@@ -647,6 +646,7 @@
 				C2F02A711FB0B98500597345 /* Date.swift */,
 				18E71F871FBB3A8400735EEE /* String.swift */,
 				1820A12D1FBF3D52003B3793 /* UIImage.swift */,
+				18CF23F11FC0B31D001CDA84 /* Client.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
