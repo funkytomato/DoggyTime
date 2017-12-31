@@ -226,6 +226,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
         localSearch = MKLocalSearch(request: localSearchRequest)
+        print("localSearch\(localSearch.description)")
         localSearch.start { [weak self] (localSearchResponse, error) -> Void in
             
             if localSearchResponse == nil
