@@ -38,6 +38,12 @@
 		18610B291FF66D6D00889212 /* MagicMountainAttractions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B231FF66D6C00889212 /* MagicMountainAttractions.plist */; };
 		18610B2A1FF66D6D00889212 /* TazLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B241FF66D6C00889212 /* TazLocations.plist */; };
 		18610B2B1FF66D6D00889212 /* TweetyBirdLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18610B251FF66D6C00889212 /* TweetyBirdLocations.plist */; };
+		18673C581FF8500800EF111C /* Map+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18673C551FF8500800EF111C /* Map+CoreDataClass.swift */; };
+		18673C591FF8500800EF111C /* Boundary+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18673C561FF8500800EF111C /* Boundary+CoreDataClass.swift */; };
+		18673C5A1FF8500800EF111C /* PointOfInterest+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18673C571FF8500800EF111C /* PointOfInterest+CoreDataClass.swift */; };
+		18673C5E1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18673C5B1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift */; };
+		18673C5F1FF8501000EF111C /* Boundary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18673C5C1FF8501000EF111C /* Boundary+CoreDataProperties.swift */; };
+		18673C601FF8501000EF111C /* Map+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18673C5D1FF8501000EF111C /* Map+CoreDataProperties.swift */; };
 		186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */; };
 		1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8A51FE7FB7A0051B915 /* CameraManager.swift */; };
 		1870B8AC1FE812770051B915 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870B8AB1FE812770051B915 /* CameraViewController.swift */; };
@@ -140,6 +146,12 @@
 		18610B231FF66D6C00889212 /* MagicMountainAttractions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MagicMountainAttractions.plist; sourceTree = "<group>"; };
 		18610B241FF66D6C00889212 /* TazLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TazLocations.plist; sourceTree = "<group>"; };
 		18610B251FF66D6C00889212 /* TweetyBirdLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TweetyBirdLocations.plist; sourceTree = "<group>"; };
+		18673C551FF8500800EF111C /* Map+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Map+CoreDataClass.swift"; path = "../Map+CoreDataClass.swift"; sourceTree = "<group>"; };
+		18673C561FF8500800EF111C /* Boundary+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Boundary+CoreDataClass.swift"; path = "../Boundary+CoreDataClass.swift"; sourceTree = "<group>"; };
+		18673C571FF8500800EF111C /* PointOfInterest+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PointOfInterest+CoreDataClass.swift"; path = "../PointOfInterest+CoreDataClass.swift"; sourceTree = "<group>"; };
+		18673C5B1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PointOfInterest+CoreDataProperties.swift"; path = "../PointOfInterest+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		18673C5C1FF8501000EF111C /* Boundary+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Boundary+CoreDataProperties.swift"; path = "../Boundary+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		18673C5D1FF8501000EF111C /* Map+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Map+CoreDataProperties.swift"; path = "../Map+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		186DDDBF1FEC4FB800E34140 /* UIColor+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		1870B8A51FE7FB7A0051B915 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		1870B8AB1FE812770051B915 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +481,9 @@
 		18A5DB791FB4EC68008C0C91 /* Class Properties - AutoGen */ = {
 			isa = PBXGroup;
 			children = (
+				18673C5D1FF8501000EF111C /* Map+CoreDataProperties.swift */,
+				18673C5B1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift */,
+				18673C5C1FF8501000EF111C /* Boundary+CoreDataProperties.swift */,
 				C272A3521FBBC15700FF0F7E /* Route+CoreDataProperties.swift */,
 				18A5DB7C1FB4EE7E008C0C91 /* Walk+CoreDataProperties.swift */,
 				18A5DB7E1FB4EE7E008C0C91 /* Client+CoreDataProperties.swift */,
@@ -480,6 +495,9 @@
 		18A5DB7A1FB4EC97008C0C91 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				18673C551FF8500800EF111C /* Map+CoreDataClass.swift */,
+				18673C571FF8500800EF111C /* PointOfInterest+CoreDataClass.swift */,
+				18673C561FF8500800EF111C /* Boundary+CoreDataClass.swift */,
 				C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */,
 				18A5DB7B1FB4EE7E008C0C91 /* Walk+CoreDataClass.swift */,
 				18A5DB7D1FB4EE7E008C0C91 /* Client+CoreDataClass.swift */,
@@ -810,6 +828,7 @@
 				18A5DB861FB4EE7E008C0C91 /* Client+CoreDataProperties.swift in Sources */,
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */,
+				18673C601FF8501000EF111C /* Map+CoreDataProperties.swift in Sources */,
 				186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */,
 				18A7D5371FF837D300156BE7 /* Character.swift in Sources */,
 				18A7D5331FF837B700156BE7 /* MapsViewController.swift in Sources */,
@@ -825,6 +844,7 @@
 				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
 				C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */,
 				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
+				18673C5A1FF8500800EF111C /* PointOfInterest+CoreDataClass.swift in Sources */,
 				184AD3E91FF1ED44003B720C /* UserDefaultsManager.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
 				18A7D5241FF836BD00156BE7 /* PointOfInterestAnnotationView.swift in Sources */,
@@ -832,17 +852,21 @@
 				18EB60521F9A20A40084FE8D /* ClientsViewController.swift in Sources */,
 				18E45C141FAE440F00C539BA /* WalkingDogsDataSource.swift in Sources */,
 				182465511FA34FFE00647762 /* WalkProfileTableViewController.swift in Sources */,
+				18673C581FF8500800EF111C /* Map+CoreDataClass.swift in Sources */,
 				18A7D5321FF837B700156BE7 /* MapOptionsViewController.swift in Sources */,
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
 				C272A3541FBBC15700FF0F7E /* Route+CoreDataProperties.swift in Sources */,
 				18A7D5381FF837D300156BE7 /* MapModel.swift in Sources */,
 				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
+				18673C5E1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A7D5281FF836E000156BE7 /* MapOverlay.swift in Sources */,
 				18A5DB851FB4EE7E008C0C91 /* Client+CoreDataClass.swift in Sources */,
 				18A7D5291FF836E000156BE7 /* MapOverlayView.swift in Sources */,
+				18673C5F1FF8501000EF111C /* Boundary+CoreDataProperties.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
+				18673C591FF8500800EF111C /* Boundary+CoreDataClass.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
