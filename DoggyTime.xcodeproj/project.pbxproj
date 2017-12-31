@@ -179,13 +179,13 @@
 		18E45C131FAE440F00C539BA /* WalkingDogsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingDogsDataSource.swift; sourceTree = "<group>"; };
 		18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerDelegate.swift; sourceTree = "<group>"; };
 		18E71F871FBB3A8400735EEE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		18EB60041F9A1ADF0084FE8D /* DoggyTimev2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoggyTimev2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18EB60041F9A1ADF0084FE8D /* DoggyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoggyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18EB60161F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18EB601B1F9A1ADF0084FE8D /* DoggyTimev2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimev2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18EB601B1F9A1ADF0084FE8D /* DoggyTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimev2Tests.swift; sourceTree = "<group>"; };
 		18EB60211F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18EB60261F9A1ADF0084FE8D /* DoggyTimev2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimev2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18EB60261F9A1ADF0084FE8D /* DoggyTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimev2UITests.swift; sourceTree = "<group>"; };
 		18EB602C1F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB60381F9A206E0084FE8D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -598,9 +598,9 @@
 		18EB5FFB1F9A1ADF0084FE8D = {
 			isa = PBXGroup;
 			children = (
-				18EB60061F9A1ADF0084FE8D /* DoggyTimev2 */,
-				18EB601E1F9A1ADF0084FE8D /* DoggyTimev2Tests */,
-				18EB60291F9A1ADF0084FE8D /* DoggyTimev2UITests */,
+				18EB60061F9A1ADF0084FE8D /* DoggyTime */,
+				18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */,
+				18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */,
 				18EB60051F9A1ADF0084FE8D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -608,14 +608,14 @@
 		18EB60051F9A1ADF0084FE8D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18EB60041F9A1ADF0084FE8D /* DoggyTimev2.app */,
-				18EB601B1F9A1ADF0084FE8D /* DoggyTimev2Tests.xctest */,
-				18EB60261F9A1ADF0084FE8D /* DoggyTimev2UITests.xctest */,
+				18EB60041F9A1ADF0084FE8D /* DoggyTime.app */,
+				18EB601B1F9A1ADF0084FE8D /* DoggyTimeTests.xctest */,
+				18EB60261F9A1ADF0084FE8D /* DoggyTimeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		18EB60061F9A1ADF0084FE8D /* DoggyTimev2 */ = {
+		18EB60061F9A1ADF0084FE8D /* DoggyTime */ = {
 			isa = PBXGroup;
 			children = (
 				18A7D5201FF836BD00156BE7 /* Annotations */,
@@ -635,25 +635,25 @@
 				18A7D5341FF837D300156BE7 /* View Models */,
 				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
 			);
-			path = DoggyTimev2;
+			path = DoggyTime;
 			sourceTree = "<group>";
 		};
-		18EB601E1F9A1ADF0084FE8D /* DoggyTimev2Tests */ = {
+		18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */ = {
 			isa = PBXGroup;
 			children = (
 				18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */,
 				18EB60211F9A1ADF0084FE8D /* Info.plist */,
 			);
-			path = DoggyTimev2Tests;
+			path = DoggyTimeTests;
 			sourceTree = "<group>";
 		};
-		18EB60291F9A1ADF0084FE8D /* DoggyTimev2UITests */ = {
+		18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */ = {
 			isa = PBXGroup;
 			children = (
 				18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */,
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
-			path = DoggyTimev2UITests;
+			path = DoggyTimeUITests;
 			sourceTree = "<group>";
 		};
 		C2F02A701FB0B96D00597345 /* Extensions */ = {
@@ -669,9 +669,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		18EB60031F9A1ADF0084FE8D /* DoggyTimev2 */ = {
+		18EB60031F9A1ADF0084FE8D /* DoggyTime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18EB602F1F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimev2" */;
+			buildConfigurationList = 18EB602F1F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTime" */;
 			buildPhases = (
 				18EB60001F9A1ADF0084FE8D /* Sources */,
 				18EB60011F9A1ADF0084FE8D /* Frameworks */,
@@ -681,14 +681,14 @@
 			);
 			dependencies = (
 			);
-			name = DoggyTimev2;
+			name = DoggyTime;
 			productName = DoggyTimev2;
-			productReference = 18EB60041F9A1ADF0084FE8D /* DoggyTimev2.app */;
+			productReference = 18EB60041F9A1ADF0084FE8D /* DoggyTime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		18EB601A1F9A1ADF0084FE8D /* DoggyTimev2Tests */ = {
+		18EB601A1F9A1ADF0084FE8D /* DoggyTimeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18EB60321F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimev2Tests" */;
+			buildConfigurationList = 18EB60321F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimeTests" */;
 			buildPhases = (
 				18EB60171F9A1ADF0084FE8D /* Sources */,
 				18EB60181F9A1ADF0084FE8D /* Frameworks */,
@@ -699,14 +699,14 @@
 			dependencies = (
 				18EB601D1F9A1ADF0084FE8D /* PBXTargetDependency */,
 			);
-			name = DoggyTimev2Tests;
+			name = DoggyTimeTests;
 			productName = DoggyTimev2Tests;
-			productReference = 18EB601B1F9A1ADF0084FE8D /* DoggyTimev2Tests.xctest */;
+			productReference = 18EB601B1F9A1ADF0084FE8D /* DoggyTimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		18EB60251F9A1ADF0084FE8D /* DoggyTimev2UITests */ = {
+		18EB60251F9A1ADF0084FE8D /* DoggyTimeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18EB60351F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimev2UITests" */;
+			buildConfigurationList = 18EB60351F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimeUITests" */;
 			buildPhases = (
 				18EB60221F9A1ADF0084FE8D /* Sources */,
 				18EB60231F9A1ADF0084FE8D /* Frameworks */,
@@ -717,9 +717,9 @@
 			dependencies = (
 				18EB60281F9A1ADF0084FE8D /* PBXTargetDependency */,
 			);
-			name = DoggyTimev2UITests;
+			name = DoggyTimeUITests;
 			productName = DoggyTimev2UITests;
-			productReference = 18EB60261F9A1ADF0084FE8D /* DoggyTimev2UITests.xctest */;
+			productReference = 18EB60261F9A1ADF0084FE8D /* DoggyTimeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -748,7 +748,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 18EB5FFF1F9A1ADF0084FE8D /* Build configuration list for PBXProject "DoggyTimev2" */;
+			buildConfigurationList = 18EB5FFF1F9A1ADF0084FE8D /* Build configuration list for PBXProject "DoggyTime" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -761,9 +761,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				18EB60031F9A1ADF0084FE8D /* DoggyTimev2 */,
-				18EB601A1F9A1ADF0084FE8D /* DoggyTimev2Tests */,
-				18EB60251F9A1ADF0084FE8D /* DoggyTimev2UITests */,
+				18EB60031F9A1ADF0084FE8D /* DoggyTime */,
+				18EB601A1F9A1ADF0084FE8D /* DoggyTimeTests */,
+				18EB60251F9A1ADF0084FE8D /* DoggyTimeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -913,12 +913,12 @@
 /* Begin PBXTargetDependency section */
 		18EB601D1F9A1ADF0084FE8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 18EB60031F9A1ADF0084FE8D /* DoggyTimev2 */;
+			target = 18EB60031F9A1ADF0084FE8D /* DoggyTime */;
 			targetProxy = 18EB601C1F9A1ADF0084FE8D /* PBXContainerItemProxy */;
 		};
 		18EB60281F9A1ADF0084FE8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 18EB60031F9A1ADF0084FE8D /* DoggyTimev2 */;
+			target = 18EB60031F9A1ADF0084FE8D /* DoggyTime */;
 			targetProxy = 18EB60271F9A1ADF0084FE8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1039,10 +1039,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
-				INFOPLIST_FILE = DoggyTimev2/Info.plist;
+				INFOPLIST_FILE = DoggyTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimev2;
+				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1058,10 +1058,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
-				INFOPLIST_FILE = DoggyTimev2/Info.plist;
+				INFOPLIST_FILE = DoggyTime/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimev2;
+				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1082,7 +1082,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoggyTimev2.app/DoggyTimev2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoggyTime.app/DoggyTime";
 			};
 			name = Debug;
 		};
@@ -1099,7 +1099,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoggyTimev2.app/DoggyTimev2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoggyTime.app/DoggyTime";
 			};
 			name = Release;
 		};
@@ -1138,7 +1138,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		18EB5FFF1F9A1ADF0084FE8D /* Build configuration list for PBXProject "DoggyTimev2" */ = {
+		18EB5FFF1F9A1ADF0084FE8D /* Build configuration list for PBXProject "DoggyTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18EB602D1F9A1ADF0084FE8D /* Debug */,
@@ -1147,7 +1147,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18EB602F1F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimev2" */ = {
+		18EB602F1F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18EB60301F9A1ADF0084FE8D /* Debug */,
@@ -1156,7 +1156,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18EB60321F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimev2Tests" */ = {
+		18EB60321F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18EB60331F9A1ADF0084FE8D /* Debug */,
@@ -1165,7 +1165,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18EB60351F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimev2UITests" */ = {
+		18EB60351F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				18EB60361F9A1ADF0084FE8D /* Debug */,
