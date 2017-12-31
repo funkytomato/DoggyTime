@@ -15,37 +15,17 @@ import CoreData
 class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate
 {
     
-    //MARK:- Properties
-    var coreDataManager: CoreDataManager!
-    var coreDataManagerDelegate: CoreDataManagerDelegate!
-    var map : Map?
-    
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Map> =
-    {
-        // Initialize Fetch Request
-        let fetchRequest: NSFetchRequest<Map> = Map.fetchRequest()
-        print("fetchRequest:\(fetchRequest.description)")
-        
-        // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        print("fetchedResultsCOntroller\(fetchedResultsController.description)")
-        
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self as! NSFetchedResultsControllerDelegate
-        
-        return fetchedResultsController
-    }()
-    
-    
     //MARK:- Properties to be set on prepare
-    //var locationName : String?
-    //var boundary : Boundary?
-    //var pointsOfInterest: [PointOfInterest]?
+    var locationName : String?
+    var boundary : Boundary?
+    var pointsOfInterest: [PointOfInterest]?
   
+    //MARK:- Overlay variables
+    fileprivate var mapOverlay: MapOverlay!
+    var selectedOptions : [MapOptionsType] = []
+    //var map = MapModel(filename: "MagicMountain")
+    var mapModel : MapModel
+    
     //MARK:- Map variables
     fileprivate var locationManager: CLLocationManager!
     fileprivate var isCurrentLocation: Bool = false
@@ -62,12 +42,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     fileprivate var localSearch: MKLocalSearch!
     fileprivate var localSearchResponse: MKLocalSearchResponse!
     
-    
-    //MARK:- Overlay variables
-    fileprivate var mapOverlay: MapOverlay!
-    var selectedOptions : [MapOptionsType] = []
-    //var map = MapModel(filename: "MagicMountain")
-    var mapModel : MapModel
     
     //MARK:- Activity Indication
     fileprivate var activityIndicator: UIActivityIndicatorView!
@@ -127,20 +101,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     {
         super.viewDidLoad()
 
-        
-        //Fetch map from CoreData
-        do
-        {
-            try fetchedResultsController.performFetch()
-        }
-        catch
-        {
-            let fetchError = error as NSError
-            print("Unable to Save Map")
-            print("\(fetchError), \(fetchError.localizedDescription)")
-        }
-        
-        
+
         //Load coordinates from CoreData
         mapOverlay = MapOverlay(map: mapModel)
     
@@ -399,15 +360,5 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             addAnnotationsOnMap(locationToPoint: newLocation)
             previousLocation = newLocation
         }
-    }
-}
-
-//MARK:- CoreDataManager Protocol
-extension MapsViewController: CoreDataManagerDelegate
-{
-    
-    func setCoreDataManager(coreDataManager: CoreDataManager)
-    {
-        self.coreDataManager = coreDataManager
     }
 }
