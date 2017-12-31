@@ -14,6 +14,13 @@ import CoreLocation
 class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate
 {
     
+    //MARK:- Properties to be set on prepare
+    var locationName : String?
+    var boundary : Boundary?
+    var pointsOfInterest: [PointOfInterest]?
+    
+    
+    
     //MARK:- Outlets
     
     @IBOutlet weak var mapView: MKMapView!
@@ -75,7 +82,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK:- Overlay variables
     fileprivate var mapOverlay: MapOverlay!
     var selectedOptions : [MapOptionsType] = []
-    var map = Map(filename: "MagicMountain")
+    var map = MapModel(filename: "MagicMountain")
     
     
     //MARK:- Activity Indication
@@ -134,19 +141,19 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.add(overlay)
     }
     
-    //MARK:- Add Attraction Pins
-    func addAttractionPins()
+    //MARK:- Add Point Of Interest Pins
+    func addPointOfInterestPins()
     {
-        guard let attractions = Map.plist("MagicMountainAttractions") as? [[String : String]] else {return}
+        guard let attractions = MapModel.plist("MagicMountainAttractions") as? [[String : String]] else {return}
         
         for attraction in attractions
         {
-            let coordinate = Map.parseCoord(dict: attraction, fieldName: "location")
+            let coordinate = MapModel.parseCoord(dict: attraction, fieldName: "location")
             let title = attraction["name"] ?? ""
             let typeRawValue = Int(attraction["type"] ?? "0") ?? 0
-            let type = AttractionType(rawValue: typeRawValue) ?? .misc
+            let type = PointOfInterestType(rawValue: typeRawValue) ?? .misc
             let subtitle = attraction["subtitle"] ?? ""
-            let annotation = AttractionAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
+            let annotation = PointOfInterestAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
             mapView.addAnnotation(annotation)
         }
     }
@@ -155,7 +162,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK:- Add Route
     func addRoute()
     {
-        guard let points = Map.plist("EntranceToGoliathRoute") as? [String] else { return }
+        guard let points = MapModel.plist("EntranceToGoliathRoute") as? [String] else { return }
         
         let cgPoints = points.map { CGPointFromString($0) }
         let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
@@ -192,7 +199,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 case .mapOverlay:
                     self.addOverlay()
                 case .mapPins:
-                    self.addAttractionPins()
+                    self.addPointOfInterestPins()
                 case .mapRoute:
                     self.addRoute()
                 case .mapBoundary:
@@ -203,44 +210,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
-    
-    //MARK :- Locate me
-  /*
-    @objc func currentLocationButtonAction(_ sender: UIBarButtonItem)
-    {
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            if locationManager == nil
-            {
-                locationManager = CLLocationManager()
-            }
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager?.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-            isCurrentLocation = true
-        }
-    }
-    
-    // MARK: - Search
-    
-    @objc func searchButtonAction(_ button: UIBarButtonItem)
-    {
-        if searchController == nil
-        {
-            searchController = UISearchController(searchResultsController: nil)
-        }
-        searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.delegate = self
-        present(searchController, animated: true, completion: nil)
-    }
-    */
 
     // MARK: - UISearchBarDelegate
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -335,7 +306,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let annotationView = AttractionAnnotationView(annotation: annotation, reuseIdentifier: "Attraction")
+        let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: "PointOfInterest")
         annotationView.canShowCallout = true
         return annotationView
     }

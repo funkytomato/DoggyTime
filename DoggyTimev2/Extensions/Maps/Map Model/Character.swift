@@ -39,7 +39,7 @@ class Character: MKCircle
   
     convenience init(filename: String, color: UIColor)
     {
-        guard let points = Map.plist(filename) as? [String] else { self.init(); return }
+        guard let points = MapModel.plist(filename) as? [String] else { self.init(); return }
     
         let cgPoints = points.map { CGPointFromString($0) }
         let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }

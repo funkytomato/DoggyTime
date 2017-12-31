@@ -31,11 +31,11 @@
 import UIKit
 import MapKit
 
-enum AttractionType: Int
+enum PointOfInterestType: Int
 {
     case misc = 0
-    case ride
-    case food
+    case poo
+    case danger
     case firstAid
   
     func image() -> UIImage
@@ -44,9 +44,9 @@ enum AttractionType: Int
         {
             case .misc:
                 return #imageLiteral(resourceName: "star")
-            case .ride:
+            case .poo:
                 return #imageLiteral(resourceName: "ride")
-            case .food:
+            case .danger:
                 return #imageLiteral(resourceName: "food")
             case .firstAid:
                 return #imageLiteral(resourceName: "firstaid")
@@ -54,16 +54,18 @@ enum AttractionType: Int
     }
 }
 
-class AttractionAnnotation: NSObject, MKAnnotation {
-  var coordinate: CLLocationCoordinate2D
-  var title: String?
-  var subtitle: String?
-  var type: AttractionType
+class PointOfInterestAnnotation: NSObject, MKAnnotation
+{
+    var coordinate: CLLocationCoordinate2D
+    var title: String?
+    var subtitle: String?
+    var type: PointOfInterestType
   
-  init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: AttractionType) {
-    self.coordinate = coordinate
-    self.title = title
-    self.subtitle = subtitle
-    self.type = type
-  }
+    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, type: PointOfInterestType)
+    {
+        self.coordinate = coordinate
+        self.title = title
+        self.subtitle = subtitle
+        self.type = type
+    }
 }

@@ -45,7 +45,7 @@ class MapOverlay: NSObject, MKOverlay
     var coordinate: CLLocationCoordinate2D
     var boundingMapRect: MKMapRect
     
-    init(map: Map)
+    init(map: MapModel)
     {
         boundingMapRect = map.overlayBoundingMapRect
         coordinate = map.midCoordinate

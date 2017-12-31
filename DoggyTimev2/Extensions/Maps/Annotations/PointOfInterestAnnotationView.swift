@@ -31,17 +31,20 @@
 import UIKit
 import MapKit
 
-class AttractionAnnotationView: MKAnnotationView {
+class PointOfInterestAnnotationView: MKAnnotationView
+{
   
-  // Required for MKAnnotationView
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-  }
+    // Required for MKAnnotationView
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+    }
   
-  override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-    super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-    guard let attractionAnnotation = self.annotation as? AttractionAnnotation else { return }
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?)
+    {
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        guard let pointofinterestAnnotation = self.annotation as? PointOfInterestAnnotation else { return }
     
-    image = attractionAnnotation.type.image()
-  }
+        image = pointofinterestAnnotation.type.image()
+    }
 }

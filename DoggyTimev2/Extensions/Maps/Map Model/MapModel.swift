@@ -31,7 +31,7 @@
 import UIKit
 import MapKit
 
-class Map
+class MapModel
 {
     var name: String?
     var boundary: [CLLocationCoordinate2D] = []
@@ -67,13 +67,13 @@ class Map
   
     init(filename: String)
     {
-        guard let properties = Map.plist(filename) as? [String : Any],
+        guard let properties = MapModel.plist(filename) as? [String : Any],
             let boundaryPoints = properties["boundary"] as? [String] else { return }
     
-        midCoordinate = Map.parseCoord(dict: properties, fieldName: "midCoord")
-        overlayTopLeftCoordinate = Map.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
-        overlayTopRightCoordinate = Map.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
-        overlayBottomLeftCoordinate = Map.parseCoord(dict: properties, fieldName: "overlayBottomLeftCoord")
+        midCoordinate = MapModel.parseCoord(dict: properties, fieldName: "midCoord")
+        overlayTopLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
+        overlayTopRightCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
+        overlayBottomLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayBottomLeftCoord")
     
         let cgPoints = boundaryPoints.map { CGPointFromString($0) }
         boundary = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
