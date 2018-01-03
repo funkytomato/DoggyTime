@@ -10,16 +10,15 @@ import UIKit
 import CoreData
 import MapKit
 
-/*
-protocol AddRouteViewControllerDelegate
-{
-    func controller(_ controller: RouteProfileViewController, didAddRoute name: String )
-}
-*/
 
 
 class RouteProfileViewController: UITableViewController
 {
+    
+    // MARK: - Properties
+    var coreDataManager: CoreDataManager!
+    var coreDataManagerDelegate: CoreDataManagerDelegate!
+    
     
     //MARK:- Properties
     //var delegate: AddRouteViewControllerDelegate?
@@ -78,7 +77,7 @@ class RouteProfileViewController: UITableViewController
     {
         print("RouteProfileViewController viewDidLoad")
         super.viewDidLoad()
-        
+        /*
         TerrainPicker.delegate = self
         TerrainPicker.dataSource = self
         
@@ -127,6 +126,7 @@ class RouteProfileViewController: UITableViewController
                 DurationPicker.selectRow(row, inComponent:1, animated: false)
             }
         }
+ */
     }
     
     
@@ -169,6 +169,68 @@ class RouteProfileViewController: UITableViewController
             routeData?.durationMins = Int16(durationMins)
             routeData?.profilePicture = nil
         }
+        
+        if segue.identifier == "mapsEmbeddedSegue",
+            let mapsViewController = segue.destination as? MapsViewController
+        {
+            
+            //Create a new Map profile
+            //var map = Map(context: coreDataManager.mainManagedObjectContext)
+            let map = routeData?.mapProfile
+            
+            let locationName = routeData?.placeName
+            //let pointsofinterest = Array(map?.pointsofinterest)
+            
+            
+
+            
+            //Create the MapModel
+            let mapModel = MapModel()
+            mapModel.name = locationName
+
+            
+            //Fetch the list of associated points of interest markers
+            //var pointsofinterest = [PointOfInterest]()
+            /*
+            let pointsofinterest = (map?.pointsofinterest)
+            guard let validpointsofinterest = Array(pointsofinterest) as? [PointOfInterest] else { return }
+            if validpointsofinterest.count > 0
+            {
+                //guard let dogname = pets[0].dogName else { return }
+                //dogNameLabel.text = dogname
+                mapsViewController.pointsOfInterest = validpointsofinterest
+            }
+            */
+            
+            
+            //Set the map boundary
+            guard let coord = map?.midCoordinate! else { return }
+            mapModel.midCoordinate = parseCoord(location: (map?.midCoordinate)!)
+            
+            mapModel.overlayTopLeftCoordinate = parseCoord(location: (map?.overlayTopLeftCoordinate)!)
+            mapModel.overlayTopRightCoordinate = parseCoord(location: (map?.overlayTopRightCoordinate)!)
+            mapModel.overlayBottomLeftCoordinate = parseCoord(location: (map?.overlayBottomLeftCoordinate)!)
+            
+            print("\(locationName)")
+
+            
+        
+            //Pass the data to the maps controller
+            //mapsViewController.locationName = locationName
+            mapsViewController.mapModel = mapModel
+            //mapsViewController.pointsOfInterest = pointsofinterest
+        }
+    }
+    
+    func parseCoord(location: String) -> CLLocationCoordinate2D
+    {
+        if let coord = location as? String
+        {
+            let point = CGPointFromString(coord)
+            return CLLocationCoordinate2DMake(CLLocationDegrees(point.x), CLLocationDegrees(point.y))
+        }
+        
+        return CLLocationCoordinate2D()
     }
 }
 
@@ -388,3 +450,13 @@ extension RouteProfileViewController
     }
 }
  */
+
+//MARK:- CoreDataManager Protocol
+extension RouteProfileViewController: CoreDataManagerDelegate
+{
+    
+    func setCoreDataManager(coreDataManager: CoreDataManager)
+    {
+        self.coreDataManager = coreDataManager
+    }
+}
