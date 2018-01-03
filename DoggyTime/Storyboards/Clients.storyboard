@@ -14,11 +14,12 @@
         <scene sceneID="UxJ-ab-DEJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kbm-zr-9JE" userLabel="Clients Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Clients" image="dogwalker" id="acW-dT-cKf" userLabel="Clients"/>
+                    <tabBarItem key="tabBarItem" title="Clients" image="dogwalker" landscapeImage="dogwalker" largeContentSizeImage="dogwalker" selectedImage="dogwalker" id="acW-dT-cKf" userLabel="Clients"/>
                     <toolbarItems/>
                     <keyCommands>
                         <keyCommand input="z" modifierFlags="1048576" actionName="setCoreDataManager" discoverabilityTitle="setCoreDataManager"/>
                     </keyCommands>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aMS-SJ-tPr">
                         <rect key="frame" x="0.0" y="20" width="1024" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -35,17 +36,17 @@
         <!--Clients View Controller-->
         <scene sceneID="lD9-tB-rZC">
             <objects>
-                <tableViewController id="62Z-sB-dF8" userLabel="Clients View Controller" customClass="ClientsViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="62Z-sB-dF8" userLabel="Clients View Controller" customClass="ClientsViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aob-yf-vkn">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" rowHeight="70" id="lai-uw-vdV" customClass="ClientCell" customModule="DoggyTimev2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ClientCell" rowHeight="70" id="lai-uw-vdV" customClass="ClientCell" customModule="DoggyTime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="1024" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lai-uw-vdV" id="Iy0-4b-KYs">
-                                    <rect key="frame" x="0.0" y="0.0" width="986" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="986" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="lU1-zW-fVs">
@@ -127,7 +128,7 @@
         <!--Client Profile-->
         <scene sceneID="QzA-MH-OLD">
             <objects>
-                <tableViewController storyboardIdentifier="ClientProfile" id="IYz-Rx-QGR" customClass="ClientProfileViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ClientProfile" id="IYz-Rx-QGR" customClass="ClientProfileViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="MeF-da-T5l">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,10 +324,10 @@
                             <tableViewSection headerTitle="Pet Details" id="bcJ-D5-Ta9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" id="9zm-VA-wtg">
-                                        <rect key="frame" x="0.0" y="531.5" width="1024" height="44"/>
+                                        <rect key="frame" x="0.0" y="531" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="9zm-VA-wtg" id="zq4-bq-Uz7">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UR-Mb-eK3">
@@ -357,7 +358,7 @@
                                                     <rect key="frame" x="20" y="15" width="984" height="90"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientDogCell" id="6IO-pb-uVN" customClass="ClientDogCell" customModule="DoggyTimev2" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClientDogCell" id="6IO-pb-uVN" customClass="ClientDogCell" customModule="DoggyTime" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="984" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6IO-pb-uVN" id="t4B-cM-Dfu">
@@ -396,14 +397,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="-1" indentationWidth="-1" rowHeight="300" id="fji-Hm-IeW">
-                                        <rect key="frame" x="0.0" y="695.5" width="1024" height="300"/>
+                                        <rect key="frame" x="0.0" y="695" width="1024" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="fji-Hm-IeW" id="3ST-r4-5sK">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="299.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="299"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Affenpinscher" highlightedImage="Akita" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nac-jA-zh7" userLabel="DogPicture">
-                                                    <rect key="frame" x="120" y="2.8722678138801434e+18" width="304" height="0.0"/>
+                                                    <rect key="frame" x="120" y="3.0048113390308557e+18" width="304" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -449,7 +450,7 @@
         <!--Dog Profile-->
         <scene sceneID="T7q-JX-xGw">
             <objects>
-                <tableViewController storyboardIdentifier="ClientDogEntryViewController" id="HN3-6e-gxA" customClass="ClientDogEntryViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ClientDogEntryViewController" id="HN3-6e-gxA" customClass="ClientDogEntryViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="rd9-Cn-isk">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -14,8 +14,9 @@
         <scene sceneID="5Uh-cr-b2e">
             <objects>
                 <navigationController title="Routes" automaticallyAdjustsScrollViewInsets="NO" id="wZj-0U-Rcc" userLabel="Routes Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Routes" selectedImage="dogwalker" id="ytU-Q4-Oup"/>
+                    <tabBarItem key="tabBarItem" title="Routes" image="dogwalker" landscapeImage="dogwalker" largeContentSizeImage="dogwalker" selectedImage="dogwalker" id="nLG-fW-dtN"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gCD-iN-tRV">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

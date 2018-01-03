@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4eg-qP-x1k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4eg-qP-x1k">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Walks-->
+        <!--Walks Nav Controller-->
         <scene sceneID="Onl-Ej-O5S">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4eg-qP-x1k" userLabel="Walks" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4eg-qP-x1k" userLabel="Walks Nav Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Walks" image="dogwalker" landscapeImage="dogwalker" largeContentSizeImage="dogwalker" selectedImage="dogwalker" id="O81-y0-cKf" userLabel="Walks"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JyL-Fs-Rbm">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,13 +33,13 @@
         <!--Walks-->
         <scene sceneID="GRD-SO-zeN">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController" id="Y3G-6i-uFj" customClass="WalksViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UITableViewController" id="Y3G-6i-uFj" customClass="WalksViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="irz-uN-Wcg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalkIdentificationCell" id="Iwz-fe-Qur" userLabel="WalkIdentificationCell" customClass="WalkIdentificationCell" customModule="DoggyTimev2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalkIdentificationCell" id="Iwz-fe-Qur" userLabel="WalkIdentificationCell" customClass="WalkIdentificationCell" customModule="DoggyTime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iwz-fe-Qur" id="hLB-xl-Aj2">
@@ -95,7 +97,7 @@
         <!--Walk Profile Table View Controller-->
         <scene sceneID="Mln-C4-tXV">
             <objects>
-                <tableViewController id="88B-8i-OHK" customClass="WalkProfileTableViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="88B-8i-OHK" customClass="WalkProfileTableViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6DX-aF-gpu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,13 +284,13 @@
         <!--DogsOnWalk-->
         <scene sceneID="OLT-09-shO">
             <objects>
-                <tableViewController id="8zw-OC-8oW" userLabel="DogsOnWalk" customClass="DogsOnWalkTableViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8zw-OC-8oW" userLabel="DogsOnWalk" customClass="DogsOnWalkTableViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZxJ-fI-Cr6" userLabel="DogListView">
                         <rect key="frame" x="0.0" y="0.0" width="304" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogNameCell" id="4Kt-UZ-GId" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTimev2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogNameCell" id="4Kt-UZ-GId" userLabel="DogNameCell" customClass="DogNameCell" customModule="DoggyTime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="304" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Kt-UZ-GId" id="bs2-YA-6OK">

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Ah-oW-ytP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1ne-bR-Vhd">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,46 +18,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OF1-ZX-tnO">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="7mf-LB-nzE">
-                                        <barButtonItem key="leftBarButtonItem" title="Locate Me" id="Nyb-5i-0Yo">
-                                            <connections>
-                                                <action selector="locateMeButton:" destination="9Ah-oW-ytP" id="zX8-VF-77D"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="vjS-0P-lMD">
-                                            <connections>
-                                                <action selector="searchButton:" destination="9Ah-oW-ytP" id="n6v-4e-QTg"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-tP-8wn">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="BNS-Jo-lXG" secondAttribute="topMargin" constant="44" id="3Gn-2j-vld"/>
-                            <constraint firstItem="OF1-ZX-tnO" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="9RX-zA-FjE"/>
-                            <constraint firstItem="OF1-ZX-tnO" firstAttribute="top" secondItem="jif-fh-Ghn" secondAttribute="top" id="eB4-lp-cJF"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="A7L-aj-8y1"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="jif-fh-Ghn" secondAttribute="top" id="Qox-O7-1nH"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="RrQ-9s-Ps9"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="i1Y-sF-hj6"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="ifB-i9-bK2"/>
-                            <constraint firstItem="OF1-ZX-tnO" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="qT1-Hl-FlJ"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="s54-gm-bkz"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="wN3-zH-EnO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jif-fh-Ghn"/>
                     </view>
+                    <navigationItem key="navigationItem" id="S2v-dE-CQX">
+                        <barButtonItem key="leftBarButtonItem" title="Locate Me" id="Ofu-yh-tlG">
+                            <connections>
+                                <action selector="locateMeButton:" destination="9Ah-oW-ytP" id="MwK-LR-v9q"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="32Q-jO-ytZ">
+                            <connections>
+                                <action selector="searchButton:" destination="9Ah-oW-ytP" id="RZS-Mq-fJ8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="2Wb-tP-8wn" id="k1n-DF-XpV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8G7-G9-RYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159.375" y="71.83098591549296"/>
+            <point key="canvasLocation" x="556.875" y="71.83098591549296"/>
+        </scene>
+        <!--Maps Nav Controller-->
+        <scene sceneID="jez-4M-cQY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1ne-bR-Vhd" userLabel="Maps Nav Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Maps" image="dogwalker" landscapeImage="dogwalker" largeContentSizeImage="dogwalker" selectedImage="dogwalker" id="nmd-WM-l0g" userLabel="Maps"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X93-uN-R6Z">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Ah-oW-ytP" kind="relationship" relationship="rootViewController" id="P1T-K2-MFz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5c-9t-zV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-388" y="72"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dogwalker" width="27" height="30"/>
+    </resources>
 </document>

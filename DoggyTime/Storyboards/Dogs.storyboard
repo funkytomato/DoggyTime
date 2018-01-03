@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hfw-Sh-ivr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hfw-Sh-ivr">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,13 +14,13 @@
         <!--Dogs-->
         <scene sceneID="RKp-a7-iz6">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController" id="8Ky-Yp-Yzn" userLabel="Dogs" customClass="DogsViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UITableViewController" id="8Ky-Yp-Yzn" userLabel="Dogs" customClass="DogsViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g3N-tC-N7W">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DogsCell" rowHeight="80" id="YbS-80-tiA" customClass="DogsCell" customModule="DoggyTimev2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DogsCell" rowHeight="80" id="YbS-80-tiA" customClass="DogsCell" customModule="DoggyTime" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YbS-80-tiA" id="OA1-Hu-eQO">
@@ -116,7 +117,7 @@
         <!--Dog Profile View Controller-->
         <scene sceneID="6aC-qP-P5k">
             <objects>
-                <tableViewController storyboardIdentifier="DogProfile" id="nJZ-nX-1dH" customClass="DogProfileViewController" customModule="DoggyTimev2" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DogProfile" id="nJZ-nX-1dH" customClass="DogProfileViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="gtx-aH-juo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +238,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Size" id="SXZ-Xt-rC2">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" id="bSH-dz-I7x">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bSH-dz-I7x">
                                         <rect key="frame" x="0.0" y="857.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bSH-dz-I7x" id="Dfs-X6-LYw">
@@ -323,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="2422" y="131"/>
         </scene>
-        <!--Dogs Navigation Controller-->
+        <!--Dogs Nav Controller-->
         <scene sceneID="Fry-WF-rSv">
             <objects>
-                <navigationController storyboardIdentifier="DogsViewController" automaticallyAdjustsScrollViewInsets="NO" id="Hfw-Sh-ivr" userLabel="Dogs Navigation Controller" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DogsViewController" automaticallyAdjustsScrollViewInsets="NO" id="Hfw-Sh-ivr" userLabel="Dogs Nav Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Dogs" image="dogwalker" landscapeImage="dogwalker" largeContentSizeImage="dogwalker" selectedImage="dogwalker" id="x64-rT-bCh"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

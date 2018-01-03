@@ -64,7 +64,7 @@
         <scene sceneID="qC6-rb-sB2">
             <objects>
                 <viewControllerPlaceholder storyboardName="Maps" id="8Fp-XZ-JXT" userLabel="Map Nav Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Maps" image="dogwalker" selectedImage="dogwalker" id="vEc-yD-ps1" userLabel="Map"/>
+                    <tabBarItem key="tabBarItem" title="Maps" image="dogwalker" id="vEc-yD-ps1" userLabel="Map"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCK-S1-gQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
