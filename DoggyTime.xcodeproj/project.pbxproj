@@ -96,6 +96,8 @@
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F24B0D1FF401C600498D8B /* Maps.storyboard */; };
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
+		C298E1441FFD353800AEA7BD /* Path+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */; };
+		C298E1451FFD353800AEA7BD /* Path+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
@@ -194,6 +196,8 @@
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		18F24B0D1FF401C600498D8B /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataClass.swift"; path = "../Path+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataProperties.swift"; path = "../Path+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -477,6 +481,7 @@
 		18A5DB791FB4EC68008C0C91 /* Class Properties - AutoGen */ = {
 			isa = PBXGroup;
 			children = (
+				C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */,
 				189D2C2A1FF9A1D0006CC002 /* Route+CoreDataProperties.swift */,
 				18673C5B1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift */,
 				18BE36371FFA943C0058C737 /* Map+CoreDataProperties.swift */,
@@ -490,6 +495,7 @@
 		18A5DB7A1FB4EC97008C0C91 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */,
 				18BE36361FFA943C0058C737 /* Map+CoreDataClass.swift */,
 				18673C571FF8500800EF111C /* PointOfInterest+CoreDataClass.swift */,
 				C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */,
@@ -824,6 +830,7 @@
 				18EB60791F9A20B50084FE8D /* WalksViewController.swift in Sources */,
 				18953DB81FBF48AE00DAACC8 /* DogsEmbeddedTableViewConroller.swift in Sources */,
 				186DDDC01FEC4FB900E34140 /* UIColor+AppColors.swift in Sources */,
+				C298E1451FFD353800AEA7BD /* Path+CoreDataProperties.swift in Sources */,
 				18A7D5371FF837D300156BE7 /* Character.swift in Sources */,
 				18A7D5331FF837B700156BE7 /* MapsViewController.swift in Sources */,
 				1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */,
@@ -852,6 +859,7 @@
 				18EB604F1F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BB31FA602F80011EB3F /* RouteProfileViewController.swift in Sources */,
 				18A7D5381FF837D300156BE7 /* MapModel.swift in Sources */,
+				C298E1441FFD353800AEA7BD /* Path+CoreDataClass.swift in Sources */,
 				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
 				18673C5E1FF8501000EF111C /* PointOfInterest+CoreDataProperties.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
