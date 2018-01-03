@@ -66,11 +66,20 @@ class MapModel
         }
     }
   
-    init(filename: String)
+    init()
     {
-        guard let properties = MapModel.plist(filename) as? [String : Any],
-            let boundaryPoints = properties["boundary"] as? [String] else { return }
+        
+    }
     
+    
+    /*
+    init(locationNamw: String, properties: Dictionary)
+    {
+        //guard let properties = MapModel.plist(filename) as? [String : Any],
+        //    let boundaryPoints = properties["boundary"] as? [String] else { return }
+    
+        let boundaryPoints = properties["boundary"] as? [String] else { return }
+        
         midCoordinate = MapModel.parseCoord(dict: properties, fieldName: "midCoord")
         overlayTopLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
         overlayTopRightCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
@@ -79,7 +88,7 @@ class MapModel
         let cgPoints = boundaryPoints.map { CGPointFromString($0) }
         boundary = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
     }
- 
+ */
     
     /*
     init(locationName: String)
