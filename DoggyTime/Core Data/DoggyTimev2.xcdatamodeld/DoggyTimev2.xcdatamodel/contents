@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Boundary" representedClassName=".Boundary" syncable="YES">
-        <attribute name="midCoord" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="overlayBottomLeftCoord" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="overlayTopLeftCoord" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="overlayTopRightCoord" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="boundaryFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="boundary" inverseEntity="Map" syncable="YES"/>
-    </entity>
     <entity name="Client" representedClassName=".Client" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="eMail" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,13 +29,20 @@
         <relationship name="walking" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Walk" inverseName="dogsonwalk" inverseEntity="Walk" syncable="YES"/>
     </entity>
     <entity name="Map" representedClassName=".Map" syncable="YES">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="midCoordinate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overlayBottomLeftCoordinate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overlayBottomRightCoordinate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overlayTopLeftCoordinate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="overlayTopRightCoordinate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="boundary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Boundary" inverseName="boundaryFor" inverseEntity="Boundary" syncable="YES"/>
+        <relationship name="mapFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="mapProfile" inverseEntity="Route" syncable="YES"/>
         <relationship name="pointsofinterest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PointOfInterest" inverseName="locatedAt" inverseEntity="PointOfInterest" syncable="YES"/>
     </entity>
+    <entity name="Path" representedClassName="Path" syncable="YES" codeGenerationType="class"/>
     <entity name="PointOfInterest" representedClassName=".PointOfInterest" syncable="YES">
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -63,7 +63,7 @@
         <attribute name="terrain" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="mapProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" syncable="YES"/>
+        <relationship name="mapProfile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="mapFor" inverseEntity="Map" syncable="YES"/>
         <relationship name="walks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Walk" inverseName="routeName" inverseEntity="Walk" syncable="YES"/>
     </entity>
     <entity name="Walk" representedClassName=".Walk" syncable="YES">
@@ -80,12 +80,12 @@
         <relationship name="routeName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="walks" inverseEntity="Route" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Boundary" positionX="-297" positionY="-153" width="128" height="118"/>
         <element name="Client" positionX="241" positionY="270" width="128" height="225"/>
         <element name="Dog" positionX="-83" positionY="285" width="128" height="223"/>
-        <element name="Map" positionX="-558" positionY="-81" width="128" height="133"/>
-        <element name="PointOfInterest" positionX="-297" positionY="9" width="128" height="118"/>
+        <element name="Map" positionX="-558" positionY="-144" width="128" height="223"/>
+        <element name="PointOfInterest" positionX="-245" positionY="-1" width="128" height="118"/>
         <element name="Route" positionX="-839" positionY="-223" width="128" height="253"/>
         <element name="Walk" positionX="-803" positionY="198" width="128" height="208"/>
+        <element name="Path" positionX="-245" positionY="-97" width="128" height="43"/>
     </elements>
 </model>

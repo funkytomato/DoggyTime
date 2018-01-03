@@ -1,8 +1,9 @@
 //
 //  Map+CoreDataProperties.swift
-//  
+//  DoggyTime
 //
-//  Created by Jason Fry on 30/12/2017.
+//  Created by Jason Fry on 01/01/2018.
+//  Copyright © 2018 Jason Fry. All rights reserved.
 //
 //
 
@@ -20,7 +21,12 @@ extension Map {
     @NSManaged public var name: String?
     @NSManaged public var updatedAt: NSDate?
     @NSManaged public var uuid: String?
-    @NSManaged public var boundary: Boundary?
+    @NSManaged public var midCoordinate: String?
+    @NSManaged public var overlayTopLeftCoordinate: String?
+    @NSManaged public var overlayTopRightCoordinate: String?
+    @NSManaged public var overlayBottomLeftCoordinate: String?
+    @NSManaged public var overlayBottomRightCoordinate: String?
+    @NSManaged public var mapFor: Route?
     @NSManaged public var pointsofinterest: NSSet?
 
 }
