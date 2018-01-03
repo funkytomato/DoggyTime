@@ -1,5 +1,5 @@
 //
-//  Map+CoreDataClass.swift
+//  Path+CoreDataClass.swift
 //  DoggyTime
 //
 //  Created by Jason Fry on 03/01/2018.
@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class Map: NSManagedObject {
+public class Path: NSManagedObject {
 
 }
