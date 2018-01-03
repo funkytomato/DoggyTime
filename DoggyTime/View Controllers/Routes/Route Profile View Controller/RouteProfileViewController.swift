@@ -189,10 +189,19 @@ class RouteProfileViewController: UITableViewController
             mapModel.name = locationName
 
             
-            //Fetch the list of associated points of interest markers
-            //var pointsofinterest = [PointOfInterest]()
+            //Load the boundaries into the MapModel
             /*
-            let pointsofinterest = (map?.pointsofinterest)
+            guard let coord = map?.midCoordinate! else { return }
+            mapModel.midCoordinate = parseCoord(location: (map?.midCoordinate)!)
+            
+            mapModel.overlayTopLeftCoordinate = parseCoord(location: (map?.overlayTopLeftCoordinate)!)
+            mapModel.overlayTopRightCoordinate = parseCoord(location: (map?.overlayTopRightCoordinate)!)
+            mapModel.overlayBottomLeftCoordinate = parseCoord(location: (map?.overlayBottomLeftCoordinate)!)
+            */
+            
+            //Load the points of interest
+            /*
+            let pointsofinterest = map?.pointsofinterest
             guard let validpointsofinterest = Array(pointsofinterest) as? [PointOfInterest] else { return }
             if validpointsofinterest.count > 0
             {
@@ -202,23 +211,18 @@ class RouteProfileViewController: UITableViewController
             }
             */
             
+            //Load the path coordinates
+            /*
+            let path = Array(map?.path)
+            guard let validPath = Array(path?) as? [Path] else { return }
+            if path?.count > 0
+            {
+                mapsViewController.path = path
+            }
+            */
             
-            //Set the map boundary
-            guard let coord = map?.midCoordinate! else { return }
-            mapModel.midCoordinate = parseCoord(location: (map?.midCoordinate)!)
-            
-            mapModel.overlayTopLeftCoordinate = parseCoord(location: (map?.overlayTopLeftCoordinate)!)
-            mapModel.overlayTopRightCoordinate = parseCoord(location: (map?.overlayTopRightCoordinate)!)
-            mapModel.overlayBottomLeftCoordinate = parseCoord(location: (map?.overlayBottomLeftCoordinate)!)
-            
-            print("\(locationName)")
-
-            
-        
-            //Pass the data to the maps controller
-            //mapsViewController.locationName = locationName
+            //Pass the values to the MapsViewController
             mapsViewController.mapModel = mapModel
-            //mapsViewController.pointsOfInterest = pointsofinterest
         }
     }
     
