@@ -16,15 +16,16 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 {
     
     //MARK:- Properties to be set on prepare
-    var locationName : String?
-    var boundary : Boundary?
+    var locationName : String? //and this too
     var pointsOfInterest: [PointOfInterest]?
-  
+    var mapModel : MapModel //just this one!
+    fileprivate var mapOverlay: MapOverlay! //and maybe this one!
+    
     //MARK:- Overlay variables
-    fileprivate var mapOverlay: MapOverlay!
+
     var selectedOptions : [MapOptionsType] = []
     //var map = MapModel(filename: "MagicMountain")
-    var mapModel : MapModel
+
     
     //MARK:- Map variables
     fileprivate var locationManager: CLLocationManager!
@@ -89,7 +90,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     required init?(coder aDecoder: NSCoder)
     {
-        mapModel = MapModel(filename: "pagham")
+        mapModel = MapModel()
         super.init(coder: aDecoder)
     }
 
