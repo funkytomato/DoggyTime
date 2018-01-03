@@ -19,6 +19,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var locationName : String? //and this too
     var pointsOfInterest: [PointOfInterest]?
     var mapModel : MapModel //just this one!
+    var path : [Path]?
     fileprivate var mapOverlay: MapOverlay! //and maybe this one!
     
     //MARK:- Overlay variables
@@ -67,7 +68,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestAlwaysAuthorization()
-            locationManager?.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
             locationManager.startUpdatingHeading()
             isCurrentLocation = true
