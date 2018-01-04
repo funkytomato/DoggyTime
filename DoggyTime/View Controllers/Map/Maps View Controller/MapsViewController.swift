@@ -119,19 +119,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             isCurrentLocation = true
         }
         
-        /*
-        let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.title = "New Annotation!!!"
-        pointAnnotation.subtitle = "TEST!!!"
-        pointAnnotation.coordinate = currentLocation
-        
-        let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
-        self.mapView.addAnnotation(pinAnnotationView.annotation!)
-        
-        */
-        
-        
-        
+
+
+        //Create a Point Of Interest and add to the map
         let coordinate = currentLocation
         let title = "NEW ANNOTATION!!!"
         let type = PointOfInterestType(rawValue: 1) ?? .poo
@@ -181,6 +171,20 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         super.viewWillAppear(animated)
         
         activityIndicator.center = self.view.center
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as? MapOptionsViewController)?.selectedOptions = selectedOptions
+    }
+    
+    @IBAction func closeOptions(_ exitSegue: UIStoryboardSegue) {
+        guard let vc = exitSegue.source as? MapOptionsViewController else { return }
+        selectedOptions = vc.selectedOptions
+        loadSelectedOptions()
+    }
+    
+    @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
+        mapView.mapType = MKMapType.init(rawValue: UInt(sender.selectedSegmentIndex)) ?? .standard
     }
     
     
@@ -373,7 +377,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: "PointOfInterest")
         annotationView.canShowCallout = true
         return annotationView
     }
@@ -409,12 +413,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             self.mapView.removeAnnotation(annotation)
         }
  
- /*
-        let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.coordinate = location!.coordinate
-        pointAnnotation.title = "NEW ANNOTATION!!!"
-        mapView.addAnnotation(pointAnnotation)
-*/
     }
     
     
