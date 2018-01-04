@@ -43,13 +43,13 @@ enum PointOfInterestType: Int
         switch self
         {
             case .misc:
-                return #imageLiteral(resourceName: "star")
+                return #imageLiteral(resourceName: "Flag")
             case .poo:
-                return #imageLiteral(resourceName: "ride")
+                return #imageLiteral(resourceName: "Flag")
             case .danger:
-                return #imageLiteral(resourceName: "food")
+                return #imageLiteral(resourceName: "Flag")
             case .firstAid:
-                return #imageLiteral(resourceName: "firstaid")
+                return #imageLiteral(resourceName: "Flag")
         }
     }
 }
