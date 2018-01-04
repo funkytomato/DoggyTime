@@ -18,15 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-tP-8wn">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-tP-8wn">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pth-c1-dbF">
+                                <rect key="frame" x="10" y="479" width="112" height="30"/>
+                                <state key="normal" title="Point Of Interest"/>
+                                <connections>
+                                    <action selector="PointOfinterestButton:" destination="9Ah-oW-ytP" eventType="touchUpInside" id="hnI-hx-C5f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="A7L-aj-8y1"/>
+                            <constraint firstItem="jif-fh-Ghn" firstAttribute="bottom" secondItem="Pth-c1-dbF" secondAttribute="bottom" constant="10" id="IeZ-3Z-SAH"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="jif-fh-Ghn" secondAttribute="top" id="Qox-O7-1nH"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="RrQ-9s-Ps9"/>
+                            <constraint firstItem="Pth-c1-dbF" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" constant="10" id="fOS-wP-Vq1"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="i1Y-sF-hj6"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="ifB-i9-bK2"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="s54-gm-bkz"/>
