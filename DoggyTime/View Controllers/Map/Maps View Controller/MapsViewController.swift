@@ -119,11 +119,27 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             isCurrentLocation = true
         }
         
-        
+        /*
         let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.coordinate = currentLocation
         pointAnnotation.title = "New Annotation!!!"
-        mapView.addAnnotation(pointAnnotation)
+        pointAnnotation.subtitle = "TEST!!!"
+        pointAnnotation.coordinate = currentLocation
+        
+        let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
+        self.mapView.addAnnotation(pinAnnotationView.annotation!)
+        
+        */
+        
+        
+        
+        let coordinate = currentLocation
+        let title = "NEW ANNOTATION!!!"
+        let type = PointOfInterestType(rawValue: 1) ?? .poo
+        let subtitle = "Subtitle"
+        let annotation = PointOfInterestAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
+        mapView.addAnnotation(annotation)
+        
+
     }
     
     
@@ -135,33 +151,23 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 
 
         //Load coordinates from CoreData
-        mapOverlay = MapOverlay(map: mapModel)
+        //mapOverlay = MapOverlay(map: mapModel)
     
  
         //Config the mapview to show the user location
         mapView.delegate = self
-        mapView.mapType = .hybrid
+        mapView.mapType = .standard
         mapView.showsUserLocation = true
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
         
         
         //Config the size/region of the mapview
-        let regionRadius: CLLocationDistance = 1000
         let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
         let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapModel.midCoordinate,
-                                                                  regionRadius, regionRadius)
-        mapView.region = coordinateRegion
         
+        mapView.region = region
         
-        
-        //let regionRadius: CLLocationDistance = 1000
-        //func centerMapOnLocation(location: CLLocation) {
-        //    let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-         //                                                             regionRadius, regionRadius)
-          //  mapView.setRegion(coordinateRegion, animated: true)
-            
         
         //Config the activity monitor
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
@@ -176,6 +182,17 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         activityIndicator.center = self.view.center
     }
+    
+    
+    //CEnter map on location
+    func centerMapOnLocation(location: CLLocation)
+    {
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     
     
     //MARK: Add the map overlay
@@ -258,7 +275,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
 
-    // MARK: - UISearchBarDelegate
+    // MARK: - Location UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -270,6 +287,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             self.mapView.removeAnnotation(annotation)
         }
         
+        
+        //Create a search request
         localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
         localSearch = MKLocalSearch(request: localSearchRequest)
@@ -283,11 +302,15 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
                 return
             }
             
+            
+            //Search for the coordinates for the location entered
             let pointAnnotation = MKPointAnnotation()
             pointAnnotation.title = searchBar.text
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
+   
             
-            let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
+            //Centre the view on the new location
+            let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: "PointOfInterest")   //nil
             self!.mapView.centerCoordinate = pointAnnotation.coordinate
             self!.mapView.addAnnotation(pinAnnotationView.annotation!)
         }
@@ -311,6 +334,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             
         })
     }
+    
+    
+    
     
     
     //MARK:- MKMapView delegate
@@ -347,7 +373,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: "PointOfInterest")
+        let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: nil)
         annotationView.canShowCallout = true
         return annotationView
     }
@@ -376,21 +402,25 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         self.mapView.setRegion(region, animated: true)
 
-        
+     
         if self.mapView.annotations.count != 0
         {
             annotation = self.mapView.annotations[0]
             self.mapView.removeAnnotation(annotation)
         }
  
- 
+ /*
         let pointAnnotation = MKPointAnnotation()
         pointAnnotation.coordinate = location!.coordinate
-        pointAnnotation.title = ""
+        pointAnnotation.title = "NEW ANNOTATION!!!"
         mapView.addAnnotation(pointAnnotation)
-
+*/
+    }
     
-        /*
+    
+    //Create and draw the path on the map
+    func drawPath(newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
+    {
         //Draw the route/path
         if let oldLocationNew = oldLocation as CLLocation?
         {
@@ -415,6 +445,5 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             addAnnotationsOnMap(locationToPoint: newLocation)
             previousLocation = newLocation
         }
- */
     }
 }
