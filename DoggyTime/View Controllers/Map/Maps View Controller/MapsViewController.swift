@@ -32,9 +32,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     fileprivate var locationManager: CLLocationManager!
     fileprivate var isCurrentLocation: Bool = false
     fileprivate var annotation: MKAnnotation!
+    fileprivate var currentLocation : CLLocationCoordinate2D
     
     
     //MARK:- Route variables
+
     var previousLocation: CLLocation!
     
     
@@ -92,9 +94,36 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     required init?(coder aDecoder: NSCoder)
     {
         mapModel = MapModel()
+        currentLocation = CLLocationCoordinate2D()
         super.init(coder: aDecoder)
     }
 
+    @IBAction func PointOfinterestButton(_ sender: Any)
+    {
+        
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            if locationManager == nil
+            {
+                locationManager = CLLocationManager()
+            }
+            
+            
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+            locationManager.startUpdatingHeading()
+            isCurrentLocation = true
+        }
+        
+        
+        let pointAnnotation = MKPointAnnotation()
+        pointAnnotation.coordinate = currentLocation
+        pointAnnotation.title = ""
+        mapView.addAnnotation(pointAnnotation)
+    }
     
     
     //MARK:- UIViewController's methods
@@ -319,12 +348,16 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         isCurrentLocation = false
         
+        
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
+        
+        currentLocation = center
+        
         self.mapView.setRegion(region, animated: true)
-       
+
         
         if self.mapView.annotations.count != 0
         {
