@@ -12,21 +12,23 @@ import UIKit
 
 class AdvertViewController: UIViewController, GADBannerViewDelegate
 {
-    var bannerView: GADBannerView!
+
+    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
         bannerView.delegate = self
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
         addBannerViewToView(bannerView)
     }
     
-    func addBannerViewToView(_ bannerView: GADBannerView) {
+    func addBannerViewToView(_ bannerView: GADBannerView)
+    {
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
         view.addConstraints(

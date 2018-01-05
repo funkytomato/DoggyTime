@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         
         //Initialise the Google Ads SDK
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/2934735716")
         
         
         _ = coreDataManager.mainManagedObjectContext
