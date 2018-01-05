@@ -1,19 +1,21 @@
-# Uncomment this line to define a global platform for your project
-# platform :ios, '9.0'
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '11.2'
 
-target 'DoggyTimev2' do
-  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+target 'DoggyTime' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for DoggyTimev2
-  pod ‘GoogleMaps’
+  # Pods for DoggyTime
+  pod 'GoogleMaps'
+  pod 'Google-Mobile-Ads-SDK'
 
-  target 'DoggyTimev2Tests' do
+
+  target 'DoggyTimeTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'DoggyTimev2UITests' do
+  target 'DoggyTimeUITests' do
     inherit! :search_paths
     # Pods for testing
   end

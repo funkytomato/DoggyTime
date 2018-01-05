@@ -24,6 +24,7 @@
                         <segue destination="xg5-8o-FXR" kind="relationship" relationship="viewControllers" id="oM5-oX-D8a"/>
                         <segue destination="0iA-Ne-wXS" kind="relationship" relationship="viewControllers" id="0Nh-wr-y9a"/>
                         <segue destination="8Fp-XZ-JXT" kind="relationship" relationship="viewControllers" id="JDK-If-q94"/>
+                        <segue destination="xb9-TT-9Qg" kind="relationship" relationship="viewControllers" id="AwP-ZX-mF2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -69,6 +70,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCK-S1-gQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8" y="685"/>
+        </scene>
+        <!--Advertising View Controller-->
+        <scene sceneID="URD-u1-pws">
+            <objects>
+                <viewController id="xb9-TT-9Qg" userLabel="Advertising View Controller" customClass="AdvertViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H84-f5-9n4"/>
+                        <viewControllerLayoutGuide type="bottom" id="y9G-Qi-VDC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tyo-2h-r8h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGT-48-bMc" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="229" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="scN-Y6-D82"/>
+                    <connections>
+                        <outlet property="bannerView" destination="GGT-48-bMc" id="ZZz-Sk-IUm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYD-S3-CBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8" y="-189"/>
         </scene>
         <!--Routes Nav Controller-->
         <scene sceneID="ZeS-Ti-DzQ">
