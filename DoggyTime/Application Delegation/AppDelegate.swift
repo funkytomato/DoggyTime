@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -16,12 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?
 
     //Set the Core Data Stack Manager to DoggyTime model
-    fileprivate let coreDataManager = CoreDataManager(modelName: "DoggyTimev2")
+    fileprivate let coreDataManager = CoreDataManager(modelName: "DoggyTime")
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         // Override point for customization after application launch.
+        
+        
+        //Initialise the Google Ads SDK
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511")
+        
         
         _ = coreDataManager.mainManagedObjectContext
         

@@ -95,12 +95,16 @@
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F24B0D1FF401C600498D8B /* Maps.storyboard */; };
+		82E388E3380662A5C7717E68 /* Pods_DoggyTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2B79CE1C5EBC626754529 /* Pods_DoggyTime.framework */; };
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
+		C27AE5A01FFFF5DA0002CBF5 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AE59F1FFFF5DA0002CBF5 /* AdvertViewController.swift */; };
 		C298E1441FFD353800AEA7BD /* Path+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */; };
 		C298E1451FFD353800AEA7BD /* Path+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
+		C7329EECF4DFF443CB0A8814 /* Pods_DoggyTimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7518880ED8BE0700F119E768 /* Pods_DoggyTimeUITests.framework */; };
+		E32D27C13B7664ED7D065E7D /* Pods_DoggyTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D001A07EDE5BB2137C97E722 /* Pods_DoggyTimeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,12 +199,22 @@
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		18F24B0D1FF401C600498D8B /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
+		3158E1237F4D8DA89ABD464B /* Pods-DoggyTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.debug.xcconfig"; sourceTree = "<group>"; };
+		50965A9C106F2E0E269F2896 /* Pods-DoggyTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.release.xcconfig"; sourceTree = "<group>"; };
+		7518880ED8BE0700F119E768 /* Pods_DoggyTimeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTimeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87B5E96B702B4C378ACAE0A5 /* Pods-DoggyTimeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8B3D817679F100C7506DECD5 /* Pods-DoggyTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests.release.xcconfig"; sourceTree = "<group>"; };
+		97A2B79CE1C5EBC626754529 /* Pods_DoggyTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C27AE59F1FFFF5DA0002CBF5 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertViewController.swift; sourceTree = "<group>"; };
 		C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataClass.swift"; path = "../Path+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataProperties.swift"; path = "../Path+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D001A07EDE5BB2137C97E722 /* Pods_DoggyTimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3E25E40D18374FB68049D91 /* Pods-DoggyTimeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE17CC8DA0AA80E766E57584 /* Pods-DoggyTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82E388E3380662A5C7717E68 /* Pods_DoggyTime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32D27C13B7664ED7D065E7D /* Pods_DoggyTimeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,12 +238,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7329EECF4DFF443CB0A8814 /* Pods_DoggyTimeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1605C93C86F62C494E5D22C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97A2B79CE1C5EBC626754529 /* Pods_DoggyTime.framework */,
+				D001A07EDE5BB2137C97E722 /* Pods_DoggyTimeTests.framework */,
+				7518880ED8BE0700F119E768 /* Pods_DoggyTimeUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18026BA61FA5F9960011EB3F /* Routes */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +343,7 @@
 		1808F7041F9E15550027B447 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C27AE59E1FFFF5BC0002CBF5 /* Advertising */,
 				1808F70B1F9E16230027B447 /* Clients */,
 				1805B7721F9E2D5C00DCFB83 /* Dogs */,
 				18026BA61FA5F9960011EB3F /* Routes */,
@@ -602,6 +630,8 @@
 				18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */,
 				18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */,
 				18EB60051F9A1ADF0084FE8D /* Products */,
+				9DF97BB2047E5DA82131F68F /* Pods */,
+				1605C93C86F62C494E5D22C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -656,6 +686,27 @@
 			path = DoggyTimeUITests;
 			sourceTree = "<group>";
 		};
+		9DF97BB2047E5DA82131F68F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3158E1237F4D8DA89ABD464B /* Pods-DoggyTime.debug.xcconfig */,
+				50965A9C106F2E0E269F2896 /* Pods-DoggyTime.release.xcconfig */,
+				EE17CC8DA0AA80E766E57584 /* Pods-DoggyTimeTests.debug.xcconfig */,
+				8B3D817679F100C7506DECD5 /* Pods-DoggyTimeTests.release.xcconfig */,
+				D3E25E40D18374FB68049D91 /* Pods-DoggyTimeUITests.debug.xcconfig */,
+				87B5E96B702B4C378ACAE0A5 /* Pods-DoggyTimeUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C27AE59E1FFFF5BC0002CBF5 /* Advertising */ = {
+			isa = PBXGroup;
+			children = (
+				C27AE59F1FFFF5DA0002CBF5 /* AdvertViewController.swift */,
+			);
+			path = Advertising;
+			sourceTree = "<group>";
+		};
 		C2F02A701FB0B96D00597345 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,9 +724,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EB602F1F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTime" */;
 			buildPhases = (
+				8752D10E04885AE5A38E75C3 /* [CP] Check Pods Manifest.lock */,
 				18EB60001F9A1ADF0084FE8D /* Sources */,
 				18EB60011F9A1ADF0084FE8D /* Frameworks */,
 				18EB60021F9A1ADF0084FE8D /* Resources */,
+				728C1D8D2FEC70A107177267 /* [CP] Embed Pods Frameworks */,
+				E89520D0E2CAAD57564CEA23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -690,9 +744,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EB60321F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimeTests" */;
 			buildPhases = (
+				36FB03EB55B7DF608BDA65E5 /* [CP] Check Pods Manifest.lock */,
 				18EB60171F9A1ADF0084FE8D /* Sources */,
 				18EB60181F9A1ADF0084FE8D /* Frameworks */,
 				18EB60191F9A1ADF0084FE8D /* Resources */,
+				3CB2EA204FBA884383E25A58 /* [CP] Embed Pods Frameworks */,
+				6E3B6448D38581AE62B91175 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -708,9 +765,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18EB60351F9A1ADF0084FE8D /* Build configuration list for PBXNativeTarget "DoggyTimeUITests" */;
 			buildPhases = (
+				CD35D85FA1EF64D22B715FB4 /* [CP] Check Pods Manifest.lock */,
 				18EB60221F9A1ADF0084FE8D /* Sources */,
 				18EB60231F9A1ADF0084FE8D /* Frameworks */,
 				18EB60241F9A1ADF0084FE8D /* Resources */,
+				95A602F52C9A2016E39B40E9 /* [CP] Embed Pods Frameworks */,
+				2E8F4B3FAB5EE16DF93EAEAC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -809,6 +869,156 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E8F4B3FAB5EE16DF93EAEAC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36FB03EB55B7DF608BDA65E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoggyTimeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CB2EA204FBA884383E25A58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E3B6448D38581AE62B91175 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		728C1D8D2FEC70A107177267 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8752D10E04885AE5A38E75C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoggyTime-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95A602F52C9A2016E39B40E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD35D85FA1EF64D22B715FB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoggyTimeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E89520D0E2CAAD57564CEA23 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18EB60001F9A1ADF0084FE8D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -834,6 +1044,7 @@
 				18A7D5371FF837D300156BE7 /* Character.swift in Sources */,
 				18A7D5331FF837B700156BE7 /* MapsViewController.swift in Sources */,
 				1870B8A61FE7FB7A0051B915 /* CameraManager.swift in Sources */,
+				C27AE5A01FFFF5DA0002CBF5 /* AdvertViewController.swift in Sources */,
 				18026BAF1FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
 				1800A5161F9E460800829A86 /* DogProfileViewController.swift in Sources */,
 				1870B8B01FE8564D0051B915 /* AVCameraController.swift in Sources */,
@@ -1033,6 +1244,7 @@
 		};
 		18EB60301F9A1ADF0084FE8D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3158E1237F4D8DA89ABD464B /* Pods-DoggyTime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: funkytomato@gmail.com (RF8U56VD77)";
@@ -1052,6 +1264,7 @@
 		};
 		18EB60311F9A1ADF0084FE8D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50965A9C106F2E0E269F2896 /* Pods-DoggyTime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: funkytomato@gmail.com (RF8U56VD77)";
@@ -1071,6 +1284,7 @@
 		};
 		18EB60331F9A1ADF0084FE8D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE17CC8DA0AA80E766E57584 /* Pods-DoggyTimeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1088,6 +1302,7 @@
 		};
 		18EB60341F9A1ADF0084FE8D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B3D817679F100C7506DECD5 /* Pods-DoggyTimeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1105,6 +1320,7 @@
 		};
 		18EB60361F9A1ADF0084FE8D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3E25E40D18374FB68049D91 /* Pods-DoggyTimeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1121,6 +1337,7 @@
 		};
 		18EB60371F9A1ADF0084FE8D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87B5E96B702B4C378ACAE0A5 /* Pods-DoggyTimeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
