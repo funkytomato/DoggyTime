@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,36 +32,60 @@
                                                 <segment title="Satellite"/>
                                                 <segment title="Hybrid"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="mapTypeChanged:" destination="9Ah-oW-ytP" eventType="valueChanged" id="IhN-y9-KIQ"/>
+                                            </connections>
                                         </segmentedControl>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="Ifi-fX-XAL"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="Ifi-fX-XAL">
+                                            <connections>
+                                                <segue destination="Ww3-ge-n0R" kind="presentation" identifier="segueOptions" id="Fuz-be-Ofb"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-tP-8wn">
+                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pth-c1-dbF">
-                                <rect key="frame" x="10" y="479" width="112" height="30"/>
-                                <state key="normal" title="Point Of Interest"/>
+                                <rect key="frame" x="16" y="127" width="112" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="Xxn-W5-Ef7"/>
+                                </constraints>
+                                <state key="normal" title="Point Of Interest">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="PointOfinterestButton:" destination="9Ah-oW-ytP" eventType="touchUpInside" id="hnI-hx-C5f"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-tP-8wn">
-                                <rect key="frame" x="0.0" y="108" width="320" height="411"/>
-                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9p-c1-kiv">
+                                <rect key="frame" x="101" y="428" width="118" height="73"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Record">
+                                    <color key="titleColor" red="1" green="0.16566213030306709" blue="0.16329663798288396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="recordButton:" destination="9Ah-oW-ytP" eventType="touchUpInside" id="ENu-lC-ob9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Pth-c1-dbF" firstAttribute="top" secondItem="MbU-Sh-Kmk" secondAttribute="bottom" constant="19" id="1Dr-sA-8Xi"/>
                             <constraint firstItem="MbU-Sh-Kmk" firstAttribute="trailing" secondItem="2Wb-tP-8wn" secondAttribute="trailing" id="2U0-PD-9pD"/>
+                            <constraint firstItem="Pth-c1-dbF" firstAttribute="leading" secondItem="BNS-Jo-lXG" secondAttribute="leadingMargin" id="2hT-QO-vae"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="MbU-Sh-Kmk" secondAttribute="bottom" id="4ny-Ks-fKm"/>
                             <constraint firstItem="MbU-Sh-Kmk" firstAttribute="leading" secondItem="2Wb-tP-8wn" secondAttribute="leading" id="5CE-iW-H0Y"/>
+                            <constraint firstItem="jif-fh-Ghn" firstAttribute="bottom" secondItem="D9p-c1-kiv" secondAttribute="bottom" constant="20" id="9Of-5H-dRS"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="A7L-aj-8y1"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="BHS-Ef-VrS"/>
-                            <constraint firstItem="jif-fh-Ghn" firstAttribute="bottom" secondItem="Pth-c1-dbF" secondAttribute="bottom" constant="10" id="IeZ-3Z-SAH"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="jif-fh-Ghn" secondAttribute="top" constant="44" id="Qox-O7-1nH"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="RrQ-9s-Ps9"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="WWS-pm-MRJ"/>
-                            <constraint firstItem="Pth-c1-dbF" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" constant="10" id="fOS-wP-Vq1"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="i1Y-sF-hj6"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="ifB-i9-bK2"/>
+                            <constraint firstItem="D9p-c1-kiv" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" constant="109" id="jHL-c1-yLK"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="s54-gm-bkz"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="tPS-Pi-PhU"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="wN3-zH-EnO"/>
@@ -81,7 +106,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="2Wb-tP-8wn" id="k1n-DF-XpV"/>
-                        <segue destination="Ww3-ge-n0R" kind="presentation" identifier="segueOptions" id="Sk0-sJ-ul3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8G7-G9-RYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -111,7 +135,7 @@
         <!--Map Options View Controller-->
         <scene sceneID="gGR-bV-UfM">
             <objects>
-                <viewController id="Ww3-ge-n0R" customClass="MapOptionsViewController" customModule="Park_View" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ww3-ge-n0R" customClass="MapOptionsViewController" customModule="DoggyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nwj-AA-N8M">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -150,7 +174,7 @@
                                     <navigationItem title="Select Options" id="prO-OJ-AZd">
                                         <barButtonItem key="leftBarButtonItem" title="Done" style="done" id="cb3-1s-bEH">
                                             <connections>
-                                                <segue destination="jyF-CX-s6N" kind="unwind" unwindAction="closeOptions:" id="7Au-x2-3YW"/>
+                                                <segue destination="jyF-CX-s6N" kind="unwind" unwindAction="closeOptions:" id="3xY-IU-ssO"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -173,7 +197,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz1-Hd-Mm3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jyF-CX-s6N" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1662" y="114"/>
+            <point key="canvasLocation" x="1658" y="72"/>
         </scene>
     </scenes>
     <resources>
