@@ -21,6 +21,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     var mapModel : MapModel //just this one!
     var path : [Path]?
     fileprivate var mapOverlay: MapOverlay! //and maybe this one!
+    fileprivate var loggingRoute: Bool = false
     
     //MARK:- Overlay variables
 
@@ -32,7 +33,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     fileprivate var locationManager: CLLocationManager!
     fileprivate var isCurrentLocation: Bool = false
     fileprivate var annotation: MKAnnotation!
-    fileprivate var currentLocation : CLLocationCoordinate2D
+    //fileprivate var currentLocation : CLLocationCoordinate2D
     
     
     //MARK:- Route variables
@@ -89,14 +90,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         self.searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
-    
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        mapModel = MapModel()
-        currentLocation = CLLocationCoordinate2D()
-        super.init(coder: aDecoder)
-    }
 
     
     @IBAction func PointOfinterestButton(_ sender: Any)
@@ -122,14 +115,55 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 
 
         //Create a Point Of Interest and add to the map
-        let coordinate = currentLocation
+        let coordinate = locationManager.location?.coordinate
         let title = "NEW ANNOTATION!!!"
         let type = PointOfInterestType(rawValue: 1) ?? .poo
         let subtitle = "Subtitle"
-        let annotation = PointOfInterestAnnotation(coordinate: coordinate, title: title, subtitle: subtitle, type: type)
+        let annotation = PointOfInterestAnnotation(coordinate: coordinate!, title: title, subtitle: subtitle, type: type)
         mapView.addAnnotation(annotation)
         
 
+    }
+    
+    @IBAction func recordButton(_ sender: Any)
+    {
+        
+        //Set loggingRoute variable
+        if loggingRoute
+        {
+                loggingRoute = false
+        }
+        else
+        {
+            loggingRoute = true
+        }
+        
+        
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            if locationManager == nil
+            {
+                locationManager = CLLocationManager()
+            }
+            
+            
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+            locationManager.startUpdatingHeading()
+            isCurrentLocation = true
+        }
+        
+
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        mapModel = MapModel()
+        //currentLocation = CLLocationCoordinate2D()
+        super.init(coder: aDecoder)
     }
     
     
@@ -149,14 +183,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.mapType = .standard
         mapView.showsUserLocation = true
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+
         
-        
-        //Config the size/region of the mapview
-        let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
-        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
-        
-        mapView.region = region
+        centerMapOnLocation(location: mapModel.midCoordinate)
         
         
         //Config the activity monitor
@@ -189,10 +218,20 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     
     //CEnter map on location
-    func centerMapOnLocation(location: CLLocation)
+    func centerMapOnLocation(location: CLLocationCoordinate2D)
     {
+        
+        /*
+         //Config the size/region of the mapview
+         let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
+         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+         let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
+         mapView.region = region
+         */
+        
+        
         let regionRadius: CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
         
         mapView.setRegion(coordinateRegion, animated: true)
     }
@@ -341,10 +380,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     
     
-    
-    
     //MARK:- MKMapView delegate
-    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
         
@@ -375,6 +411,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         let annotationView = PointOfInterestAnnotationView(annotation: annotation, reuseIdentifier: "PointOfInterest")
@@ -383,10 +420,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     
-    // MARK: - CLLocationManagerDelegate
     
-    //func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    // MARK: - CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
+    //func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         
         if !isCurrentLocation
@@ -398,13 +435,27 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         
         let location = locations.last
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        //let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        //let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+       // let regionRadius: CLLocationDistance = 1000
+       // let coordinateRegion = MKCoordinateRegionMakeWithDistance((location?.coordinate)!, regionRadius, regionRadius)
         
         
-        currentLocation = center
+        //Config the size/region of the mapview
+        //let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
+        //let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+        //let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
         
-        self.mapView.setRegion(region, animated: true)
+        
+        //mapView.region = coordinateRegion
+        
+        centerMapOnLocation(location: (location?.coordinate)!)
+        
+        
+        //currentLocation = center
+        
+        //self.mapView.setRegion(region, animated: true)
 
      
         if self.mapView.annotations.count != 0
@@ -412,7 +463,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             annotation = self.mapView.annotations[0]
             self.mapView.removeAnnotation(annotation)
         }
- 
+        
+        if loggingRoute
+        {
+            drawPath(newLocation: newLocation, fromLocation: oldLocation)
+        }
     }
     
     
