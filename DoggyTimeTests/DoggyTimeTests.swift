@@ -1,13 +1,13 @@
 //
-//  DoggyTimev2Tests.swift
-//  DoggyTimev2Tests
+//  DoggyTimeTests.swift
+//  DoggyTimeTests
 //
 //  Created by Jason Fry on 20/10/2017.
 //  Copyright © 2017 Jason Fry. All rights reserved.
 //
 
 import XCTest
-@testable import DoggyTimev2
+@testable import DoggyTime
 
 class DoggyTimev2Tests: XCTestCase {
     

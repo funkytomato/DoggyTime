@@ -73,8 +73,8 @@
 		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
 		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
 		18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */; };
-		18EB60201F9A1ADF0084FE8D /* DoggyTimev2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */; };
-		18EB602B1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */; };
+		18EB60201F9A1ADF0084FE8D /* DoggyTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB601F1F9A1ADF0084FE8D /* DoggyTimeTests.swift */; };
+		18EB602B1F9A1ADF0084FE8D /* DoggyTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB602A1F9A1ADF0084FE8D /* DoggyTimeUITests.swift */; };
 		18EB60391F9A206E0084FE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB60381F9A206E0084FE8D /* Main.storyboard */; };
 		18EB603A1F9A206E0084FE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB60381F9A206E0084FE8D /* Main.storyboard */; };
 		18EB603B1F9A206E0084FE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB60381F9A206E0084FE8D /* Main.storyboard */; };
@@ -187,10 +187,10 @@
 		18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18EB60161F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB601B1F9A1ADF0084FE8D /* DoggyTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimev2Tests.swift; sourceTree = "<group>"; };
+		18EB601F1F9A1ADF0084FE8D /* DoggyTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimeTests.swift; sourceTree = "<group>"; };
 		18EB60211F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB60261F9A1ADF0084FE8D /* DoggyTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimev2UITests.swift; sourceTree = "<group>"; };
+		18EB602A1F9A1ADF0084FE8D /* DoggyTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimeUITests.swift; sourceTree = "<group>"; };
 		18EB602C1F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB60381F9A206E0084FE8D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18EB60421F9A20A30084FE8D /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
@@ -618,6 +618,7 @@
 		18EB5FFB1F9A1ADF0084FE8D = {
 			isa = PBXGroup;
 			children = (
+				C26F2ADC20005575005054D2 /* Podfile */,
 				18EB60061F9A1ADF0084FE8D /* DoggyTime */,
 				18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */,
 				18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */,
@@ -656,7 +657,6 @@
 				1808F7041F9E15550027B447 /* View Controllers */,
 				18A7D5341FF837D300156BE7 /* View Models */,
 				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
-				C26F2ADC20005575005054D2 /* Podfile */,
 			);
 			path = DoggyTime;
 			sourceTree = "<group>";
@@ -664,7 +664,7 @@
 		18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */,
+				18EB601F1F9A1ADF0084FE8D /* DoggyTimeTests.swift */,
 				18EB60211F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimeTests;
@@ -673,7 +673,7 @@
 		18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */,
+				18EB602A1F9A1ADF0084FE8D /* DoggyTimeUITests.swift */,
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimeUITests;
@@ -1093,7 +1093,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB60201F9A1ADF0084FE8D /* DoggyTimev2Tests.swift in Sources */,
+				18EB60201F9A1ADF0084FE8D /* DoggyTimeTests.swift in Sources */,
 				18EB60501F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BAC1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				18026BB01FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
@@ -1110,7 +1110,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB602B1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift in Sources */,
+				18EB602B1F9A1ADF0084FE8D /* DoggyTimeUITests.swift in Sources */,
 				18EB60511F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BAD1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				18026BB11FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
@@ -1256,7 +1256,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
 				INFOPLIST_FILE = DoggyTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = funkytomato.DoggyTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1276,7 +1276,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
 				INFOPLIST_FILE = DoggyTime/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = funkytomato.DoggyTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";

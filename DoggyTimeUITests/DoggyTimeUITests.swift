@@ -1,6 +1,6 @@
 //
-//  DoggyTimev2UITests.swift
-//  DoggyTimev2UITests
+//  DoggyTimeUITests.swift
+//  DoggyTimeUITests
 //
 //  Created by Jason Fry on 20/10/2017.
 //  Copyright © 2017 Jason Fry. All rights reserved.
