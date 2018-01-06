@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import DoggyTimev2
+@testable import DoggyTime
 
-class DoggyTimev2Tests: XCTestCase {
+class DoggyTimeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

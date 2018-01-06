@@ -73,8 +73,8 @@
 		18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F841FBB1CEB00735EEE /* CoreDataManagerDelegate.swift */; };
 		18E71F881FBB3A8400735EEE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E71F871FBB3A8400735EEE /* String.swift */; };
 		18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */; };
-		18EB60201F9A1ADF0084FE8D /* DoggyTimev2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */; };
-		18EB602B1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */; };
+		18EB60201F9A1ADF0084FE8D /* DoggyTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB601F1F9A1ADF0084FE8D /* DoggyTimeTests.swift */; };
+		18EB602B1F9A1ADF0084FE8D /* DoggyTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB602A1F9A1ADF0084FE8D /* DoggyTimeUITests.swift */; };
 		18EB60391F9A206E0084FE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB60381F9A206E0084FE8D /* Main.storyboard */; };
 		18EB603A1F9A206E0084FE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB60381F9A206E0084FE8D /* Main.storyboard */; };
 		18EB603B1F9A206E0084FE8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB60381F9A206E0084FE8D /* Main.storyboard */; };
@@ -187,10 +187,10 @@
 		18EB60071F9A1ADF0084FE8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18EB60161F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB601B1F9A1ADF0084FE8D /* DoggyTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimev2Tests.swift; sourceTree = "<group>"; };
+		18EB601F1F9A1ADF0084FE8D /* DoggyTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimeTests.swift; sourceTree = "<group>"; };
 		18EB60211F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB60261F9A1ADF0084FE8D /* DoggyTimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoggyTimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimev2UITests.swift; sourceTree = "<group>"; };
+		18EB602A1F9A1ADF0084FE8D /* DoggyTimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoggyTimeUITests.swift; sourceTree = "<group>"; };
 		18EB602C1F9A1ADF0084FE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EB60381F9A206E0084FE8D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18EB60421F9A20A30084FE8D /* ClientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientCell.swift; sourceTree = "<group>"; };
@@ -664,7 +664,7 @@
 		18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				18EB601F1F9A1ADF0084FE8D /* DoggyTimev2Tests.swift */,
+				18EB601F1F9A1ADF0084FE8D /* DoggyTimeTests.swift */,
 				18EB60211F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimeTests;
@@ -673,7 +673,7 @@
 		18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				18EB602A1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift */,
+				18EB602A1F9A1ADF0084FE8D /* DoggyTimeUITests.swift */,
 				18EB602C1F9A1ADF0084FE8D /* Info.plist */,
 			);
 			path = DoggyTimeUITests;
@@ -904,7 +904,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3CB2EA204FBA884383E25A58 /* [CP] Embed Pods Frameworks */ = {
@@ -967,7 +967,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		95A602F52C9A2016E39B40E9 /* [CP] Embed Pods Frameworks */ = {
@@ -1000,7 +1000,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E89520D0E2CAAD57564CEA23 /* [CP] Copy Pods Resources */ = {
@@ -1093,7 +1093,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB60201F9A1ADF0084FE8D /* DoggyTimev2Tests.swift in Sources */,
+				18EB60201F9A1ADF0084FE8D /* DoggyTimeTests.swift in Sources */,
 				18EB60501F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BAC1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				18026BB01FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
@@ -1110,7 +1110,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EB602B1F9A1ADF0084FE8D /* DoggyTimev2UITests.swift in Sources */,
+				18EB602B1F9A1ADF0084FE8D /* DoggyTimeUITests.swift in Sources */,
 				18EB60511F9A20A40084FE8D /* ClientCell.swift in Sources */,
 				18026BAD1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				18026BB11FA5FB6C0011EB3F /* RoutesViewController.swift in Sources */,
@@ -1329,13 +1329,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
-				INFOPLIST_FILE = DoggyTimev2UITests/Info.plist;
+				INFOPLIST_FILE = DoggyTimeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimev2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DoggyTimev2;
+				TEST_TARGET_NAME = DoggyTime;
 			};
 			name = Debug;
 		};
@@ -1346,13 +1346,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GUBKE4V5J;
-				INFOPLIST_FILE = DoggyTimev2UITests/Info.plist;
+				INFOPLIST_FILE = DoggyTimeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimev2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = Cadet.DoggyTimeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DoggyTimev2;
+				TEST_TARGET_NAME = DoggyTime;
 			};
 			name = Release;
 		};
