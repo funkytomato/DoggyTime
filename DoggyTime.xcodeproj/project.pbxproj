@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08CC8200FE7E114DB2E53768 /* Pods_DoggyTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906A15CBE9BF0030D7890D84 /* Pods_DoggyTimeTests.framework */; };
+		0D6C07B2FF5307F0042219E1 /* Pods_DoggyTimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2668FD753F1A55AC6DFEB74C /* Pods_DoggyTimeUITests.framework */; };
 		1800A50A1F9E35F400829A86 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1800A5091F9E35F400829A86 /* Camera.storyboard */; };
 		1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A5111F9E414A00829A86 /* DogsCell.swift */; };
 		1800A5141F9E42FD00829A86 /* DogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A5131F9E42FD00829A86 /* DogsViewController.swift */; };
@@ -95,7 +97,8 @@
 		18EB60831F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18EB60841F9A20B50084FE8D /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB606B1F9A20B50084FE8D /* SampleData.swift */; };
 		18F24B0E1FF401C600498D8B /* Maps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F24B0D1FF401C600498D8B /* Maps.storyboard */; };
-		82E388E3380662A5C7717E68 /* Pods_DoggyTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2B79CE1C5EBC626754529 /* Pods_DoggyTime.framework */; };
+		2BE129C02E5AF7100F92618E /* Pods_DoggyTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A252533A79A87172E0CC929 /* Pods_DoggyTime.framework */; };
+		C26F2ADD20005575005054D2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C26F2ADC20005575005054D2 /* Podfile */; };
 		C272A3531FBBC15700FF0F7E /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */; };
 		C27AE5A01FFFF5DA0002CBF5 /* AdvertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27AE59F1FFFF5DA0002CBF5 /* AdvertViewController.swift */; };
 		C298E1441FFD353800AEA7BD /* Path+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */; };
@@ -103,8 +106,6 @@
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
-		C7329EECF4DFF443CB0A8814 /* Pods_DoggyTimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7518880ED8BE0700F119E768 /* Pods_DoggyTimeUITests.framework */; };
-		E32D27C13B7664ED7D065E7D /* Pods_DoggyTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D001A07EDE5BB2137C97E722 /* Pods_DoggyTimeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,12 +200,16 @@
 		18EB60691F9A20B50084FE8D /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		18EB606B1F9A20B50084FE8D /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		18F24B0D1FF401C600498D8B /* Maps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maps.storyboard; sourceTree = "<group>"; };
-		3158E1237F4D8DA89ABD464B /* Pods-DoggyTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.debug.xcconfig"; sourceTree = "<group>"; };
-		50965A9C106F2E0E269F2896 /* Pods-DoggyTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.release.xcconfig"; sourceTree = "<group>"; };
-		7518880ED8BE0700F119E768 /* Pods_DoggyTimeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTimeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		87B5E96B702B4C378ACAE0A5 /* Pods-DoggyTimeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8B3D817679F100C7506DECD5 /* Pods-DoggyTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests.release.xcconfig"; sourceTree = "<group>"; };
-		97A2B79CE1C5EBC626754529 /* Pods_DoggyTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2668FD753F1A55AC6DFEB74C /* Pods_DoggyTimeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTimeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3275D95D22DEAD8B05B462CB /* Pods-DoggyTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.debug.xcconfig"; sourceTree = "<group>"; };
+		4024C00DB9EB9C9CA5A3B105 /* Pods-DoggyTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6F6D96E27BD5C182EC7DBAA3 /* Pods-DoggyTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests.release.xcconfig"; sourceTree = "<group>"; };
+		7A252533A79A87172E0CC929 /* Pods_DoggyTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		906A15CBE9BF0030D7890D84 /* Pods_DoggyTimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E38A4959D6BFDCCBD5DD722 /* Pods-DoggyTimeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B2BB1A9462701676911746EB /* Pods-DoggyTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.release.xcconfig"; sourceTree = "<group>"; };
+		BF7F297A856582C668DD2A7E /* Pods-DoggyTimeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C26F2ADC20005575005054D2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		C272A3511FBBC15700FF0F7E /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C27AE59F1FFFF5DA0002CBF5 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertViewController.swift; sourceTree = "<group>"; };
 		C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataClass.swift"; path = "../Path+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -212,9 +217,6 @@
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		D001A07EDE5BB2137C97E722 /* Pods_DoggyTimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoggyTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3E25E40D18374FB68049D91 /* Pods-DoggyTimeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		EE17CC8DA0AA80E766E57584 /* Pods-DoggyTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeTests/Pods-DoggyTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82E388E3380662A5C7717E68 /* Pods_DoggyTime.framework in Frameworks */,
+				2BE129C02E5AF7100F92618E /* Pods_DoggyTime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E32D27C13B7664ED7D065E7D /* Pods_DoggyTimeTests.framework in Frameworks */,
+				08CC8200FE7E114DB2E53768 /* Pods_DoggyTimeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,23 +240,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7329EECF4DFF443CB0A8814 /* Pods_DoggyTimeUITests.framework in Frameworks */,
+				0D6C07B2FF5307F0042219E1 /* Pods_DoggyTimeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1605C93C86F62C494E5D22C0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				97A2B79CE1C5EBC626754529 /* Pods_DoggyTime.framework */,
-				D001A07EDE5BB2137C97E722 /* Pods_DoggyTimeTests.framework */,
-				7518880ED8BE0700F119E768 /* Pods_DoggyTimeUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		18026BA61FA5F9960011EB3F /* Routes */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,8 +622,8 @@
 				18EB601E1F9A1ADF0084FE8D /* DoggyTimeTests */,
 				18EB60291F9A1ADF0084FE8D /* DoggyTimeUITests */,
 				18EB60051F9A1ADF0084FE8D /* Products */,
-				9DF97BB2047E5DA82131F68F /* Pods */,
-				1605C93C86F62C494E5D22C0 /* Frameworks */,
+				436B0829B83F20F870710B15 /* Pods */,
+				D92DA7221D6D48B847352835 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -664,6 +656,7 @@
 				1808F7041F9E15550027B447 /* View Controllers */,
 				18A7D5341FF837D300156BE7 /* View Models */,
 				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
+				C26F2ADC20005575005054D2 /* Podfile */,
 			);
 			path = DoggyTime;
 			sourceTree = "<group>";
@@ -686,15 +679,15 @@
 			path = DoggyTimeUITests;
 			sourceTree = "<group>";
 		};
-		9DF97BB2047E5DA82131F68F /* Pods */ = {
+		436B0829B83F20F870710B15 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3158E1237F4D8DA89ABD464B /* Pods-DoggyTime.debug.xcconfig */,
-				50965A9C106F2E0E269F2896 /* Pods-DoggyTime.release.xcconfig */,
-				EE17CC8DA0AA80E766E57584 /* Pods-DoggyTimeTests.debug.xcconfig */,
-				8B3D817679F100C7506DECD5 /* Pods-DoggyTimeTests.release.xcconfig */,
-				D3E25E40D18374FB68049D91 /* Pods-DoggyTimeUITests.debug.xcconfig */,
-				87B5E96B702B4C378ACAE0A5 /* Pods-DoggyTimeUITests.release.xcconfig */,
+				3275D95D22DEAD8B05B462CB /* Pods-DoggyTime.debug.xcconfig */,
+				B2BB1A9462701676911746EB /* Pods-DoggyTime.release.xcconfig */,
+				4024C00DB9EB9C9CA5A3B105 /* Pods-DoggyTimeTests.debug.xcconfig */,
+				6F6D96E27BD5C182EC7DBAA3 /* Pods-DoggyTimeTests.release.xcconfig */,
+				9E38A4959D6BFDCCBD5DD722 /* Pods-DoggyTimeUITests.debug.xcconfig */,
+				BF7F297A856582C668DD2A7E /* Pods-DoggyTimeUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -715,6 +708,16 @@
 				1820A12D1FBF3D52003B3793 /* UIImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D92DA7221D6D48B847352835 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A252533A79A87172E0CC929 /* Pods_DoggyTime.framework */,
+				906A15CBE9BF0030D7890D84 /* Pods_DoggyTimeTests.framework */,
+				2668FD753F1A55AC6DFEB74C /* Pods_DoggyTimeUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -843,6 +846,7 @@
 				1805B76F1F9E296900DCFB83 /* Walks.storyboard in Resources */,
 				18610B2B1FF66D6D00889212 /* TweetyBirdLocations.plist in Resources */,
 				18610B291FF66D6D00889212 /* MagicMountainAttractions.plist in Resources */,
+				C26F2ADD20005575005054D2 /* Podfile in Resources */,
 				18A9B6691FA23704003DAF51 /* Assets.xcassets in Resources */,
 				18BE84521FA24A8500CC7586 /* LaunchScreen.storyboard in Resources */,
 				1805B76D1F9E26D700DCFB83 /* Clients.storyboard in Resources */,
@@ -1244,7 +1248,7 @@
 		};
 		18EB60301F9A1ADF0084FE8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3158E1237F4D8DA89ABD464B /* Pods-DoggyTime.debug.xcconfig */;
+			baseConfigurationReference = 3275D95D22DEAD8B05B462CB /* Pods-DoggyTime.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: funkytomato@gmail.com (RF8U56VD77)";
@@ -1264,7 +1268,7 @@
 		};
 		18EB60311F9A1ADF0084FE8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50965A9C106F2E0E269F2896 /* Pods-DoggyTime.release.xcconfig */;
+			baseConfigurationReference = B2BB1A9462701676911746EB /* Pods-DoggyTime.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: funkytomato@gmail.com (RF8U56VD77)";
@@ -1284,7 +1288,7 @@
 		};
 		18EB60331F9A1ADF0084FE8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE17CC8DA0AA80E766E57584 /* Pods-DoggyTimeTests.debug.xcconfig */;
+			baseConfigurationReference = 4024C00DB9EB9C9CA5A3B105 /* Pods-DoggyTimeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1302,7 +1306,7 @@
 		};
 		18EB60341F9A1ADF0084FE8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B3D817679F100C7506DECD5 /* Pods-DoggyTimeTests.release.xcconfig */;
+			baseConfigurationReference = 6F6D96E27BD5C182EC7DBAA3 /* Pods-DoggyTimeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1320,7 +1324,7 @@
 		};
 		18EB60361F9A1ADF0084FE8D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3E25E40D18374FB68049D91 /* Pods-DoggyTimeUITests.debug.xcconfig */;
+			baseConfigurationReference = 9E38A4959D6BFDCCBD5DD722 /* Pods-DoggyTimeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1337,7 +1341,7 @@
 		};
 		18EB60371F9A1ADF0084FE8D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87B5E96B702B4C378ACAE0A5 /* Pods-DoggyTimeUITests.release.xcconfig */;
+			baseConfigurationReference = BF7F297A856582C668DD2A7E /* Pods-DoggyTimeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
