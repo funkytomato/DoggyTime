@@ -8,7 +8,7 @@
 
 import XCTest
 
-class DoggyTimev2UITests: XCTestCase {
+class DoggyTimeUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
