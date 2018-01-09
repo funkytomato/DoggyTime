@@ -25,21 +25,24 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
     //var delegate: AddWalkViewControllerDelegate?
     weak var walkData: Walk?
     
-    //MARK:- IBOutlets
-   // @IBOutlet weak var WalkIdField: UITextField!
-    @IBOutlet weak var DateTimePicker: UIDatePicker!
-    //@IBOutlet weak var TimeField: UITextField!
-    @IBOutlet weak var DayOfWeekField: UITextField!
-    @IBOutlet weak var LocationNameField: UITextField!
-    @IBOutlet weak var LatitudeField: UITextField!
-    @IBOutlet weak var LongitudeField: UITextField!
-    @IBOutlet weak var MapView: MKMapView!
     
-    @IBOutlet weak var LocationPicker: UIPickerView!
+    //Show/Hide PickerViews
+    let dateTimePicker = UIDatePicker()
+    let locationPicker = UIPickerView()
+    
+    //MARK:- IBOutlets
+    @IBOutlet weak var dateTimeField: UITextField!
+    @IBOutlet weak var locationNameField: UITextField!
+    @IBOutlet weak var latitudeField: UITextField!
+    @IBOutlet weak var longitudeField: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+    
     
     var locationDataSource = ["Pagham", "Chichester", "Selsey", "Elmer", "Summer Lane"]
     
 
+    
+    
     required init?(coder aDecoder: NSCoder)
     {
         print("init WalkProfileTableViewController")
@@ -58,10 +61,13 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         print("WalkProfileTableViewController viewDidLoad")
         super.viewDidLoad()
    
-        LocationPicker.delegate = self
-        LocationPicker.dataSource = self
+        locationPicker.delegate = self
+        locationPicker.dataSource = self
         
-        DateTimePicker.addTarget(self, action: #selector(dateTimePickerValueChanged), for: .valueChanged)
+        //dateTimePicker.delegate = self
+        //dateTimePicker.dataSource = self
+        
+        dateTimePicker.addTarget(self, action: #selector(dateTimePickerValueChanged), for: .valueChanged)
         //locationPicker.addTarget(self, action: #selector(locationNamePickerValueChanged), for: .valueChanged)
     
         if walkData != nil
@@ -72,14 +78,28 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             //locationNameField.text = walkData?.locationname
             
             print("date \(String(describing: walkData?.dateofwalk))")
-            DateTimePicker.setDate((walkData?.dateofwalk)! as Date, animated: true)
+            dateTimePicker.setDate((walkData?.dateofwalk)! as Date, animated: true)
             
             //timeField.text = walkData?.dateofwalk?.hourOfDay()
             //dayOfWeekField.text = walkData?.dateofwalk?.dayOfWeek()
             
+            var dayOfWeek = walkData?.dateofwalk?.dayOfWeek()
+            var time = walkData?.dateofwalk?.hourOfDay()
+            
+            //str = str + "\(variable)"
+            
+            var dateTimeString = dayOfWeek
+            dateTimeString = dateTimeString! + "\(time)"
+            
+            self.dateTimeField.text = dateTimeString
+            dateTimeField.inputView = dateTimePicker
+            
+            self.locationNameField.text = walkData?.locationName?.description
+            locationNameField.inputView = locationPicker
+            
 
-            LatitudeField.text = walkData?.latitude.description
-            LongitudeField.text = walkData?.longitude.description
+            latitudeField.text = walkData?.latitude.description
+            longitudeField.text = walkData?.longitude.description
         }
     }
     
@@ -108,11 +128,11 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         //else if let _ = segue.destination as? WalksViewController,
         else if segue.identifier == "SaveWalkDetail",
             //let locationname = LocationNameField.text,
-            let latitude = LatitudeField.text,
-            let longitude = LongitudeField.text
+            let latitude = latitudeField.text,
+            let longitude = longitudeField.text
         {
     
-            let dateofwalk = DateTimePicker.date
+            let dateofwalk = dateTimePicker.date
             
             //let walk = Walk(context: PersistentService.context)
             
@@ -145,7 +165,7 @@ extension WalkProfileTableViewController
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
-        if pickerView == LocationPicker
+        if pickerView == locationPicker
         {
             return locationDataSource.count
         }
@@ -156,7 +176,7 @@ extension WalkProfileTableViewController
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        if pickerView == LocationPicker
+        if pickerView == locationPicker
         {
             return locationDataSource[row] as String
         }
@@ -167,42 +187,57 @@ extension WalkProfileTableViewController
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if pickerView == LocationPicker
+        if pickerView == locationPicker
         {
             print(locationDataSource[row])
-            //breedpictureView.image = UIImage(named: breedDataSource[row])
+            
+            
+            //THIS IS WHERE THE DATA RECORD IS FETCHED FOR LOCATION FROM LOCATIONS IN COREDATA
+            walkData?.locationName = locationDataSource[row]
+            locationNameField.text = locationDataSource[row]
+            
+            //latitudeField.text = new value
+            //longitudeField.text = new value
+            
         }
-    }
-    
-    
-    /*
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
-    {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil
+        else if pickerView == dateTimePicker
         {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Arial", size: 17)
-            pickerLabel?.textAlignment = .left
+            print("dateTimePicker")
+            
+            walkData?.dateofwalk = dateTimePicker.date
+           // dateTimeField.text = dateTimePicker.date.description
+            
+            
+            var dayOfWeek = walkData?.dateofwalk?.dayOfWeek()
+            var time = walkData?.dateofwalk?.hourOfDay()
+            
+            //str = str + "\(variable)"
+            
+            var dateTimeString = dayOfWeek
+            dateTimeString = dateTimeString! + "\(time)"
+            
+            self.dateTimeField.text = dateTimeString
         }
-        pickerLabel?.text = <Data Array>[row]
-        //pickerLabel?.textColor = UIColor.blue
         
-        return pickerLabel!
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        tableView.reloadData()
     }
- */
+    
+    
  
     @objc func dateTimePickerValueChanged(sender: UIDatePicker)
     {
         //Function will be called everytime picker changes it's value
         walkData?.dateofwalk = sender.date as Date
+        self.dateTimeField.text = walkData?.dateofwalk?.dayOfWeek()?.description
         print("WalkProfileTableViewController dateTimePickerValueChanged \(sender.date.description)")
     }
     
     @objc func locationNamePickerValueChanged(sender: UIPickerView)
     {
         //Function will be called everytime picker changes it's value
-        //walkData?.locationname = sender.selectedRow(inComponent: 1)
+        //walkData?.locationName = sender.selectedRow(inComponent: 0) as String
         //print("WalkProfileTableViewController nameLocationPickerValueChanged \(sender.date.description)")
     }
 }
@@ -213,16 +248,16 @@ extension WalkProfileTableViewController: UITextFieldDelegate
     {
         switch textField
         {
-        case DateTimePicker:
-            LocationPicker.becomeFirstResponder()
-        case LocationPicker:
-            LatitudeField.becomeFirstResponder()
-        case LatitudeField:
-            LongitudeField.becomeFirstResponder()
-        case LongitudeField:
-            MapView.resignFirstResponder()
+        case dateTimePicker:
+            locationPicker.becomeFirstResponder()
+        case locationPicker:
+            latitudeField.becomeFirstResponder()
+        case latitudeField:
+            longitudeField.becomeFirstResponder()
+        case longitudeField:
+            mapView.resignFirstResponder()
         default:
-            MapView.resignFirstResponder()
+            mapView.resignFirstResponder()
             
         }
         return true
