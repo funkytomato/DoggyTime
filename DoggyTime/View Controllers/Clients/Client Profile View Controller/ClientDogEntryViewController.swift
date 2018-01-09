@@ -410,8 +410,8 @@ extension ClientDogEntryViewController
     {
         //recast your view as a UITableViewHeaderFooterView
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor.colorWithHexString(hexStr: "#408000")
-        header.textLabel?.textColor = UIColor.white
+        //header.contentView.backgroundColor = UIColor.colorWithHexString(hexStr: "#408000")
+        //header.textLabel?.textColor = UIColor.white
         
         if let viewWithTag = self.view.viewWithTag(kHeaderSectionTag + section)
         {
