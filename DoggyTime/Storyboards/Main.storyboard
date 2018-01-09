@@ -91,7 +91,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="scN-Y6-D82"/>
+                    <tabBarItem key="tabBarItem" title="Advert" id="scN-Y6-D82"/>
                     <connections>
                         <outlet property="bannerView" destination="GGT-48-bMc" id="ZZz-Sk-IUm"/>
                     </connections>

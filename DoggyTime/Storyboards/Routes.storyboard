@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -354,7 +353,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Place Name" id="6Bs-la-4cA" userLabel="Place Name">
+                            <tableViewSection headerTitle="Route Profile" id="6Bs-la-4cA" userLabel="Place Name">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SYj-WT-V8E">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -363,14 +362,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lgh-et-Qyz" userLabel="Place Name Field">
-                                                    <rect key="frame" x="16" y="6" width="304" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bDA-Hv-JUJ">
+                                                    <rect key="frame" x="20" y="0.0" width="300" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6E-tn-6sE" userLabel="Place Name Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lgh-et-Qyz" userLabel="Place Name Field">
+                                                            <rect key="frame" x="150" y="0.0" width="150" height="43.5"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bDA-Hv-JUJ" secondAttribute="trailing" id="AVx-Xq-ttF"/>
+                                                <constraint firstAttribute="bottom" secondItem="bDA-Hv-JUJ" secondAttribute="bottom" id="CgW-JO-iRi"/>
+                                                <constraint firstItem="bDA-Hv-JUJ" firstAttribute="top" secondItem="qkE-Hk-rQI" secondAttribute="top" id="OSn-JL-2bC"/>
+                                                <constraint firstItem="bDA-Hv-JUJ" firstAttribute="leading" secondItem="qkE-Hk-rQI" secondAttribute="leading" constant="20" id="TIm-VL-0bg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -396,37 +411,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="jhe-KR-Mwc" secondAttribute="bottom" id="GoS-Ee-FSQ"/>
                                                 <constraint firstItem="jhe-KR-Mwc" firstAttribute="top" secondItem="HG9-ZU-ECw" secondAttribute="top" id="lPe-FC-vMS"/>
                                                 <constraint firstItem="jhe-KR-Mwc" firstAttribute="leading" secondItem="HG9-ZU-ECw" secondAttribute="leading" id="rC1-vS-wla"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tbo-I7-E6U">
-                                        <rect key="frame" x="0.0" y="400" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tbo-I7-E6U" id="5lS-wr-uT1">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="deM-Si-m56">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6s-68-5XK" userLabel="StartBtn">
-                                                            <rect key="frame" x="0.0" y="5.5" width="160" height="33"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <state key="normal" title="Start"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0c-dU-PQk" userLabel="FinishBtn">
-                                                            <rect key="frame" x="160" y="5.5" width="160" height="33"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <state key="normal" title="Finish"/>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="deM-Si-m56" secondAttribute="bottom" id="2VL-RQ-p1x"/>
-                                                <constraint firstItem="deM-Si-m56" firstAttribute="leading" secondItem="5lS-wr-uT1" secondAttribute="leading" id="Cx5-Hl-VG6"/>
-                                                <constraint firstItem="deM-Si-m56" firstAttribute="top" secondItem="5lS-wr-uT1" secondAttribute="top" id="GVp-4e-oZg"/>
-                                                <constraint firstAttribute="trailing" secondItem="deM-Si-m56" secondAttribute="trailing" id="lEJ-EI-7Fo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
