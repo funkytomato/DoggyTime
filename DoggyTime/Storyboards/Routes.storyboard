@@ -342,7 +342,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gev-va-Dd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="2eb-xs-sie" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2511" y="-455"/>
+            <point key="canvasLocation" x="2672" y="-452"/>
         </scene>
         <!--Route Profile View Controller-->
         <scene sceneID="mUi-CK-yEU">
@@ -422,8 +422,24 @@
                             <outlet property="delegate" destination="qF9-EF-hoe" id="OU9-yu-GSq"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Chs-n5-UXE">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uE2-rv-RF9" userLabel="Cancel">
+                            <connections>
+                                <segue destination="RBb-AZ-NDS" kind="unwind" unwindAction="cancelToRoutesViewController:" id="jeM-dk-ode"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="GAg-9R-3Xn" userLabel="Done">
+                            <connections>
+                                <segue destination="RBb-AZ-NDS" kind="unwind" identifier="SaveRouteDetail" unwindAction="saveRouteDetail:" id="xE4-aS-TL1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="PlaceNameField" destination="lgh-et-Qyz" id="11r-ZQ-Lm7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooZ-kO-5xC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="RBb-AZ-NDS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1547" y="796"/>
         </scene>
