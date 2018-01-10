@@ -19,10 +19,12 @@ class RouteProfileViewController: UITableViewController
     var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     
+    fileprivate var mapsViewController: MapsViewController!
     
     //MARK:- Properties
-    //var delegate: AddRouteViewControllerDelegate?
     var routeData: Route?
+   
+    
     var durationHrs: Int?
     var durationMins: Int?
     var distanceMiles: Int?
@@ -41,14 +43,14 @@ class RouteProfileViewController: UITableViewController
     
     
     //MARK:- IBOutlets
-    @IBOutlet weak var PlaceNameField: UITextField!
-    @IBOutlet weak var TerrainPicker: UIPickerView!
-    @IBOutlet weak var DistancePicker: UIPickerView!
-    @IBOutlet weak var DurationPicker: UIPickerView!
+    @IBOutlet weak var placeNameField: UITextField!
+    //@IBOutlet weak var TerrainPicker: UIPickerView!
+    //@IBOutlet weak var DistancePicker: UIPickerView!
+    //@IBOutlet weak var DurationPicker: UIPickerView!
     
-    @IBOutlet weak var ActualDistanceField: UITextField!
+    //@IBOutlet weak var ActualDistanceField: UITextField!
     
-    @IBOutlet weak var ActualDurationField: UITextField!
+    //@IBOutlet weak var ActualDurationField: UITextField!
     //MARK:- IBActions
     @IBOutlet weak var RouteMapView: MKMapView!
     
@@ -77,6 +79,15 @@ class RouteProfileViewController: UITableViewController
     {
         print("RouteProfileViewController viewDidLoad")
         super.viewDidLoad()
+        
+        
+        if routeData != nil
+        {
+            self.placeNameField.text = routeData?.placeName
+
+        }
+        
+        
         /*
         TerrainPicker.delegate = self
         TerrainPicker.dataSource = self
@@ -142,11 +153,15 @@ class RouteProfileViewController: UITableViewController
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("RouteProfileViewController prepare segue")
+        print("RouteProfileViewController prepare segue:\(segue.identifier)")
+        print("RouteProfileViewController prepare segue:\(segue.source)")
+        print("RouteProfileViewController prepare segue:\(segue.destination)")
+        
+        
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveRouteDetail",
+        if segue.identifier == "SaveRouteDetail" /*,
             let placeName = PlaceNameField.text,
             let terrain = routeData?.terrain,
             let actualDistance = routeData?.actualDistance,
@@ -155,11 +170,28 @@ class RouteProfileViewController: UITableViewController
             let actualDuration = routeData?.actualDuration,
             let durationHrs = routeData?.durationHrs,
             let durationMins = routeData?.durationMins
-            
+            */
         {
             
+            
             //Get the latest data and pass to destinationController to be saved
-            routeData?.placeName = placeName
+            guard let locationName = placeNameField.text else { return }
+            guard let mapModel = mapsViewController?.mapModel else { return }
+
+            //Create a CoreDaa Map class
+            
+            
+            
+            //Populate Map object with mapModel values
+            
+            
+            //Add to routeData object calling method
+            
+            
+            //Update Route
+            routeData?.placeName = locationName
+            
+            /*
             routeData?.terrain = terrain
             routeData?.actualDistance = Float(actualDistance)
             routeData?.distanceMiles = Int16(distanceMiles)
@@ -168,10 +200,11 @@ class RouteProfileViewController: UITableViewController
             routeData?.durationHrs = Int16(durationHrs)
             routeData?.durationMins = Int16(durationMins)
             routeData?.profilePicture = nil
+ */
         }
         
         if segue.identifier == "mapsEmbeddedSegue",
-            let mapsViewController = segue.destination as? MapsViewController
+            mapsViewController = segue.destination as? MapsViewController
         {
             
             //Create a new Map profile
@@ -190,14 +223,14 @@ class RouteProfileViewController: UITableViewController
 
             
             //Load the boundaries into the MapModel
-            /*
+            
             guard let coord = map?.midCoordinate! else { return }
             mapModel.midCoordinate = parseCoord(location: (map?.midCoordinate)!)
             
             mapModel.overlayTopLeftCoordinate = parseCoord(location: (map?.overlayTopLeftCoordinate)!)
             mapModel.overlayTopRightCoordinate = parseCoord(location: (map?.overlayTopRightCoordinate)!)
             mapModel.overlayBottomLeftCoordinate = parseCoord(location: (map?.overlayBottomLeftCoordinate)!)
-            */
+            
             
             //Load the points of interest
             /*
@@ -224,6 +257,10 @@ class RouteProfileViewController: UITableViewController
             //Pass the values to the MapsViewController
             mapsViewController.mapModel = mapModel
         }
+        
+
+
+
     }
     
     func parseCoord(location: String) -> CLLocationCoordinate2D
@@ -244,7 +281,7 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
-        if pickerView == DistancePicker
+ /*       if pickerView == DistancePicker
         {
             return 2
         }
@@ -252,14 +289,14 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         {
             return 2
         }
-
+*/
         return 1
 
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
-        if pickerView == TerrainPicker
+ /*       if pickerView == TerrainPicker
         {
             return TerrainDataSource.count
         }
@@ -285,13 +322,13 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
                 return DurationQtrsDataSource.count
             }
         }
-        
+   */
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
-        if pickerView == TerrainPicker
+/*        if pickerView == TerrainPicker
         {
             return TerrainDataSource[row] as String
         }
@@ -317,12 +354,13 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
                 return String(DurationQtrsDataSource[row])
             }
         }
-        
+  */
         return ""
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+        /*
         if pickerView == TerrainPicker
         {
             print(TerrainDataSource[row])
@@ -387,10 +425,12 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
             //routeData?.duration = Float(numberString)!
 
         }
+ */
     }
     
     func pickerShouldReturn(_ pickerView: UIPickerView) -> Bool
     {
+        /*
         switch pickerView
         {
         case TerrainPicker:
@@ -401,7 +441,7 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         default:
             DurationPicker.resignFirstResponder()
         }
-        
+        */
         return true
     }
 }
@@ -425,35 +465,6 @@ extension RouteProfileViewController: UITextFieldDelegate
 }
 */
 
-
-
-/*
-//MARK:- IBActions
-extension RouteProfileViewController
-{
-    // MARK: - Actions
-    
-    @IBAction func save(_ sender: Any)
-    {
-        guard let name = NameField.text else { return }
-        guard let terrain = TerrainField.text else {return}
-        guard let distance = DistanceField.text else {return}
-        guard let duartion = DurationField.text else {return }
-        guard let delegate = delegate else { return }
-        
-        // Notify Delegate
-        delegate.controller(self, didAddRoute: name)
-        
-        // Dismiss View Controller
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancel(_ sender: Any)
-    {
-        dismiss(animated: true, completion: nil)
-    }
-}
- */
 
 //MARK:- CoreDataManager Protocol
 extension RouteProfileViewController: CoreDataManagerDelegate

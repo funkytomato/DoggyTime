@@ -9,20 +9,12 @@
 import UIKit
 import MapKit
 
-/*
-protocol AddWalkViewControllerDelegate
-{
-    func controller(_ controller: WalkProfileTableViewController, didAddWalk name: String)
-}
-*/
-
 
 class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
     
     
     //MARK:- Properties
-    //var delegate: AddWalkViewControllerDelegate?
     weak var walkData: Walk?
     
     
@@ -64,24 +56,15 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
         locationPicker.delegate = self
         locationPicker.dataSource = self
         
-        //dateTimePicker.delegate = self
-        //dateTimePicker.dataSource = self
         
         dateTimePicker.addTarget(self, action: #selector(dateTimePickerValueChanged), for: .valueChanged)
-        //locationPicker.addTarget(self, action: #selector(locationNamePickerValueChanged), for: .valueChanged)
     
         if walkData != nil
         {
-//            guard let row = locationDataSource.index(of: (walkData?.locationname)!) else {return}
-//            locationPicker.selectRow(row, inComponent: 0, animated: false)
-            
-            //locationNameField.text = walkData?.locationname
+
             
             print("date \(String(describing: walkData?.dateofwalk))")
             dateTimePicker.setDate((walkData?.dateofwalk)! as Date, animated: true)
-            
-            //timeField.text = walkData?.dateofwalk?.hourOfDay()
-            //dayOfWeekField.text = walkData?.dateofwalk?.dayOfWeek()
             
             var dayOfWeek = walkData?.dateofwalk?.dayOfWeek()
             var time = walkData?.dateofwalk?.hourOfDay()
@@ -205,7 +188,6 @@ extension WalkProfileTableViewController
             print("dateTimePicker")
             
             walkData?.dateofwalk = dateTimePicker.date
-           // dateTimeField.text = dateTimePicker.date.description
             
             
             var dayOfWeek = walkData?.dateofwalk?.dayOfWeek()
@@ -263,31 +245,3 @@ extension WalkProfileTableViewController: UITextFieldDelegate
         return true
     }
 }
-
-/*
-//MARK:- IBActions
-extension WalkProfileTableViewController
-{
-    // MARK: - Actions
-    
-    @IBAction func save(_ sender: Any) {
-        //guard let dateofwalk = DateTimePicker.date else { return }
-        //guard let location = LocationPicker. else {return}
-        guard let latitude = LatitudeField.text else {return}
-        guard let longitude = LongitudeField.text else {return}
-        guard let delegate = delegate else { return }
-        
-        let name = "test"
-        
-        // Notify Delegate
-        delegate.controller(self, didAddWalk: name)
-        
-        // Dismiss View Controller
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func cancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-}
-*/
