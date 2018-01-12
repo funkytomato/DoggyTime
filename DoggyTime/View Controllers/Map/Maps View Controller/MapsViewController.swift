@@ -16,9 +16,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 {
     
     //MARK:- Properties to be set on prepare
+    var mapData: Map?
+    var mapModel : MapModel? //just this one!
+    
     var locationName : String? //and this too
     var pointsOfInterest: [PointOfInterest]?
-    var mapModel : MapModel //just this one!
+
     var path : [Path]?
     fileprivate var mapOverlay: MapOverlay! //and maybe this one!
     fileprivate var loggingRoute: Bool = false
@@ -162,7 +165,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     required init?(coder aDecoder: NSCoder)
     {
         mapModel = MapModel()
-        //currentLocation = CLLocationCoordinate2D()
+        
         super.init(coder: aDecoder)
     }
     
@@ -177,15 +180,39 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         //Load coordinates from CoreData
         //mapOverlay = MapOverlay(map: mapModel)
     
+        //If mapModel is nil load the user's current location
+        if mapModel?.midCoordinate == nil
+        {
+            if (CLLocationManager.locationServicesEnabled())
+            {
+                if locationManager == nil
+                {
+                    locationManager = CLLocationManager()
+                }
+                
+                
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.requestAlwaysAuthorization()
+                locationManager.requestWhenInUseAuthorization()
+                locationManager.startUpdatingLocation()
+                locationManager.startUpdatingHeading()
+                isCurrentLocation = true
+            }
+            mapModel?.midCoordinate = (locationManager.location?.coordinate)!
+        }
+
  
         //Config the mapview to show the user location
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsCompass = true
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
 
         
-        centerMapOnLocation(location: mapModel.midCoordinate)
+        centerMapOnLocation(location: (mapModel?.midCoordinate)!)
         
         
         //Config the activity monitor
@@ -202,8 +229,18 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         activityIndicator.center = self.view.center
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        (segue.destination as? MapOptionsViewController)?.selectedOptions = selectedOptions
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        print("MapsViewController prepare segue")
+        print("segue identifer \(String(describing: segue.identifier))")
+        print("segue destination \(String(describing: segue.destination))")
+        
+        //(segue.destination as? MapOptionsViewController)?.selectedOptions = selectedOptions
+        if segue.identifier == "segueOptions",
+            let optionsController = segue.destination as? MapOptionsViewController
+        {
+            optionsController.selectedOptions = selectedOptions
+        }
     }
     
     @IBAction func closeOptions(_ exitSegue: UIStoryboardSegue) {
@@ -233,7 +270,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
         
+        self.mapModel?.midCoordinate.latitude = location.latitude
+        self.mapModel?.midCoordinate.longitude = location.longitude
+        
         mapView.setRegion(coordinateRegion, animated: true)
+        
+        print("mapModel lat:\(mapModel?.midCoordinate.latitude) longitude:\(mapModel?.midCoordinate.longitude)")
     }
     
     
@@ -241,7 +283,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK: Add the map overlay
     func addOverlay()
     {
-        let overlay = MapOverlay(map: mapModel)
+        let overlay = MapOverlay(map: mapModel!)
         mapView.add(overlay)
     }
     
@@ -253,7 +295,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         
         for attraction in attractions
         {
-            let coordinate = MapModel.parseCoord(dict: attraction, fieldName: "location")
+            let coordinate = MapModel.parseCoordDict(dict: attraction, fieldName: "location")
             let title = attraction["name"] ?? ""
             let typeRawValue = Int(attraction["type"] ?? "0") ?? 0
             let type = PointOfInterestType(rawValue: typeRawValue) ?? .misc
@@ -280,7 +322,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //MARK:- Add Boundary
     func addBoundary()
     {
-        mapView.add(MKPolygon(coordinates: mapModel.boundary, count: mapModel.boundary.count))
+        mapView.add(MKPolygon(coordinates: (mapModel?.boundary)!, count: (mapModel?.boundary.count)!))
     }
     
     
@@ -419,6 +461,31 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         return annotationView
     }
     
+    
+    func mapView(_ mapView: MKMapView, didUpdate: MKUserLocation)
+    {
+        print("We have moved location = didUpdate")
+//        mapView.setCenter(didUpdate.coordinate, animated: true)
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
+    {
+        print("Map was moved around = regionDidChangedAnimated")
+        
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, regionRadius, regionRadius)
+        
+        //mapModel.midCoordinate = mapView.centerCoordinate
+        //mapModel.overlayTopLeftCoordinate = mapView
+        //mapModel.overlayTopRightCoordinate = mapView
+        //mapModel.overlayBottomLeftCoordinate = mapView
+        //mapModel.overlayBottomRightCoordinate = mapView.
+        
+        print("centreCoordinate:\(mapView.centerCoordinate)")
+        //self.mapModel?.midCoordinate = mapView.centerCoordinate
+        centerMapOnLocation(location: mapView.centerCoordinate)
+    }
     
     
     // MARK: - CLLocationManagerDelegate
