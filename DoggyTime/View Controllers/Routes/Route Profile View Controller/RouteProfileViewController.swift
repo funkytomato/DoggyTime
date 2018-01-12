@@ -19,10 +19,11 @@ class RouteProfileViewController: UITableViewController
     var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     
-    fileprivate var mapsViewController: MapsViewController!
+    fileprivate var embeddedMapsViewController: MapsViewController!
     
     //MARK:- Properties
     var routeData: Route?
+    var mapData: Map?
    
     
     var durationHrs: Int?
@@ -84,7 +85,6 @@ class RouteProfileViewController: UITableViewController
         if routeData != nil
         {
             self.placeNameField.text = routeData?.placeName
-
         }
         
         
@@ -153,83 +153,95 @@ class RouteProfileViewController: UITableViewController
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("RouteProfileViewController prepare segue:\(segue.identifier)")
-        print("RouteProfileViewController prepare segue:\(segue.source)")
-        print("RouteProfileViewController prepare segue:\(segue.destination)")
+        print("RouteProfileViewController prepare segue identifier:\(String(describing: segue.identifier))")
+        print("RouteProfileViewController prepare segue source:\(segue.source)")
+        print("RouteProfileViewController prepare segue destination:\(segue.destination)")
         
         
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "SaveRouteDetail" /*,
-            let placeName = PlaceNameField.text,
-            let terrain = routeData?.terrain,
-            let actualDistance = routeData?.actualDistance,
-            let distanceMiles = routeData?.distanceMiles,
-            let distanceQtrs = routeData?.distanceQtrs,
-            let actualDuration = routeData?.actualDuration,
-            let durationHrs = routeData?.durationHrs,
-            let durationMins = routeData?.durationMins
-            */
-        {
-            
-            
-            //Get the latest data and pass to destinationController to be saved
-            guard let locationName = placeNameField.text else { return }
-            guard let mapModel = mapsViewController?.mapModel else { return }
 
-            //Create a CoreDaa Map class
-            
-            
-            
-            //Populate Map object with mapModel values
-            
-            
-            //Add to routeData object calling method
-            
-            
-            //Update Route
-            routeData?.placeName = locationName
-            
-            /*
-            routeData?.terrain = terrain
-            routeData?.actualDistance = Float(actualDistance)
-            routeData?.distanceMiles = Int16(distanceMiles)
-            routeData?.distanceQtrs = Int16(distanceQtrs)
-            routeData?.actualDuration = Float(actualDuration)
-            routeData?.durationHrs = Int16(durationHrs)
-            routeData?.durationMins = Int16(durationMins)
-            routeData?.profilePicture = nil
- */
-        }
         
         if segue.identifier == "mapsEmbeddedSegue",
-            mapsViewController = segue.destination as? MapsViewController
+            let navController = segue.destination as? UINavigationController
         {
+            let mapsViewController = navController.topViewController as? MapsViewController
+            embeddedMapsViewController = mapsViewController
             
-            //Create a new Map profile
-            //var map = Map(context: coreDataManager.mainManagedObjectContext)
-            let map = routeData?.mapProfile
             
-            let locationName = routeData?.placeName
+            guard let locationName = routeData?.placeName else { return }
+            guard let coord = routeData?.mapProfile?.midCoordinate else { return }
+            //guard var coord = map.midCoordinate else { return }
             //let pointsofinterest = Array(map?.pointsofinterest)
             
             
-
-            
             //Create the MapModel
             let mapModel = MapModel()
-            mapModel.name = locationName
-
+            
+            let midC = parseCoord(location: coord)
             
             //Load the boundaries into the MapModel
+            mapModel.name = locationName
+            mapModel.midCoordinate = midC
+            mapModel.overlayTopLeftCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayTopLeftCoordinate)!)
+            mapModel.overlayTopRightCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayTopRightCoordinate)!)
+            mapModel.overlayBottomLeftCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayBottomLeftCoordinate)!)
             
-            guard let coord = map?.midCoordinate! else { return }
-            mapModel.midCoordinate = parseCoord(location: (map?.midCoordinate)!)
+            print("mapModel.midCoordinate:\(mapModel.midCoordinate)")
+            print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
+            print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
+            print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
             
-            mapModel.overlayTopLeftCoordinate = parseCoord(location: (map?.overlayTopLeftCoordinate)!)
-            mapModel.overlayTopRightCoordinate = parseCoord(location: (map?.overlayTopRightCoordinate)!)
-            mapModel.overlayBottomLeftCoordinate = parseCoord(location: (map?.overlayBottomLeftCoordinate)!)
+            
+            //THINK I AM OVRCASTING, coord has too much ascii content, something wrong
+            
+            /*
+            //Create a new map if none exists
+            if routeData?.mapProfile == nil
+            {
+            
+                //Create a new Map profile
+                let map = Map(context: coreDataManager.mainManagedObjectContext)
+                
+                //Populate Map
+                map.uuid = ""
+                map.createdAt = Date()
+                map.updatedAt = Date()
+                map.name = routeData?.placeName
+                map.midCoordinate = ""
+                map.overlayBottomLeftCoordinate = ""
+                map.overlayBottomRightCoordinate = ""
+                map.overlayTopLeftCoordinate = ""
+                map.overlayTopRightCoordinate = ""
+            }
+            else
+            {
+                //Load existing map profile
+                map.midCoordinate = String(describing: mapModel.midCoordinate)
+                map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
+                map.overlayBottomRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
+                map.overlayTopLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
+                map.overlayTopRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
+            }
+ 
+            
+            //Create a relationship between route and map
+            map.mapFor = routeData
+            map.pointsofinterest = nil
+            map.path = nil
+ */
+ 
+            //let map = routeData?.mapProfile
+            //routeData?.mapProfile = map
+            
+            
+
+            
+            
+
+            
+            
             
             
             //Load the points of interest
@@ -254,11 +266,78 @@ class RouteProfileViewController: UITableViewController
             }
             */
             
-            //Pass the values to the MapsViewController
-            mapsViewController.mapModel = mapModel
+            
+            //Configure the MapsViewController
+            //mapsViewController?.mapData = map
+            mapsViewController?.mapModel = mapModel
+        
+
         }
         
 
+        if segue.identifier == "SaveRouteDetail" /*,
+             let placeName = PlaceNameField.text,
+             let terrain = routeData?.terrain,
+             let actualDistance = routeData?.actualDistance,
+             let distanceMiles = routeData?.distanceMiles,
+             let distanceQtrs = routeData?.distanceQtrs,
+             let actualDuration = routeData?.actualDuration,
+             let durationHrs = routeData?.durationHrs,
+             let durationMins = routeData?.durationMins
+             */
+        {
+            
+            
+            //Get the latest data and pass to destinationController to be saved
+            guard let locationName = placeNameField.text else { return }
+            guard let mapModel = embeddedMapsViewController?.mapModel else { return }
+            
+            
+            print("Save Route Detail")
+            print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
+            print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
+            print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
+            print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
+            print("mapModel.overlayBottomRightCoordinate:\(mapModel.overlayBottomRightCoordinate)")
+            
+            //Create a CoreData Map profile
+            let map = Map(context: coreDataManager.mainManagedObjectContext)
+            
+            //Populate Map object with mapModel values
+            map.uuid = ""
+            map.updatedAt = Date()
+            map.createdAt = Date()
+            
+            map.name = locationName
+            map.midCoordinate = String(describing: mapModel.midCoordinate)
+            map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
+            map.overlayBottomRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
+            map.overlayTopLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
+            map.overlayTopRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
+            
+            map.mapFor = routeData
+            
+            //map.pointsofinterest = pointsOfInterest
+            //map.path: NSSet?
+            
+            
+            
+            
+            //Update Route
+            routeData?.placeName = locationName
+            routeData?.mapProfile = map
+            
+            /*
+             routeData?.terrain = terrain
+             routeData?.actualDistance = Float(actualDistance)
+             routeData?.distanceMiles = Int16(distanceMiles)
+             routeData?.distanceQtrs = Int16(distanceQtrs)
+             routeData?.actualDuration = Float(actualDuration)
+             routeData?.durationHrs = Int16(durationHrs)
+             routeData?.durationMins = Int16(durationMins)
+             routeData?.profilePicture = nil
+             */
+        }
 
 
     }
@@ -273,6 +352,7 @@ class RouteProfileViewController: UITableViewController
         
         return CLLocationCoordinate2D()
     }
+ 
 }
 
 
