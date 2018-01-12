@@ -50,7 +50,7 @@ class RoutesViewController: UITableViewController
         print("RoutesViewController viewDidLoad")
         super.viewDidLoad()
         
-        //Fetch clients from CoreData
+        //Fetch Routes from CoreData
         do
         {
             try fetchedResultsController.performFetch()
@@ -84,7 +84,8 @@ class RoutesViewController: UITableViewController
             // Fetch Route
             let selectedRoute = fetchedResultsController.object(at: indexPath)
             
-            //Configure View Controller
+            // Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.routeData = selectedRoute
         }
         else if let profileViewController = segue.destination as? RouteProfileViewController
@@ -103,6 +104,8 @@ class RoutesViewController: UITableViewController
             route.durationMins = 0
 
             
+            // Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.routeData = route
         }
     }
@@ -117,7 +120,8 @@ extension RoutesViewController
     {
         print("RoutesViewController saveRouteDetail")
         guard let profileViewController = segue.source as? RouteProfileViewController,
-            let route = profileViewController.routeData else
+            let route = profileViewController.routeData,
+            let map = profileViewController.routeData?.mapProfile else
         {
             return
         }
@@ -125,12 +129,14 @@ extension RoutesViewController
         //Store to CoreData
         do
         {
+            try map.managedObjectContext?.save()
             try route.managedObjectContext?.save()
+            print("RoutesViewController saveRouteDetail map:\(map)")
         }
         catch
         {
             let saveError = error as NSError
-            print("Unable to Save Client")
+            print("Unable to Save Route")
             print("\(saveError), \(saveError.localizedDescription)")
         }
     }
@@ -211,7 +217,7 @@ extension RoutesViewController
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteCell
         cell.route = route
-        //configureCell(cell, at: indexPath)
+        configureCell(cell, at: indexPath)
         return cell
     }
     
