@@ -12,9 +12,9 @@ class RouteCell: UITableViewCell
 {
     //MARK:- IBOutlets
     @IBOutlet weak var routeNameLbl: UILabel!
-    @IBOutlet weak var terrainLbl: UILabel!
-    @IBOutlet weak var durationLbl: UILabel!
-    @IBOutlet weak var distanceLbl: UILabel!
+    //@IBOutlet weak var terrainLbl: UILabel!
+    //@IBOutlet weak var durationLbl: UILabel!
+    //@IBOutlet weak var distanceLbl: UILabel!
     
     var route: Route?
     {
@@ -23,7 +23,7 @@ class RouteCell: UITableViewCell
             guard let route = route else {return}
             
             routeNameLbl.text = route.placeName
-            routeNameLbl.text = "something"
+            //routeNameLbl.text = "something"
             //terrainLbl.text = route.map
             //terrainLbl.text = route.terrain
             //distanceLbl.text = route.distanceMiles.description + " miles " + route.distanceQtrs.description
