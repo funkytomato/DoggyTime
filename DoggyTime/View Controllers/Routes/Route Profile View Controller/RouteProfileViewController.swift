@@ -170,8 +170,17 @@ class RouteProfileViewController: UITableViewController
             embeddedMapsViewController = mapsViewController
             
             
+            print("mapsEmbeddedSegue routeData mapProfile")
+            print("routeData.mapProfile.midLatitudeCoordinate:\(String(describing: routeData?.mapProfile?.midLatitudeCoordinate))")
+            print("routeData.mapProfile.midLongitudeCoordinate:\(String(describing: routeData?.mapProfile?.midLongitudeCoordinate))")
+            print("routeData.mapProfile.overlayTopLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopLeftCoordinate))")
+            print("routeData.mapProfile.overlayTopRightCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopRightCoordinate))")
+            print("routeData.mapProfile.overlayBottomLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayBottomLeftCoordinate))")
+            
             guard let locationName = routeData?.placeName else { return }
-            guard let coord = routeData?.mapProfile?.midCoordinate else { return }
+            
+            
+            //guard let coord = routeData?.mapProfile?.midCoordinate else { return }
             //guard var coord = map.midCoordinate else { return }
             //let pointsofinterest = Array(map?.pointsofinterest)
             
@@ -179,20 +188,37 @@ class RouteProfileViewController: UITableViewController
             //Create the MapModel
             let mapModel = MapModel()
             
-            let midC = parseCoord(location: coord)
+            //Check routeData mapProfile exists
+            guard let mapProfile = routeData?.mapProfile else { return }
+            print("parseCoord:\(parseCoord(location: mapProfile.midLatitudeCoordinate!))")
+            print("parseCoord:\(parseCoord(location: mapProfile.midLongitudeCoordinate!))")
+
+            
+            let latitude = routeData?.mapProfile?.midLatitudeCoordinate as? String
+            let longitude = routeData?.mapProfile?.midLongitudeCoordinate as? String
+            
+            let midCoordinate = MapModel.createCoordinate(latitude: latitude!, longitude: longitude!)
+            print("midCoordinate: \(midCoordinate)")
+            
+            mapModel.midCoordinate = midCoordinate
+            
+            //let midC = parseCoord(location: coord)
             
             //Load the boundaries into the MapModel
+            /*
             mapModel.name = locationName
-            mapModel.midCoordinate = midC
+            
+            mapModel.midCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.midCoordinate)!)
             mapModel.overlayTopLeftCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayTopLeftCoordinate)!)
             mapModel.overlayTopRightCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayTopRightCoordinate)!)
             mapModel.overlayBottomLeftCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayBottomLeftCoordinate)!)
-            
+        
+            print("mapModel.name:\(mapModel.name)")
             print("mapModel.midCoordinate:\(mapModel.midCoordinate)")
             print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
             print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
             print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
-            
+            */
             
             //THINK I AM OVRCASTING, coord has too much ascii content, something wrong
             
@@ -305,11 +331,15 @@ class RouteProfileViewController: UITableViewController
             
             //Populate Map object with mapModel values
             map.uuid = ""
-            map.updatedAt = Date()
-            map.createdAt = Date()
+            map.updatedAt = NSDate()
+            map.createdAt = NSDate()
+            
+            
             
             map.name = locationName
-            map.midCoordinate = String(describing: mapModel.midCoordinate)
+            map.midLatitudeCoordinate = String(describing: mapModel.midCoordinate.latitude)
+            map.midLongitudeCoordinate = String(describing: mapModel.midCoordinate.longitude)
+            
             map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
             map.overlayBottomRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
             map.overlayTopLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
@@ -341,6 +371,7 @@ class RouteProfileViewController: UITableViewController
 
 
     }
+    
     
     func parseCoord(location: String) -> CLLocationCoordinate2D
     {
