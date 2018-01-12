@@ -122,6 +122,16 @@ class MapModel
         }
     }
   
+    static func createCoordinate(latitude: String, longitude: String) -> CLLocationCoordinate2D
+    {
+        let lat = CLLocationDegrees(latitude.toDouble()!)
+        let long = CLLocationDegrees(longitude.toDouble()!)
+        
+        print("latitude:\(lat) longitude:\(long)")
+        
+        return CLLocationCoordinate2DMake(lat, long)
+    }
+    
     static func parseCoord(location: String) -> CLLocationCoordinate2D
     {
         if let coord = location as? String
