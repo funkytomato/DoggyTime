@@ -203,10 +203,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
 
  
+        
+         
+        // For User Tracking
         //Config the mapview to show the user location
         mapView.delegate = self
         mapView.mapType = .standard
-        mapView.showsUserLocation = true
+        //mapView.showsUserLocation = true
         mapView.showsScale = true
         mapView.showsCompass = true
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
@@ -270,8 +273,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
         
-        self.mapModel?.midCoordinate.latitude = location.latitude
-        self.mapModel?.midCoordinate.longitude = location.longitude
+        //self.mapModel?.midCoordinate.latitude = location.latitude
+        //self.mapModel?.midCoordinate.longitude = location.longitude
+        mapModel?.midCoordinate = location
         
         mapView.setRegion(coordinateRegion, animated: true)
         
