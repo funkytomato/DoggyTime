@@ -2,7 +2,7 @@
 //  Map+CoreDataProperties.swift
 //  DoggyTime
 //
-//  Created by Jason Fry on 03/01/2018.
+//  Created by Spaceman on 12/01/2018.
 //  Copyright © 2018 Jason Fry. All rights reserved.
 //
 //
@@ -18,7 +18,8 @@ extension Map {
     }
 
     @NSManaged public var createdAt: NSDate?
-    @NSManaged public var midCoordinate: String?
+    @NSManaged public var midLatitudeCoordinate: String?
+    @NSManaged public var midLongitudeCoordinate: String?
     @NSManaged public var name: String?
     @NSManaged public var overlayBottomLeftCoordinate: String?
     @NSManaged public var overlayBottomRightCoordinate: String?
@@ -27,25 +28,8 @@ extension Map {
     @NSManaged public var updatedAt: NSDate?
     @NSManaged public var uuid: String?
     @NSManaged public var mapFor: Route?
-    @NSManaged public var pointsofinterest: NSSet?
     @NSManaged public var path: NSSet?
-
-}
-
-// MARK: Generated accessors for pointsofinterest
-extension Map {
-
-    @objc(addPointsofinterestObject:)
-    @NSManaged public func addToPointsofinterest(_ value: PointOfInterest)
-
-    @objc(removePointsofinterestObject:)
-    @NSManaged public func removeFromPointsofinterest(_ value: PointOfInterest)
-
-    @objc(addPointsofinterest:)
-    @NSManaged public func addToPointsofinterest(_ values: NSSet)
-
-    @objc(removePointsofinterest:)
-    @NSManaged public func removeFromPointsofinterest(_ values: NSSet)
+    @NSManaged public var pointsofinterest: NSSet?
 
 }
 
@@ -63,5 +47,22 @@ extension Map {
 
     @objc(removePath:)
     @NSManaged public func removeFromPath(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for pointsofinterest
+extension Map {
+
+    @objc(addPointsofinterestObject:)
+    @NSManaged public func addToPointsofinterest(_ value: PointOfInterest)
+
+    @objc(removePointsofinterestObject:)
+    @NSManaged public func removeFromPointsofinterest(_ value: PointOfInterest)
+
+    @objc(addPointsofinterest:)
+    @NSManaged public func addToPointsofinterest(_ values: NSSet)
+
+    @objc(removePointsofinterest:)
+    @NSManaged public func removeFromPointsofinterest(_ values: NSSet)
 
 }
