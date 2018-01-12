@@ -41,6 +41,7 @@ class MapModel
     var overlayTopLeftCoordinate = CLLocationCoordinate2D()
     var overlayTopRightCoordinate = CLLocationCoordinate2D()
     var overlayBottomLeftCoordinate = CLLocationCoordinate2D()
+    
     var overlayBottomRightCoordinate: CLLocationCoordinate2D
     {
         get
@@ -90,21 +91,21 @@ class MapModel
     }
  */
     
-    /*
-    init(locationName: String)
+    
+    init(locationName: String, midCoord: String, overlayTopLeftCoord: String, overlayTopRightCoord: String, overlayBottomLeftCoord: String)
     {
         //guard let properties = MapModel.plist(filename) as? [String : Any],
         //    let boundaryPoints = properties["boundary"] as? [String] else { return }
         
-        midCoordinate = MapModel.parseCoord(dict: properties, fieldName: "midCoord")
-        overlayTopLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
-        overlayTopRightCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
-        overlayBottomLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayBottomLeftCoord")
+        midCoordinate = MapModel.parseCoord(location: midCoord)
+        overlayTopLeftCoordinate = MapModel.parseCoord(location: overlayTopLeftCoord)
+        overlayTopRightCoordinate = MapModel.parseCoord(location: overlayTopRightCoord)
+        overlayBottomLeftCoordinate = MapModel.parseCoord(location: overlayBottomLeftCoord)
         
-        let cgPoints = boundaryPoints.map { CGPointFromString($0) }
-        boundary = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
+        //let cgPoints = boundaryPoints.map { CGPointFromString($0) }
+        //boundary = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
     }
- */
+ 
  
     static func plist(_ plist: String) -> Any?
     {
@@ -121,7 +122,18 @@ class MapModel
         }
     }
   
-    static func parseCoord(dict: [String: Any], fieldName: String) -> CLLocationCoordinate2D
+    static func parseCoord(location: String) -> CLLocationCoordinate2D
+    {
+        if let coord = location as? String
+        {
+            let point = CGPointFromString(coord)
+            return CLLocationCoordinate2DMake(CLLocationDegrees(point.x), CLLocationDegrees(point.y))
+        }
+        
+        return CLLocationCoordinate2D()
+    }
+    
+    static func parseCoordDict(dict: [String: Any], fieldName: String) -> CLLocationCoordinate2D
     {
         if let coord = dict[fieldName] as? String
         {
@@ -131,4 +143,5 @@ class MapModel
     
         return CLLocationCoordinate2D()
     }
+ 
 }
