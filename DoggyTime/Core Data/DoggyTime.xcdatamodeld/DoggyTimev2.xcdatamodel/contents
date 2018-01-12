@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C205" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Client" representedClassName=".Client" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="eMail" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,7 +30,8 @@
     </entity>
     <entity name="Map" representedClassName=".Map" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="midCoordinate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="midLatitudeCoordinate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="midLongitudeCoordinate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overlayBottomLeftCoordinate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overlayBottomRightCoordinate" optional="YES" attributeType="String" syncable="YES"/>
@@ -85,10 +86,10 @@
     <elements>
         <element name="Client" positionX="241" positionY="270" width="128" height="225"/>
         <element name="Dog" positionX="-83" positionY="285" width="128" height="223"/>
-        <element name="Map" positionX="-558" positionY="-144" width="128" height="223"/>
+        <element name="Map" positionX="-558" positionY="-144" width="128" height="240"/>
+        <element name="Path" positionX="-243" positionY="-151" width="128" height="73"/>
         <element name="PointOfInterest" positionX="-245" positionY="35" width="128" height="118"/>
         <element name="Route" positionX="-839" positionY="-223" width="128" height="253"/>
         <element name="Walk" positionX="-803" positionY="198" width="128" height="208"/>
-        <element name="Path" positionX="-243" positionY="-151" width="128" height="73"/>
     </elements>
 </model>
