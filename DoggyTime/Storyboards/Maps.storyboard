@@ -43,82 +43,87 @@
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-tP-8wn">
-                                <rect key="frame" x="0.0" y="44" width="320" height="343"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="411"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hS-Tw-0k1" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="395" width="320" height="60"/>
+                            <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rwy-z2-Yts">
+                                <rect key="frame" x="0.0" y="415" width="320" height="40"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Xpc-LV-9tB">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdo-Ek-UBn">
-                                                <rect key="frame" x="0.0" y="0.0" width="52" height="60"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="POI"/>
-                                                <connections>
-                                                    <action selector="PointOfinterestButton:" destination="8G7-G9-RYd" eventType="touchUpInside" id="NMy-Xp-eht"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9p-c1-kiv">
-                                                <rect key="frame" x="52" y="0.0" width="95" height="60"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Record">
-                                                    <color key="titleColor" red="1" green="0.16566213030306709" blue="0.16329663798288396" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="recordButton:" destination="9Ah-oW-ytP" eventType="touchUpInside" id="ENu-lC-ob9"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYI-fX-hie">
-                                                <rect key="frame" x="147" y="0.0" width="90" height="60"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Locate"/>
-                                                <connections>
-                                                    <action selector="locateMeButton:" destination="8G7-G9-RYd" eventType="touchUpInside" id="nfW-NQ-hmq"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QX6-ze-sCh">
-                                                <rect key="frame" x="237" y="0.0" width="83" height="60"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Search"/>
-                                                <connections>
-                                                    <action selector="searchButton:" destination="8G7-G9-RYd" eventType="touchDragInside" id="lkn-Ym-eY2"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzM-FA-8aZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="4fg-Oc-4H9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="POI">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="PointOfinterestButton:" destination="8G7-G9-RYd" eventType="touchUpInside" id="RsC-cc-ydk"/>
+                                        </connections>
+                                    </button>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1H-XD-AhR">
+                                        <rect key="frame" x="80" y="0.0" width="80" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Z8Y-Aw-iFQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Record">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recordButton:" destination="9Ah-oW-ytP" eventType="touchUpInside" id="Qrr-jL-fY7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8d-x2-LBS">
+                                        <rect key="frame" x="160" y="0.0" width="80" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="ZPj-oK-bo9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Locate">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="locateMeButton:" destination="8G7-G9-RYd" eventType="touchUpInside" id="F85-fG-aSg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCf-jK-87O">
+                                        <rect key="frame" x="240" y="0.0" width="80" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="nkH-7q-J5I"/>
+                                        </constraints>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchButton:" destination="8G7-G9-RYd" eventType="touchDragInside" id="u8y-FN-yuV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Xpc-LV-9tB" secondAttribute="trailing" id="CJe-CD-JDL"/>
-                                    <constraint firstItem="Xpc-LV-9tB" firstAttribute="top" secondItem="3hS-Tw-0k1" secondAttribute="top" id="WsC-gi-EbO"/>
-                                    <constraint firstAttribute="height" constant="60" id="ain-Pz-ZvQ"/>
-                                    <constraint firstItem="Xpc-LV-9tB" firstAttribute="leading" secondItem="3hS-Tw-0k1" secondAttribute="leading" id="igc-3E-Eb2"/>
-                                    <constraint firstAttribute="bottom" secondItem="Xpc-LV-9tB" secondAttribute="bottom" id="lMa-gq-eDg"/>
+                                    <constraint firstAttribute="height" constant="40" id="Je7-fJ-R93"/>
                                 </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MbU-Sh-Kmk" firstAttribute="trailing" secondItem="2Wb-tP-8wn" secondAttribute="trailing" id="2U0-PD-9pD"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="MbU-Sh-Kmk" secondAttribute="bottom" id="4ny-Ks-fKm"/>
                             <constraint firstItem="MbU-Sh-Kmk" firstAttribute="leading" secondItem="2Wb-tP-8wn" secondAttribute="leading" id="5CE-iW-H0Y"/>
-                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" constant="-68" id="A7L-aj-8y1"/>
-                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" constant="-68" id="BHS-Ef-VrS"/>
-                            <constraint firstItem="jif-fh-Ghn" firstAttribute="trailing" secondItem="3hS-Tw-0k1" secondAttribute="trailing" id="Hj3-xo-9zq"/>
-                            <constraint firstItem="3hS-Tw-0k1" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="Q1V-oF-n23"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="A7L-aj-8y1"/>
+                            <constraint firstItem="rwy-z2-Yts" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="Az1-PP-lhx"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="BHS-Ef-VrS"/>
+                            <constraint firstItem="rwy-z2-Yts" firstAttribute="leading" secondItem="2Wb-tP-8wn" secondAttribute="leading" id="MVb-61-jcy"/>
+                            <constraint firstItem="jif-fh-Ghn" firstAttribute="bottom" secondItem="2Wb-tP-8wn" secondAttribute="bottom" id="OMC-2S-RRN"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="top" secondItem="jif-fh-Ghn" secondAttribute="top" constant="44" id="Qox-O7-1nH"/>
-                            <constraint firstItem="3hS-Tw-0k1" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="RWr-Vt-94G"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="RrQ-9s-Ps9"/>
-                            <constraint firstItem="3hS-Tw-0k1" firstAttribute="leading" secondItem="2Wb-tP-8wn" secondAttribute="leading" id="Svd-5F-ihe"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="WWS-pm-MRJ"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="i1Y-sF-hj6"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="ifB-i9-bK2"/>
-                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" constant="-68" id="s54-gm-bkz"/>
+                            <constraint firstItem="2Wb-tP-8wn" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="s54-gm-bkz"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="trailing" secondItem="jif-fh-Ghn" secondAttribute="trailing" id="tPS-Pi-PhU"/>
                             <constraint firstItem="2Wb-tP-8wn" firstAttribute="leading" secondItem="jif-fh-Ghn" secondAttribute="leading" id="wN3-zH-EnO"/>
-                            <constraint firstItem="3hS-Tw-0k1" firstAttribute="bottom" secondItem="jif-fh-Ghn" secondAttribute="bottom" id="zrQ-A4-ecl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jif-fh-Ghn"/>
                     </view>
