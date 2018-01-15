@@ -15,19 +15,20 @@ import CoreData
 class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate
 {
     
+    
     //MARK:- Properties to be set on prepare
-    var mapData: Map?
+    //var mapData: Map?
     var mapModel : MapModel? //just this one!
     
-    var locationName : String? //and this too
+    
+    
+    //var locationName : String? //and this too
     var pointsOfInterest: [PointOfInterest]?
-
     var path : [Path]?
-    fileprivate var mapOverlay: MapOverlay! //and maybe this one!
-    fileprivate var loggingRoute: Bool = false
+    
     
     //MARK:- Overlay variables
-
+    var mapOverlay: MapOverlay! //and maybe this one!
     var selectedOptions : [MapOptionsType] = []
     //var map = MapModel(filename: "MagicMountain")
 
@@ -36,11 +37,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     fileprivate var locationManager: CLLocationManager!
     fileprivate var isCurrentLocation: Bool = false
     fileprivate var annotation: MKAnnotation!
+    fileprivate var loggingRoute: Bool = false
     //fileprivate var currentLocation : CLLocationCoordinate2D
     
     
     //MARK:- Route variables
-
     var previousLocation: CLLocation!
     
     
@@ -56,29 +57,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     
     //MARK:- Outlets
-    
     @IBOutlet weak var mapView: MKMapView!
 
     
     //MRK:- Locate User on map
     @IBAction func locateMeButton(_ sender: UIBarButtonItem)
     {
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            if locationManager == nil
-            {
-                locationManager = CLLocationManager()
-            }
-            
-
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-            isCurrentLocation = true
-        }
+        configureLocationManager()
     }
     
     
@@ -97,25 +82,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     
     @IBAction func PointOfinterestButton(_ sender: Any)
     {
-        
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            if locationManager == nil
-            {
-                locationManager = CLLocationManager()
-            }
-            
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-            isCurrentLocation = true
-        }
-        
 
+        configureLocationManager()
+        
 
         //Create a Point Of Interest and add to the map
         let coordinate = locationManager.location?.coordinate
@@ -124,8 +93,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let subtitle = "Subtitle"
         let annotation = PointOfInterestAnnotation(coordinate: coordinate!, title: title, subtitle: subtitle, type: type)
         mapView.addAnnotation(annotation)
-        
-
     }
     
     @IBAction func recordButton(_ sender: Any)
@@ -141,7 +108,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             loggingRoute = true
         }
         
-        
+        configureLocationManager()
+    }
+    
+    
+    func configureLocationManager()
+    {
         if (CLLocationManager.locationServicesEnabled())
         {
             if locationManager == nil
@@ -158,8 +130,19 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             locationManager.startUpdatingHeading()
             isCurrentLocation = true
         }
-        
-
+    }
+    
+    
+    func configureMapView()
+    {
+        // For User Tracking
+        //Config the mapview to show the user location
+        mapView.delegate = self
+        mapView.mapType = .standard
+        //mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsCompass = true
+        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
     }
     
     required init?(coder aDecoder: NSCoder)
@@ -183,37 +166,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         //If mapModel is nil load the user's current location
         if mapModel?.midCoordinate == nil
         {
-            if (CLLocationManager.locationServicesEnabled())
-            {
-                if locationManager == nil
-                {
-                    locationManager = CLLocationManager()
-                }
-                
-                
-                locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                locationManager.requestAlwaysAuthorization()
-                locationManager.requestWhenInUseAuthorization()
-                locationManager.startUpdatingLocation()
-                locationManager.startUpdatingHeading()
-                isCurrentLocation = true
-            }
+            configureLocationManager()
             mapModel?.midCoordinate = (locationManager.location?.coordinate)!
         }
 
  
-        
-         
-        // For User Tracking
-        //Config the mapview to show the user location
-        mapView.delegate = self
-        mapView.mapType = .standard
-        //mapView.showsUserLocation = true
-        mapView.showsScale = true
-        mapView.showsCompass = true
-        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
-
+        configureMapView()
         
         centerMapOnLocation(location: (mapModel?.midCoordinate)!)
         
@@ -257,24 +215,25 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     
-    //CEnter map on location
+    //NOT CURRENTLY USED BECAUSE THE OVERLAY COORDINATES ARE NOT BEING SET AS OF YET
+    func configureVisibleRegion()
+    {
+        //Config the size/region of the mapview
+        let latDelta = (mapModel?.overlayTopLeftCoordinate.latitude)! - (mapModel?.overlayBottomRightCoordinate.latitude)!
+        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+        let region = MKCoordinateRegionMake((mapModel?.midCoordinate)!, span)
+        mapView.region = region
+    }
+    
+    
+    //Center map on location
     func centerMapOnLocation(location: CLLocationCoordinate2D)
     {
         
-        /*
-         //Config the size/region of the mapview
-         let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
-         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-         let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
-         mapView.region = region
-         */
-        
-        
-        let regionRadius: CLLocationDistance = 1000
+        let regionRadius: CLLocationDistance = (mapModel?.regionRadius)!
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
         
-        //self.mapModel?.midCoordinate.latitude = location.latitude
-        //self.mapModel?.midCoordinate.longitude = location.longitude
+
         mapModel?.midCoordinate = location
         
         mapView.setRegion(coordinateRegion, animated: true)
