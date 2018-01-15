@@ -16,36 +16,30 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 {
     
     
-    //MARK:- Properties to be set on prepare
-    //var mapData: Map?
+    //MARK:- Prepare Segue Map Properties
     var mapModel : MapModel? //just this one!
-    
-    
-    
-    //var locationName : String? //and this too
-    var pointsOfInterest: [PointOfInterest]?
-    var path : [Path]?
-    
-    
-    //MARK:- Overlay variables
-    var mapOverlay: MapOverlay! //and maybe this one!
-    var selectedOptions : [MapOptionsType] = []
     //var map = MapModel(filename: "MagicMountain")
+    //var pointsOfInterest: [PointOfInterest]?  pulled from the mapModel
+    //var path : [Path]?  pulled from the mapModel
+
 
     
-    //MARK:- Map variables
+
+    //MARK:- Map, Map Overlay, Map Options Properties
+    var mapOverlay: MapOverlay!
+    var selectedOptions : [MapOptionsType] = []
+    
     fileprivate var locationManager: CLLocationManager!
     fileprivate var isCurrentLocation: Bool = false
-    fileprivate var annotation: MKAnnotation!
     fileprivate var loggingRoute: Bool = false
-    //fileprivate var currentLocation : CLLocationCoordinate2D
+    fileprivate var annotation: MKAnnotation!
     
     
-    //MARK:- Route variables
+    //MARK:- Map Route Properties
     var previousLocation: CLLocation!
     
     
-    //MARK:- Search variable
+    //MARK:- Search for Place Properties
     fileprivate var searchController: UISearchController!
     fileprivate var localSearchRequest: MKLocalSearchRequest!
     fileprivate var localSearch: MKLocalSearch!
@@ -60,91 +54,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     @IBOutlet weak var mapView: MKMapView!
 
     
-    //MRK:- Locate User on map
-    @IBAction func locateMeButton(_ sender: UIBarButtonItem)
-    {
-        configureLocationManager()
-    }
-    
-    
-    // MARK: - Search
-    @IBAction func searchButton(_ sender: UIBarButtonItem)
-    {
-        if searchController == nil
-        {
-            searchController = UISearchController(searchResultsController: nil)
-        }
-        searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.delegate = self
-        present(searchController, animated: true, completion: nil)
-    }
-
-    
-    @IBAction func PointOfinterestButton(_ sender: Any)
-    {
-
-        configureLocationManager()
-        
-
-        //Create a Point Of Interest and add to the map
-        let coordinate = locationManager.location?.coordinate
-        let title = "NEW ANNOTATION!!!"
-        let type = PointOfInterestType(rawValue: 1) ?? .poo
-        let subtitle = "Subtitle"
-        let annotation = PointOfInterestAnnotation(coordinate: coordinate!, title: title, subtitle: subtitle, type: type)
-        mapView.addAnnotation(annotation)
-    }
-    
-    @IBAction func recordButton(_ sender: Any)
-    {
-        
-        //Set loggingRoute variable
-        if loggingRoute
-        {
-                loggingRoute = false
-        }
-        else
-        {
-            loggingRoute = true
-        }
-        
-        configureLocationManager()
-    }
-    
-    
-    func configureLocationManager()
-    {
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            if locationManager == nil
-            {
-                locationManager = CLLocationManager()
-            }
-            
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-            isCurrentLocation = true
-        }
-    }
-    
-    
-    func configureMapView()
-    {
-        // For User Tracking
-        //Config the mapview to show the user location
-        mapView.delegate = self
-        mapView.mapType = .standard
-        //mapView.showsUserLocation = true
-        mapView.showsScale = true
-        mapView.showsCompass = true
-        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
-    }
-    
+    //
+    //MARK:- UIViewController's methods
+    //
     required init?(coder aDecoder: NSCoder)
     {
         mapModel = MapModel()
@@ -153,24 +65,22 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     
-    //MARK:- UIViewController's methods
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-
+        
+        
         //Load coordinates from CoreData
         //mapOverlay = MapOverlay(map: mapModel)
-    
+        
         //If mapModel is nil load the user's current location
         if mapModel?.midCoordinate == nil
         {
             configureLocationManager()
             mapModel?.midCoordinate = (locationManager.location?.coordinate)!
         }
-
- 
+        
+        
         configureMapView()
         
         centerMapOnLocation(location: (mapModel?.midCoordinate)!)
@@ -203,47 +113,180 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             optionsController.selectedOptions = selectedOptions
         }
     }
+}
+
+
+//MARK:- IBActions
+extension MapsViewController
+{
+
+    //MRK:- Locate User on map
+    @IBAction func locateMeButton(_ sender: UIBarButtonItem)
+    {
+        configureLocationManager()
+    }
     
-    @IBAction func closeOptions(_ exitSegue: UIStoryboardSegue) {
+    
+    // MARK: - Search for Location
+    @IBAction func searchButton(_ sender: UIBarButtonItem)
+    {
+        if searchController == nil
+        {
+            searchController = UISearchController(searchResultsController: nil)
+        }
+        searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
+    }
+
+
+    //MARK:- Create and Add a Point Of Interest at current location
+    @IBAction func PointOfinterestButton(_ sender: Any)
+    {
+
+        configureLocationManager()
+        
+
+        //Create a Point Of Interest and add to the map
+        let coordinate = locationManager.location?.coordinate
+        let title = "NEW ANNOTATION!!!"
+        let type = PointOfInterestType(rawValue: 1) ?? .poo
+        let subtitle = "Subtitle"
+        let annotation = PointOfInterestAnnotation(coordinate: coordinate!, title: title, subtitle: subtitle, type: type)
+        mapView.addAnnotation(annotation)
+    }
+
+
+    //MARK:- Start / Stop Logging Route
+    @IBAction func recordButton(_ sender: Any)
+    {
+        
+        //Set loggingRoute variable
+        if loggingRoute
+        {
+                loggingRoute = false
+        }
+        else
+        {
+            loggingRoute = true
+        }
+        
+        configureLocationManager()
+    }
+    
+    //MARK:- Close the Maps Options Controller
+    @IBAction func closeOptions(_ exitSegue: UIStoryboardSegue)
+    {
         guard let vc = exitSegue.source as? MapOptionsViewController else { return }
         selectedOptions = vc.selectedOptions
         loadSelectedOptions()
     }
     
-    @IBAction func mapTypeChanged(_ sender: UISegmentedControl) {
+    
+    //MARK:- Change the Map Type
+    @IBAction func mapTypeChanged(_ sender: UISegmentedControl)
+    {
         mapView.mapType = MKMapType.init(rawValue: UInt(sender.selectedSegmentIndex)) ?? .standard
+    }
+}
+
+
+//MARK:- Location Manager Methods
+extension MapsViewController
+{
+     //MARK:- Initialise the Location Manager
+    func configureLocationManager()
+    {
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            if locationManager == nil
+            {
+                locationManager = CLLocationManager()
+            }
+            
+            
+            locationManager.delegate = self
+            //locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+            //locationManager.startUpdatingHeading()
+            isCurrentLocation = true
+        }
+    }
+}
+
+
+//MARK:- Visible Map Region Methods
+extension MapsViewController
+{
+
+    //MARK:- Configure the UIMapView to show maps
+    func configureMapView()
+    {
+        // For User Tracking
+        //Config the mapview to show the user location
+        mapView.delegate = self
+        mapView.mapType = .standard
+        //mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.showsCompass = true
+        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+    }
+    
+    
+    //Mark:- Calculate the visible Map Region
+    func getMapBoundary()
+    {
+        let mRect: MKMapRect = self.mapView.visibleMapRect
+        let eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect))
+        let westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect))
+        let currentDistWideInMeters = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint)
+        let milesWide = currentDistWideInMeters / 1609.34 // number of meters in a mile
+        
+        //Capture the height and width of the visible map in metres
+        let mapWidth = MKMapRectGetWidth(mRect) / 10;
+        let mapHeight = MKMapRectGetHeight(mRect) / 10;
+        
+        print("milesWide: \(milesWide)")
     }
     
     
     //NOT CURRENTLY USED BECAUSE THE OVERLAY COORDINATES ARE NOT BEING SET AS OF YET
+    //MARK:- Configure the visible Map Region
     func configureVisibleRegion()
     {
         //Config the size/region of the mapview
         let latDelta = (mapModel?.overlayTopLeftCoordinate.latitude)! - (mapModel?.overlayBottomRightCoordinate.latitude)!
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
         let region = MKCoordinateRegionMake((mapModel?.midCoordinate)!, span)
+        
         mapView.region = region
     }
     
     
-    //Center map on location
+    //MARK:- Center the Map on the User's Current Location
     func centerMapOnLocation(location: CLLocationCoordinate2D)
     {
         
-        let regionRadius: CLLocationDistance = (mapModel?.regionRadius)!
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
-        
+        //let regionRadius: CLLocationDistance = (mapModel?.regionRadius)!
+        //let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
+        //mapView.setRegion(coordinateRegion, animated: true)
 
         mapModel?.midCoordinate = location
         
-        mapView.setRegion(coordinateRegion, animated: true)
-        
         print("mapModel lat:\(mapModel?.midCoordinate.latitude) longitude:\(mapModel?.midCoordinate.longitude)")
     }
+}
+
+
+//MARK:- Map Overlays and Bits
+extension MapsViewController
+{
     
     
-    
-    //MARK: Add the map overlay
+    //MARK:- Add the Map Overlay
     func addOverlay()
     {
         let overlay = MapOverlay(map: mapModel!)
@@ -298,6 +341,55 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     }
     
     
+    //MARK:- Add Annotation to map view from dictionary
+    func addAnnotationsOnMap(locationToPoint: CLLocation)
+    {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = locationToPoint.coordinate
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(locationToPoint, completionHandler: { (placemarks, error) -> Void in
+            if let placemarks = placemarks as? [CLPlacemark], placemarks.count > 0
+            {
+                let placemark = placemarks[0]
+                var addressDictionary = placemark.addressDictionary
+                annotation.title = addressDictionary!["Name"] as? String
+                self.mapView.addAnnotation(annotation)
+            }
+            
+        })
+    }
+    
+    
+    //MARK:- Draw Route on Map
+    func drawPath(newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
+    {
+        //Draw the route/path
+        if let oldLocationNew = oldLocation as CLLocation?
+        {
+            print("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
+            
+            let oldCoordinates = oldLocationNew.coordinate
+            let newCoordinates = newLocation.coordinate
+            var area = [oldCoordinates, newCoordinates]
+            let polyline = MKPolyline(coordinates: &area, count: area.count)
+            mapView.add(polyline)
+        }
+        
+        //Calculation for location selection and pointing annotation
+        if let previousLocationNew = previousLocation as CLLocation?
+        {
+            addAnnotationsOnMap(locationToPoint: newLocation)
+            previousLocation = newLocation
+        }
+        else
+        {
+            //IN case previous location doesn't exist
+            addAnnotationsOnMap(locationToPoint: newLocation)
+            previousLocation = newLocation
+        }
+    }
+    
+    
     // MARK: Helper methods
     func loadSelectedOptions()
     {
@@ -321,8 +413,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             }
         }
     }
-    
+}
 
+
+//MARK:- Maps Searching
+extension MapsViewController
+{
+    
     // MARK: - Location UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
@@ -355,7 +452,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             let pointAnnotation = MKPointAnnotation()
             pointAnnotation.title = searchBar.text
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
-   
+            
             
             //Centre the view on the new location
             let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: "PointOfInterest")   //nil
@@ -363,27 +460,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             self!.mapView.addAnnotation(pinAnnotationView.annotation!)
         }
     }
+}
 
-    
-    //Add annotation to map view from dictionary
-    func addAnnotationsOnMap(locationToPoint: CLLocation)
-    {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locationToPoint.coordinate
-        let geoCoder = CLGeocoder()
-        geoCoder.reverseGeocodeLocation(locationToPoint, completionHandler: { (placemarks, error) -> Void in
-            if let placemarks = placemarks as? [CLPlacemark], placemarks.count > 0
-            {
-                let placemark = placemarks[0]
-                var addressDictionary = placemark.addressDictionary
-                annotation.title = addressDictionary!["Name"] as? String
-                self.mapView.addAnnotation(annotation)
-            }
-            
-        })
-    }
-    
-    
+
+//MARK:- MKMapView Delegate Methods
+extension MapsViewController
+{
     
     //MARK:- MKMapView delegate
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
@@ -431,29 +513,42 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
 //        mapView.setCenter(didUpdate.coordinate, animated: true)
     }
     
-    
+
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
     {
         print("Map was moved around = regionDidChangedAnimated")
+        let span = mapView.region.span
+        print ("span:\(span)")
         
-        let regionRadius: CLLocationDistance = 1000
+        
+        getMapBoundary()
+
+        
+        //let regionRadius: CLLocationDistance = 1000
+        
+        guard let regionRadius = mapModel?.regionRadius else { return }
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, regionRadius, regionRadius)
         
         //mapModel.midCoordinate = mapView.centerCoordinate
         //mapModel.overlayTopLeftCoordinate = mapView
         //mapModel.overlayTopRightCoordinate = mapView
         //mapModel.overlayBottomLeftCoordinate = mapView
-        //mapModel.overlayBottomRightCoordinate = mapView.
+        //mapModel.overlayBottomRightCoordinate = mapView
         
         print("centreCoordinate:\(mapView.centerCoordinate)")
         //self.mapModel?.midCoordinate = mapView.centerCoordinate
         centerMapOnLocation(location: mapView.centerCoordinate)
     }
-    
+}
+
+
+//MARK:- CLLocationManager Delegate Methods
+extension MapsViewController
+{
     
     // MARK: - CLLocationManagerDelegate
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
     //func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
     {
         
         if !isCurrentLocation
@@ -462,9 +557,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         }
         
         isCurrentLocation = false
-        
-        
         let location = locations.last
+        
+        
         //let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         //let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
@@ -483,7 +578,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         centerMapOnLocation(location: (location?.coordinate)!)
         
         
-        //currentLocation = center
         
         //self.mapView.setRegion(region, animated: true)
 
@@ -497,36 +591,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         if loggingRoute
         {
             drawPath(newLocation: newLocation, fromLocation: oldLocation)
-        }
-    }
-    
-    
-    //Create and draw the path on the map
-    func drawPath(newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
-    {
-        //Draw the route/path
-        if let oldLocationNew = oldLocation as CLLocation?
-        {
-            print("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
-            
-            let oldCoordinates = oldLocationNew.coordinate
-            let newCoordinates = newLocation.coordinate
-            var area = [oldCoordinates, newCoordinates]
-            let polyline = MKPolyline(coordinates: &area, count: area.count)
-            mapView.add(polyline)
-        }
-        
-        //Calculation for location selection and pointing annotation
-        if let previousLocationNew = previousLocation as CLLocation?
-        {
-            addAnnotationsOnMap(locationToPoint: newLocation)
-            previousLocation = newLocation
-        }
-        else
-        {
-            //IN case previous location doesn't exist
-            addAnnotationsOnMap(locationToPoint: newLocation)
-            previousLocation = newLocation
         }
     }
 }
