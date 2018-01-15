@@ -35,6 +35,8 @@ class MapModel
 {
     
     var name: String?
+    var regionRadius: Double = 1000
+    
     var boundary: [CLLocationCoordinate2D] = []
   
     var midCoordinate = CLLocationCoordinate2D()
