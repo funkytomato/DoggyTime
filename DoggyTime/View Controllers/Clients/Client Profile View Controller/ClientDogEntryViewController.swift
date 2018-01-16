@@ -182,7 +182,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         print("ClientDogEntryViewController prepare segue")
-        print("segue identifier:\(segue.identifier)")
+        print("segue identifier:\(String(describing: segue.identifier))")
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
