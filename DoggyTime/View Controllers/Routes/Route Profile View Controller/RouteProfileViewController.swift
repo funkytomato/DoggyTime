@@ -12,7 +12,8 @@ import MapKit
 
 
 
-class RouteProfileViewController: UITableViewController
+//class RouteProfileViewController: UITableViewController
+class RouteProfileViewController: UIViewController
 {
     
     // MARK: - Properties
