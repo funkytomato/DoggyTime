@@ -12,8 +12,8 @@ import MapKit
 
 
 
-//class RouteProfileViewController: UITableViewController
-class RouteProfileViewController: UIViewController
+class RouteProfileViewController: UITableViewController
+//class RouteProfileViewController: UIViewController
 {
     
     // MARK: - Properties
@@ -43,6 +43,8 @@ class RouteProfileViewController: UIViewController
   
     var numberString: String = ""
     
+    let fakeArray = ["Row1","Row2"]
+    
     
     //MARK:- IBOutlets
     @IBOutlet weak var placeNameField: UITextField!
@@ -54,7 +56,7 @@ class RouteProfileViewController: UIViewController
     
     //@IBOutlet weak var ActualDurationField: UITextField!
     //MARK:- IBActions
-    @IBOutlet weak var RouteMapView: MKMapView!
+    //@IBOutlet weak var RouteMapView: MKMapView!
     
     
     @IBAction func StartBtn(_ sender: Any) {
@@ -88,6 +90,7 @@ class RouteProfileViewController: UIViewController
             self.placeNameField.text = routeData?.placeName
         }
         
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         /*
         TerrainPicker.delegate = self
@@ -387,6 +390,54 @@ class RouteProfileViewController: UIViewController
  
 }
 
+
+//MARK:- TableView Delegates
+extension RouteProfileViewController
+{
+    /*
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        //differ between sections or if you have onyl one section return a static value
+        return 50
+    }
+    */
+    
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fakeArray.count + 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        if indexPath.row != fakeArray.count)
+        {
+            
+        }
+        else
+        {
+            let cellIdentifier = "MapTableViewCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
+            return cell
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        print("indexPath.row: \(indexPath.row)")
+        
+        if indexPath.row != fakeArray.count
+        {
+            return 60
+        }
+        else
+        {
+            return 400
+        }
+    }
+}
 
 //MARK:- PickerView
 extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource
