@@ -250,6 +250,15 @@ extension MapsViewController
         let mapHeight = MKMapRectGetHeight(mRect) / 10;
         
         print("milesWide: \(milesWide)")
+        
+        
+        //mapModel.midCoordinate = mapView.centerCoordinate
+        //mapModel.overlayTopLeftCoordinate = mapView
+        //mapModel.overlayTopRightCoordinate = mapView
+        //mapModel.overlayBottomLeftCoordinate = mapView
+        //mapModel.overlayBottomRightCoordinate = mapView
+        
+        
     }
     
     
@@ -263,6 +272,11 @@ extension MapsViewController
         let region = MKCoordinateRegionMake((mapModel?.midCoordinate)!, span)
         
         mapView.region = region
+        
+        
+        //let regionRadius: CLLocationDistance = 1000
+        //guard let regionRadius = mapModel?.regionRadius else { return }
+        //let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, regionRadius, regionRadius)
     }
     
     
@@ -520,24 +534,11 @@ extension MapsViewController
         let span = mapView.region.span
         print ("span:\(span)")
         
-        
-        getMapBoundary()
 
-        
-        //let regionRadius: CLLocationDistance = 1000
-        
-        guard let regionRadius = mapModel?.regionRadius else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, regionRadius, regionRadius)
-        
-        //mapModel.midCoordinate = mapView.centerCoordinate
-        //mapModel.overlayTopLeftCoordinate = mapView
-        //mapModel.overlayTopRightCoordinate = mapView
-        //mapModel.overlayBottomLeftCoordinate = mapView
-        //mapModel.overlayBottomRightCoordinate = mapView
-        
-        print("centreCoordinate:\(mapView.centerCoordinate)")
-        //self.mapModel?.midCoordinate = mapView.centerCoordinate
+        getMapBoundary()
+        configureVisibleRegion()
         centerMapOnLocation(location: mapView.centerCoordinate)
+        //print("centreCoordinate:\(mapView.centerCoordinate)")
     }
 }
 
