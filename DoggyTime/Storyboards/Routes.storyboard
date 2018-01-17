@@ -66,7 +66,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="routeNameLbl" destination="hQf-Xc-vte" id="fdg-Y4-Ads"/>
-                                    <segue destination="qF9-EF-hoe" kind="show" id="BhC-uF-Akl"/>
+                                    <segue destination="72U-yJ-w7A" kind="show" id="YyJ-yr-Pgj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -78,7 +78,7 @@
                     <navigationItem key="navigationItem" title="Walking Routes" id="E4l-4v-OIB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nfK-eN-lHh">
                             <connections>
-                                <segue destination="qF9-EF-hoe" kind="show" id="WeB-mV-b6K"/>
+                                <segue destination="72U-yJ-w7A" kind="show" id="i8G-xZ-PSG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -142,7 +142,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="placeNameField" destination="tLo-kE-uZ7" id="zDY-BC-VUP"/>
+                        <outlet property="placeNameField" destination="tLo-kE-uZ7" id="i0Z-Mv-qou"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzN-l6-ile" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,9 +240,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="placeNameField" destination="owo-eK-dVw" id="c7X-lp-P4f"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooZ-kO-5xC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="RBb-AZ-NDS" userLabel="Exit" sceneMemberID="exit"/>
@@ -270,6 +267,6 @@
         <image name="dogwalker" width="27" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BhC-uF-Akl"/>
+        <segue reference="YyJ-yr-Pgj"/>
     </inferredMetricsTieBreakers>
 </document>

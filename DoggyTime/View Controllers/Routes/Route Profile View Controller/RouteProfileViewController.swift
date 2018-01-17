@@ -12,15 +12,24 @@ import MapKit
 
 
 
-class RouteProfileViewController: UITableViewController
-//class RouteProfileViewController: UIViewController
+//class RouteProfileViewController: UITableViewController
+class RouteProfileViewController: UIViewController
 {
     
     // MARK: - Properties
     var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     
+    //Embedded MapsViewController Properties
     fileprivate var embeddedMapsViewController: MapsViewController!
+    //Location Manager Properties
+    private let locationManager = LocationManager.shared
+    private var seconds = 0  //track the duration of the walk
+    private var timer: Timer? //will fire each second and update the UI accordingly
+    private var distance = Measurement(value: 0, unit: UnitLength.meters) //Cumulative distance of the walk
+    private var locationList: [CLLocation] = [] //array to hold all the CLLocation objects collected during the walk
+    
+    
     
     //MARK:- Properties
     var routeData: Route?
@@ -83,14 +92,14 @@ class RouteProfileViewController: UITableViewController
     {
         print("RouteProfileViewController viewDidLoad")
         super.viewDidLoad()
-        
+         
         
         if routeData != nil
         {
             self.placeNameField.text = routeData?.placeName
         }
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        //tableView.rowHeight = UITableViewAutomaticDimension
         
         /*
         TerrainPicker.delegate = self
@@ -400,7 +409,7 @@ extension RouteProfileViewController
         return 50
     }
     */
-    
+ /*
     override func numberOfSections(in tableView: UITableView) -> Int
     {
         return 2
@@ -437,6 +446,7 @@ extension RouteProfileViewController
             return 400
         }
     }
+ */
 }
 
 //MARK:- PickerView

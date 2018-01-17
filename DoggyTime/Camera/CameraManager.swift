@@ -1277,7 +1277,8 @@ open class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGest
     
     fileprivate class CameraLocationManager: NSObject, CLLocationManagerDelegate
     {
-        var locationManager = CLLocationManager()
+        //var locationManager = CLLocationManager()
+        var locationManager = LocationManager.shared
         var latestLocation: CLLocation?
         
         override init()

@@ -55,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
         }
         
+        let locationManager = LocationManager.shared
+        
+        
         return true
     }
 

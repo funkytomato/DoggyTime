@@ -12,7 +12,7 @@ import CoreLocation
 import CoreData
 
 
-class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate
+class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate
 {
     
     
@@ -23,19 +23,21 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     //var path : [Path]?  pulled from the mapModel
 
 
+
     
 
     //MARK:- Map, Map Overlay, Map Options Properties
     var mapOverlay: MapOverlay!
     var selectedOptions : [MapOptionsType] = []
     
-    fileprivate var locationManager: CLLocationManager!
+    //fileprivate var locationManager: CLLocationManager!
+    //private let locationManager = LocationManager.shared
     fileprivate var isCurrentLocation: Bool = false
     fileprivate var loggingRoute: Bool = false
     fileprivate var annotation: MKAnnotation!
     
     
-    //MARK:- Map Route Properties
+    //MARK:- Location Properties
     var previousLocation: CLLocation!
     
     
@@ -69,6 +71,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     {
         super.viewDidLoad()
         
+        //LocationManager
+        
+        
         
         //Load coordinates from CoreData
         //mapOverlay = MapOverlay(map: mapModel)
@@ -76,8 +81,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         //If mapModel is nil load the user's current location
         if mapModel?.midCoordinate == nil
         {
-            configureLocationManager()
-            mapModel?.midCoordinate = (locationManager.location?.coordinate)!
+//            configureLocationManager()
+            
+            §mapModel?.midCoordinate = (locationManager.location?.coordinate)!
         }
         
         
@@ -97,7 +103,17 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
     {
         super.viewWillAppear(animated)
         
+        
+        //configureLocationManager()
+        
         activityIndicator.center = self.view.center
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        locationManager.stopUpdatingLocation()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -113,6 +129,66 @@ class MapsViewController: UIViewController, MKMapViewDelegate, CLLocationManager
             optionsController.selectedOptions = selectedOptions
         }
     }
+    
+    func eachSecond()
+    {
+        seconds += 1
+        updateDisplay()
+    }
+    
+    private func updateDisplay()
+    {
+        
+    }
+    
+    private func startLocationUpdates()
+    {
+        locationManager.delegate = self
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 10
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func startRecording()
+    {
+        seconds = 0
+        distance = Measurement(value: 0, unit: UnitLength.meters)
+        locationList.removeAll()
+        updateDisplay()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true)
+        {
+            _ in self.eachSecond()
+        }
+        startLocationUpdates()
+    }
+    
+    private func stopRecording()
+    {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    private func saveRoute()
+    {
+        /*
+         let newRoute = Route(context: CoreDataStack.context)
+         newRoute.distance = distance.value
+         newRoute.duration = Int16(seconds)
+         newRoute.timestamp = Date()
+         
+         for location in locationList
+         {
+         let locationObject = Location(context: CoreDataStack.context)
+         locationObject.timestamp = location.timestamp
+         locationObject.latitude = location.coordinate.latitude
+         locationObject.longitude = location.coordinate.longitude
+         newRoute.addToLocations(locationObject)
+         }
+         
+         CoreDataStack.saveContext()
+         
+         route = newRoute
+         */
+    }
 }
 
 
@@ -123,7 +199,8 @@ extension MapsViewController
     //MRK:- Locate User on map
     @IBAction func locateMeButton(_ sender: UIBarButtonItem)
     {
-        configureLocationManager()
+//        configureLocationManager()
+        startLocationUpdates()
     }
     
     
@@ -144,7 +221,7 @@ extension MapsViewController
     @IBAction func PointOfinterestButton(_ sender: Any)
     {
 
-        configureLocationManager()
+//        configureLocationManager()
         
 
         //Create a Point Of Interest and add to the map
@@ -164,14 +241,16 @@ extension MapsViewController
         //Set loggingRoute variable
         if loggingRoute
         {
-                loggingRoute = false
+            loggingRoute = false
+            stopRecording()
         }
         else
         {
             loggingRoute = true
+            startRecording()
         }
         
-        configureLocationManager()
+        //configureLocationManager()
     }
     
     //MARK:- Close the Maps Options Controller
@@ -194,6 +273,7 @@ extension MapsViewController
 //MARK:- Location Manager Methods
 extension MapsViewController
 {
+    /*
      //MARK:- Initialise the Location Manager
     func configureLocationManager()
     {
@@ -206,15 +286,16 @@ extension MapsViewController
             
             
             locationManager.delegate = self
-            //locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestAlwaysAuthorization()
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
-            //locationManager.startUpdatingHeading()
+            locationManager.startUpdatingHeading()
             isCurrentLocation = true
         }
     }
+ */
 }
 
 
@@ -229,7 +310,7 @@ extension MapsViewController
         //Config the mapview to show the user location
         mapView.delegate = self
         mapView.mapType = .standard
-        //mapView.showsUserLocation = true
+        mapView.showsUserLocation = true
         mapView.showsScale = true
         mapView.showsCompass = true
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
@@ -535,8 +616,8 @@ extension MapsViewController
         print ("span:\(span)")
         
 
-        getMapBoundary()
-        configureVisibleRegion()
+        //getMapBoundary()
+        //configureVisibleRegion()
         centerMapOnLocation(location: mapView.centerCoordinate)
         //print("centreCoordinate:\(mapView.centerCoordinate)")
     }
@@ -544,14 +625,35 @@ extension MapsViewController
 
 
 //MARK:- CLLocationManager Delegate Methods
-extension MapsViewController
+extension MapsViewController : CLLocationManagerDelegate
 {
     
     // MARK: - CLLocationManagerDelegate
-    //func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
+   // func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         
+        for newLocation in locations
+        {
+            let howRecent = newLocation.timestamp.timeIntervalSinceNow
+            guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
+            
+            if let lastLocation = locationList.last
+            {
+                let delta = newLocation.distance(from: lastLocation)
+                distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+            }
+            
+            locationList.append(newLocation)
+            
+            drawPath(newLocation: newLocation, fromLocation: locationList.last)
+        }
+    }
+        
+//        centerMapOnLocation(location: (newLocation?.coordinate)!)
+        
+        /*
         if !isCurrentLocation
         {
             return
@@ -561,27 +663,7 @@ extension MapsViewController
         let location = locations.last
         
         
-        //let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        //let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-       // let regionRadius: CLLocationDistance = 1000
-       // let coordinateRegion = MKCoordinateRegionMakeWithDistance((location?.coordinate)!, regionRadius, regionRadius)
-        
-        
-        //Config the size/region of the mapview
-        //let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
-        //let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        //let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
-        
-        
-        //mapView.region = coordinateRegion
-        
         centerMapOnLocation(location: (location?.coordinate)!)
-        
-        
-        
-        //self.mapView.setRegion(region, animated: true)
-
      
         if self.mapView.annotations.count != 0
         {
@@ -591,7 +673,25 @@ extension MapsViewController
         
         if loggingRoute
         {
-            drawPath(newLocation: newLocation, fromLocation: oldLocation)
+            drawPath(newLocation: location, fromLocation: locations.)
         }
-    }
+     }
+     */
+
 }
+
+
+//let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+//let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
+// let regionRadius: CLLocationDistance = 1000
+// let coordinateRegion = MKCoordinateRegionMakeWithDistance((location?.coordinate)!, regionRadius, regionRadius)
+
+
+//Config the size/region of the mapview
+//let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
+//let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+//let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
+
+
+//mapView.region = coordinateRegion

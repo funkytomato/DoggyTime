@@ -103,6 +103,7 @@
 		C290010D200945DC00093DDF /* Map+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C290010B200945DC00093DDF /* Map+CoreDataProperties.swift */; };
 		C298E1441FFD353800AEA7BD /* Path+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */; };
 		C298E1451FFD353800AEA7BD /* Path+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */; };
+		C2ACEFA6200FA01400096DC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACEFA5200FA01400096DC1 /* LocationManager.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
@@ -214,6 +215,7 @@
 		C290010B200945DC00093DDF /* Map+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Map+CoreDataProperties.swift"; path = "../Map+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C298E1421FFD353800AEA7BD /* Path+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataClass.swift"; path = "../Path+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298E1431FFD353800AEA7BD /* Path+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Path+CoreDataProperties.swift"; path = "../Path+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C2ACEFA5200FA01400096DC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 				1808F7041F9E15550027B447 /* View Controllers */,
 				18A7D5341FF837D300156BE7 /* View Models */,
 				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
+				C2ACEFA5200FA01400096DC1 /* LocationManager.swift */,
 			);
 			path = DoggyTime;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				18A7D5291FF836E000156BE7 /* MapOverlayView.swift in Sources */,
 				C290010D200945DC00093DDF /* Map+CoreDataProperties.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
+				C2ACEFA6200FA01400096DC1 /* LocationManager.swift in Sources */,
 				18A5DB831FB4EE7E008C0C91 /* Walk+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
