@@ -1,6 +1,6 @@
 //
 //  MapsViewController.swift
-//  DoggyTimev2
+//  DoggyTime
 //
 //  Created by Jason Fry on 27/12/2017.
 //  Copyright © 2017 Jason Fry. All rights reserved.
@@ -21,17 +21,21 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     //var map = MapModel(filename: "MagicMountain")
     //var pointsOfInterest: [PointOfInterest]?  pulled from the mapModel
     //var path : [Path]?  pulled from the mapModel
-
-
-
     
 
     //MARK:- Map, Map Overlay, Map Options Properties
     var mapOverlay: MapOverlay!
     var selectedOptions : [MapOptionsType] = []
     
+    
     //fileprivate var locationManager: CLLocationManager!
-    //private let locationManager = LocationManager.shared
+    private let locationManager = LocationManager.shared
+    private var seconds = 0
+    private var timer: Timer?
+    private var distance = Measurement(value: 0, unit: UnitLength.meters)
+    private var locationList: [CLLocation] = []
+    
+    
     fileprivate var isCurrentLocation: Bool = false
     fileprivate var loggingRoute: Bool = false
     fileprivate var annotation: MKAnnotation!
@@ -70,10 +74,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        //LocationManager
-        
-        
+
         
         //Load coordinates from CoreData
         //mapOverlay = MapOverlay(map: mapModel)
@@ -81,14 +82,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         //If mapModel is nil load the user's current location
         if mapModel?.midCoordinate == nil
         {
-//            configureLocationManager()
-            
-            §mapModel?.midCoordinate = (locationManager.location?.coordinate)!
+            mapModel?.midCoordinate = (locationManager.location?.coordinate)!
         }
         
         
         configureMapView()
-        
         centerMapOnLocation(location: (mapModel?.midCoordinate)!)
         
         
@@ -102,10 +100,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        
-        
-        //configureLocationManager()
-        
+
         activityIndicator.center = self.view.center
     }
     
@@ -199,7 +194,6 @@ extension MapsViewController
     //MRK:- Locate User on map
     @IBAction func locateMeButton(_ sender: UIBarButtonItem)
     {
-//        configureLocationManager()
         startLocationUpdates()
     }
     
@@ -220,37 +214,32 @@ extension MapsViewController
     //MARK:- Create and Add a Point Of Interest at current location
     @IBAction func PointOfinterestButton(_ sender: Any)
     {
-
-//        configureLocationManager()
-        
-
-        //Create a Point Of Interest and add to the map
-        let coordinate = locationManager.location?.coordinate
-        let title = "NEW ANNOTATION!!!"
-        let type = PointOfInterestType(rawValue: 1) ?? .poo
-        let subtitle = "Subtitle"
-        let annotation = PointOfInterestAnnotation(coordinate: coordinate!, title: title, subtitle: subtitle, type: type)
-        mapView.addAnnotation(annotation)
+        addAnnotationToMap()
     }
 
 
     //MARK:- Start / Stop Logging Route
     @IBAction func recordButton(_ sender: Any)
     {
+        guard let button = sender as? UIButton else { return }
         
         //Set loggingRoute variable
         if loggingRoute
         {
+            button.setTitle("Record", for: .normal)
+            button.backgroundColor = UIColor.clear
+            
             loggingRoute = false
             stopRecording()
         }
         else
         {
+            button.setTitle("Recording", for: .normal)
+            button.backgroundColor = UIColor.red
+
             loggingRoute = true
             startRecording()
         }
-        
-        //configureLocationManager()
     }
     
     //MARK:- Close the Maps Options Controller
@@ -270,32 +259,10 @@ extension MapsViewController
 }
 
 
-//MARK:- Location Manager Methods
+//MARK:-
 extension MapsViewController
 {
-    /*
-     //MARK:- Initialise the Location Manager
-    func configureLocationManager()
-    {
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            if locationManager == nil
-            {
-                locationManager = CLLocationManager()
-            }
-            
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-            locationManager.startUpdatingHeading()
-            isCurrentLocation = true
-        }
-    }
- */
+
 }
 
 
@@ -364,11 +331,6 @@ extension MapsViewController
     //MARK:- Center the Map on the User's Current Location
     func centerMapOnLocation(location: CLLocationCoordinate2D)
     {
-        
-        //let regionRadius: CLLocationDistance = (mapModel?.regionRadius)!
-        //let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
-        //mapView.setRegion(coordinateRegion, animated: true)
-
         mapModel?.midCoordinate = location
         
         print("mapModel lat:\(mapModel?.midCoordinate.latitude) longitude:\(mapModel?.midCoordinate.longitude)")
@@ -433,6 +395,18 @@ extension MapsViewController
         //mapView.add(Character(filename: "BatmanLocations", color: .blue))
         //mapView.add(Character(filename: "TazLocations", color: .orange))
         //mapView.add(Character(filename: "TweetyBirdLocations", color: .yellow))
+    }
+    
+    
+    func addAnnotationToMap()
+    {
+        //Create a Point Of Interest and add to the map
+        let coordinate = locationManager.location?.coordinate
+        let title = "NEW ANNOTATION!!!"
+        let type = PointOfInterestType(rawValue: 1) ?? .poo
+        let subtitle = "Subtitle"
+        let annotation = PointOfInterestAnnotation(coordinate: coordinate!, title: title, subtitle: subtitle, type: type)
+        mapView.addAnnotation(annotation)
     }
     
     
@@ -629,8 +603,6 @@ extension MapsViewController : CLLocationManagerDelegate
 {
     
     // MARK: - CLLocationManagerDelegate
-   // func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation], newLocation: CLLocation!, fromLocation oldLocation: CLLocation!)
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         
@@ -643,41 +615,23 @@ extension MapsViewController : CLLocationManagerDelegate
             {
                 let delta = newLocation.distance(from: lastLocation)
                 distance = distance + Measurement(value: delta, unit: UnitLength.meters)
+                drawPath(newLocation: newLocation, fromLocation: lastLocation)
             }
             
             locationList.append(newLocation)
             
-            drawPath(newLocation: newLocation, fromLocation: locationList.last)
-        }
-    }
-        
-//        centerMapOnLocation(location: (newLocation?.coordinate)!)
-        
-        /*
-        if !isCurrentLocation
-        {
-            return
+            addAnnotationToMap()
+            
         }
         
-        isCurrentLocation = false
-        let location = locations.last
-        
-        
-        centerMapOnLocation(location: (location?.coordinate)!)
-     
-        if self.mapView.annotations.count != 0
-        {
-            annotation = self.mapView.annotations[0]
-            self.mapView.removeAnnotation(annotation)
-        }
-        
-        if loggingRoute
-        {
-            drawPath(newLocation: location, fromLocation: locations.)
-        }
-     }
-     */
 
+    }
+    
+    
+    private func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    {
+        print("Error \(error)")
+    }
 }
 
 
