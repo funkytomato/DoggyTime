@@ -2,7 +2,7 @@
 //  PointOfInterest+CoreDataProperties.swift
 //  
 //
-//  Created by Jason Fry on 30/12/2017.
+//  Created by Spaceman on 18/01/2018.
 //
 //
 
@@ -16,10 +16,13 @@ extension PointOfInterest {
         return NSFetchRequest<PointOfInterest>(entityName: "PointOfInterest")
     }
 
-    @NSManaged public var location: String?
+    @NSManaged public var createdAt: Date?
     @NSManaged public var name: String?
     @NSManaged public var subtitle: String?
     @NSManaged public var type: Int16
-    @NSManaged public var locatedAt: Map?
+    @NSManaged public var updatedAt: Date?
+    @NSManaged public var uuid: String?
+    @NSManaged public var locatedAt: Location?
+    @NSManaged public var onMap: Map?
 
 }
