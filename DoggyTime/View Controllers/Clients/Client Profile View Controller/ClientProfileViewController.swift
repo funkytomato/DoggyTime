@@ -165,8 +165,8 @@ class ClientProfileViewController: UITableViewController, UIImagePickerControlle
             dog.temperament = "Good"
             dog.profilePicture = nil
             dog.temperament = ""
-            dog.createdAt = NSDate()
-            dog.updatedAt = NSDate()
+            dog.createdAt = Date()
+            dog.updatedAt = Date()
             //dog.uuid = ""
             dog.owner = clientData
            
