@@ -96,13 +96,7 @@ class RoutesViewController: UITableViewController
             //Populate Route
             route.placeName = ""
             route.terrain = ""
-            route.actualDistance = 0.0
-            route.distanceMiles = 0
-            route.distanceQtrs = 0
-            route.actualDuration = 0.0
-            route.durationHrs = 0
-            route.durationMins = 0
-
+ 
             
             // Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
