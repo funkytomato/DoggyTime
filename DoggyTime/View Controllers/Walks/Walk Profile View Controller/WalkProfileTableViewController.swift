@@ -81,8 +81,8 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             locationNameField.inputView = locationPicker
             
 
-            latitudeField.text = walkData?.latitude.description
-            longitudeField.text = walkData?.longitude.description
+ //           latitudeField.text = walkData?.latitude.description
+ //           longitudeField.text = walkData?.longitude.description
         }
     }
     
@@ -125,11 +125,11 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             
             guard let latitude = Double(latitude) else {return}
             print("latitude\(latitude)")
-            walkData?.latitude = latitude
+ //           walkData?.latitude = latitude
             
             guard let longitude = Double(longitude) else {return}
             print("longitude\(longitude)")
-            walkData?.longitude = longitude
+ //           walkData?.longitude = longitude
         }
     }
 }
