@@ -203,8 +203,8 @@ class RouteProfileViewController: UIViewController
             
             //Check routeData mapProfile exists
             guard let mapProfile = routeData?.mapProfile else { return }
-            print("parseCoord:\(parseCoord(location: mapProfile.midLatitudeCoordinate!))")
-            print("parseCoord:\(parseCoord(location: mapProfile.midLongitudeCoordinate!))")
+            print("parseCoord:\(parseCoord(location: mapProfile.midLatitudeCoordinate.description))")
+            print("parseCoord:\(parseCoord(location: mapProfile.midLongitudeCoordinate.description))")
 
             
             let latitude = routeData?.mapProfile?.midLatitudeCoordinate as? String
@@ -344,19 +344,27 @@ class RouteProfileViewController: UIViewController
             
             //Populate Map object with mapModel values
             map.uuid = ""
-            map.updatedAt = NSDate()
-            map.createdAt = NSDate()
+            map.updatedAt = Date()
+            map.createdAt = Date()
             
             
             
             map.name = locationName
-            map.midLatitudeCoordinate = String(describing: mapModel.midCoordinate.latitude)
-            map.midLongitudeCoordinate = String(describing: mapModel.midCoordinate.longitude)
+            //map.midLatitudeCoordinate = String(describing: mapModel.midCoordinate.latitude)
+            //map.midLongitudeCoordinate = String(describing: mapModel.midCoordinate.longitude)
+            map.midLatitudeCoordinate = mapModel.midCoordinate.latitude
+            map.midLongitudeCoordinate = mapModel.midCoordinate.longitude
             
-            map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
-            map.overlayBottomRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
-            map.overlayTopLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
-            map.overlayTopRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
+            
+            //map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
+            //map.overlayBottomRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
+            //map.overlayTopLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
+            //map.overlayTopRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
+            //map.overlayBottomLeftCoordinate = mapModel.overlayTopLeftCoordinate
+            //map.overlayBottomRightCoordinate = mapModel.overlayTopRightCoordinate
+            //map.overlayTopLeftCoordinate = mapModel.overlayBottomLeftCoordinate
+            //map.overlayTopRightCoordinate = mapModel.overlayBottomRightCoordinate
+            
             
             map.mapFor = routeData
             
