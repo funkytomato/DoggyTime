@@ -1,9 +1,8 @@
 //
 //  Walk+CoreDataProperties.swift
-//  DoggyTimev2
+//  
 //
-//  Created by Jason Fry on 09/11/2017.
-//  Copyright © 2017 Jason Fry. All rights reserved.
+//  Created by Spaceman on 18/01/2018.
 //
 //
 
@@ -17,14 +16,12 @@ extension Walk {
         return NSFetchRequest<Walk>(entityName: "Walk")
     }
 
+    @NSManaged public var createdAt: Date?
     @NSManaged public var dateofwalk: Date?
-    @NSManaged public var dogid: Int16
-    @NSManaged public var latitude: Double
     @NSManaged public var locationName: String?
-    @NSManaged public var longitude: Double
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var profilePicture: Data?
+    @NSManaged public var updatedAt: Date?
+    @NSManaged public var uuid: String?
     @NSManaged public var dogsonwalk: NSSet?
     @NSManaged public var routeName: Route?
 

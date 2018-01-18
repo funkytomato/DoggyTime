@@ -1,9 +1,8 @@
 //
 //  Client+CoreDataProperties.swift
-//  DoggyTimev2
+//  
 //
-//  Created by Jason Fry on 09/11/2017.
-//  Copyright © 2017 Jason Fry. All rights reserved.
+//  Created by Spaceman on 18/01/2018.
 //
 //
 
@@ -17,16 +16,17 @@ extension Client {
         return NSFetchRequest<Client>(entityName: "Client")
     }
 
+    @NSManaged public var createdAt: Date?
     @NSManaged public var eMail: String?
     @NSManaged public var foreName: String?
     @NSManaged public var mobile: String?
     @NSManaged public var postCode: String?
+    @NSManaged public var profilePicture: Data?
     @NSManaged public var street: String?
     @NSManaged public var surName: String?
     @NSManaged public var town: String?
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var updatedAt: NSDate?
-    @NSManaged public var profilePicture: Data?
+    @NSManaged public var updatedAt: Date?
+    @NSManaged public var uuid: String?
     @NSManaged public var dogsOwned: NSSet?
 
 }

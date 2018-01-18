@@ -1,9 +1,8 @@
 //
 //  Path+CoreDataProperties.swift
-//  DoggyTime
+//  
 //
-//  Created by Jason Fry on 03/01/2018.
-//  Copyright © 2018 Jason Fry. All rights reserved.
+//  Created by Spaceman on 18/01/2018.
 //
 //
 
@@ -17,7 +16,30 @@ extension Path {
         return NSFetchRequest<Path>(entityName: "Path")
     }
 
-    @NSManaged public var pathpoint: String?
+    @NSManaged public var createdAt: Date?
+    @NSManaged public var distance: Double
+    @NSManaged public var duration: Int16
+    @NSManaged public var pathPoint: String?
+    @NSManaged public var updatedAt: Date?
+    @NSManaged public var uuid: String?
+    @NSManaged public var locations: NSSet?
     @NSManaged public var pathFor: Map?
+
+}
+
+// MARK: Generated accessors for locations
+extension Path {
+
+    @objc(addLocationsObject:)
+    @NSManaged public func addToLocations(_ value: Location)
+
+    @objc(removeLocationsObject:)
+    @NSManaged public func removeFromLocations(_ value: Location)
+
+    @objc(addLocations:)
+    @NSManaged public func addToLocations(_ values: NSSet)
+
+    @objc(removeLocations:)
+    @NSManaged public func removeFromLocations(_ values: NSSet)
 
 }

@@ -2,7 +2,7 @@
 //  PointOfInterest+CoreDataClass.swift
 //  
 //
-//  Created by Jason Fry on 30/12/2017.
+//  Created by Spaceman on 18/01/2018.
 //
 //
 
