@@ -135,7 +135,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             guard let owner = dogData?.owner?.foreName else { return }
             self.OwnerNameLabel.text = owner
             
-            guard let walkcount = dogData?.walkcount.description else { return }
+            guard let walkcount = dogData?.walkCount.description else { return }
             self.WalkCountLabel.text = walkcount
             
             
@@ -201,7 +201,7 @@ class ClientDogEntryViewController: UITableViewController, UIPickerViewDelegate,
             dogData?.breed = breed
             dogData?.size = size
             dogData?.temperament = temperament
-            dogData?.updatedAt = NSDate()
+            dogData?.updatedAt = Date()
             dogData?.profilePicture = picture as? Data
         }
         
