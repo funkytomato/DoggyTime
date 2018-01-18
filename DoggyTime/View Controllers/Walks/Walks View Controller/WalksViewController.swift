@@ -95,8 +95,6 @@ class WalksViewController: UITableViewController
             let date = Date()
             walk.dateofwalk = date
             
-            walk.latitude = 0.0
-            walk.longitude = 0.0
             
             profileViewController.walkData = walk
             
