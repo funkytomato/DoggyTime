@@ -87,8 +87,8 @@ class ClientsViewController: UITableViewController
             client.postCode = "PO21 4WR"
             client.mobile = "07967441749"
             client.eMail = "bob@gmail.com"
-            client.createdAt = NSDate()
-            client.updatedAt = NSDate()
+            client.createdAt = Date()
+            client.updatedAt = Date()
             
             //Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
