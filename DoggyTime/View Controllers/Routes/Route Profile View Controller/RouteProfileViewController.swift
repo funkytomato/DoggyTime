@@ -23,11 +23,11 @@ class RouteProfileViewController: UIViewController
     //Embedded MapsViewController Properties
     fileprivate var embeddedMapsViewController: MapsViewController!
     //Location Manager Properties
-    private let locationManager = LocationManager.shared
-    private var seconds = 0  //track the duration of the walk
-    private var timer: Timer? //will fire each second and update the UI accordingly
-    private var distance = Measurement(value: 0, unit: UnitLength.meters) //Cumulative distance of the walk
-    private var locationList: [CLLocation] = [] //array to hold all the CLLocation objects collected during the walk
+    //private let locationManager = LocationManager.shared
+    //private var seconds = 0  //track the duration of the walk
+    //private var timer: Timer? //will fire each second and update the UI accordingly
+    //private var distance = Measurement(value: 0, unit: UnitLength.meters) //Cumulative distance of the walk
+    //private var locationList: [CLLocation] = [] //array to hold all the CLLocation objects collected during the walk
     
     
     
@@ -43,42 +43,19 @@ class RouteProfileViewController: UIViewController
     
     //Picker DataSources
     var TerrainDataSource = ["Sandy","Grass","RiverSide","Hilly","Beach"]
-    var TenNumbersDataSource = [0,1,2,3,4,5,6,7,8,9]
-    var DurationQtrsDataSource = [0,15,30,45]
-    var DistanceQtrDataSource = [0,25,50,75]
     
-    //var DistanceDataSource = ["0","1","2","3","4","5","6","7","8","9"]
-    //var DurationDataSource = ["0","1","2","3","4","5","6","7","8","9"]
-  
     var numberString: String = ""
-    
-    let fakeArray = ["Row1","Row2"]
-    
-    
-    //MARK:- IBOutlets
-    @IBOutlet weak var placeNameField: UITextField!
-    //@IBOutlet weak var TerrainPicker: UIPickerView!
-    //@IBOutlet weak var DistancePicker: UIPickerView!
-    //@IBOutlet weak var DurationPicker: UIPickerView!
-    
-    //@IBOutlet weak var ActualDistanceField: UITextField!
-    
-    //@IBOutlet weak var ActualDurationField: UITextField!
-    //MARK:- IBActions
-    //@IBOutlet weak var RouteMapView: MKMapView!
-    
-    
-    @IBAction func StartBtn(_ sender: Any) {
-    }
-    @IBAction func FinishBtn(_ sender: Any) {
-    }
     
 
     
-    
+    //MARK:- IBOutlets
+    @IBOutlet weak var placeNameField: UITextField!
+
+
     required init?(coder aDecoder: NSCoder)
     {
         print("RouteProfileViewController init")
+        
         super.init(coder: aDecoder)
     }
     
@@ -98,59 +75,6 @@ class RouteProfileViewController: UIViewController
         {
             self.placeNameField.text = routeData?.placeName
         }
-        
-        //tableView.rowHeight = UITableViewAutomaticDimension
-        
-        /*
-        TerrainPicker.delegate = self
-        TerrainPicker.dataSource = self
-        
-        DistancePicker.delegate = self
-        DistancePicker.dataSource = self
-        
-        DurationPicker.delegate = self
-        DurationPicker.dataSource = self
-        
-        //var distanceExpondent = routeData?.distanceMiles
-        //var distanceSignificand = routeData?.distanceQtrs
-        
-        if routeData != nil
-        {
-            self.PlaceNameField.text = routeData?.placeName
-            
-            //Set the terrain picker
-            if let row = TerrainDataSource.index(of: (routeData?.terrain)!)
-            {
-                TerrainPicker.selectRow(row, inComponent:0, animated: false)
-            }
-            
-            //Set the distance picker
-            if let row = TenNumbersDataSource.index(of: Int((routeData?.distanceMiles)!))
-            {
-                print("Hrs:\(String(describing: routeData?.distanceMiles))")
-                DistancePicker.selectRow(row, inComponent:0, animated: false)
-            }
-            
-            if let row = DistanceQtrDataSource.index(of: Int((routeData?.distanceQtrs)!))
-            {
-                print("Qtrs:\(String(describing: routeData?.distanceQtrs))")
-                DistancePicker.selectRow(row, inComponent:1, animated: false)
-            }
-            
-            //Set the duration picker
-            if let row = TenNumbersDataSource.index(of: Int((routeData?.durationHrs)!))
-            {
-                print("Hrs:\(String(describing: routeData?.durationHrs))")
-                DurationPicker.selectRow(row, inComponent:0, animated: false)
-            }
-            
-            if let row = DurationQtrsDataSource.index(of: Int((routeData?.durationMins)!))
-            {
-                print("Hrs:\(String(describing: routeData?.durationMins))")
-                DurationPicker.selectRow(row, inComponent:1, animated: false)
-            }
-        }
- */
     }
     
     
@@ -190,30 +114,91 @@ class RouteProfileViewController: UIViewController
             print("routeData.mapProfile.overlayTopRightCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopRightCoordinate))")
             print("routeData.mapProfile.overlayBottomLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayBottomLeftCoordinate))")
             
-            guard let locationName = routeData?.placeName else { return }
+
             
             
             //guard let coord = routeData?.mapProfile?.midCoordinate else { return }
             //guard var coord = map.midCoordinate else { return }
-            //let pointsofinterest = Array(map?.pointsofinterest)
+
+    
             
+            if routeData != nil
+            {
+   
+                guard let locationName = routeData?.placeName else { return }
+                
+                //Create the MapModel
+                let mapModel = MapModel()
+                mapModel.name = "New"
+                
+                //Check routeData mapProfile exists
+                if routeData?.mapProfile != nil
+                {
+                    guard let mapProfile = routeData?.mapProfile else { return }
+                    print("parseCoord:\(parseCoord(location: mapProfile.midLatitudeCoordinate.description))")
+                    print("parseCoord:\(parseCoord(location: mapProfile.midLongitudeCoordinate.description))")
+                    
+                    let latitude = routeData?.mapProfile?.midLatitudeCoordinate as? String
+                    let longitude = routeData?.mapProfile?.midLongitudeCoordinate as? String
+                    
+                    let midCoordinate = MapModel.createCoordinate(latitude: latitude!, longitude: longitude!)
+                    print("midCoordinate: \(midCoordinate)")
+                    
+                    mapModel.midCoordinate = midCoordinate
+                    //let pointsofinterest = Array(map?.pointsofinterest)
+                }
+                
+                //Configure the MapsViewController
+                embeddedMapsViewController.mapModel = mapModel
+                
+            }
+                /*
+                 //Create a new map if none exists
+                 if routeData?.mapProfile == nil
+                 {
+                 
+                 //Create a new Map profile
+                 let map = Map(context: coreDataManager.mainManagedObjectContext)
+                 
+                 //Populate Map
+                 map.uuid = ""
+                 map.createdAt = Date()
+                 map.updatedAt = Date()
+                 map.name = routeData?.placeName
+                 map.midCoordinate = ""
+                 map.overlayBottomLeftCoordinate = ""
+                 map.overlayBottomRightCoordinate = ""
+                 map.overlayTopLeftCoordinate = ""
+                 map.overlayTopRightCoordinate = ""
+                 }
+                 else
+                 {
+                 //Load existing map profile
+                 map.midCoordinate = String(describing: mapModel.midCoordinate)
+                 map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
+                 map.overlayBottomRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
+                 map.overlayTopLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
+                 map.overlayTopRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
+                 }
+                 
+                 
+                 //Create a relationship between route and map
+                 map.mapFor = routeData
+                 map.pointsofinterest = nil
+                 map.path = nil
+                
+                
+                
+                //Configure the MapsViewController
+                //mapsViewController?.mapData = map
+                mapsViewController?.mapModel = mapModel
+            }
             
-            //Create the MapModel
-            let mapModel = MapModel()
-            
-            //Check routeData mapProfile exists
-            guard let mapProfile = routeData?.mapProfile else { return }
-            print("parseCoord:\(parseCoord(location: mapProfile.midLatitudeCoordinate.description))")
-            print("parseCoord:\(parseCoord(location: mapProfile.midLongitudeCoordinate.description))")
 
             
-            let latitude = routeData?.mapProfile?.midLatitudeCoordinate as? String
-            let longitude = routeData?.mapProfile?.midLongitudeCoordinate as? String
+
             
-            let midCoordinate = MapModel.createCoordinate(latitude: latitude!, longitude: longitude!)
-            print("midCoordinate: \(midCoordinate)")
-            
-            mapModel.midCoordinate = midCoordinate
+
             
             //let midC = parseCoord(location: coord)
             
@@ -235,40 +220,7 @@ class RouteProfileViewController: UIViewController
             
             //THINK I AM OVRCASTING, coord has too much ascii content, something wrong
             
-            /*
-            //Create a new map if none exists
-            if routeData?.mapProfile == nil
-            {
-            
-                //Create a new Map profile
-                let map = Map(context: coreDataManager.mainManagedObjectContext)
-                
-                //Populate Map
-                map.uuid = ""
-                map.createdAt = Date()
-                map.updatedAt = Date()
-                map.name = routeData?.placeName
-                map.midCoordinate = ""
-                map.overlayBottomLeftCoordinate = ""
-                map.overlayBottomRightCoordinate = ""
-                map.overlayTopLeftCoordinate = ""
-                map.overlayTopRightCoordinate = ""
-            }
-            else
-            {
-                //Load existing map profile
-                map.midCoordinate = String(describing: mapModel.midCoordinate)
-                map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
-                map.overlayBottomRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
-                map.overlayTopLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
-                map.overlayTopRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
-            }
- 
-            
-            //Create a relationship between route and map
-            map.mapFor = routeData
-            map.pointsofinterest = nil
-            map.path = nil
+
  */
  
             //let map = routeData?.mapProfile
@@ -306,9 +258,7 @@ class RouteProfileViewController: UIViewController
             */
             
             
-            //Configure the MapsViewController
-            //mapsViewController?.mapData = map
-            mapsViewController?.mapModel = mapModel
+
         
 
         }
