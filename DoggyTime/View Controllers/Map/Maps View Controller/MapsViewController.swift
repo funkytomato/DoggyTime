@@ -80,9 +80,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         //mapOverlay = MapOverlay(map: mapModel)
         
         //If mapModel is nil load the user's current location
-        if mapModel?.midCoordinate == nil
+        if mapModel?.name == "New"
+        //if mapModel?.midCoordinate == coordinate
         {
-            mapModel?.midCoordinate = (locationManager.location?.coordinate)!
+            //mapModel?.midCoordinate = (locationManager.location?.coordinate)!
         }
         
         
@@ -139,9 +140,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     private func startLocationUpdates()
     {
         locationManager.delegate = self
-        locationManager.activityType = .fitness
-        locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+        
+        
+        //locationManager.activityType = .fitness
+        //locationManager.distanceFilter = 10
     }
     
     private func startRecording()
@@ -160,6 +164,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     private func stopRecording()
     {
         locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
     }
     
     private func saveRoute()
@@ -195,6 +200,11 @@ extension MapsViewController
     @IBAction func locateMeButton(_ sender: UIBarButtonItem)
     {
         startLocationUpdates()
+        
+        if let currentLocation = locationList.last
+        {
+            centerMapOnLocation(location: currentLocation.coordinate)
+        }
     }
     
     
@@ -620,11 +630,9 @@ extension MapsViewController : CLLocationManagerDelegate
             
             locationList.append(newLocation)
             
-            addAnnotationToMap()
+            //addAnnotationToMap()
             
         }
-        
-
     }
     
     
