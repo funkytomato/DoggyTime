@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Override point for customization after application launch.
         
+        let locationManager = LocationManager.shared
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         
         //Initialise the Google Ads SDK
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/2934735716")
@@ -55,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
         }
         
-        let locationManager = LocationManager.shared
+        
         
         
         return true
@@ -71,6 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        
+        //Stop application from sleeping (allows mapping to continuing working)
+        //UIApplication.shared.isIdleTimerDisabled = true
     }
 
     func applicationWillEnterForeground(_ application: UIApplication)
@@ -86,6 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func applicationWillTerminate(_ application: UIApplication)
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        //Stop application from sleeping (allows mapping to continuing working)
+        //UIApplication.shared.isIdleTimerDisabled = false
     }
 }
 
