@@ -14,12 +14,15 @@ class LocationManager
     
     private init()
     {
+        print("Location Manager init")
+        
         
         LocationManager.shared.desiredAccuracy = kCLLocationAccuracyBest
         //LocationManager.shared.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        LocationManager.shared.requestAlwaysAuthorization()
-        LocationManager.shared.requestWhenInUseAuthorization()
-        //LocationManager.shared.startUpdatingLocation()
-        //LocationManager.shared.startUpdatingHeading()
+
+        LocationManager.shared.activityType = .fitness
+        LocationManager.shared.distanceFilter = 10
+        LocationManager.shared.startUpdatingLocation()
+        LocationManager.shared.startUpdatingHeading()
     }
 }
