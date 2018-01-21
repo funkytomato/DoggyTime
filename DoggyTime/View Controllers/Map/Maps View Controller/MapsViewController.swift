@@ -16,33 +16,39 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
 {
     
     
-    //MARK:- Prepare Segue Map Properties
+    //MARK:- Properties
+    //Prepare Segue Map Properties
     var mapModel : MapModel? //just this one!
     //var map = MapModel(filename: "MagicMountain")
     //var pointsOfInterest: [PointOfInterest]?  pulled from the mapModel
-    //var path : [Path]?  pulled from the mapModel
+    var pathPoints: [CLLocation] = []
+    var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
+    var timeTakenInSeconds = Int16(0)
     
 
-    //MARK:- Map, Map Overlay, Map Options Properties
+    //MARK:- Maps and Overlays Options
     var mapOverlay: MapOverlay!
     var selectedOptions : [MapOptionsType] = []
     
     
-    //fileprivate var locationManager: CLLocationManager!
+    //MARK:- The Location Manager
     private let locationManager = LocationManager.shared
+    
+    
+    //MARK:- Path location mapping and timing
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
     private var locationList: [CLLocation] = []
-    
-    
-    fileprivate var isCurrentLocation: Bool = false
-    fileprivate var loggingRoute: Bool = false
-    fileprivate var annotation: MKAnnotation!
-    
+   
     
     //MARK:- Location Properties
+
     var previousLocation: CLLocation!
+/*    fileprivate var isCurrentLocation: Bool = false
+    fileprivate var loggingRoute: Bool = false
+ */
+    fileprivate var annotation: MKAnnotation!
     
     
     //MARK:- Search for Place Properties
@@ -128,7 +134,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     func eachSecond()
     {
-        seconds += 1
+        timeTakenInSeconds += 1
         updateDisplay()
     }
     
@@ -144,14 +150,14 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         locationManager.startUpdatingHeading()
         
         
-        //locationManager.activityType = .fitness
-        //locationManager.distanceFilter = 10
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 10
     }
     
-    private func startRecording()
+    func startRecording()
     {
-        seconds = 0
-        distance = Measurement(value: 0, unit: UnitLength.meters)
+        timeTakenInSeconds = 0
+        pathDistance = Measurement(value: 0, unit: UnitLength.meters)
         locationList.removeAll()
         updateDisplay()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true)
@@ -161,41 +167,55 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         startLocationUpdates()
     }
     
-    private func stopRecording()
+    func stopRecording()
     {
         locationManager.stopUpdatingLocation()
         locationManager.stopUpdatingHeading()
+        
+        saveRoute()
+        
     }
     
     private func saveRoute()
     {
-        /*
-         let newRoute = Route(context: CoreDataStack.context)
-         newRoute.distance = distance.value
-         newRoute.duration = Int16(seconds)
-         newRoute.timestamp = Date()
-         
-         for location in locationList
-         {
-         let locationObject = Location(context: CoreDataStack.context)
-         locationObject.timestamp = location.timestamp
-         locationObject.latitude = location.coordinate.latitude
-         locationObject.longitude = location.coordinate.longitude
-         newRoute.addToLocations(locationObject)
-         }
-         
-         CoreDataStack.saveContext()
-         
-         route = newRoute
-         */
+        
+        //mapModel?.name   set in RouteProfileViewController
+        pathPoints = locationList
+        pathDistance = distance
+        timeTakenInSeconds = Int16(timeTakenInSeconds)
     }
+    
+    func locateMe()
+    {
+        startLocationUpdates()
+        
+        if let currentLocation = locationList.last
+        {
+            centerMapOnLocation(location: currentLocation.coordinate)
+        }
+    }
+    
+    func searchForLocation()
+    {
+        
+         if searchController == nil
+         {
+            searchController = UISearchController(searchResultsController: nil)
+         }
+        
+         searchController.hidesNavigationBarDuringPresentation = false
+         self.searchController.searchBar.delegate = self
+         present(searchController, animated: true, completion: nil)
+        
+    }
+    
 }
 
 
 //MARK:- IBActions
 extension MapsViewController
 {
-
+/*
     //MRK:- Locate User on map
     @IBAction func locateMeButton(_ sender: UIBarButtonItem)
     {
@@ -251,6 +271,7 @@ extension MapsViewController
             startRecording()
         }
     }
+    */
     
     //MARK:- Close the Maps Options Controller
     @IBAction func closeOptions(_ exitSegue: UIStoryboardSegue)
@@ -348,7 +369,7 @@ extension MapsViewController
 }
 
 
-//MARK:- Map Overlays and Bits
+//MARK:- Annotations, Map Overlays and Routes
 extension MapsViewController
 {
     
