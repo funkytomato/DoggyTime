@@ -16,30 +16,35 @@ import MapKit
 class RouteProfileViewController: UIViewController
 {
     
-    // MARK: - Properties
+    // MARK: - Core Data Properties
     var coreDataManager: CoreDataManager!
     var coreDataManagerDelegate: CoreDataManagerDelegate!
     
-    //Embedded MapsViewController Properties
-    fileprivate var embeddedMapsViewController: MapsViewController!
-    //Location Manager Properties
-    //private let locationManager = LocationManager.shared
-    //private var seconds = 0  //track the duration of the walk
-    //private var timer: Timer? //will fire each second and update the UI accordingly
-    //private var distance = Measurement(value: 0, unit: UnitLength.meters) //Cumulative distance of the walk
-    //private var locationList: [CLLocation] = [] //array to hold all the CLLocation objects collected during the walk
     
-    
-    
-    //MARK:- Properties
+    //CoreData Classes
     var routeData: Route?
     var mapData: Map?
-   
+    var pathData: Path?
     
+    
+    //MARK:- Path recording Properties
+    var timer: Timer?
+    var pathPoints: [CLLocation] = []
+    var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
+    var timeTakenInSeconds = Int16(0)
+    
+    var previousLocation: CLLocation!
+    fileprivate var isCurrentLocation: Bool = false
+    fileprivate var loggingRoute: Bool = false
+    
+    //MARK:- Embedded MapsViewController
+    fileprivate var embeddedMapsViewController: MapsViewController!
+/*
     var durationHrs: Int?
     var durationMins: Int?
     var distanceMiles: Int?
     var distanceQtrs: Int?
+*/
     
     //Picker DataSources
     var TerrainDataSource = ["Sandy","Grass","RiverSide","Hilly","Beach"]
@@ -50,8 +55,48 @@ class RouteProfileViewController: UIViewController
     
     //MARK:- IBOutlets
     @IBOutlet weak var placeNameField: UITextField!
-
-
+    @IBAction func POIButton(_ sender: Any)
+    {
+        //addAnnotationToMap()
+    }
+    
+    @IBAction func RecordButton(_ sender: Any)
+    {
+        
+         guard let button = sender as? UIButton else { return }
+         
+         //Set loggingRoute variable
+         if loggingRoute
+         {
+            button.setTitle("Record", for: .normal)
+            button.backgroundColor = UIColor.clear
+         
+            loggingRoute = false
+            embeddedMapsViewController.stopRecording()
+         }
+         else
+         {
+            button.setTitle("Recording", for: .normal)
+            button.backgroundColor = UIColor.red
+         
+            loggingRoute = true
+            embeddedMapsViewController.startRecording()
+         }
+        
+    }
+    
+    @IBAction func LocateMeButton(_ sender: Any)
+    {
+        
+        embeddedMapsViewController.locateMe()
+        
+    }
+    
+    @IBAction func SearchButton(_ sender: Any)
+    {
+        embeddedMapsViewController.searchForLocation()
+    }
+    
     required init?(coder aDecoder: NSCoder)
     {
         print("RouteProfileViewController init")
@@ -75,6 +120,8 @@ class RouteProfileViewController: UIViewController
         {
             self.placeNameField.text = routeData?.placeName
         }
+        
+        
     }
     
     
@@ -114,13 +161,6 @@ class RouteProfileViewController: UIViewController
             print("routeData.mapProfile.overlayTopRightCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopRightCoordinate))")
             print("routeData.mapProfile.overlayBottomLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayBottomLeftCoordinate))")
             
-
-            
-            
-            //guard let coord = routeData?.mapProfile?.midCoordinate else { return }
-            //guard var coord = map.midCoordinate else { return }
-
-    
             
             if routeData != nil
             {
@@ -281,6 +321,7 @@ class RouteProfileViewController: UIViewController
             guard let locationName = placeNameField.text else { return }
             guard let mapModel = embeddedMapsViewController?.mapModel else { return }
             
+            savePath()
             
             print("Save Route Detail")
             print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
@@ -289,21 +330,23 @@ class RouteProfileViewController: UIViewController
             print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
             print("mapModel.overlayBottomRightCoordinate:\(mapModel.overlayBottomRightCoordinate)")
             
+            
+            
             //Create a CoreData Map profile
-            let map = Map(context: coreDataManager.mainManagedObjectContext)
+            //let map = Map(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Map object with mapModel values
-            map.uuid = ""
-            map.updatedAt = Date()
-            map.createdAt = Date()
+            mapData?.uuid = ""
+            mapData?.updatedAt = Date()
+            mapData?.createdAt = Date()
             
             
             
-            map.name = locationName
+            mapData?.name = locationName
             //map.midLatitudeCoordinate = String(describing: mapModel.midCoordinate.latitude)
             //map.midLongitudeCoordinate = String(describing: mapModel.midCoordinate.longitude)
-            map.midLatitudeCoordinate = mapModel.midCoordinate.latitude
-            map.midLongitudeCoordinate = mapModel.midCoordinate.longitude
+            mapData?.midLatitudeCoordinate = mapModel.midCoordinate.latitude
+            mapData?.midLongitudeCoordinate = mapModel.midCoordinate.longitude
             
             
             //map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
@@ -316,17 +359,17 @@ class RouteProfileViewController: UIViewController
             //map.overlayTopRightCoordinate = mapModel.overlayBottomRightCoordinate
             
             
-            map.mapFor = routeData
+            mapData?.mapFor = routeData
             
+    
             //map.pointsofinterest = pointsOfInterest
             //map.path: NSSet?
-            
-            
+
             
             
             //Update Route
             routeData?.placeName = locationName
-            routeData?.mapProfile = map
+            routeData?.mapProfile = mapData
             
             /*
              routeData?.terrain = terrain
@@ -338,9 +381,67 @@ class RouteProfileViewController: UIViewController
              routeData?.durationMins = Int16(durationMins)
              routeData?.profilePicture = nil
              */
+            
+            
         }
+    }
+    
 
-
+    
+    func savePath()
+    {
+        print("savePath")
+        
+        
+       
+        //Create the CoreData classes, Map, Path and Location
+        createPath()
+        
+        //Store to CoreData
+        do
+        {
+            try mapData?.managedObjectContext?.save()
+            
+            print("RouteProfileViewController savePathDetail map:\(mapData?.description)")
+        }
+        catch
+        {
+            let saveError = error as NSError
+            print("Unable to Save Path")
+            print("\(saveError), \(saveError.localizedDescription)")
+        }
+    }
+    
+    func createPath()
+    {
+        guard let mapModel = embeddedMapsViewController.mapModel else { return }
+        
+        
+        //Create a CoreData Path object
+        let path = Path(context: coreDataManager.mainManagedObjectContext)
+        
+        //Populate Path object with path data
+        path.uuid = ""
+        path.createdAt = Date()
+        path.updatedAt = Date()
+        
+        //Create the Path from the MapsViewController locationList
+        for pathNode in pathPoints
+        {
+            //Create a CoreData Location object
+            let location = Location(context: coreDataManager.mainManagedObjectContext)
+            
+            //Populate the Location object with path data
+            location.uuid = ""
+            location.createdAt = Date()
+            location.updatedAt = Date()
+            location.latitude = pathNode.coordinate.latitude
+            location.longitude = pathNode.coordinate.longitude
+            
+            path.addToLocations(location)
+        }
+        
+        mapData?.addToPath(path)
     }
     
     
@@ -358,54 +459,6 @@ class RouteProfileViewController: UIViewController
 }
 
 
-//MARK:- TableView Delegates
-extension RouteProfileViewController
-{
-    /*
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        //differ between sections or if you have onyl one section return a static value
-        return 50
-    }
-    */
- /*
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 2
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fakeArray.count + 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        if indexPath.row != fakeArray.count)
-        {
-            
-        }
-        else
-        {
-            let cellIdentifier = "MapTableViewCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MapTableViewCell
-            return cell
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        print("indexPath.row: \(indexPath.row)")
-        
-        if indexPath.row != fakeArray.count
-        {
-            return 60
-        }
-        else
-        {
-            return 400
-        }
-    }
- */
-}
 
 //MARK:- PickerView
 extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource
@@ -596,6 +649,72 @@ extension RouteProfileViewController: UITextFieldDelegate
 }
 */
 
+//MARK:- IBActions - Map Controls
+extension RouteProfileViewController
+{
+    
+    //MRK:- Locate User on map
+    @IBAction func locateMeButton(_ sender: UIBarButtonItem)
+    {
+        /*
+        startLocationUpdates()
+        
+        if let currentLocation = locationList.last
+        {
+            centerMapOnLocation(location: currentLocation.coordinate)
+        }
+ */
+    }
+    
+    
+    // MARK: - Search for Location
+    @IBAction func searchButton(_ sender: UIBarButtonItem)
+    {
+        /*
+        if searchController == nil
+        {
+            searchController = UISearchController(searchResultsController: nil)
+        }
+        searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
+        present(searchController, animated: true, completion: nil)
+ */
+    }
+    
+    
+    //MARK:- Create and Add a Point Of Interest at current location
+    @IBAction func PointOfinterestButton(_ sender: Any)
+    {
+   //     addAnnotationToMap()
+    }
+    
+    
+    //MARK:- Start / Stop Logging Route
+    @IBAction func recordButton(_ sender: Any)
+    {
+        /*
+        guard let button = sender as? UIButton else { return }
+        
+        //Set loggingRoute variable
+        if loggingRoute
+        {
+            button.setTitle("Record", for: .normal)
+            button.backgroundColor = UIColor.clear
+            
+            loggingRoute = false
+            stopRecording()
+        }
+        else
+        {
+            button.setTitle("Recording", for: .normal)
+            button.backgroundColor = UIColor.red
+            
+            loggingRoute = true
+            startRecording()
+        }
+ */
+    }
+}
 
 //MARK:- CoreDataManager Protocol
 extension RouteProfileViewController: CoreDataManagerDelegate
