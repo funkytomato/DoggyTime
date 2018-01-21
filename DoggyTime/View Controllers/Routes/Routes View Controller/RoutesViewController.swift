@@ -62,8 +62,8 @@ class RoutesViewController: UITableViewController
             print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-        //tableView.estimatedRowHeight = 80
-        //tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.reloadData()
     }
     
@@ -92,15 +92,25 @@ class RoutesViewController: UITableViewController
         {
             //Create a new Route profile
             let route = Route(context: coreDataManager.mainManagedObjectContext)
+            let map = Map(context: coreDataManager.mainManagedObjectContext)
+            let path = Path(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Route
             route.placeName = ""
             route.terrain = ""
- 
             
+            //Populate Map
+            map.createdAt = Date()
+            
+            
+            //Populate Path
+            path.createdAt = Date()
+ 
             // Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.routeData = route
+            profileViewController.mapData = map
+            profileViewController.pathData = path
         }
     }
 }
@@ -115,7 +125,9 @@ extension RoutesViewController
         print("RoutesViewController saveRouteDetail")
         guard let profileViewController = segue.source as? RouteProfileViewController,
             let route = profileViewController.routeData,
-            let map = profileViewController.routeData?.mapProfile else
+            let map = profileViewController.mapData,
+            let path = profileViewController.pathData else
+//            let map = profileViewController.routeData?.mapProfile else
         {
             return
         }
@@ -123,8 +135,10 @@ extension RoutesViewController
         //Store to CoreData
         do
         {
-            try map.managedObjectContext?.save()
             try route.managedObjectContext?.save()
+            try map.managedObjectContext?.save()
+            try path.managedObjectContext?.save()
+            
             print("RoutesViewController saveRouteDetail map:\(map)")
         }
         catch
