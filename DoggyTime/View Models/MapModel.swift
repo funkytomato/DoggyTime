@@ -35,6 +35,11 @@ class MapModel
 {
     
     var name: String?
+/*
+    var pathPoints: [CLLocation] = []
+    var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
+    var timeTakenInSeconds = Int16(0)
+  */
     var regionRadius: Double = 1000
     
     var boundary: [CLLocationCoordinate2D] = []
