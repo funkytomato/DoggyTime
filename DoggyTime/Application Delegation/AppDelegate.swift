@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Override point for customization after application launch.
         
+        //Stop application from sleeping (allows mapping to continue working)
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         let locationManager = LocationManager.shared
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
@@ -59,8 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         }
         
         
-        
-        
         return true
     }
 
@@ -76,8 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         
-        //Stop application from sleeping (allows mapping to continuing working)
-        //UIApplication.shared.isIdleTimerDisabled = true
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication)
