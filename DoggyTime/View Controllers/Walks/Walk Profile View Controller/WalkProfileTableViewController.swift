@@ -79,10 +79,6 @@ class WalkProfileTableViewController: UITableViewController, UIPickerViewDelegat
             
             self.locationNameField.text = walkData?.locationName?.description
             locationNameField.inputView = locationPicker
-            
-
- //           latitudeField.text = walkData?.latitude.description
- //           longitudeField.text = walkData?.longitude.description
         }
     }
     
