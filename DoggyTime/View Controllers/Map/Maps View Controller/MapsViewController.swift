@@ -21,6 +21,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     var mapModel : MapModel? //just this one!
     //var map = MapModel(filename: "MagicMountain")
     //var pointsOfInterest: [PointOfInterest]?  pulled from the mapModel
+    
+    //The Saved Recorded Route
     var pathPoints: [CLLocation] = []
     var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
     var timeTakenInSeconds = Int16(0)
@@ -35,7 +37,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     private let locationManager = LocationManager.shared
     
     
-    //MARK:- Path location mapping and timing
+    //MARK:- Path location mapping and timing temporary properties
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
@@ -130,6 +132,13 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         {
             optionsController.selectedOptions = selectedOptions
         }
+            /*
+        else if segue.identifier == "savePath",
+            let profileRouteController = segue.destination as? RouteProfileViewController
+        {
+            //Probbaly don't need this
+        }
+ */
     }
     
     func eachSecond()
