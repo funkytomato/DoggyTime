@@ -22,8 +22,8 @@ class RouteProfileViewController: UIViewController
     
     
     //CoreData Classes
-    var routeData: Route?
-    var mapData: Map?
+    weak var routeData: Route?
+    weak var mapData: Map?
     var pathData: Path?
     
     
@@ -39,7 +39,8 @@ class RouteProfileViewController: UIViewController
     
     //MARK:- Embedded MapsViewController
     fileprivate var embeddedMapsViewController: MapsViewController!
-/*
+
+    /*
     var durationHrs: Int?
     var durationMins: Int?
     var distanceMiles: Int?
@@ -48,9 +49,7 @@ class RouteProfileViewController: UIViewController
     
     //Picker DataSources
     var TerrainDataSource = ["Sandy","Grass","RiverSide","Hilly","Beach"]
-    
     var numberString: String = ""
-    
 
     
     //MARK:- IBOutlets
@@ -71,8 +70,25 @@ class RouteProfileViewController: UIViewController
             button.setTitle("Record", for: .normal)
             button.backgroundColor = UIColor.clear
          
+            let alertController = UIAlertController(title: "End run?",
+                                                    message: "Do you wish to end your run?",
+                                                    preferredStyle: .actionSheet)
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+                self.embeddedMapsViewController.stopRecording()
+                self.savePath()
+                //self.performSegue(withIdentifier: "savePath", sender: nil)
+            })
+            alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
+                self.embeddedMapsViewController.stopRecording()
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            })
+            
+            present(alertController, animated: true)
+            
             loggingRoute = false
-            embeddedMapsViewController.stopRecording()
+            
          }
          else
          {
@@ -118,7 +134,8 @@ class RouteProfileViewController: UIViewController
         
         if routeData != nil
         {
-            self.placeNameField.text = routeData?.placeName
+            guard let placeName = routeData?.placeName else { return }
+            self.placeNameField.text = placeName
         }
         
         
@@ -174,15 +191,24 @@ class RouteProfileViewController: UIViewController
                 //Check routeData mapProfile exists
                 if routeData?.mapProfile != nil
                 {
+                    guard let placeName = routeData?.placeName else { return }
+                    mapModel.name = placeName
+                    
                     guard let mapProfile = routeData?.mapProfile else { return }
                     print("parseCoord:\(parseCoord(location: mapProfile.midLatitudeCoordinate.description))")
                     print("parseCoord:\(parseCoord(location: mapProfile.midLongitudeCoordinate.description))")
                     
-                    let latitude = routeData?.mapProfile?.midLatitudeCoordinate as? String
-                    let longitude = routeData?.mapProfile?.midLongitudeCoordinate as? String
+                    guard let latitude = routeData?.mapProfile?.midLatitudeCoordinate else { return }
+                    guard let longitude = routeData?.mapProfile?.midLongitudeCoordinate else { return }
                     
-                    let midCoordinate = MapModel.createCoordinate(latitude: latitude!, longitude: longitude!)
+                    print("latitude:\(latitude)")
+                    print("longitude:\(longitude)")
+                    
+                    let midCoordinate = MapModel.mapCoordinate(latitude: latitude, longitude: longitude)
                     print("midCoordinate: \(midCoordinate)")
+                    
+                    //let midCoordinate = MapModel.createCoordinate(latitude: latitude!, longitude: longitude!)
+                    //print("midCoordinate: \(midCoordinate)")
                     
                     mapModel.midCoordinate = midCoordinate
                     //let pointsofinterest = Array(map?.pointsofinterest)
@@ -304,7 +330,7 @@ class RouteProfileViewController: UIViewController
         }
         
 
-        if segue.identifier == "SaveRouteDetail" /*,
+        if segue.identifier == "saveRouteDetail" /*,
              let placeName = PlaceNameField.text,
              let terrain = routeData?.terrain,
              let actualDistance = routeData?.actualDistance,
@@ -321,7 +347,10 @@ class RouteProfileViewController: UIViewController
             guard let locationName = placeNameField.text else { return }
             guard let mapModel = embeddedMapsViewController?.mapModel else { return }
             
-            savePath()
+
+            //Create the CoreData classes, Map, Path and Location
+            createPath()
+            //savePath()   //I don't think I need this here, goes in RoutesViewController
             
             print("Save Route Detail")
             print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
@@ -336,7 +365,7 @@ class RouteProfileViewController: UIViewController
             //let map = Map(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Map object with mapModel values
-            mapData?.uuid = ""
+            mapData?.uuid = "uuid"
             mapData?.updatedAt = Date()
             mapData?.createdAt = Date()
             
@@ -370,6 +399,7 @@ class RouteProfileViewController: UIViewController
             //Update Route
             routeData?.placeName = locationName
             routeData?.mapProfile = mapData
+            routeData?.updatedAt = Date()
             
             /*
              routeData?.terrain = terrain
@@ -400,7 +430,9 @@ class RouteProfileViewController: UIViewController
         //Store to CoreData
         do
         {
+            try routeData?.managedObjectContext?.save()
             try mapData?.managedObjectContext?.save()
+            try pathData?.managedObjectContext?.save()
             
             print("RouteProfileViewController savePathDetail map:\(mapData?.description)")
         }
@@ -442,6 +474,7 @@ class RouteProfileViewController: UIViewController
         }
         
         mapData?.addToPath(path)
+        mapData?.updatedAt = Date()
     }
     
     
