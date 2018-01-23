@@ -76,19 +76,12 @@ class RoutesViewController: UITableViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if let profileViewController = segue.destination as? RouteProfileViewController,
-            let indexPath = self.tableView.indexPathForSelectedRow
-        {
-            //Load an existing Route profile
-           
-            // Fetch Route
-            let selectedRoute = fetchedResultsController.object(at: indexPath)
-            
-            // Configure View Controller
-            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
-            profileViewController.routeData = selectedRoute
-        }
-        else if let profileViewController = segue.destination as? RouteProfileViewController
+        print("prepare segue\(segue.identifier)")
+        
+        
+        //Create a new Route profile
+        if segue.identifier == "newRoute",
+            let profileViewController = segue.destination as? RouteProfileViewController
         {
             //Create a new Route profile
             let route = Route(context: coreDataManager.mainManagedObjectContext)
@@ -100,18 +93,36 @@ class RoutesViewController: UITableViewController
             route.terrain = ""
             
             //Populate Map
+            map.uuid = ""
             map.createdAt = Date()
             
-            
             //Populate Path
+            path.uuid = ""
             path.createdAt = Date()
- 
+            
             // Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.routeData = route
             profileViewController.mapData = map
             profileViewController.pathData = path
         }
+        
+        //Load an existing Route profile
+        else if segue.identifier == "showRoute",
+            let profileViewController = segue.destination as? RouteProfileViewController,
+            let indexPath = self.tableView.indexPathForSelectedRow
+        {
+
+            // Fetch Route
+            let selectedRoute = fetchedResultsController.object(at: indexPath)
+            
+            // Configure View Controller
+            profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
+            profileViewController.routeData = selectedRoute
+            profileViewController.mapData = selectedRoute.mapProfile
+            //profileViewController.pathData = selectedRoute.mapProfile?.path
+        }
+
     }
 }
 
@@ -120,6 +131,8 @@ extension RoutesViewController
 {
     
     @IBAction func cancelToRoutesViewController(_ segue: UIStoryboardSegue) { print("Back in the RoutesViewController") }
+    
+    
     @IBAction func saveRouteDetail(_ segue: UIStoryboardSegue)
     {
         print("RoutesViewController saveRouteDetail")
@@ -139,7 +152,9 @@ extension RoutesViewController
             try map.managedObjectContext?.save()
             try path.managedObjectContext?.save()
             
+            print("RoutesViewController saveRouteDetail route:\(route)")
             print("RoutesViewController saveRouteDetail map:\(map)")
+            print("RoutesViewController saveRouteDetail path:\(path)")
         }
         catch
         {
@@ -225,7 +240,7 @@ extension RoutesViewController
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteCell", for: indexPath) as! RouteCell
         cell.route = route
-        configureCell(cell, at: indexPath)
+        //configureCell(cell, at: indexPath)
         return cell
     }
     
