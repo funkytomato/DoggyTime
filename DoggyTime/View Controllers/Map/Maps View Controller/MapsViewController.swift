@@ -130,6 +130,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         {
             optionsController.selectedOptions = selectedOptions
         }
+        else if segue.identifier == "savePath"
+        {
+            print("prepare segue savePath")
+        }
     }
     
     func eachSecond()
@@ -173,7 +177,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         locationManager.stopUpdatingHeading()
         
         saveRoute()
-        
     }
     
     private func saveRoute()
