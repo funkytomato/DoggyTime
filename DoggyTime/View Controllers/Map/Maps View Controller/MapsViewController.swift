@@ -121,7 +121,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         print("segue identifer \(String(describing: segue.identifier))")
         print("segue destination \(String(describing: segue.destination))")
         
-        //(segue.destination as? MapOptionsViewController)?.selectedOptions = selectedOptions
+        //Prepare the Maps Options View Controller
         if segue.identifier == "segueOptions",
             let optionsController = segue.destination as? MapOptionsViewController
         {
@@ -174,8 +174,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     private func saveRoute()
     {
-        
-        //mapModel?.name   set in RouteProfileViewController
         pathPoints = locationList
         pathDistance = distance
         timeTakenInSeconds = Int16(timeTakenInSeconds)
