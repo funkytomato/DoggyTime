@@ -76,7 +76,7 @@ class RoutesViewController: UITableViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("prepare segue\(segue.identifier)")
+        print("prepare segue\(segue.identifier?.description)")
         
         
         //Create a new Route profile
@@ -91,6 +91,8 @@ class RoutesViewController: UITableViewController
             //Populate Route
             route.placeName = ""
             route.terrain = ""
+            route.createdAt = Date()
+            route.uuid = ""
             
             //Populate Map
             map.uuid = ""
@@ -120,7 +122,7 @@ class RoutesViewController: UITableViewController
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
             profileViewController.routeData = selectedRoute
             profileViewController.mapData = selectedRoute.mapProfile
-            //profileViewController.pathData = selectedRoute.mapProfile?.path
+            //profileViewController.pathData = selectedRoute.paths
         }
 
     }
@@ -140,7 +142,6 @@ extension RoutesViewController
             let route = profileViewController.routeData,
             let map = profileViewController.mapData,
             let path = profileViewController.pathData else
-//            let map = profileViewController.routeData?.mapProfile else
         {
             return
         }
@@ -275,38 +276,3 @@ extension RoutesViewController: CoreDataManagerDelegate
         self.coreDataManager = coreDataManager
     }
 }
-
-/*
-extension RoutesViewController: AddRouteViewControllerDelegate
-{
-    
-    func controller(_ controller: RouteProfileViewController, didAddRoute name: String)
-    {
-        
-        // Create Route
-        let route = Route(context: coreDataManager.mainManagedObjectContext)
-        
-        // Populate Route
-        route.name = ""
-        route.terrain = ""
-        route.duration = 0.0
-        route.distance = 0.0
-        route.profilePicture = nil
-        route.walks = nil
-
-        route.updatedAt = NSDate()
-        route.createdAt = NSDate()
-        
-        do
-        {
-            try route.managedObjectContext?.save()
-        }
-        catch
-        {
-            let saveError = error as NSError
-            print("Unable to Save Route")
-            print("\(saveError), \(saveError.localizedDescription)")
-        }
-    }
-}
- */
