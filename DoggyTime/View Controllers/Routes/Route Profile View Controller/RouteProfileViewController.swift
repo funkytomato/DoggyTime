@@ -11,8 +11,8 @@ import CoreData
 import MapKit
 
 
-
 //class RouteProfileViewController: UITableViewController
+
 class RouteProfileViewController: UIViewController
 {
     
@@ -24,7 +24,7 @@ class RouteProfileViewController: UIViewController
     //CoreData Classes
     weak var routeData: Route?
     weak var mapData: Map?
-    var pathData: Path?
+    weak var pathData: Path?
     
     
     //MARK:- Path recording Properties
@@ -77,8 +77,8 @@ class RouteProfileViewController: UIViewController
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             alertController.addAction(UIAlertAction(title: "Save", style: .default) { _ in
                 self.embeddedMapsViewController.stopRecording()
+                self.performSegue(withIdentifier: "saveRouteDetail", sender: nil)
                 self.savePath()
-                //self.performSegue(withIdentifier: "savePath", sender: nil)
             })
             alertController.addAction(UIAlertAction(title: "Discard", style: .destructive) { _ in
                 self.embeddedMapsViewController.stopRecording()
@@ -149,7 +149,11 @@ class RouteProfileViewController: UIViewController
         
         //Dispose of any resources that can be recreated
     }
-    
+}
+
+extension RouteProfileViewController
+{
+
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -212,60 +216,27 @@ class RouteProfileViewController: UIViewController
                     
                     mapModel.midCoordinate = midCoordinate
                     //let pointsofinterest = Array(map?.pointsofinterest)
-                }
+                    
+                    guard let mapData = routeData?.mapProfile else { return }
+                    print("mapData:\(mapData)")
+                    
+                    guard let pathData = mapData.path else { return }
+                    print("pathData:\(pathData.description)")
+                    
+                    let pathPoints = Array(pathData.locations)
+                    print("pathPoints:\(pathPoints.description)")
+                    
+                    self.pathPoints = pathPoints
+             }
                 
                 //Configure the MapsViewController
                 embeddedMapsViewController.mapModel = mapModel
+                embeddedMapsViewController.pathPoints = pathPoints
                 
             }
-                /*
-                 //Create a new map if none exists
-                 if routeData?.mapProfile == nil
-                 {
-                 
-                 //Create a new Map profile
-                 let map = Map(context: coreDataManager.mainManagedObjectContext)
-                 
-                 //Populate Map
-                 map.uuid = ""
-                 map.createdAt = Date()
-                 map.updatedAt = Date()
-                 map.name = routeData?.placeName
-                 map.midCoordinate = ""
-                 map.overlayBottomLeftCoordinate = ""
-                 map.overlayBottomRightCoordinate = ""
-                 map.overlayTopLeftCoordinate = ""
-                 map.overlayTopRightCoordinate = ""
-                 }
-                 else
-                 {
-                 //Load existing map profile
-                 map.midCoordinate = String(describing: mapModel.midCoordinate)
-                 map.overlayBottomLeftCoordinate = String(describing: mapModel.overlayBottomLeftCoordinate)
-                 map.overlayBottomRightCoordinate = String(describing: mapModel.overlayBottomRightCoordinate)
-                 map.overlayTopLeftCoordinate = String(describing: mapModel.overlayTopLeftCoordinate)
-                 map.overlayTopRightCoordinate = String(describing: mapModel.overlayTopRightCoordinate)
-                 }
-                 
-                 
-                 //Create a relationship between route and map
-                 map.mapFor = routeData
-                 map.pointsofinterest = nil
-                 map.path = nil
-                
-                
-                
-                //Configure the MapsViewController
-                //mapsViewController?.mapData = map
-                mapsViewController?.mapModel = mapModel
-            }
-            
 
             
 
-            
-
-            
             //let midC = parseCoord(location: coord)
             
             //Load the boundaries into the MapModel
@@ -287,7 +258,7 @@ class RouteProfileViewController: UIViewController
             //THINK I AM OVRCASTING, coord has too much ascii content, something wrong
             
 
- */
+ 
  
             //let map = routeData?.mapProfile
             //routeData?.mapProfile = map
@@ -330,6 +301,45 @@ class RouteProfileViewController: UIViewController
         }
         
 
+        if segue.identifier == "savePath"
+        {
+            guard let pathPoints = embeddedMapsViewController?.pathPoints else { return }
+            
+            //Create the CoreData classes, Map, Path and Location
+            guard let mapModel = embeddedMapsViewController.mapModel else { return }
+            
+            
+            //Create a CoreData Path object
+            let path = Path(context: coreDataManager.mainManagedObjectContext)
+            
+            //Populate Path object with path data
+            path.uuid = ""
+            path.createdAt = Date()
+            path.updatedAt = Date()
+            
+            //Create the Path from the MapsViewController locationList
+            for pathNode in pathPoints
+            {
+                //Create a CoreData Location object
+                let location = Location(context: coreDataManager.mainManagedObjectContext)
+                
+                //Populate the Location object with path data
+                location.uuid = ""
+                location.createdAt = Date()
+                location.updatedAt = Date()
+                location.latitude = pathNode.coordinate.latitude
+                location.longitude = pathNode.coordinate.longitude
+                
+                path.addToLocations(location)
+            }
+            
+            mapData?.addToPath(path)
+            mapData?.updatedAt = Date()
+
+            
+        }
+        
+        
         if segue.identifier == "saveRouteDetail" /*,
              let placeName = PlaceNameField.text,
              let terrain = routeData?.terrain,
@@ -347,17 +357,47 @@ class RouteProfileViewController: UIViewController
             guard let locationName = placeNameField.text else { return }
             guard let mapModel = embeddedMapsViewController?.mapModel else { return }
             
-
-            //Create the CoreData classes, Map, Path and Location
-            createPath()
-            //savePath()   //I don't think I need this here, goes in RoutesViewController
-            
+        
             print("Save Route Detail")
             print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
             print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
             print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
             print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
             print("mapModel.overlayBottomRightCoordinate:\(mapModel.overlayBottomRightCoordinate)")
+            
+            
+            guard let pathPoints = embeddedMapsViewController?.pathPoints else { return }
+            
+            //Create the CoreData classes, Map, Path and Location
+            //guard let mapModel = embeddedMapsViewController.mapModel else { return }
+            
+            
+            //Create a CoreData Path object
+            let path = Path(context: coreDataManager.mainManagedObjectContext)
+            
+            //Populate Path object with path data
+            path.uuid = ""
+            path.createdAt = Date()
+            path.updatedAt = Date()
+            
+            //Create the Path from the MapsViewController locationList
+            for pathNode in pathPoints
+            {
+                //Create a CoreData Location object
+                let location = Location(context: coreDataManager.mainManagedObjectContext)
+                
+                //Populate the Location object with path data
+                location.uuid = ""
+                location.createdAt = Date()
+                location.updatedAt = Date()
+                location.latitude = pathNode.coordinate.latitude
+                location.longitude = pathNode.coordinate.longitude
+                
+                path.addToLocations(location)
+            }
+            
+            mapData?.addToPath(path)
+            mapData?.updatedAt = Date()
             
             
             
@@ -425,7 +465,7 @@ class RouteProfileViewController: UIViewController
         
        
         //Create the CoreData classes, Map, Path and Location
-        createPath()
+        //createPath()
         
         //Store to CoreData
         do

@@ -29,10 +29,12 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     //MARK:- Maps and Overlays Options
     var mapOverlay: MapOverlay!
     var selectedOptions : [MapOptionsType] = []
+    fileprivate var annotation: MKAnnotation!
     
     
     //MARK:- The Location Manager
     private let locationManager = LocationManager.shared
+    var previousLocation: CLLocation!
     
     
     //MARK:- Path location mapping and timing
@@ -40,16 +42,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
     private var locationList: [CLLocation] = []
-   
-    
-    //MARK:- Location Properties
 
-    var previousLocation: CLLocation!
-/*    fileprivate var isCurrentLocation: Bool = false
-    fileprivate var loggingRoute: Bool = false
- */
-    fileprivate var annotation: MKAnnotation!
-    
     
     //MARK:- Search for Place Properties
     fileprivate var searchController: UISearchController!
@@ -81,6 +74,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     {
         super.viewDidLoad()
 
+        print("mapModel:\(mapModel)")
+        print("pathPoints:\(pathPoints.description)")
         
         //Load coordinates from CoreData
         //mapOverlay = MapOverlay(map: mapModel)
@@ -215,66 +210,9 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
 }
 
 
-//MARK:- IBActions
+//MARK:- Map Options View Controller IBActions
 extension MapsViewController
 {
-/*
-    //MRK:- Locate User on map
-    @IBAction func locateMeButton(_ sender: UIBarButtonItem)
-    {
-        startLocationUpdates()
-        
-        if let currentLocation = locationList.last
-        {
-            centerMapOnLocation(location: currentLocation.coordinate)
-        }
-    }
-    
-    
-    // MARK: - Search for Location
-    @IBAction func searchButton(_ sender: UIBarButtonItem)
-    {
-        if searchController == nil
-        {
-            searchController = UISearchController(searchResultsController: nil)
-        }
-        searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.delegate = self
-        present(searchController, animated: true, completion: nil)
-    }
-
-
-    //MARK:- Create and Add a Point Of Interest at current location
-    @IBAction func PointOfinterestButton(_ sender: Any)
-    {
-        addAnnotationToMap()
-    }
-
-
-    //MARK:- Start / Stop Logging Route
-    @IBAction func recordButton(_ sender: Any)
-    {
-        guard let button = sender as? UIButton else { return }
-        
-        //Set loggingRoute variable
-        if loggingRoute
-        {
-            button.setTitle("Record", for: .normal)
-            button.backgroundColor = UIColor.clear
-            
-            loggingRoute = false
-            stopRecording()
-        }
-        else
-        {
-            button.setTitle("Recording", for: .normal)
-            button.backgroundColor = UIColor.red
-
-            loggingRoute = true
-            startRecording()
-        }
-    }
-    */
     
     //MARK:- Close the Maps Options Controller
     @IBAction func closeOptions(_ exitSegue: UIStoryboardSegue)
@@ -290,13 +228,6 @@ extension MapsViewController
     {
         mapView.mapType = MKMapType.init(rawValue: UInt(sender.selectedSegmentIndex)) ?? .standard
     }
-}
-
-
-//MARK:-
-extension MapsViewController
-{
-
 }
 
 
@@ -406,12 +337,26 @@ extension MapsViewController
     //MARK:- Add Route
     func addRoute()
     {
-        guard let points = MapModel.plist("EntranceToGoliathRoute") as? [String] else { return }
+        //guard let points = MapModel.plist("EntranceToGoliathRoute") as? [String] else { return }
         
+ 
+        let pathPoints = self.pathPoints
+        var coords = [CLLocationCoordinate2D].init()
+        
+        for point in pathPoints
+        {
+            let coord = CLLocationCoordinate2DMake(CLLocationDegrees(point.coordinate.latitude), CLLocationDegrees(point.coordinate.longitude))
+            coords.append(coord)
+        }
+        
+        
+        /*
         let cgPoints = points.map { CGPointFromString($0) }
         let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
         let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+        */
         
+        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
         mapView.add(myPolyline)
     }
     
@@ -486,7 +431,7 @@ extension MapsViewController
         }
         else
         {
-            //IN case previous location doesn't exist
+            //In case previous location doesn't exist
             addAnnotationsOnMap(locationToPoint: newLocation)
             previousLocation = newLocation
         }

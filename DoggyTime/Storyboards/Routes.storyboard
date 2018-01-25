@@ -66,7 +66,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="routeNameLbl" destination="hQf-Xc-vte" id="fdg-Y4-Ads"/>
-                                    <segue destination="72U-yJ-w7A" kind="show" id="YyJ-yr-Pgj"/>
+                                    <segue destination="72U-yJ-w7A" kind="show" identifier="showRoute" id="YyJ-yr-Pgj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -78,7 +78,7 @@
                     <navigationItem key="navigationItem" title="Walking Routes" id="E4l-4v-OIB">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nfK-eN-lHh">
                             <connections>
-                                <segue destination="72U-yJ-w7A" kind="show" id="i8G-xZ-PSG"/>
+                                <segue destination="72U-yJ-w7A" kind="show" identifier="newRoute" id="i8G-xZ-PSG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
