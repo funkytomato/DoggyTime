@@ -247,8 +247,36 @@ extension RouteProfileViewController
                     print("pathData:\(pathData.description)")
                     
                     //Assign Path data to EmbeddedMapsViewController
-                    let pathPoints = Array(pathData.locations)
-                    print("pathPoints:\(pathPoints.description)")
+                    //let pathPoints = Array(pathData.locations)
+                    //print("pathPoints:\(pathPoints.description)")
+                    
+                    //NSSet of Path
+                    var pathPoints : [CLLocation] = []
+                    let path = Array(mapData.path!)
+                    guard let validPaths = Array(path) as? [Path] else { return }
+                    if path.count > 0
+                    {
+                        print("validPaths:\(validPaths)")
+                        
+                        guard let validPoints = validPaths[0].locations else { return }
+                        print("validPoints:\(validPoints)")
+                        let newPoints = Array(validPoints) as? [Location]
+                        print("newPoints:\(String(describing: newPoints))")
+                        
+                        
+                        for point in newPoints!
+                        {
+                            let pathPoint = CLLocation(latitude: CLLocationDegrees(point.latitude), longitude: CLLocationDegrees(point.longitude))
+                            pathPoints.append(pathPoint)
+                        }
+                        
+                        self.pathPoints = pathPoints
+                        //print("pathPoints:\(pathPoints)")
+                        
+                        embeddedMapsViewController.pathPoints = pathPoints
+                    }
+                    
+                    
                     
                     //self.pathPoints = pathPoints
                 }
