@@ -404,7 +404,8 @@ extension RouteProfileViewController
             self.pathPoints = pathPoints
             
             
-        
+            savePath()
+            
             print("Save Route Detail")
             print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
             print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
