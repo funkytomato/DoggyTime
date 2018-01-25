@@ -76,7 +76,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     {
         super.viewDidLoad()
 
-        print("mapModel:\(mapModel)")
+        print("mapModel:\(String(describing: mapModel))")
         print("pathPoints:\(pathPoints.description)")
         
         //Load coordinates from CoreData
@@ -126,10 +126,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             let optionsController = segue.destination as? MapOptionsViewController
         {
             optionsController.selectedOptions = selectedOptions
-        }
-        else if segue.identifier == "savePath"
-        {
-            print("prepare segue savePath")
         }
     }
     
@@ -265,7 +261,8 @@ extension MapsViewController
         let mapHeight = MKMapRectGetHeight(mRect) / 10;
         
         print("milesWide: \(milesWide)")
-        
+        print("mapWidth:\(mapWidth)")
+        print("mapHeight:\(mapHeight)")
         
         //mapModel.midCoordinate = mapView.centerCoordinate
         //mapModel.overlayTopLeftCoordinate = mapView
@@ -300,7 +297,7 @@ extension MapsViewController
     {
         mapModel?.midCoordinate = location
         
-        print("mapModel lat:\(mapModel?.midCoordinate.latitude) longitude:\(mapModel?.midCoordinate.longitude)")
+        print("mapModel lat:\(String(describing: mapModel?.midCoordinate.latitude)) longitude:\(String(describing: mapModel?.midCoordinate.longitude))")
     }
 }
 
@@ -398,7 +395,7 @@ extension MapsViewController
         annotation.coordinate = locationToPoint.coordinate
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(locationToPoint, completionHandler: { (placemarks, error) -> Void in
-            if let placemarks = placemarks as? [CLPlacemark], placemarks.count > 0
+            if let placemarks = placemarks, placemarks.count > 0
             {
                 let placemark = placemarks[0]
                 var addressDictionary = placemark.addressDictionary
