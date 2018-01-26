@@ -261,13 +261,13 @@ extension RouteProfileViewController
                     
               
                     //Get the Path data associated to this map
-                    guard let pathData = mapData.path else { return }
+                    guard let pathData = mapData.paths else { return }
                     print("pathData:\(pathData.description)")
                     
                     //Assign Path data to EmbeddedMapsViewController
                     
                     var pathPoints : [CLLocation] = []
-                    let path = Array(mapData.path!)
+                    let path = Array(mapData.paths!)
                     guard let validPaths = Array(path) as? [Path] else { return }
                     if validPaths.count > 0
                     {
@@ -367,7 +367,7 @@ extension RouteProfileViewController
                 path.addToLocations(location)
             }
             
-            mapData?.addToPath(path)
+            mapData?.addToPaths(path)
             mapData?.updatedAt = Date()
             
             
