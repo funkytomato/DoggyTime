@@ -41,6 +41,10 @@ class RouteProfileViewController: UIViewController
     fileprivate var embeddedMapsViewController: MapsViewController!
 
     
+    //Points of Interest
+    var pointsOfInterest: [MKAnnotation] = []
+    
+    
     //Picker DataSources
     var TerrainDataSource = ["Sandy","Grass","RiverSide","Hilly","Beach"]
     var numberString: String = ""
@@ -240,21 +244,32 @@ extension RouteProfileViewController
                     
                     //Get any Points of Interest associated to this map
                     //let pointsofinterest = Array(map?.pointsofinterest)
-
+                    //Load the points of interest
+                    
+                    //var pointsOfInterest: [] = []
+                    let pointsofinterest = Array(mapData.pointsofinterest!)
+                    guard let validpointsofinterest = Array(pointsofinterest) as? [PointOfInterest] else { return }
+                    if validpointsofinterest.count > 0
+                    {
+                        for poi in validpointsofinterest
+                        {
+                            //let validPOI = MKAnnotation()
+                        }
+                        
+                        //self.pointsOfInterest = validpointsofinterest
+                    }
+                    
               
                     //Get the Path data associated to this map
                     guard let pathData = mapData.path else { return }
                     print("pathData:\(pathData.description)")
                     
                     //Assign Path data to EmbeddedMapsViewController
-                    //let pathPoints = Array(pathData.locations)
-                    //print("pathPoints:\(pathPoints.description)")
                     
-                    //NSSet of Path
                     var pathPoints : [CLLocation] = []
                     let path = Array(mapData.path!)
                     guard let validPaths = Array(path) as? [Path] else { return }
-                    if path.count > 0
+                    if validPaths.count > 0
                     {
                         print("validPaths:\(validPaths)")
                         
@@ -275,15 +290,12 @@ extension RouteProfileViewController
                         
                         embeddedMapsViewController.pathPoints = pathPoints
                     }
-                    
-                    
-                    
-                    //self.pathPoints = pathPoints
                 }
                 
                 //Configure the MapsViewController
                 embeddedMapsViewController.mapModel = mapModel
                 embeddedMapsViewController.pathPoints = pathPoints
+                //embeddedMapsViewController.pointsOfInterest = pointsOfInterest
                 
             }
 
@@ -304,30 +316,6 @@ extension RouteProfileViewController
             print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
             print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
             */
-            
-            
-            //Load the points of interest
-            /*
-            let pointsofinterest = map?.pointsofinterest
-            guard let validpointsofinterest = Array(pointsofinterest) as? [PointOfInterest] else { return }
-            if validpointsofinterest.count > 0
-            {
-                //guard let dogname = pets[0].dogName else { return }
-                //dogNameLabel.text = dogname
-                mapsViewController.pointsOfInterest = validpointsofinterest
-            }
-            */
-            
-            //Load the path coordinates
-            /*
-            let path = Array(map?.path)
-            guard let validPath = Array(path?) as? [Path] else { return }
-            if path?.count > 0
-            {
-                mapsViewController.path = path
-            }
-            */
-    
         }
         
         
@@ -356,12 +344,12 @@ extension RouteProfileViewController
             
             //Create the CoreData classes, Map, Path and Location
             //Create a CoreData Path object
-            //let path = Path(context: coreDataManager.mainManagedObjectContext)
+            let path = Path(context: coreDataManager.mainManagedObjectContext)
             
             //Populate Path object with path data
-            pathData?.uuid = ""
-            pathData?.createdAt = Date()
-            pathData?.updatedAt = Date()
+            path.uuid = ""
+            path.createdAt = Date()
+            path.updatedAt = Date()
             
             //Create the Path from the MapsViewController locationList
             for pathNode in pathPoints
@@ -376,10 +364,10 @@ extension RouteProfileViewController
                 location.latitude = pathNode.coordinate.latitude
                 location.longitude = pathNode.coordinate.longitude
                 
-                pathData?.addToLocations(location)
+                path.addToLocations(location)
             }
             
-            mapData?.addToPath(pathData!)
+            mapData?.addToPath(path)
             mapData?.updatedAt = Date()
             
             
@@ -433,6 +421,8 @@ extension RouteProfileViewController
              routeData?.durationMins = Int16(durationMins)
              routeData?.profilePicture = nil
              */
+            
+            self.pathData = path
         }
     }
     

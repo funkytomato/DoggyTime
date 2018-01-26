@@ -22,6 +22,8 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     //var map = MapModel(filename: "MagicMountain")
     //var pointsOfInterest: [PointOfInterest]?  pulled from the mapModel
     
+    //var paths: [
+    
     //The Saved Recorded Route
     var pathPoints: [CLLocation] = []
     var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
