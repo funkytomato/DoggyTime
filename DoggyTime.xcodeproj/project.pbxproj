@@ -92,20 +92,22 @@
 		C298F6762011352E00AC44FE /* Walk+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F66E2011352D00AC44FE /* Walk+CoreDataClass.swift */; };
 		C298F6772011352E00AC44FE /* Dog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F66F2011352D00AC44FE /* Dog+CoreDataClass.swift */; };
 		C298F6782011352E00AC44FE /* Route+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6702011352D00AC44FE /* Route+CoreDataClass.swift */; };
-		C298F6792011352E00AC44FE /* Map+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6712011352D00AC44FE /* Map+CoreDataClass.swift */; };
 		C298F67A2011352E00AC44FE /* PointOfInterest+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6722011352D00AC44FE /* PointOfInterest+CoreDataClass.swift */; };
 		C298F67B2011352E00AC44FE /* Client+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6732011352D00AC44FE /* Client+CoreDataClass.swift */; };
 		C298F67C2011352E00AC44FE /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6742011352D00AC44FE /* Location+CoreDataClass.swift */; };
-		C298F67D2011352E00AC44FE /* Path+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6752011352E00AC44FE /* Path+CoreDataClass.swift */; };
 		C298F6862011353700AC44FE /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F67E2011353600AC44FE /* Walk+CoreDataProperties.swift */; };
 		C298F6872011353700AC44FE /* PointOfInterest+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F67F2011353600AC44FE /* PointOfInterest+CoreDataProperties.swift */; };
 		C298F6882011353700AC44FE /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6802011353600AC44FE /* Dog+CoreDataProperties.swift */; };
 		C298F6892011353700AC44FE /* Route+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6812011353600AC44FE /* Route+CoreDataProperties.swift */; };
-		C298F68A2011353700AC44FE /* Path+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6822011353600AC44FE /* Path+CoreDataProperties.swift */; };
-		C298F68B2011353700AC44FE /* Map+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6832011353600AC44FE /* Map+CoreDataProperties.swift */; };
 		C298F68C2011353700AC44FE /* Client+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6842011353600AC44FE /* Client+CoreDataProperties.swift */; };
 		C298F68D2011353700AC44FE /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C298F6852011353600AC44FE /* Location+CoreDataProperties.swift */; };
 		C2ACEFA6200FA01400096DC1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACEFA5200FA01400096DC1 /* LocationManager.swift */; };
+		C2CA05B4201B5B8400F8946B /* Path+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B1201B5B8400F8946B /* Path+CoreDataClass.swift */; };
+		C2CA05B5201B5B8400F8946B /* Boundary+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B2201B5B8400F8946B /* Boundary+CoreDataClass.swift */; };
+		C2CA05B6201B5B8400F8946B /* Map+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B3201B5B8400F8946B /* Map+CoreDataClass.swift */; };
+		C2CA05BA201B5B9200F8946B /* Path+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B7201B5B9100F8946B /* Path+CoreDataProperties.swift */; };
+		C2CA05BB201B5B9200F8946B /* Map+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B8201B5B9200F8946B /* Map+CoreDataProperties.swift */; };
+		C2CA05BC201B5B9200F8946B /* Boundary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B9201B5B9200F8946B /* Boundary+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
@@ -201,25 +203,27 @@
 		B2BB1A9462701676911746EB /* Pods-DoggyTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTime/Pods-DoggyTime.release.xcconfig"; sourceTree = "<group>"; };
 		BF7F297A856582C668DD2A7E /* Pods-DoggyTimeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoggyTimeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoggyTimeUITests/Pods-DoggyTimeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C216884420113392007B3AFF /* DoggyTime.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DoggyTime.xcdatamodel; sourceTree = "<group>"; };
-		C26F2ADC20005575005054D2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C26F2ADC20005575005054D2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C27AE59F1FFFF5DA0002CBF5 /* AdvertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertViewController.swift; sourceTree = "<group>"; };
 		C298F66E2011352D00AC44FE /* Walk+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298F66F2011352D00AC44FE /* Dog+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298F6702011352D00AC44FE /* Route+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C298F6712011352D00AC44FE /* Map+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Map+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298F6722011352D00AC44FE /* PointOfInterest+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PointOfInterest+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298F6732011352D00AC44FE /* Client+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298F6742011352D00AC44FE /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C298F6752011352E00AC44FE /* Path+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C298F67E2011353600AC44FE /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C298F67F2011353600AC44FE /* PointOfInterest+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PointOfInterest+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C298F6802011353600AC44FE /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C298F6812011353600AC44FE /* Route+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Route+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C298F6822011353600AC44FE /* Path+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C298F6832011353600AC44FE /* Map+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Map+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C298F6842011353600AC44FE /* Client+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C298F6852011353600AC44FE /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2ACEFA5200FA01400096DC1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		C2CA05B1201B5B8400F8946B /* Path+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C2CA05B2201B5B8400F8946B /* Boundary+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Boundary+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C2CA05B3201B5B8400F8946B /* Map+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Map+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C2CA05B7201B5B9100F8946B /* Path+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C2CA05B8201B5B9200F8946B /* Map+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Map+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C2CA05B9201B5B9200F8946B /* Boundary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Boundary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -507,11 +511,12 @@
 		18A5DB791FB4EC68008C0C91 /* Class Properties - AutoGen */ = {
 			isa = PBXGroup;
 			children = (
+				C2CA05B9201B5B9200F8946B /* Boundary+CoreDataProperties.swift */,
+				C2CA05B8201B5B9200F8946B /* Map+CoreDataProperties.swift */,
+				C2CA05B7201B5B9100F8946B /* Path+CoreDataProperties.swift */,
 				C298F6842011353600AC44FE /* Client+CoreDataProperties.swift */,
 				C298F6802011353600AC44FE /* Dog+CoreDataProperties.swift */,
 				C298F6852011353600AC44FE /* Location+CoreDataProperties.swift */,
-				C298F6832011353600AC44FE /* Map+CoreDataProperties.swift */,
-				C298F6822011353600AC44FE /* Path+CoreDataProperties.swift */,
 				C298F67F2011353600AC44FE /* PointOfInterest+CoreDataProperties.swift */,
 				C298F6812011353600AC44FE /* Route+CoreDataProperties.swift */,
 				C298F67E2011353600AC44FE /* Walk+CoreDataProperties.swift */,
@@ -522,11 +527,12 @@
 		18A5DB7A1FB4EC97008C0C91 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C2CA05B2201B5B8400F8946B /* Boundary+CoreDataClass.swift */,
+				C2CA05B3201B5B8400F8946B /* Map+CoreDataClass.swift */,
+				C2CA05B1201B5B8400F8946B /* Path+CoreDataClass.swift */,
 				C298F6732011352D00AC44FE /* Client+CoreDataClass.swift */,
 				C298F66F2011352D00AC44FE /* Dog+CoreDataClass.swift */,
 				C298F6742011352D00AC44FE /* Location+CoreDataClass.swift */,
-				C298F6712011352D00AC44FE /* Map+CoreDataClass.swift */,
-				C298F6752011352E00AC44FE /* Path+CoreDataClass.swift */,
 				C298F6722011352D00AC44FE /* PointOfInterest+CoreDataClass.swift */,
 				C298F6702011352D00AC44FE /* Route+CoreDataClass.swift */,
 				C298F66E2011352D00AC44FE /* Walk+CoreDataClass.swift */,
@@ -1044,6 +1050,7 @@
 				C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */,
 				18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
 				183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */,
+				C2CA05BC201B5B9200F8946B /* Boundary+CoreDataProperties.swift in Sources */,
 				183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */,
 				1820A12C1FBF369B003B3793 /* ClientDogCell.swift in Sources */,
 				184617601FE93EF60055EFF7 /* ImageViewController.swift in Sources */,
@@ -1061,6 +1068,7 @@
 				C298F68C2011353700AC44FE /* Client+CoreDataProperties.swift in Sources */,
 				C298F6882011353700AC44FE /* Dog+CoreDataProperties.swift in Sources */,
 				18EB60821F9A20B50084FE8D /* SampleData.swift in Sources */,
+				C2CA05B4201B5B8400F8946B /* Path+CoreDataClass.swift in Sources */,
 				1870B8B21FE856A30051B915 /* AVCameraViewController.swift in Sources */,
 				1893E6771FDC688F00F49024 /* DogsDataSource.swift in Sources */,
 				C298F6772011352E00AC44FE /* Dog+CoreDataClass.swift in Sources */,
@@ -1069,7 +1077,6 @@
 				18E71F881FBB3A8400735EEE /* String.swift in Sources */,
 				18026BAB1FA5F9DD0011EB3F /* RouteCell.swift in Sources */,
 				184AD3E91FF1ED44003B720C /* UserDefaultsManager.swift in Sources */,
-				C298F6792011352E00AC44FE /* Map+CoreDataClass.swift in Sources */,
 				1800A5121F9E414A00829A86 /* DogsCell.swift in Sources */,
 				C298F67A2011352E00AC44FE /* PointOfInterest+CoreDataClass.swift in Sources */,
 				18A7D5241FF836BD00156BE7 /* PointOfInterestAnnotationView.swift in Sources */,
@@ -1085,18 +1092,19 @@
 				C298F6762011352E00AC44FE /* Walk+CoreDataClass.swift in Sources */,
 				18E71F851FBB1CEB00735EEE /* CoreDataManagerDelegate.swift in Sources */,
 				C298F6782011352E00AC44FE /* Route+CoreDataClass.swift in Sources */,
-				C298F68A2011353700AC44FE /* Path+CoreDataProperties.swift in Sources */,
+				C2CA05BA201B5B9200F8946B /* Path+CoreDataProperties.swift in Sources */,
 				C298F6872011353700AC44FE /* PointOfInterest+CoreDataProperties.swift in Sources */,
 				181BB82D1FA3836F0036EB07 /* WalkIdentificationCell.swift in Sources */,
 				18A7D5281FF836E000156BE7 /* MapOverlay.swift in Sources */,
 				18A7D5291FF836E000156BE7 /* MapOverlayView.swift in Sources */,
 				1820A12E1FBF3D52003B3793 /* UIImage.swift in Sources */,
-				C298F68B2011353700AC44FE /* Map+CoreDataProperties.swift in Sources */,
 				C2ACEFA6200FA01400096DC1 /* LocationManager.swift in Sources */,
-				C298F67D2011352E00AC44FE /* Path+CoreDataClass.swift in Sources */,
 				C298F67B2011352E00AC44FE /* Client+CoreDataClass.swift in Sources */,
 				C2F02A721FB0B98500597345 /* Date.swift in Sources */,
+				C2CA05B6201B5B8400F8946B /* Map+CoreDataClass.swift in Sources */,
+				C2CA05BB201B5B9200F8946B /* Map+CoreDataProperties.swift in Sources */,
 				18EB60081F9A1ADF0084FE8D /* AppDelegate.swift in Sources */,
+				C2CA05B5201B5B8400F8946B /* Boundary+CoreDataClass.swift in Sources */,
 				182465541FA361DD00647762 /* DogsOnWalkTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
