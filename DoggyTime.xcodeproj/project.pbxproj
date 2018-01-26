@@ -110,6 +110,7 @@
 		C2CA05BC201B5B9200F8946B /* Boundary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA05B9201B5B9200F8946B /* Boundary+CoreDataProperties.swift */; };
 		C2CBE7C11FA8DD610092B4DA /* Routes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */; };
 		C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */; };
+		C2DE2E15201B70C1003DEBFB /* PathRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE2E14201B70C1003DEBFB /* PathRoute.swift */; };
 		C2F02A721FB0B98500597345 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F02A711FB0B98500597345 /* Date.swift */; };
 /* End PBXBuildFile section */
 
@@ -226,6 +227,7 @@
 		C2CA05B9201B5B9200F8946B /* Boundary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Boundary+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C2CBE7C01FA8DD610092B4DA /* Routes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Routes.storyboard; sourceTree = "<group>"; };
 		C2D79E1E1FDEC42000500825 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
+		C2DE2E14201B70C1003DEBFB /* PathRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PathRoute.swift; path = Extensions/PathRoute.swift; sourceTree = "<group>"; };
 		C2F02A711FB0B98500597345 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -672,6 +674,7 @@
 				18A7D5341FF837D300156BE7 /* View Models */,
 				184AD3E81FF1ED44003B720C /* UserDefaultsManager.swift */,
 				C2ACEFA5200FA01400096DC1 /* LocationManager.swift */,
+				C2DE2E14201B70C1003DEBFB /* PathRoute.swift */,
 			);
 			path = DoggyTime;
 			sourceTree = "<group>";
@@ -1049,6 +1052,7 @@
 				C216884520113392007B3AFF /* DoggyTime.xcdatamodeld in Sources */,
 				C2D79E1F1FDEC42000500825 /* ClientProfileViewController.swift in Sources */,
 				18EB605E1F9A20A40084FE8D /* DogNameCell.swift in Sources */,
+				C2DE2E15201B70C1003DEBFB /* PathRoute.swift in Sources */,
 				183242FF1FB383B600ACF480 /* ClientDogEntryViewController.swift in Sources */,
 				C2CA05BC201B5B9200F8946B /* Boundary+CoreDataProperties.swift in Sources */,
 				183243031FB3A47100ACF480 /* CoreDataManager.swift in Sources */,

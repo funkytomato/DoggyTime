@@ -29,6 +29,7 @@ class RouteProfileViewController: UIViewController
     
     //MARK:- Path recording Properties
     var timer: Timer?
+    var savedPaths: [PathRoute] = []
     var pathPoints: [CLLocation] = []
     var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
     var timeTakenInSeconds = Int16(0)
@@ -116,20 +117,20 @@ class RouteProfileViewController: UIViewController
     
     required init?(coder aDecoder: NSCoder)
     {
-        print("RouteProfileViewController init")
+        ////print("RouteProfileViewController init")
         
         super.init(coder: aDecoder)
     }
     
     
     deinit {
-        print("RouteProfileViewController deinit")
+        ////print("RouteProfileViewController deinit")
     }
     
     
     override func viewDidLoad()
     {
-        print("RouteProfileViewController viewDidLoad")
+        ////print("RouteProfileViewController viewDidLoad")
         super.viewDidLoad()
          
         
@@ -145,7 +146,7 @@ class RouteProfileViewController: UIViewController
     
     override func didReceiveMemoryWarning()
     {
-        print("RouteProfileViewController didRecieveMemoryWarning")
+        ////print("RouteProfileViewController didRecieveMemoryWarning")
         super.didReceiveMemoryWarning()
         
         //Dispose of any resources that can be recreated
@@ -159,9 +160,9 @@ extension RouteProfileViewController
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("RouteProfileViewController prepare segue identifier:\(String(describing: segue.identifier))")
-        print("RouteProfileViewController prepare segue source:\(segue.source)")
-        print("RouteProfileViewController prepare segue destination:\(segue.destination)")
+        ////print("RouteProfileViewController prepare segue identifier:\(String(describing: segue.identifier))")
+        ////print("RouteProfileViewController prepare segue source:\(segue.source)")
+        ////print("RouteProfileViewController prepare segue destination:\(segue.destination)")
         
         
         
@@ -176,12 +177,12 @@ extension RouteProfileViewController
             self.embeddedMapsViewController = mapsViewController
             
             
-            print("mapsEmbeddedSegue routeData mapProfile")
-            print("routeData.mapProfile.midLatitudeCoordinate:\(String(describing: routeData?.mapProfile?.midLatitudeCoordinate))")
-            print("routeData.mapProfile.midLongitudeCoordinate:\(String(describing: routeData?.mapProfile?.midLongitudeCoordinate))")
-            print("routeData.mapProfile.overlayTopLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopLeftCoordinate))")
-            print("routeData.mapProfile.overlayTopRightCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopRightCoordinate))")
-            print("routeData.mapProfile.overlayBottomLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayBottomLeftCoordinate))")
+            ////print("mapsEmbeddedSegue routeData mapProfile")
+            ////print("routeData.mapProfile.midLatitudeCoordinate:\(String(describing: routeData?.mapProfile?.midLatitudeCoordinate))")
+            ////print("routeData.mapProfile.midLongitudeCoordinate:\(String(describing: routeData?.mapProfile?.midLongitudeCoordinate))")
+            ////print("routeData.mapProfile.overlayTopLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopLeftCoordinate))")
+            ////print("routeData.mapProfile.overlayTopRightCoordinate:\(String(describing: routeData?.mapProfile?.overlayTopRightCoordinate))")
+            ////print("routeData.mapProfile.overlayBottomLeftCoordinate:\(String(describing: routeData?.mapProfile?.overlayBottomLeftCoordinate))")
             
            /*
             //Fetch possible map data
@@ -204,7 +205,7 @@ extension RouteProfileViewController
             let midCoordinate = MapModel.mapCoordinate(latitude: latitude!, longitude: longitude!)
             mapModel.midCoordinate = midCoordinate
             
-            print("midCoordinate: \(midCoordinate)")
+            ////print("midCoordinate: \(midCoordinate)")
           */
       
             //Create and populate the MapModel
@@ -233,12 +234,12 @@ extension RouteProfileViewController
                     let latitude = mapData.midLatitudeCoordinate
                     let longitude = mapData.midLongitudeCoordinate
                     
-                    print("latitude:\(latitude)")
-                    print("longitude:\(longitude)")
+                    ////print("latitude:\(latitude)")
+                    ////print("longitude:\(longitude)")
                     
                     //Create the centre coordinate and set the mapModel midCoordinate
                     let midCoordinate = MapModel.mapCoordinate(latitude: latitude, longitude: longitude)
-                    print("midCoordinate: \(midCoordinate)")
+                    ////print("midCoordinate: \(midCoordinate)")
                     mapModel.midCoordinate = midCoordinate
                     
                     
@@ -262,39 +263,56 @@ extension RouteProfileViewController
               
                     //Get the Path data associated to this map
                     guard let pathData = mapData.paths else { return }
-                    print("pathData:\(pathData.description)")
+                    ////print("pathData:\(pathData.description)")
                     
-                    //Assign Path data to EmbeddedMapsViewController
                     
-                    var pathPoints : [CLLocation] = []
-                    let path = Array(mapData.paths!)
-                    guard let validPaths = Array(path) as? [Path] else { return }
+                    //Create an array of PathRoutes from Path CoreData
+                    //Get the
+                    var paths = Array(mapData.paths!)
+                    guard let validPaths = Array(paths) as? [Path] else { return }
+                    
                     if validPaths.count > 0
                     {
-                        print("validPaths:\(validPaths)")
+                        ////print("validPaths:\(validPaths)")
                         
-                        guard let validPoints = validPaths[0].locations else { return }
-                        print("validPoints:\(validPoints)")
-                        let newPoints = Array(validPoints) as? [Location]
-                        print("newPoints:\(String(describing: newPoints))")
-                        
-                        
-                        for point in newPoints!
+        
+                        for path in validPaths
                         {
-                            let pathPoint = CLLocation(latitude: CLLocationDegrees(point.latitude), longitude: CLLocationDegrees(point.longitude))
-                            pathPoints.append(pathPoint)
+                            ////print("path:\(path)")
+                            var pathRoute : PathRoute
+                            
+                            //guard let validPoints = validPaths[0].locations else { return }
+                            guard let validPoints = path.locations else { return }
+                            ////print("validPoints:\(validPoints)")
+                            let newPoints = Array(validPoints) as? [Location]
+                            ////print("newPoints:\(String(describing: newPoints))")
+                            
+                            var pathPoints : [CLLocation] = []
+                            for point in newPoints!
+                            {
+                                let pathPoint = CLLocation(latitude: CLLocationDegrees(point.latitude), longitude: CLLocationDegrees(point.longitude))
+                                pathPoints.append(pathPoint)
+                            }
+                            
+                            pathRoute = PathRoute(pathName: "newPath",points: pathPoints)
+                            savedPaths.append(pathRoute)
+                            ////print("savedPaths\(savedPaths)")
+                            
+                            //Legacy
+                            self.pathPoints = pathPoints
+                            ////print("pathPoints:\(pathPoints)")
                         }
                         
-                        self.pathPoints = pathPoints
-                        //print("pathPoints:\(pathPoints)")
+                        print("savedPaths\(self.savedPaths)")
                         
-                        embeddedMapsViewController.pathPoints = pathPoints
+                        embeddedMapsViewController.path = pathPoints
                     }
                 }
                 
                 //Configure the MapsViewController
                 embeddedMapsViewController.mapModel = mapModel
-                embeddedMapsViewController.pathPoints = pathPoints
+                embeddedMapsViewController.path = pathPoints
+                embeddedMapsViewController.paths = savedPaths
                 //embeddedMapsViewController.pointsOfInterest = pointsOfInterest
                 
             }
@@ -310,11 +328,11 @@ extension RouteProfileViewController
             mapModel.overlayTopRightCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayTopRightCoordinate)!)
             mapModel.overlayBottomLeftCoordinate = MapModel.parseCoord(location: (routeData?.mapProfile?.overlayBottomLeftCoordinate)!)
         
-            print("mapModel.name:\(mapModel.name)")
-            print("mapModel.midCoordinate:\(mapModel.midCoordinate)")
-            print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
-            print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
-            print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
+            ////print("mapModel.name:\(mapModel.name)")
+            ////print("mapModel.midCoordinate:\(mapModel.midCoordinate)")
+            ////print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
+            ////print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
+            ////print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
             */
         }
         
@@ -328,18 +346,18 @@ extension RouteProfileViewController
             //Get the latest data and pass to destinationController to be saved
             guard let locationName = placeNameField.text else { return }
             guard let mapModel = embeddedMapsViewController?.mapModel else { return }
-            guard let pathPoints = embeddedMapsViewController?.pathPoints else { return }
+            guard let pathPoints = embeddedMapsViewController?.path else { return }
             self.pathPoints = pathPoints
             
             
             //savePath()
             
-            print("Save Route Detail")
-            print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
-            print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
-            print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
-            print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
-            print("mapModel.overlayBottomRightCoordinate:\(mapModel.overlayBottomRightCoordinate)")
+            ////print("Save Route Detail")
+            ////print("mapModel-midCoordinate:\(mapModel.midCoordinate)")
+            ////print("mapModel.overlayTopLeftCoordinate:\(mapModel.overlayTopLeftCoordinate)")
+            ////print("mapModel.overlayTopRightCoordinate:\(mapModel.overlayTopRightCoordinate)")
+            ////print("mapModel.overlayBottomLeftCoordinate:\(mapModel.overlayBottomLeftCoordinate)")
+            ////print("mapModel.overlayBottomRightCoordinate:\(mapModel.overlayBottomRightCoordinate)")
             
             
             //Create the CoreData classes, Map, Path and Location
@@ -430,7 +448,7 @@ extension RouteProfileViewController
     
     func savePath()
     {
-        print("savePath")
+        ////print("savePath")
 
 
         //Store to CoreData
@@ -440,13 +458,13 @@ extension RouteProfileViewController
             try mapData?.managedObjectContext?.save()
             try pathData?.managedObjectContext?.save()
             
-            print("RouteProfileViewController savePathDetail map:\(mapData?.description)")
+            ////print("RouteProfileViewController savePathDetail map:\(mapData?.description)")
         }
         catch
         {
             let saveError = error as NSError
-            print("Unable to Save Path")
-            print("\(saveError), \(saveError.localizedDescription)")
+            ////print("Unable to Save Path")
+            ////print("\(saveError), \(saveError.localizedDescription)")
         }
     }
 
@@ -553,7 +571,7 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
         /*
         if pickerView == TerrainPicker
         {
-            print(TerrainDataSource[row])
+            ////print(TerrainDataSource[row])
             
             routeData?.terrain = TerrainDataSource[row]
         }
@@ -564,8 +582,8 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
             
             if component == 0
             {
-                print("\(TenNumbersDataSource[row])")
-                //print("\(Qtrs[row])")
+                ////print("\(TenNumbersDataSource[row])")
+                //////print("\(Qtrs[row])")
                 
                 tens = TenNumbersDataSource[row].description
                 //let qtrs = Qtrs[row].description
@@ -573,8 +591,8 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
             }
             else
             {
-               // print("\(TenNumbers[row])")
-                print("\(DistanceQtrDataSource[row])")
+               // ////print("\(TenNumbers[row])")
+                ////print("\(DistanceQtrDataSource[row])")
                 
                // let tens = TenNumbers[row].description
                 qtrs = DistanceQtrDataSource[row].description
@@ -592,8 +610,8 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
             
             if component == 0
             {
-                print("\(TenNumbersDataSource[row])")
-                //print("\(Qtrs[row])")
+                ////print("\(TenNumbersDataSource[row])")
+                //////print("\(Qtrs[row])")
                 
                 tens = TenNumbersDataSource[row].description
                 //let qtrs = Qtrs[row].description
@@ -602,8 +620,8 @@ extension RouteProfileViewController: UIPickerViewDelegate, UIPickerViewDataSour
             }
             else
             {
-                // print("\(TenNumbers[row])")
-                print("\(DurationQtrsDataSource[row])")
+                // ////print("\(TenNumbers[row])")
+                ////print("\(DurationQtrsDataSource[row])")
                 
                 // let tens = TenNumbers[row].description
                 qtrs = DurationQtrsDataSource[row].description

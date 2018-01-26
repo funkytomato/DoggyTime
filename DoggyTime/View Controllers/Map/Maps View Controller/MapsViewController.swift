@@ -12,22 +12,20 @@ import CoreLocation
 import CoreData
 
 
+
 class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate
 {
-    
+
     
     //MARK:- Properties
     //Prepare Segue Map Properties
     var mapModel : MapModel? //just this one!
     //var map = MapModel(filename: "MagicMountain")
     //var pointsOfInterest: [PointOfInterest]?  pulled from the mapModel
+    var paths: [PathRoute] = []
+
     
-    //var paths: [
-    
-    //The Saved Recorded Route
-    var pathPoints: [CLLocation] = []
-    var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
-    var timeTakenInSeconds = Int16(0)
+
     
 
     //MARK:- Maps and Overlays Options
@@ -42,6 +40,11 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     
     //MARK:- Path location mapping and timing temporary properties
+    //The Saved Recorded Route
+    var path: [CLLocation] = []
+    var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
+    var timeTakenInSeconds = Int16(0)
+    
     private var seconds = 0
     private var timer: Timer?
     private var distance = Measurement(value: 0, unit: UnitLength.meters)
@@ -79,7 +82,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         super.viewDidLoad()
 
         print("mapModel:\(String(describing: mapModel))")
-        print("pathPoints:\(pathPoints.description)")
+        print("pathPoints:\(path.description)")
         
         //Load coordinates from CoreData
         //mapOverlay = MapOverlay(map: mapModel)
@@ -176,7 +179,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     private func saveRoute()
     {
-        pathPoints = locationList
+        path = locationList
         pathDistance = distance
         timeTakenInSeconds = Int16(timeTakenInSeconds)
     }
@@ -338,8 +341,28 @@ extension MapsViewController
     {
         //guard let points = MapModel.plist("EntranceToGoliathRoute") as? [String] else { return }
         
- 
-        let pathPoints = self.pathPoints
+        
+        if paths.count > 0
+        {
+            for path in paths
+            {
+                let pathPoints = path.pathPoints
+                var coords = [CLLocationCoordinate2D].init()
+                
+                for point in pathPoints
+                {
+                    let coord = CLLocationCoordinate2DMake(CLLocationDegrees(point.coordinate.latitude), CLLocationDegrees(point.coordinate.longitude))
+                    coords.append(coord)
+                }
+                
+                //Draw the route/path
+                let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+                mapView.add(myPolyline)
+            }
+        }
+        
+ /*
+        let pathPoints = self.path
         var coords = [CLLocationCoordinate2D].init()
         
         for point in pathPoints
@@ -347,16 +370,11 @@ extension MapsViewController
             let coord = CLLocationCoordinate2DMake(CLLocationDegrees(point.coordinate.latitude), CLLocationDegrees(point.coordinate.longitude))
             coords.append(coord)
         }
+   */
         
-        
-        /*
-        let cgPoints = points.map { CGPointFromString($0) }
-        let coords = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        */
-        
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
-        mapView.add(myPolyline)
+        //Draw the route/path
+  //      let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+  //      mapView.add(myPolyline)
     }
     
     

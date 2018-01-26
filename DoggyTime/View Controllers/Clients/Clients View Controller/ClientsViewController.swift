@@ -24,7 +24,7 @@ class ClientsViewController: UITableViewController
     {
         // Initialize Fetch Request
         let fetchRequest: NSFetchRequest<Client> = Client.fetchRequest()
-        print("fetchRequest:\(fetchRequest.description)")
+        //print("fetchRequest:\(fetchRequest.description)")
         
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "updatedAt", ascending: false)
@@ -32,7 +32,7 @@ class ClientsViewController: UITableViewController
         
         // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.mainManagedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        print("fetchedResultsCOntroller\(fetchedResultsController.description)")
+        //print("fetchedResultsCOntroller\(fetchedResultsController.description)")
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
@@ -49,7 +49,7 @@ class ClientsViewController: UITableViewController
     
     override func viewDidLoad()
     {
-        print("ClientsViewController viewDidLoad")
+        //print("ClientsViewController viewDidLoad")
         super.viewDidLoad()
    
         //Fetch clients from CoreData
@@ -70,7 +70,7 @@ class ClientsViewController: UITableViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("ClientsViewController prepare segue")
+        //print("ClientsViewController prepare segue")
         
         //Create a new Client Profile
         if segue.identifier == "AddClientSegue",
@@ -103,7 +103,7 @@ class ClientsViewController: UITableViewController
             // Fetch Client
             let client = fetchedResultsController.object(at: indexPath)
             
-            print("ClientsViewController prepare for client profile: \(client.dogsOwned)")
+            //print("ClientsViewController prepare for client profile: \(client.dogsOwned)")
             
             // Configure View Controller
             profileViewController.setCoreDataManager(coreDataManager: coreDataManager)
@@ -120,22 +120,22 @@ extension ClientsViewController
     
     @IBAction func cancelToClientsViewController(_ segue: UIStoryboardSegue)
     {
-        print("Back in the ClientViewController")
+        //print("Back in the ClientViewController")
         
     }
     
     
     @IBAction func saveClientDetail(_ segue: UIStoryboardSegue)
     {
-        print("ClientsViewController saveClientDetail")
-        print("Segue source\(segue.source)")
+        //print("ClientsViewController saveClientDetail")
+        //print("Segue source\(segue.source)")
         guard let profileViewController = segue.source as? ClientProfileViewController,
             let client = profileViewController.clientData else
         {
             return
         }
         
-        print("\(client.dogsOwned)")
+        //print("\(client.dogsOwned)")
         
         //Store to CoreData
         do

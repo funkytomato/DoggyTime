@@ -40,14 +40,14 @@ class RoutesViewController: UITableViewController
     
     required init?(coder aDecoder: NSCoder)
     {
-        print("init RoutesViewController")
+        //print("init RoutesViewController")
         super.init(coder: aDecoder)
     }
 
     
     override func viewDidLoad()
     {
-        print("RoutesViewController viewDidLoad")
+        //print("RoutesViewController viewDidLoad")
         super.viewDidLoad()
         
         //Fetch Routes from CoreData
@@ -76,7 +76,7 @@ class RoutesViewController: UITableViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        print("prepare segue\(segue.identifier?.description)")
+        //print("prepare segue\(segue.identifier?.description)")
         
         
         //Create a new Route profile
@@ -137,7 +137,7 @@ extension RoutesViewController
     
     @IBAction func saveRouteDetail(_ segue: UIStoryboardSegue)
     {
-        print("RoutesViewController saveRouteDetail")
+        //print("RoutesViewController saveRouteDetail")
         guard let profileViewController = segue.source as? RouteProfileViewController,
             let route = profileViewController.routeData,
             let map = profileViewController.mapData,
@@ -153,9 +153,9 @@ extension RoutesViewController
             try map.managedObjectContext?.save()
             try path.managedObjectContext?.save()
             
-            print("RoutesViewController saveRouteDetail route:\(route)")
-            print("RoutesViewController saveRouteDetail map:\(map)")
-            print("RoutesViewController saveRouteDetail path:\(path)")
+            //print("RoutesViewController saveRouteDetail route:\(route)")
+            //print("RoutesViewController saveRouteDetail map:\(map)")
+            //print("RoutesViewController saveRouteDetail path:\(path)")
         }
         catch
         {
