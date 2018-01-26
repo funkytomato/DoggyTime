@@ -50,7 +50,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="mapFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="mapProfile" inverseEntity="Route" syncable="YES"/>
-        <relationship name="path" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Path" inverseName="pathFor" inverseEntity="Path" syncable="YES"/>
+        <relationship name="paths" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Path" inverseName="pathFor" inverseEntity="Path" syncable="YES"/>
         <relationship name="pointsofinterest" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PointOfInterest" inverseName="onMap" inverseEntity="PointOfInterest" syncable="YES"/>
     </entity>
     <entity name="Path" representedClassName=".Path" syncable="YES">
@@ -61,7 +61,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="path" inverseEntity="Location" syncable="YES"/>
-        <relationship name="pathFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="path" inverseEntity="Map" syncable="YES"/>
+        <relationship name="pathFor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="paths" inverseEntity="Map" syncable="YES"/>
     </entity>
     <entity name="PointOfInterest" representedClassName=".PointOfInterest" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -96,11 +96,11 @@
     <elements>
         <element name="Client" positionX="16" positionY="216" width="128" height="225"/>
         <element name="Dog" positionX="-270" positionY="216" width="128" height="223"/>
+        <element name="Location" positionX="63" positionY="-186" width="128" height="148"/>
         <element name="Map" positionX="-549" positionY="-207" width="128" height="253"/>
-        <element name="Path" positionX="-270" positionY="-189" width="128" height="163"/>
+        <element name="Path" positionX="-270" positionY="-207" width="128" height="163"/>
         <element name="PointOfInterest" positionX="-270" positionY="45" width="128" height="163"/>
         <element name="Route" positionX="-792" positionY="-198" width="128" height="163"/>
         <element name="Walk" positionX="-794" positionY="197" width="128" height="163"/>
-        <element name="Location" positionX="63" positionY="-186" width="128" height="148"/>
     </elements>
 </model>
