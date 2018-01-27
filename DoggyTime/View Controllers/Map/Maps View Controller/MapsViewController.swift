@@ -177,6 +177,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     private func saveRoute()
     {
+        saveMapBoundary()
         path = locationList
         pathDistance = distance
         timeTakenInSeconds = Int16(timeTakenInSeconds)
@@ -249,34 +250,41 @@ extension MapsViewController
     
     
     //Mark:- Calculate the visible Map Region
-    func getMapBoundary()
+    func saveMapBoundary()
     {
         let mRect: MKMapRect = self.mapView.visibleMapRect
+        mapModel?.overlayBoundingMapRect
         
-        let eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect))
-        let westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect))
+        //mapModel.midCoordinate = mapView.centerCoordinate
+        let topLeftCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMinX(mRect), MKMapRectGetMaxY(mRect))
+        let topRightCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMaxX(mRect), MKMapRectGetMaxY(mRect))
+        let bottomLeftCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMinX(mRect), MKMapRectGetMinY(mRect))
+        let bottomRightCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMaxX(mRect), MKMapRectGetMinY(mRect))
+        
+        
         let currentDistWideInMeters = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint)
+        let currentDistWideInMetres = MKMe
         let milesWide = currentDistWideInMeters / 1609.34 // number of meters in a mile
+        
         
         //Capture the height and width of the visible map in metres
         let mapWidth = MKMapRectGetWidth(mRect) / 10;
         let mapHeight = MKMapRectGetHeight(mRect) / 10;
         
+        
         print("milesWide: \(milesWide)")
         print("mapWidth:\(mapWidth)")
         print("mapHeight:\(mapHeight)")
-      /*
-        //mapModel.midCoordinate = mapView.centerCoordinate
-        let topLeftCoord = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMaxY(mRect))
-        let topRightCoord = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMaxY(mRect))
-        let bottomLeftCoord = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMinY(mRect))
-        let bottomRightCoord = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMinY(mRect))
+      
+
+        
+        
         print("topLeftCoord\(topLeftCoord)")
-    */
-        //mapModel?.overlayTopLeftCoordinate = MKMapPointForCoordinate(topLeftCoord)
-        //mapModel.overlayTopRightCoordinate = mapView
-        //mapModel.overlayBottomLeftCoordinate = mapView
-        //mapModel.overlayBottomRightCoordinate = mapView
+    
+        mapModel?.overlayTopLeftCoordinate = MKMapPointForCoordinate(topLeftCoord)
+       // mapModel.overlayTopRightCoordinate = mapView
+       // mapModel.overlayBottomLeftCoordinate = mapView
+       // mapModel.overlayBottomRightCoordinate = mapView
     }
     
     
@@ -576,7 +584,7 @@ extension MapsViewController
         let span = mapView.region.span
         print ("span:\(span)")
        
-        getMapBoundary()
+
         
         //Need to convert coordinatespan to span double
         
