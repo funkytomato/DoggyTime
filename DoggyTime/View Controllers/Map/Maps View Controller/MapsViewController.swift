@@ -86,15 +86,15 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         if mapModel?.name == "New"
         //if mapModel?.midCoordinate == coordinate
         {
-            //mapModel?.midCoordinate = (locationManager.location?.coordinate)!
+            mapModel?.midCoordinate = (locationManager.location?.coordinate)!
         }
         
         //Load coordinates from CoreData
-        mapOverlay = MapOverlay(map: mapModel!)
+        //mapOverlay = MapOverlay(map: mapModel!)
         
         configureMapView()
         configureVisibleRegion()
-        //centerMapOnLocation(location: (mapModel?.midCoordinate)!)
+        //centerMapOnALocation(location: (mapModel?.midCoordinate)!)
         
         
         //Config the activity monitor
@@ -129,6 +129,10 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
             let optionsController = segue.destination as? MapOptionsViewController
         {
             optionsController.selectedOptions = selectedOptions
+        }
+        if segue.identifier == "saveRouteDetail"
+        {
+            print("MapsViewController prepare saveRouteDetail called")
         }
     }
     
@@ -177,7 +181,6 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
     
     private func saveRoute()
     {
-        saveMapBoundary()
         path = locationList
         pathDistance = distance
         timeTakenInSeconds = Int16(timeTakenInSeconds)
@@ -189,7 +192,7 @@ class MapsViewController: UIViewController, MKMapViewDelegate, UISearchBarDelega
         
         if let currentLocation = locationList.last
         {
-            centerMapOnLocation(location: currentLocation.coordinate)
+            centerMapOnALocation(location: currentLocation.coordinate)
         }
     }
     
@@ -235,6 +238,54 @@ extension MapsViewController
 extension MapsViewController
 {
 
+    //This function will zoom surrounding the route
+            /*
+    private func mapRegion() -> MKCoordinateRegion?
+    {
+
+        guard
+            let locations = run.locations,
+            locations.count > 0
+            else
+        {
+                return nil
+        }
+        
+        let latitudes = locations.map { location -> Double in
+            let location = location as! Location
+            return location.latitude
+        }
+        
+        let longitudes = locations.map { location -> Double in
+            let location = location as! Location
+            return location.longitude
+        }
+        
+        let maxLat = latitudes.max()!
+        let minLat = latitudes.min()!
+        let maxLong = longitudes.max()!
+        let minLong = longitudes.min()!
+        
+        let center = CLLocationCoordinate2D(latitude: (minLat + maxLat) / 2,
+                                            longitude: (minLong + maxLong) / 2)
+        let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.3,
+                                    longitudeDelta: (maxLong - minLong) * 1.3)
+        return MKCoordinateRegion(center: center, span: span)
+
+    }
+ */
+   
+    //Mark:- Create and define the visibl map area
+    private func loadVisibleMapAreaFromMapModel()
+    {
+        let mapCentrePoint = MKMapPoint(x: (mapModel?.midCoordinate.latitude)!, y: (mapModel?.midCoordinate.longitude)!)
+        let mapSize = MKMapSize(width: (mapModel?.mapWidth)!, height: (mapModel?.mapHeight)!)
+        let mRect = MKMapRect(origin: mapCentrePoint, size: mapSize)
+        
+        mapView.setVisibleMapRect(mRect, animated: true)
+    }
+    
+    
     //MARK:- Configure the UIMapView to show maps
     func configureMapView()
     {
@@ -249,22 +300,17 @@ extension MapsViewController
     }
     
     
-    //Mark:- Calculate the visible Map Region
-    func saveMapBoundary()
+    func populateMapModel()
     {
+        //Get Map Cordinates
         let mRect: MKMapRect = self.mapView.visibleMapRect
-        mapModel?.overlayBoundingMapRect
-        
-        //mapModel.midCoordinate = mapView.centerCoordinate
-        let topLeftCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMinX(mRect), MKMapRectGetMaxY(mRect))
-        let topRightCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMaxX(mRect), MKMapRectGetMaxY(mRect))
-        let bottomLeftCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMinX(mRect), MKMapRectGetMinY(mRect))
-        let bottomRightCoord = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMaxX(mRect), MKMapRectGetMinY(mRect))
+        //mapModel?.overlayBoundingMapRect
         
         
-        let currentDistWideInMeters = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint)
-        let currentDistWideInMetres = MKMe
-        let milesWide = currentDistWideInMeters / 1609.34 // number of meters in a mile
+        let topLeftCoord = MKMapPointMake( MKMapRectGetMinX(mRect), MKMapRectGetMaxY(mRect))
+        let topRightCoord = MKMapPointMake( MKMapRectGetMaxX(mRect), MKMapRectGetMaxY(mRect))
+        let bottomLeftCoord = MKMapPointMake( MKMapRectGetMinX(mRect), MKMapRectGetMinY(mRect))
+        let bottomRightCoord = MKMapPointMake( MKMapRectGetMaxX(mRect), MKMapRectGetMinY(mRect))
         
         
         //Capture the height and width of the visible map in metres
@@ -272,49 +318,67 @@ extension MapsViewController
         let mapHeight = MKMapRectGetHeight(mRect) / 10;
         
         
-        print("milesWide: \(milesWide)")
-        print("mapWidth:\(mapWidth)")
-        print("mapHeight:\(mapHeight)")
-      
-
+        //Save to the MapModel
+        mapModel?.name = "saved"
+        mapModel?.midCoordinate = MKCoordinateForMapPoint( MKMapPointMake( MKMapRectGetMidX(mRect), MKMapRectGetMidY(mRect)))
+        mapModel?.mapWidth = mapWidth
+        mapModel?.mapHeight = mapHeight
+        //mapModel?.regionRadius = regionRadius
+        //mapModel?.spanLongitudeDelta =
+        //mapModel?.spanLongitudeDelta =
         
+        mapModel?.overlayTopLeftCoordinate = MKCoordinateForMapPoint(topLeftCoord)
+        mapModel?.overlayTopRightCoordinate = MKCoordinateForMapPoint(topRightCoord)
+        mapModel?.overlayBottomLeftCoordinate = MKCoordinateForMapPoint(bottomLeftCoord)
+        //mapModel?.overlayBottomRightCoordinate = MKCoordinateForMapPoint(bottomRightCoord)
         
-        print("topLeftCoord\(topLeftCoord)")
-    
-        mapModel?.overlayTopLeftCoordinate = MKMapPointForCoordinate(topLeftCoord)
-       // mapModel.overlayTopRightCoordinate = mapView
-       // mapModel.overlayBottomLeftCoordinate = mapView
-       // mapModel.overlayBottomRightCoordinate = mapView
+        //mapModel?.boundary =
     }
     
+    
+    //Calculate and return the span of the visible region in metres
+    func calculateVisibleSpan() -> Double
+    {
+        //Get the current view size and set the MapModel regionRadius
+        let mRect: MKMapRect = self.mapView.visibleMapRect
+        let topCoord = MKMapPointMake( MKMapRectGetMidX(mRect), MKMapRectGetMaxY(mRect))
+        let bottomCoord = MKMapPointMake( MKMapRectGetMidX(mRect), MKMapRectGetMinY(mRect))
+        let currentDistWideInMeters = MKMetersBetweenMapPoints(topCoord, bottomCoord)
+        
+        print("saveMapBoundary-currentDistWideInMeters: \(currentDistWideInMeters)")
+        
+        return currentDistWideInMeters
+    }
     
     //NOT CURRENTLY USED BECAUSE THE OVERLAY COORDINATES ARE NOT BEING SET AS OF YET
     //MARK:- Configure the visible Map Region
     func configureVisibleRegion()
     {
         //Config the size/region of the mapview
-        /*
-        let latDelta = (mapModel?.overlayTopLeftCoordinate.latitude)! - (mapModel?.overlayBottomRightCoordinate.latitude)!
-        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        let region = MKCoordinateRegionMake((mapModel?.midCoordinate)!, span)
-        
-        mapView.region = region
-        */
-
-        //let regionRadius: CLLocationDistance = 1000
-        guard let regionRadius = mapModel?.regionRadius else { return }
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, regionRadius, regionRadius)
-        
-        mapView.region = coordinateRegion
+        var region: MKCoordinateRegion
+        guard let spanDistance = mapModel?.regionRadius else { return }
+        region = MKCoordinateRegionMakeWithDistance((mapModel?.midCoordinate)!, spanDistance, spanDistance)
+        print("span\(spanDistance)")
+        mapView.setRegion(region, animated: true)
     }
     
     
     //MARK:- Center the Map on the User's Current Location
-    func centerMapOnLocation(location: CLLocationCoordinate2D)
+    func centerMapOnALocation(location: CLLocationCoordinate2D)
     {
         mapModel?.midCoordinate = location
-        
-        print("mapModel lat:\(String(describing: mapModel?.midCoordinate.latitude)) longitude:\(String(describing: mapModel?.midCoordinate.longitude))")
+        print("location\(location)")
+        var region = MKCoordinateRegion()
+        region.center = (mapModel?.midCoordinate)!
+        mapView.setRegion(region, animated: true)
+    }
+    
+    //NOT USED
+    func centerMapOnUser(mapView : MKMapView)
+    {
+        var region = MKCoordinateRegion()
+        region.center = mapView.userLocation.coordinate
+        mapView.setRegion(region, animated: true)
     }
 }
 
@@ -573,34 +637,14 @@ extension MapsViewController
     
     func mapView(_ mapView: MKMapView, didUpdate: MKUserLocation)
     {
-//        print("We have moved location = didUpdate")
-//        mapView.setCenter(didUpdate.coordinate, animated: true)
+        //print("We have moved location = didUpdate")
+        //mapView.setCenter(didUpdate.coordinate, animated: true)
     }
     
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
     {
-        print("Map was moved around = regionDidChangedAnimated")
-        let span = mapView.region.span
-        print ("span:\(span)")
-       
-
-        
-        //Need to convert coordinatespan to span double
-        
-        /*
-        let latDelta = (mapModel.overlayTopLeftCoordinate.latitude)! - (mapModel?.overlayBottomRightCoordinate.latitude)!
-        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        let region = MKCoordinateRegionMake((mapModel?.midCoordinate)!, span)
- */
- 
-        //let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        //mapModel?.regionRadius = span.
-        
-        //getMapBoundary()
-        //configureVisibleRegion()
-        //centerMapOnLocation(location: mapView.centerCoordinate)
-        //print("centreCoordinate:\(mapView.centerCoordinate)")
+        //print("Map was moved around = regionDidChangedAnimated")
     }
 }
 
@@ -626,9 +670,6 @@ extension MapsViewController : CLLocationManagerDelegate
             }
             
             locationList.append(newLocation)
-            
-            //addAnnotationToMap()
-            
         }
     }
     
@@ -637,20 +678,18 @@ extension MapsViewController : CLLocationManagerDelegate
     {
         print("Error \(error)")
     }
+    
+    
+    func showUserLocation(locationManager : CLLocationManager, mapView : MKMapView)
+    {
+        locationManager.delegate = self
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse
+        {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        else
+        {
+            mapView.showsUserLocation = true
+        }
+    }
 }
-
-
-//let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-//let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-
-// let regionRadius: CLLocationDistance = 1000
-// let coordinateRegion = MKCoordinateRegionMakeWithDistance((location?.coordinate)!, regionRadius, regionRadius)
-
-
-//Config the size/region of the mapview
-//let latDelta = mapModel.overlayTopLeftCoordinate.latitude - mapModel.overlayBottomRightCoordinate.latitude
-//let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-//let region = MKCoordinateRegionMake(mapModel.midCoordinate, span)
-
-
-//mapView.region = coordinateRegion
