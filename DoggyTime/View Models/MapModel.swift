@@ -34,16 +34,21 @@ import MapKit
 class MapModel
 {
     
-    var name: String?
-/*
-    var pathPoints: [CLLocation] = []
-    var pathDistance = Measurement(value: 0, unit: UnitLength.meters)
-    var timeTakenInSeconds = Int16(0)
-  */
+    var name: String = "New"
+
     var regionRadius: Double = 1000
+    var mapWidth: Double = 1000
+    var mapHeight: Double = 1000
+    
+    
+    var spanLatitudeDelta: CLLocationDegrees = 0.1
+    var spanLongitudeDelta: CLLocationDegrees = 0.1
+    
+    
     
     var boundary: [CLLocationCoordinate2D] = []
-  
+    
+    
     var midCoordinate = CLLocationCoordinate2D()
     var overlayTopLeftCoordinate = CLLocationCoordinate2D()
     var overlayTopRightCoordinate = CLLocationCoordinate2D()
@@ -80,23 +85,15 @@ class MapModel
     }
     
     
-    /*
-    init(locationNamw: String, properties: Dictionary)
+    init(locationName: String, midCoord: CLLocationCoordinate2D, overlayTopLeftCoord: CLLocationCoordinate2D, overlayTopRightCoord: CLLocationCoordinate2D, overlayBottomLeftCoord: CLLocationCoordinate2D, regionRadius: Double)
     {
-        //guard let properties = MapModel.plist(filename) as? [String : Any],
-        //    let boundaryPoints = properties["boundary"] as? [String] else { return }
-    
-        let boundaryPoints = properties["boundary"] as? [String] else { return }
-        
-        midCoordinate = MapModel.parseCoord(dict: properties, fieldName: "midCoord")
-        overlayTopLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopLeftCoord")
-        overlayTopRightCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayTopRightCoord")
-        overlayBottomLeftCoordinate = MapModel.parseCoord(dict: properties, fieldName: "overlayBottomLeftCoord")
-    
-        let cgPoints = boundaryPoints.map { CGPointFromString($0) }
-        boundary = cgPoints.map { CLLocationCoordinate2DMake(CLLocationDegrees($0.x), CLLocationDegrees($0.y)) }
+        self.name = locationName
+        self.midCoordinate = midCoord
+        self.overlayTopLeftCoordinate = overlayTopLeftCoord
+        self.overlayTopRightCoordinate = overlayTopRightCoord
+        self.overlayBottomLeftCoordinate = overlayBottomLeftCoord
+        self.regionRadius = regionRadius
     }
- */
     
     
     init(locationName: String, midCoord: String, overlayTopLeftCoord: String, overlayTopRightCoord: String, overlayBottomLeftCoord: String)
