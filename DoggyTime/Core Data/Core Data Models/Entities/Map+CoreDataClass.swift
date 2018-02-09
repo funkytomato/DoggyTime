@@ -2,7 +2,7 @@
 //  Map+CoreDataClass.swift
 //  
 //
-//  Created by Spaceman on 26/01/2018.
+//  Created by Spaceman on 30/01/2018.
 //
 //
 
