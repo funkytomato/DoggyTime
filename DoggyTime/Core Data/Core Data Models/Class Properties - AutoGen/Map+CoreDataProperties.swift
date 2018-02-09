@@ -2,7 +2,7 @@
 //  Map+CoreDataProperties.swift
 //  
 //
-//  Created by Spaceman on 26/01/2018.
+//  Created by Spaceman on 30/01/2018.
 //
 //
 
@@ -17,6 +17,8 @@ extension Map {
     }
 
     @NSManaged public var createdAt: Date?
+    @NSManaged public var latitudeDelta: Double
+    @NSManaged public var longitudeDelta: Double
     @NSManaged public var midLatitudeCoordinate: Double
     @NSManaged public var midLongitudeCoordinate: Double
     @NSManaged public var name: String?
@@ -27,6 +29,8 @@ extension Map {
     @NSManaged public var regionRadius: Double
     @NSManaged public var updatedAt: Date?
     @NSManaged public var uuid: String?
+    @NSManaged public var mapWidth: Double
+    @NSManaged public var mapHeight: Double
     @NSManaged public var mapFor: Route?
     @NSManaged public var paths: NSSet?
     @NSManaged public var pointsofinterest: NSSet?
