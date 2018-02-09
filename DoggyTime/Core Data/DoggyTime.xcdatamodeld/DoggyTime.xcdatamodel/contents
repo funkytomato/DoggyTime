@@ -39,6 +39,10 @@
     </entity>
     <entity name="Map" representedClassName=".Map" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="latitudeDelta" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitudeDelta" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mapHeight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mapWidth" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="midLatitudeCoordinate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="midLongitudeCoordinate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -97,7 +101,7 @@
         <element name="Client" positionX="16" positionY="216" width="128" height="225"/>
         <element name="Dog" positionX="-270" positionY="216" width="128" height="223"/>
         <element name="Location" positionX="63" positionY="-186" width="128" height="148"/>
-        <element name="Map" positionX="-549" positionY="-207" width="128" height="253"/>
+        <element name="Map" positionX="-549" positionY="-207" width="128" height="315"/>
         <element name="Path" positionX="-270" positionY="-207" width="128" height="163"/>
         <element name="PointOfInterest" positionX="-270" positionY="45" width="128" height="163"/>
         <element name="Route" positionX="-792" positionY="-198" width="128" height="163"/>
